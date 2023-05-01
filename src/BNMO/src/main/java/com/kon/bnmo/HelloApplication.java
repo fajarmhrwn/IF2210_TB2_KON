@@ -38,6 +38,9 @@ public class HelloApplication extends Application {
         tabPane.getTabs().add(tab1);
         tabPane.getTabs().add(customerPage);
 
+        Settings settingsPage = new Settings();
+        tabPane.getTabs().add(settingsPage);
+
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(tabPane);
         VBox root = new VBox(dropdownMenu, tabPane);
