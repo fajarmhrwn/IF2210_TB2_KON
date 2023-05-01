@@ -1,20 +1,49 @@
 package com.kon.bnmo;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws Exception {
+
+        MenuButton dropdownMenu = new MenuButton("Pilih Menu");
+        
+        MenuItem menuItem1 = new MenuItem("Menu 1");
+        TabPane tabPane = new TabPane();
+
+        menuItem1.setOnAction(event -> {
+            Tab tab = new Tab("Tab 1");
+            tab.setContent(new Label("Konten Tab 1"));
+            tabPane.getTabs().add(tab);
+        });
+
+        MenuItem menuItem2 = new MenuItem("Menu 2");
+        menuItem2.setOnAction(event -> {
+            Tab tab = new Tab("Tab 2");
+            tab.setContent(new Label("Konten Tab 2"));
+            tabPane.getTabs().add(tab);
+        });
+
+        dropdownMenu.getItems().addAll(menuItem1, menuItem2);
+
+        Tab tab1 = new Tab();
+        tab1.setText("Home");
+        tabPane.getTabs().add(tab1);
+
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(tabPane);
+        VBox root = new VBox(dropdownMenu, tabPane);
+
+        Scene scene = new Scene(root, 800, 600);
+        primaryStage.setTitle("JavaFX Tab Example");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
