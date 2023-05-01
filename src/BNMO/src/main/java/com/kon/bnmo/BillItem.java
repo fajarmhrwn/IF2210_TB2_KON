@@ -1,5 +1,7 @@
 package com.kon.bnmo;
 
+import java.util.Objects;
+
 public class BillItem extends Item{
     private Integer amount;
     private String saleType;
@@ -42,4 +44,20 @@ public class BillItem extends Item{
     public void decreaseAmount(Integer amount) {
         this.amount -= amount;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, saleType);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BillItem billItem = (BillItem) o;
+        return Objects.equals(this.getName(), billItem.getName()) &&
+                Objects.equals(amount, billItem.amount) && Objects.equals(saleType, billItem.saleType) &&
+                this.getPrice() == billItem.getPrice();
+    }
+
 }

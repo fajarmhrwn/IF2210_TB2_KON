@@ -1,5 +1,7 @@
 package com.kon.bnmo;
 
+import java.util.Objects;
+
 public class StorageItem extends Item {
     private Integer stock;
 
@@ -34,5 +36,21 @@ public class StorageItem extends Item {
     @Override
     public void decreaseAmount(Integer amount) {
         this.stock -= amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StorageItem that = (StorageItem) o;
+
+        return Objects.equals(this.getName(), that.getName()) && Objects.equals(this.getPrice(), that.getPrice()) &&
+                stock.equals(that.stock);
+    }
+
+    @Override
+    public int hashCode() {
+        return stock.hashCode();
     }
 }

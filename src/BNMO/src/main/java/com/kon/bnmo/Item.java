@@ -39,4 +39,5 @@ public abstract class Item {
 
     public abstract void decreaseAmount(Integer amount);
 
+
 }
