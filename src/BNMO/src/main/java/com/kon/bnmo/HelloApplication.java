@@ -32,8 +32,7 @@ public class HelloApplication extends Application {
 
         dropdownMenu.getItems().addAll(menuItem1, menuItem2);
 
-        Tab tab1 = new Tab();
-        tab1.setText("Home");
+        Cashier tab1 = new Cashier("Om Nawwar");
         tabPane.getTabs().add(tab1);
 
         BorderPane borderPane = new BorderPane();

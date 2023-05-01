@@ -21,11 +21,13 @@ public class ItemContainer extends HBox {
         Label itemName = new Label(item.getName());
         itemName.setWrapText(false);
         itemName.setMinWidth(250);
+        itemName.setMaxWidth(Double.MAX_VALUE);
         Button editButton = new Button("Edit");
         this.getChildren().addAll(itemName, editButton);
-        this.setAlignment(Pos.CENTER_LEFT);
+        this.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(itemName, Priority.ALWAYS);
-        HBox.setMargin(editButton, new Insets(0, 0, 0, 10));
+
+        this.getStyleClass().add("item-container");
     }
 
     public BillItem getContainedItem() {

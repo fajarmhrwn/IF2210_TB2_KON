@@ -1,21 +1,31 @@
 package com.kon.bnmo;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
-public class BillContainer extends GridPane {
+import java.util.List;
+
+public class BillContainer extends ScrollPane {
     ItemHolder<BillItem> billItemItemHolder;
+    List<ItemContainer> itemContainerList;
 
     public BillContainer(ItemHolder<BillItem> itemList) {
         this.billItemItemHolder = new ItemHolder<>(itemList);
-        Button editButton = new Button("Edit");
-        for (int i = 0; i < this.billItemItemHolder.getItemList().size(); i++) {
-            Label label = new Label(this.billItemItemHolder.getItemList().get(i).getName());
-            this.add(label, 0, i);
-            this.add(editButton, 1, i);
-        }
 
+        VBox content = new VBox();
+
+        this.setContent(content);
+    }
+
+    public void addItem(StorageItem item, Integer amount, String saleType) {
+        BillItem tempBill = new BillItem(item, amount, saleType);
+        this.billItemItemHolder.add(tempBill);
+
+        this.getChildren().add(new ItemContainer(item, amount, saleType));
+    }
+
+    public void removeItem(BillItem item) {
+        this.billItemItemHolder.remove(item);
     }
 
 }

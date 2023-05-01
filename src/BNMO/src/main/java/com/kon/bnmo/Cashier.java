@@ -26,15 +26,10 @@ public class Cashier extends Tab {
         VBox sidePanel = new VBox();
         StorageItem meatballs = new StorageItem("Bakso", 2500.0, 5);
         ItemContainer item1 = new ItemContainer(meatballs, 3, "");
-//        item1.setMaxWidth(Double.MAX_VALUE);
-        HBox.setHgrow(item1, Priority.ALWAYS);
         StorageItem mawut = new StorageItem("Nasi Goreng Mawut Ayam", 2500.0, 5);
         ItemContainer item2 = new ItemContainer(mawut, 3, "");
-//        item2.setMaxWidth(Double.MAX_VALUE);
-        HBox.setHgrow(item2, Priority.ALWAYS);
         sidePanel.getChildren().addAll(item1, item2);
-        sidePanel.setMinWidth(150);
-        sidePanel.setAlignment(Pos.TOP_CENTER);
+        sidePanel.setMinWidth(200);
 
         SplitPane splitPane = new SplitPane();
         splitPane.setOrientation(Orientation.HORIZONTAL);
