@@ -1,4 +1,4 @@
-package com.kon.bnmo;
+package com.kon.bnmo.items;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
-package com.kon.bnmo;
+package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.cashier.Cashier;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;

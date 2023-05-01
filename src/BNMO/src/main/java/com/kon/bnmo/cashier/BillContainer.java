@@ -1,9 +1,10 @@
-package com.kon.bnmo;
+package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.items.BillItem;
+import com.kon.bnmo.items.ItemHolder;
+import com.kon.bnmo.items.StorageItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-
-import java.util.List;
 
 public class BillContainer extends ScrollPane {
     private ItemHolder<BillItem> billItemItemHolder;
@@ -13,7 +14,6 @@ public class BillContainer extends ScrollPane {
         this.billItemItemHolder = new ItemHolder<>();
         this.content = new VBox();
         this.setContent(this.content);
-//        this.setMinWidth(250);
     }
 
     public void addItem(BillItem item) {

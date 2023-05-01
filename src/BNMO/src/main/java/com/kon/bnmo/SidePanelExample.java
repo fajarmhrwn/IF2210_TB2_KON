@@ -1,11 +1,12 @@
 package com.kon.bnmo;
 
+import com.kon.bnmo.cashier.ItemContainer;
+import com.kon.bnmo.items.StorageItem;
 import javafx.application.Application;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;

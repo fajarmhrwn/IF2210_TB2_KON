@@ -1,5 +1,6 @@
 package com.kon.bnmo;
 
+import com.kon.bnmo.items.Item;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

@@ -1,4 +1,4 @@
-package com.kon.bnmo;
+package com.kon.bnmo.items;
 
 public abstract class Item {
     private String name;
