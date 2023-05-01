@@ -33,8 +33,10 @@ public class HelloApplication extends Application {
         dropdownMenu.getItems().addAll(menuItem1, menuItem2);
 
         Tab tab1 = new Tab();
+        CustomerPage customerPage = new CustomerPage("hakwe");
         tab1.setText("Home");
         tabPane.getTabs().add(tab1);
+        tabPane.getTabs().add(customerPage);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(tabPane);
