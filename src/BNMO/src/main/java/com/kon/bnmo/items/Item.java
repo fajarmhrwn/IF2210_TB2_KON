@@ -3,6 +3,8 @@ package com.kon.bnmo.items;
 public abstract class Item {
     private String name;
     private double price;
+    private String category;
+    private String imgName;
 
     public String getName() {
         return name;
@@ -20,15 +22,34 @@ public abstract class Item {
         this.price = price;
     }
 
+    public String getCategory() {
+        return category;
+    }
 
-    public Item(String name, double price) {
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public Item(String name, double price, String category, String imgName) {
         this.name = name;
         this.price = price;
+        this.category = category;
+        this.imgName = imgName;
     }
 
     public Item(Item other) {
         this.name = other.name;
         this.price = other.price;
+        this.category = other.category;
+        this.imgName = other.imgName;
     }
 
     public abstract void setAmount(Integer amount);
@@ -39,5 +60,7 @@ public abstract class Item {
 
     public abstract void decreaseAmount(Integer amount);
 
+    public static void main(String[] args) {
+    }
 
 }

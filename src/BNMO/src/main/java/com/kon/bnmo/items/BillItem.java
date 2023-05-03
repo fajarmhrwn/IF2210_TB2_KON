@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class BillItem extends Item{
     private Integer amount;
-    private String saleType;
-    public BillItem(String name, Double price, Integer amount, String saleType) {
-        super(name, price);
+    private double discount;
+    public BillItem(String name, Double price, String category, String imgName, Integer amount, double discount) {
+        super(name, price, category, imgName);
         this.amount = amount;
-        this.saleType = saleType;
+        this.discount = discount;
     }
 
-    public BillItem(Item other, Integer amount, String saleType) {
+    public BillItem(Item other, Integer amount, double discount) {
         super(other);
         this.amount = amount;
-        this.saleType = saleType;
+        this.discount = discount;
         other.setAmount(other.getAmount() - amount);
     }
 
@@ -27,12 +27,12 @@ public class BillItem extends Item{
         this.amount = amount;
     }
 
-    public String getSaleType() {
-        return saleType;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setSaleType(String saleType) {
-        this.saleType = saleType;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     @Override
@@ -46,18 +46,15 @@ public class BillItem extends Item{
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(amount, saleType);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BillItem billItem = (BillItem) o;
         return Objects.equals(this.getName(), billItem.getName()) &&
-                Objects.equals(amount, billItem.amount) && Objects.equals(saleType, billItem.saleType) &&
-                this.getPrice() == billItem.getPrice();
+                Objects.equals(this.getCategory(), billItem.getCategory()) &&
+                Objects.equals(this.getImgName(), billItem.getImgName()) &&
+                this.getPrice() == billItem.getPrice() &&
+                Objects.equals(amount, billItem.amount) && Objects.equals(discount, billItem.discount);
     }
 
 }
