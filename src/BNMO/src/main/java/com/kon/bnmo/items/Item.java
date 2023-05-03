@@ -1,6 +1,6 @@
 package com.kon.bnmo.items;
 
-public abstract class Item {
+public abstract class   Item {
     private String name;
     private double price;
 
