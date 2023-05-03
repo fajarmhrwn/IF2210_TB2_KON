@@ -1,7 +1,7 @@
 module com.kon.bnmo {
     requires javafx.controls;
     requires javafx.fxml;
-            
+    requires itextpdf;
         requires org.controlsfx.controls;
             requires com.dlsc.formsfx;
                     requires org.kordamp.bootstrapfx.core;

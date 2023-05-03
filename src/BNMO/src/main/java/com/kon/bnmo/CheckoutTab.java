@@ -67,7 +67,7 @@ public class CheckoutTab extends Application {
         // Create a scene and add it to the stage
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Checkout Tab Example");
+        stage.setTitle("Checkout");
         stage.show();
     }
 
