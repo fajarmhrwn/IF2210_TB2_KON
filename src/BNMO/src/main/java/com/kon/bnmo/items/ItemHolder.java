@@ -27,11 +27,6 @@ public class ItemHolder<T extends Item> extends holder<T> {
         this.itemList.remove(item);
     }
 
-    public void setItemAmount(T item, Integer amount) {
-        int index = this.itemList.indexOf(item);
-        this.itemList.get(index).setAmount(amount);
-    }
-
 //    public static void main(String[] args) {
 //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
 ////        BillItem padangA = new BillItem("Nasi padang", 18000.0, 2, "Dine in");
