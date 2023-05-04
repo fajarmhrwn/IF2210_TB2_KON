@@ -3,6 +3,7 @@ package com.kon.bnmo.cashier;
 import com.kon.bnmo.items.BillItem;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.StorageItem;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,10 +23,15 @@ public class ItemContainer extends HBox {
         itemName.setWrapText(false);
         this.editButton = new Button("Edit");
         this.getChildren().addAll(itemName, this.editButton);
+        this.editButton.setOnAction(this::editItem);
         this.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(itemName, Priority.ALWAYS);
 
         this.getStyleClass().add("item-container");
+    }
+
+    private void editItem(ActionEvent actionEvent) {
+
     }
 
     public ItemContainer(BillItem item) {

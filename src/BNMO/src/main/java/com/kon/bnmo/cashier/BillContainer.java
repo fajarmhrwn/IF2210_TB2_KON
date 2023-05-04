@@ -2,7 +2,6 @@ package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.BillItem;
 import com.kon.bnmo.items.ItemHolder;
-import com.kon.bnmo.items.StorageItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 

@@ -1,16 +1,11 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.cashier.Cashier;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class SimplePane extends Application {
 

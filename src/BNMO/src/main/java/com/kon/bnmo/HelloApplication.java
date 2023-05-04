@@ -50,17 +50,17 @@ public class HelloApplication extends Application {
         VBox root = new VBox(dropdownMenu, this.tabPane);
 
         ItemHolder<StorageItem> itemHolder = new ItemHolder<>();
-        itemHolder.add(new StorageItem("Buku",10.000, 10));
-        itemHolder.add(new StorageItem("Pensil", 5.000, 10));
-        itemHolder.add(new StorageItem("Penghapus", 2.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Buku",10.000, 10));
+//        itemHolder.add(new StorageItem("Pensil", 5.000, 10));
+//        itemHolder.add(new StorageItem("Penghapus", 2.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
 
 
         Tab sistemBarang = new SistemBarang(itemHolder);
