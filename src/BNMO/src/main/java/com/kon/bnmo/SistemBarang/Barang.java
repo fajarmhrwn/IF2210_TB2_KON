@@ -11,18 +11,39 @@ import javafx.stage.Popup;
 
 public class Barang extends HBox {
 
+    private UpdateStorageTab updateStorageTab;
     private StorageItem item;
     private Label nameLabel;
     private Label amountLabel;
-    
-    private ItemHolder<StorageItem> itemHolder; // tambahkan atribut untuk ItemHolder
+    private SistemBarang sistemBarang;
 
-    public Barang(StorageItem item, ItemHolder<StorageItem> itemHolder) { // tambahkan parameter untuk ItemHolder
-        super();
+    public void setItem(StorageItem item) {
         this.item = item;
-        this.itemHolder = itemHolder; // simpan referensi ke ItemHolder
+    }
+
+    public void update(StorageItem item){
+        this.amountLabel.setText(this.item.getStock().toString());
+    }
+    public  void setAmountLabel(String str) {
+        this.amountLabel.setText(str);
+    }
+    public void setNameLabel(String str) {
+        this.nameLabel.setText(str);
+    }
+
+    public void delete(){
+        this.sistemBarang.removeItem(this.item);
+    }
+
+    public Barang(StorageItem item, SistemBarang sistemBarang) { // tambahkan parameter untuk ItemHolder
+        super();
+
+        this.sistemBarang = sistemBarang;
+        this.item = item;
         this.amountLabel = new Label(item.getStock().toString());
         this.nameLabel = new Label(item.getName());
+        this.updateStorageTab = new UpdateStorageTab(item,this);
+
 
         this.setAlignment(Pos.CENTER);
         this.setSpacing(10);
@@ -37,10 +58,15 @@ public class Barang extends HBox {
 
     public void openPopUp() {
         System.out.println("Open Pop Up");
-
-//        this.itemHolder.setItemAmount(item,this.item.getAmount()-1); // tambahkan item ke ItemHolder
-//        amountLabel.setText(item.getStock().toString()); // mengubah tampilan label stock
-//        System.out.println(item.getAmount()); // print jumlah item
+        updateStorageTab.show();
+//        this.item.decreaseAmount(1);
+//        if(this.item.getStock() == 0){
+//            sistemBarang.removeItem(this.item);
+//        }
+////        this.itemHolder.setItemAmount(item,this.item.getAmount()-1); // tambahkan item ke ItemHolder
+//////        this.itemHolder.setItemAmount(item,this.item.getAmount()-1); // tambahkan item ke ItemHolder
+//        amountLabel.setText(this.item.getStock().toString()); // mengubah tampilan label stock
+////        System.out.println(item.getAmount()); // print jumlah item
     }
 
 

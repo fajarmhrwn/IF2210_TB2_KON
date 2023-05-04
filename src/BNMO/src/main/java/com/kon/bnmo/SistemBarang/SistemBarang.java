@@ -24,20 +24,33 @@ public class SistemBarang extends  Tab {
         return itemHolder;
     }
 
+    private VBox layout;
+
+    private Label jumlahBarangLabel;
+
+    public void removeItem(StorageItem item){
+        itemHolder.remove(item);
+        jumlahBarang--;
+        jumlahBarangLabel.setText("Jumlah Barang : " + jumlahBarang);
+        layout.getChildren().clear();
+        this.itemHolder.getItemList().forEach(storageItem -> {
+            Barang barang = new Barang(storageItem, this);
+            layout.getChildren().add(barang);
+        });
+
+    }
 
     public SistemBarang(ItemHolder<StorageItem> itemHolder) {
         super("Sistem Barang");
         this.itemHolder = new ItemHolder<StorageItem>(itemHolder);
         this.jumlahBarang = itemHolder.getItemList().size();
+        this.jumlahBarangLabel = new Label("Jumlah Barang : " + jumlahBarang);
+        this.layout = new VBox();
 
-        VBox layout = new VBox();
-        layout.setSpacing(10); // set spacing between elements
+        layout.setAlignment(javafx.geometry.Pos.CENTER); // set alignment to center
 
-        List<StorageItem> itemList = new ArrayList<StorageItem>();
-        itemList.addAll(itemHolder.getItemList());
-
-        for (StorageItem item : itemList){
-            Barang barang = new Barang(item, this.itemHolder);
+        for (StorageItem item : itemHolder.getItemList()){
+            Barang barang = new Barang(item, this);
             layout.getChildren().add(barang);
         }
 
@@ -60,13 +73,13 @@ public class SistemBarang extends  Tab {
         hBox.getChildren().add(textField);
         hBox.getChildren().add(button);
 
+        ;
 
         VBox keterangan = new VBox();
         keterangan.setSpacing(10);
         keterangan.setAlignment(javafx.geometry.Pos.CENTER);
-//        keterangan.getChildren().add(hBox);
         keterangan.getChildren().add(new Label("All Items"));
-        keterangan.getChildren().add(new Label( jumlahBarang + " Items"));
+        keterangan.getChildren().add(jumlahBarangLabel);
 
 
         BorderPane borderPane = new BorderPane();
