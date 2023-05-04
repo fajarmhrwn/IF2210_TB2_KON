@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/UpdateStorageTab.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/Barang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/Barang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/SistemBarang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/UpdateStorageTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/UpdateStoragePop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/ItemHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/ItemHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +159,7 @@
       <workItem from="1682946444229" duration="1015000" />
       <workItem from="1682957972709" duration="30000" />
       <workItem from="1682958032946" duration="796000" />
-      <workItem from="1682958838223" duration="32510000" />
+      <workItem from="1682958838223" duration="34304000" />
     </task>
     <servers />
   </component>

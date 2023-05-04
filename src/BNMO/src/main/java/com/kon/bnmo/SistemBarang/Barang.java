@@ -1,17 +1,15 @@
 package com.kon.bnmo.SistemBarang;
 
-import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.StorageItem;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
-import javafx.stage.Popup;
 
 public class Barang extends HBox {
 
-    private UpdateStorageTab updateStorageTab;
+    private UpdateStoragePop updateStoragePop;
     private StorageItem item;
     private Label nameLabel;
     private Label amountLabel;
@@ -42,7 +40,7 @@ public class Barang extends HBox {
         this.item = item;
         this.amountLabel = new Label(item.getStock().toString());
         this.nameLabel = new Label(item.getName());
-        this.updateStorageTab = new UpdateStorageTab(item,this);
+        this.updateStoragePop = new UpdateStoragePop(item,this);
 
 
         this.setAlignment(Pos.CENTER);
@@ -58,7 +56,7 @@ public class Barang extends HBox {
 
     public void openPopUp() {
         System.out.println("Open Pop Up");
-        updateStorageTab.show();
+        updateStoragePop.show();
 //        this.item.decreaseAmount(1);
 //        if(this.item.getStock() == 0){
 //            sistemBarang.removeItem(this.item);

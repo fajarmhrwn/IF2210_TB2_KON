@@ -8,12 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class UpdateStorageTab extends Stage {
+public class UpdateStoragePop extends Stage {
     StorageItem item;
     Barang barang;
     Scene scene;
     VBox layout;
-    public UpdateStorageTab(StorageItem item,Barang barang) {
+    public UpdateStoragePop(StorageItem item, Barang barang) {
         this.item = item;
         this.scene = new Scene(new Label("Update Storage"));
         this.barang = barang;
