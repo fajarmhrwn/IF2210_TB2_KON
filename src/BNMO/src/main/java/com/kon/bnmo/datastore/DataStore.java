@@ -1,6 +1,7 @@
 package com.kon.bnmo.datastore;
 
-import java.util.List;
+import com.kon.bnmo.holder.holder;
+
 
 public class DataStore {
     private  DataAdapter dataAdapter;
@@ -11,11 +12,11 @@ public class DataStore {
         this.path = path;
     }
 
-    public void readData(List dataHolder){
+    public void readData(holder dataHolder){
         dataAdapter.readData(dataHolder, this.path);
     }
 
-    public void writeData(List dataHolder){
+    public void writeData(holder dataHolder){
         dataAdapter.writeData(dataHolder, this.path);
     }
 

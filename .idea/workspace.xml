@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/Barang.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/Barang.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/SistemBarang.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/Barang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/Barang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/SistemBarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/ItemHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/ItemHolder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,7 @@
       <recent name="com.kon.bnmo.SistemBarang" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager" selected="Application.ItemHolder">
     <configuration name="BillExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.BillExporter" />
       <module name="BNMO" />
@@ -118,12 +116,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ItemHolder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.items.ItemHolder" />
+      <module name="BNMO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kon.bnmo.items.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="com.kon.bnmo.SistemBarang.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.SistemBarang.HelloApplication" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.SistemBarang.*" />
+          <option name="PATTERN" value="com.kon.bnmo.sistembarang.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,6 +157,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ItemHolder" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.com.kon.bnmo.SistemBarang.HelloApplication" />
         <item itemvalue="Application.BillExporter" />
@@ -167,7 +179,7 @@
       <workItem from="1682946444229" duration="1015000" />
       <workItem from="1682957972709" duration="30000" />
       <workItem from="1682958032946" duration="796000" />
-      <workItem from="1682958838223" duration="20888000" />
+      <workItem from="1682958838223" duration="36097000" />
     </task>
     <servers />
   </component>
