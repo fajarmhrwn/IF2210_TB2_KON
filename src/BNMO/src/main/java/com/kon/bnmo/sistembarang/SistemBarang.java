@@ -1,12 +1,9 @@
-package com.kon.bnmo.SistemBarang;
+package com.kon.bnmo.sistembarang;
 
 import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.StorageItem;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class SistemBarang extends  Tab {

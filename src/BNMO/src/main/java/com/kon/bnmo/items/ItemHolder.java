@@ -2,8 +2,6 @@ package com.kon.bnmo.items;
 
 import com.kon.bnmo.holder.holder;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ItemHolder<T extends Item> extends holder<T> {
     public ItemHolder() {

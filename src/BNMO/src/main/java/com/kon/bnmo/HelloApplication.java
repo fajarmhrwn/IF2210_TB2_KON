@@ -1,6 +1,6 @@
 package com.kon.bnmo;
 
-import com.kon.bnmo.SistemBarang.SistemBarang;
+import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.StorageItem;
 import javafx.application.Application;
@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-
-import java.io.IOException;
 
 public class HelloApplication extends Application {
     private TabPane tabPane;

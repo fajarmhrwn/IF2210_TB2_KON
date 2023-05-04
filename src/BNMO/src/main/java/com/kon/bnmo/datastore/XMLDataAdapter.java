@@ -1,15 +1,26 @@
 package com.kon.bnmo.datastore;
 
-import java.util.List;
+import com.kon.bnmo.holder.holder;
+
 
 abstract public class XMLDataAdapter implements  DataAdapter {
     @Override
-    public void readData(List dataHolder, String path) {
+    public void readData(holder dataHolder, String path) {
         /* TODO: parse XML ke List */
+        if(dataHolder.getType() == "Item") {
+            /* TODO: parse XML ke List Item */
+        }else if(dataHolder.getType() == "Customer") {
+            /* TODO: parse XML ke List Customer */
+        }
     }
 
     @Override
-    public void writeData(List dataHolder, String path) {
+    public void writeData(holder dataHolder, String path) {
         /* TODO: parse List ke XML */
+        if(dataHolder.getType() == "Item") {
+            /* TODO: parse List Item ke XML */
+        }else if(dataHolder.getType() == "Customer") {
+            /* TODO: parse List Customer ke XML */
+        }
     }
 }

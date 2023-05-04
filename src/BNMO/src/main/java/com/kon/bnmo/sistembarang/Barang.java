@@ -1,4 +1,4 @@
-package com.kon.bnmo.SistemBarang;
+package com.kon.bnmo.sistembarang;
 
 import com.kon.bnmo.items.StorageItem;
 import javafx.geometry.Pos;
