@@ -5,8 +5,8 @@ import java.util.Objects;
 public class StorageItem extends Item {
     private Integer stock;
 
-    public StorageItem(String name, Double price, Integer stock) {
-        super(name, price);
+    public StorageItem(String name, Double price, String category, String imgName, Integer stock) {
+        super(name, price, category, imgName);
         this.stock = stock;
     }
 
@@ -45,7 +45,10 @@ public class StorageItem extends Item {
 
         StorageItem that = (StorageItem) o;
 
-        return Objects.equals(this.getName(), that.getName()) && Objects.equals(this.getPrice(), that.getPrice()) &&
+        return Objects.equals(this.getName(), that.getName()) &&
+                Objects.equals(this.getCategory(), that.getCategory()) &&
+                Objects.equals(this.getImgName(), that.getImgName()) &&
+                this.getPrice() == that.getPrice() &&
                 stock.equals(that.stock);
     }
 

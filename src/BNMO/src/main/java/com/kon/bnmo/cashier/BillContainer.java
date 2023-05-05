@@ -22,9 +22,9 @@ public class BillContainer extends ScrollPane {
         this.setContent(this.content);
     }
 
-    public void removeItem(StorageItem item, Integer amount, String saleType) {
-        this.billItemItemHolder.remove(new BillItem(item, amount, saleType));
-        this.content.getChildren().remove(new ItemContainer(item, amount, saleType));
+    public void removeItem(String name, double price, String category, String imgName, Integer amount, double discount) {
+        this.billItemItemHolder.remove(new BillItem(name, price, category, imgName, amount, discount));
+        this.content.getChildren().remove(new ItemContainer(name, price, category, imgName, amount, discount));
         this.setContent(this.content);
     }
 

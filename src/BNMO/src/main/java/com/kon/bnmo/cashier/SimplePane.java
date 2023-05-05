@@ -2,11 +2,15 @@ package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.cashier.Cashier;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SimplePane extends Application {
 
@@ -15,8 +19,11 @@ public class SimplePane extends Application {
         // Create a new TabPane
         TabPane tabPane = new TabPane();
 
-        // Create two tabs with their content
+//         Create two tabs with their content
         Cashier tab1 = new Cashier("Nawwar");
+//        tab1.getSidePanel().getAddCustomer().setOnAction(this::onCustomerButtonClick);
+//        List<String> customerList = Arrays.asList("Nawwar", "Ulung", "Zaki");
+//        NewCustomer tab1 = new NewCustomer(customerList);
 
         Tab tab2 = new Tab("Tab 2");
         StackPane tab2Content = new StackPane();

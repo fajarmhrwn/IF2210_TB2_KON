@@ -1,6 +1,7 @@
 package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.BillItem;
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.StorageItem;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,10 +15,10 @@ public class ItemContainer extends HBox {
     private BillItem containedItem;
     private Button editButton;
 
-    public ItemContainer(StorageItem item, Integer itemAmount, String saleType) {
-        this.containedItem = new BillItem(item, itemAmount, saleType);
+    public ItemContainer(String name, double price, String category, String imgName, Integer itemAmount, double discount) {
+        this.containedItem = new BillItem(name, price, category, imgName, itemAmount, discount);
 
-        Label itemName = new Label(item.getName());
+        Label itemName = new Label(name);
         itemName.setWrapText(false);
         this.editButton = new Button("Edit");
         this.getChildren().addAll(itemName, this.editButton);
