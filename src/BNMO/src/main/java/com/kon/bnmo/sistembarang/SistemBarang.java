@@ -1,7 +1,7 @@
 package com.kon.bnmo.sistembarang;
 
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
-import com.kon.bnmo.items.StorageItem;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
@@ -10,14 +10,14 @@ public class SistemBarang extends  Tab {
 
     private int jumlahBarang ;
 
-    private ItemHolder<StorageItem> itemHolder ;
+    private ItemHolder itemHolder ;
 
-    public void setItemHolder(ItemHolder<StorageItem> itemHolder) {
+    public void setItemHolder(ItemHolder itemHolder) {
         this.itemHolder = itemHolder;
         this.jumlahBarang = itemHolder.getItemList().size();
     }
 
-    public ItemHolder<StorageItem> getItemHolder() {
+    public ItemHolder getItemHolder() {
         return itemHolder;
     }
 
@@ -25,28 +25,28 @@ public class SistemBarang extends  Tab {
 
     private Label jumlahBarangLabel;
 
-    public void removeItem(StorageItem item){
+    public void removeItem(Item item){
         itemHolder.remove(item);
         jumlahBarang--;
         jumlahBarangLabel.setText("Jumlah Barang : " + jumlahBarang);
         layout.getChildren().clear();
-        this.itemHolder.getItemList().forEach(storageItem -> {
-            Barang barang = new Barang(storageItem, this);
+        this.itemHolder.getItemList().forEach(Item -> {
+            Barang barang = new Barang(Item, this);
             layout.getChildren().add(barang);
         });
 
     }
 
-    public SistemBarang(ItemHolder<StorageItem> itemHolder) {
+    public SistemBarang(ItemHolder itemHolder) {
         super("Sistem Barang");
-        this.itemHolder = new ItemHolder<StorageItem>(itemHolder);
+        this.itemHolder = new ItemHolder(itemHolder);
         this.jumlahBarang = itemHolder.getItemList().size();
         this.jumlahBarangLabel = new Label("Jumlah Barang : " + jumlahBarang);
         this.layout = new VBox();
 
         layout.setAlignment(javafx.geometry.Pos.CENTER); // set alignment to center
 
-        for (StorageItem item : itemHolder.getItemList()){
+        for (Item item : itemHolder.getItemList()){
             Barang barang = new Barang(item, this);
             layout.getChildren().add(barang);
         }

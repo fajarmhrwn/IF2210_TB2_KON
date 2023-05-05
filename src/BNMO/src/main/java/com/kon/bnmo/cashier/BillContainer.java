@@ -4,14 +4,15 @@ import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import java.util.*;
 
 public class BillContainer extends ScrollPane {
-    private ItemHolder<Item> billItemItemHolder;
+    private ItemHolder billItemItemHolder;
     private final VBox vBox;
     private CashierSidePanel sidePanel;
 
     public BillContainer(CashierSidePanel sidePanel) {
-        this.billItemItemHolder = new ItemHolder<>();
+        this.billItemItemHolder = new ItemHolder();
         this.sidePanel = sidePanel;
         this.vBox = new VBox();
         this.setContent(this.vBox);
@@ -26,6 +27,8 @@ public class BillContainer extends ScrollPane {
     public void removeItem(String name, double price, String category, String imgName, Integer stock,
                            Integer amount, Double sellingPrice) {
         this.billItemItemHolder.remove(new Item(name, price, category, imgName, stock));
+        this.itemContainersList.remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
+                sellingPrice));
         this.vBox.getChildren().remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
                 sellingPrice));
         this.setContent(this.vBox);
@@ -42,11 +45,11 @@ public class BillContainer extends ScrollPane {
         this.sidePanel = sidePanel;
     }
 
-    public ItemHolder<Item> getBillItemItemHolder() {
+    public ItemHolder getBillItemItemHolder() {
         return billItemItemHolder;
     }
 
-    public void setBillItemItemHolder(ItemHolder<Item> billItemItemHolder) {
+    public void setBillItemItemHolder(ItemHolder billItemItemHolder) {
         this.billItemItemHolder = billItemItemHolder;
     }
 }

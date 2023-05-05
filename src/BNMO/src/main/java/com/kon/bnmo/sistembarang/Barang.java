@@ -1,6 +1,6 @@
 package com.kon.bnmo.sistembarang;
 
-import com.kon.bnmo.items.StorageItem;
+import com.kon.bnmo.items.Item;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -10,16 +10,16 @@ import javafx.scene.layout.Region;
 public class Barang extends HBox {
 
     private UpdateStoragePop updateStoragePop;
-    private StorageItem item;
+    private Item item;
     private Label nameLabel;
     private Label amountLabel;
     private SistemBarang sistemBarang;
 
-    public void setItem(StorageItem item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 
-    public void update(StorageItem item){
+    public void update(Item item){
         this.amountLabel.setText(this.item.getStock().toString());
     }
     public  void setAmountLabel(String str) {
@@ -33,7 +33,7 @@ public class Barang extends HBox {
         this.sistemBarang.removeItem(this.item);
     }
 
-    public Barang(StorageItem item, SistemBarang sistemBarang) { // tambahkan parameter untuk ItemHolder
+    public Barang(Item item, SistemBarang sistemBarang) { // tambahkan parameter untuk ItemHolder
         super();
 
         this.sistemBarang = sistemBarang;

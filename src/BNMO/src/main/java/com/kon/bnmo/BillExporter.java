@@ -5,6 +5,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Font;
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
 import com.itextpdf.text.Element;
 
@@ -13,9 +14,9 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 public class BillExporter extends Thread{
-    private final ItemHolder<BillItem> bill;
+    private final ItemHolder bill;
 
-    public BillExporter(ItemHolder<BillItem> bill){
+    public BillExporter(ItemHolder bill){
         this.bill = bill;
     }
 
@@ -33,11 +34,11 @@ public class BillExporter extends Thread{
                 itemsTitle.setSpacingBefore(20);
                 document.add(itemsTitle);
 
-                List<BillItem> itemList = bill.getItemList();
+                List<Item> itemList = bill.getItemList();
                 int totalHarga = 0;
                 for (int i = 0; i < itemList.size(); i++) {
-                    totalHarga += itemList.get(i).getPrice()*itemList.get(i).getAmount();
-                    Paragraph item = new Paragraph(itemList.get(i).getAmount()+ " " + itemList.get(i).getName() + " : Rp " + itemList.get(i).getPrice()*itemList.get(i).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
+                    totalHarga += itemList.get(i).getPrice()*itemList.get(i).getStock();
+                    Paragraph item = new Paragraph(itemList.get(i).getStock()+ " " + itemList.get(i).getName() + " : Rp " + itemList.get(i).getPrice()*itemList.get(i).getStock(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
                     item.setIndentationLeft(20);
                     document.add(item);
                 }
@@ -60,9 +61,9 @@ public class BillExporter extends Thread{
         }
     }
     public static void main(String[] args){
-        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
-        BillItem padangA = new BillItem("Nasi padang", 18000.0, "Food", "png", 5, 0.1);
-        BillItem padangB = new BillItem("Nasi padang Ayam", 18000.0, "Food", "png", 5, 0.1);
+        ItemHolder bill = new ItemHolder();
+        Item padangA = new Item("Nasi padang", 18000.0, "Food", "png", 5);
+        Item padangB = new Item("Nasi padang Ayam", 18000.0, "Food", "png", 5);
         bill.add(padangA);
         bill.add(padangB);
         BillExporter test = new BillExporter(bill);
