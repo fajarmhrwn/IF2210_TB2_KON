@@ -53,6 +53,6 @@ public class Settings extends Tab {
         });
 
 // Menambahkan Label dan Button ke dalam VBox
-        root.getChildren().addAll(directoryLabel, directoryButton, pluginLabel, pluginButton);
+        root.getChildren().addAll(pluginLabel, pluginButton);
     }
 }
