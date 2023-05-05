@@ -1,0 +1,16 @@
+[
+  {"nama": "Keyboard","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Mouse","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Monitor","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Laptop","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "PC","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Headset","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Speaker","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10}
+]

@@ -1,0 +1,264 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CheckoutTab.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CheckoutTab.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/Settings.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/Settings.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2PBqaNfSu8DqDaVdwzVbNO2Qsf1\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\n    \"Downloaded.Files.Path.Enabled\": \"true\",\n    \"Repository.Attach.Annotations\": \"false\",\n    \"Repository.Attach.JavaDocs\": \"false\",\n    \"Repository.Attach.Sources\": \"false\",\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"git-widget-placeholder\": \"main\",\n    \"last_opened_file_path\": \"/Users/fajarherawan/Documents/IF2210_TB2_KON\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"project.structure.last.edited\": \"Modules\",\n    \"project.structure.proportion\": \"0.3073005\",\n    \"project.structure.side.proportion\": \"0.29022557\",\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"CreateClassDialog.RecentsKey\">\n      <recent name=\"com.kon.bnmo.SistemBarang\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.kon.bnmo\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.MainApplication\">\n    <configuration name=\"ItemHolder\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.items.ItemHolder\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.items.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"JSONDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.JSONDataAdapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"LayarUtama\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.main.LayarUtama\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"MainApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.MainApplication\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.main.main\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.MainApplication\" />\n        <item itemvalue=\"Application.LayarUtama\" />\n        <item itemvalue=\"Application.main\" />\n        <item itemvalue=\"Application.JSONDataAdapter\" />\n        <item itemvalue=\"Application.ItemHolder\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"\" />\n      <created>1682940886174</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1682940886174</updated>\n      <workItem from=\"1682940887278\" duration=\"749000\" />\n      <workItem from=\"1682941738002\" duration=\"409000\" />\n      <workItem from=\"1682944518421\" duration=\"1805000\" />\n      <workItem from=\"1682946444229\" duration=\"1015000\" />\n      <workItem from=\"1682957972709\" duration=\"30000\" />\n      <workItem from=\"1682958032946\" duration=\"796000\" />\n      <workItem from=\"1682958838223\" duration=\"36097000\" />\n      <workItem from=\"1683259715809\" duration=\"3540000\" />\n      <workItem from=\"1683265250024\" duration=\"3346000\" />\n      <workItem from=\"1683273558603\" duration=\"5589000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision de194f5feb4f47ce3886ed574f57ed0e45d2a866)
++++ b/.idea/workspace.xml	(date 1683313478124)
+@@ -5,10 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/Address.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/Employee.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JacksonObjectMapperExample.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CheckoutTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CheckoutTab.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/Settings.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,7 +68,7 @@
+     "project.structure.last.edited": "Modules",
+     "project.structure.proportion": "0.3073005",
+     "project.structure.side.proportion": "0.29022557",
+-    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+@@ -186,7 +186,7 @@
+       <workItem from="1682958838223" duration="36097000" />
+       <workItem from="1683259715809" duration="3540000" />
+       <workItem from="1683265250024" duration="3346000" />
+-      <workItem from="1683273558603" duration="5589000" />
++      <workItem from="1683273558603" duration="7198000" />
+     </task>
+     <servers />
+   </component>
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/Employee.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/Employee.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/Employee.java
+new file mode 100644
+--- /dev/null	(date 1683309333415)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/Employee.java	(date 1683309333415)
+@@ -0,0 +1,82 @@
++package com.kon.bnmo.datastore;
++import java.util.Arrays;
++import java.util.List;
++import java.util.Map;
++
++public class Employee {
++
++    private int id;
++    private String name;
++    private boolean permanent;
++    private Address address;
++    private long[] phoneNumbers;
++    private String role;
++    private List<String> cities;
++    private Map<String, String> properties;
++
++    public int getId() {
++        return id;
++    }
++    public void setId(int id) {
++        this.id = id;
++    }
++    public String getName() {
++        return name;
++    }
++    public void setName(String name) {
++        this.name = name;
++    }
++    public boolean isPermanent() {
++        return permanent;
++    }
++    public void setPermanent(boolean permanent) {
++        this.permanent = permanent;
++    }
++    public Address getAddress() {
++        return address;
++    }
++    public void setAddress(Address address) {
++        this.address = address;
++    }
++    public long[] getPhoneNumbers() {
++        return phoneNumbers;
++    }
++    public void setPhoneNumbers(long[] phoneNumbers) {
++        this.phoneNumbers = phoneNumbers;
++    }
++    public String getRole() {
++        return role;
++    }
++    public void setRole(String role) {
++        this.role = role;
++    }
++
++    @Override
++    public String toString(){
++        StringBuilder sb = new StringBuilder();
++        sb.append("***** Employee Details *****\n");
++        sb.append("ID="+getId()+"\n");
++        sb.append("Name="+getName()+"\n");
++        sb.append("Permanent="+isPermanent()+"\n");
++        sb.append("Role="+getRole()+"\n");
++        sb.append("Phone Numbers="+Arrays.toString(getPhoneNumbers())+"\n");
++        sb.append("Address="+getAddress()+"\n");
++        sb.append("Cities="+Arrays.toString(getCities().toArray())+"\n");
++        sb.append("Properties="+getProperties()+"\n");
++        sb.append("*****************************");
++
++        return sb.toString();
++    }
++    public List<String> getCities() {
++        return cities;
++    }
++    public void setCities(List<String> cities) {
++        this.cities = cities;
++    }
++    public Map<String, String> getProperties() {
++        return properties;
++    }
++    public void setProperties(Map<String, String> properties) {
++        this.properties = properties;
++    }
++}
+\ No newline at end of file
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/Address.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/Address.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/Address.java
+new file mode 100644
+--- /dev/null	(date 1683309333441)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/Address.java	(date 1683309333441)
+@@ -0,0 +1,31 @@
++package com.kon.bnmo.datastore;
++public class Address {
++
++    private String street;
++    private String city;
++    private int zipcode;
++
++    public String getStreet() {
++        return street;
++    }
++    public void setStreet(String street) {
++        this.street = street;
++    }
++    public String getCity() {
++        return city;
++    }
++    public void setCity(String city) {
++        this.city = city;
++    }
++    public int getZipcode() {
++        return zipcode;
++    }
++    public void setZipcode(int zipcode) {
++        this.zipcode = zipcode;
++    }
++
++    @Override
++    public String toString(){
++        return getStreet() + ", "+getCity()+", "+getZipcode();
++    }
++}
+\ No newline at end of file
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/JacksonObjectMapperExample.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/JacksonObjectMapperExample.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/JacksonObjectMapperExample.java
+new file mode 100644
+--- /dev/null	(date 1683309441178)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/JacksonObjectMapperExample.java	(date 1683309441178)
+@@ -0,0 +1,76 @@
++package com.kon.bnmo.datastore;
++import java.io.File;
++import java.io.IOException;
++import java.io.StringWriter;
++import java.nio.file.Files;
++import java.nio.file.Paths;
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.Iterator;
++import java.util.List;
++import java.util.Map;
++
++import com.fasterxml.jackson.core.type.TypeReference;
++import com.fasterxml.jackson.databind.JsonNode;
++import com.fasterxml.jackson.databind.ObjectMapper;
++import com.fasterxml.jackson.databind.SerializationFeature;
++import com.fasterxml.jackson.databind.node.ObjectNode;
++import com.journaldev.jackson.model.Address;
++import com.journaldev.jackson.model.Employee;
++
++
++public class JacksonObjectMapperExample {
++
++    public static void main(String[] args) throws IOException {
++
++        //read json file data to String
++        byte[] jsonData = Files.readAllBytes(Paths.get("employee.txt"));
++
++        //create ObjectMapper instance
++        ObjectMapper objectMapper = new ObjectMapper();
++
++        //convert json string to object
++        Employee emp = objectMapper.readValue(jsonData, Employee.class);
++
++        System.out.println("Employee Object\n"+emp);
++
++        //convert Object to json string
++        Employee emp1 = createEmployee();
++        //configure Object mapper for pretty print
++        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
++
++        //writing to console, can write to any output stream such as file
++        StringWriter stringEmp = new StringWriter();
++        objectMapper.writeValue(stringEmp, emp1);
++        System.out.println("Employee JSON is\n"+stringEmp);
++    }
++
++    public static Employee createEmployee() {
++
++        Employee emp = new Employee();
++        emp.setId(100);
++        emp.setName("David");
++        emp.setPermanent(false);
++        emp.setPhoneNumbers(new long[] { 123456, 987654 });
++        emp.setRole("Manager");
++
++        Address add = new Address();
++        add.setCity("Bangalore");
++        add.setStreet("BTM 1st Stage");
++        add.setZipcode(560100);
++        emp.setAddress(add);
++
++        List<String> cities = new ArrayList<String>();
++        cities.add("Los Angeles");
++        cities.add("New York");
++        emp.setCities(cities);
++
++        Map<String, String> props = new HashMap<String, String>();
++        props.put("salary", "1000 Rs");
++        props.put("age", "28 years");
++        emp.setProperties(props);
++
++        return emp;
++    }
++
++}
+\ No newline at end of file
