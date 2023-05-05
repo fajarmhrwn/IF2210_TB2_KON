@@ -1,5 +1,7 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.items.Item;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -9,20 +11,32 @@ public class CashierSidePanel extends VBox {
     private Button addCustomer;
     private BillContainer bc;
     private HBox buttonContainer;
-    private Label priceLabel;
-    public CashierSidePanel() {
+    private HBox priceContainer;
+    private Label totalPrice;
+    private Cashier parent;
+    public CashierSidePanel(Cashier parent) {
+        this.parent = parent;
         this.addCustomer = new Button("+ Add Customer");
 
-        this.bc = new BillContainer();
+        this.bc = new BillContainer(this);
 
         this.buttonContainer = new HBox();
         Button checkout = new Button ("Checkout");
         Button addItem = new Button ("+ Add Item");
+        addItem.setOnAction(event -> {
+
+        });
         this.buttonContainer.getChildren().addAll(addItem, checkout);
 
-        this.priceLabel = new Label("Total: ");
+        this.priceContainer = new HBox();
+        Label priceLabel = new Label("Total: ");
+        this.totalPrice = new Label("0");
+        this.priceContainer.getChildren().addAll(
+                priceLabel,
+                this.totalPrice
+        );
 
-        this.getChildren().addAll(this.addCustomer, this.bc, this.buttonContainer, this.priceLabel);
+        this.getChildren().addAll(this.addCustomer, this.bc, this.buttonContainer, this.priceContainer);
     }
 
     public Button getAddCustomer() {
@@ -50,10 +64,47 @@ public class CashierSidePanel extends VBox {
     }
 
     public Label getPriceLabel() {
-        return priceLabel;
+        return this.totalPrice;
+    }
+
+    public HBox getPriceContainer() {
+        return priceContainer;
+    }
+
+    public Cashier getThisParent() {
+        return parent;
+    }
+
+    public void setParent(Cashier parent) {
+        this.parent = parent;
+    }
+
+    public void setPriceContainer(HBox priceContainer) {
+        this.priceContainer = priceContainer;
+    }
+
+    public Label getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double newPrice) {
+        this.priceContainer.getChildren().remove(this.totalPrice);
+        this.totalPrice.setText("Rp." + String.format("%.2f", newPrice));
+        this.priceContainer.getChildren().add(totalPrice);
+    }
+
+    public void setPrice() {
+        double tempTotal = 0.0;
+        for (Node bi: this.bc.getvBox().getChildren()) {
+            if (bi instanceof ItemContainer) {
+                // If else to know whether the use points checkbox is checked
+                tempTotal += ((ItemContainer) bi).getBuyingPrice();
+            }
+        }
+        this.setTotalPrice(tempTotal);
     }
 
     public void setPriceLabel(Label priceLabel) {
-        this.priceLabel = priceLabel;
+        this.totalPrice = priceLabel;
     }
 }

@@ -1,6 +1,6 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.items.BillItem;
+import com.kon.bnmo.items.Item;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -20,32 +20,34 @@ public class Cashier extends Tab {
     HBox mainContent;
     private GridPane itemPictureList;
     private CashierSidePanel sidePanel;
+    private String customerName;
 
     Cashier(String customerName) {
         super("Cashier: " + customerName);
+        this.customerName = customerName;
 
         Label mainContent = new Label("Main content goes here");
         mainContent.setPrefWidth(800);
         mainContent.setMaxWidth(Double.MAX_VALUE);
 
-        this.sidePanel = new CashierSidePanel();
-        BillItem myBalls = new BillItem("Balls", 50000.0, "Makanan", "bakso.png", 3, 0.1);
-        BillItem mawutSosis = new BillItem("Boll", 50000.0, "Makanan", "bakso.png", 3, 0.1);
-        BillItem mawut = new BillItem("Nasi Goreng", 50000.0, "Makanan", "bakso.png", 3, 0.1);
-        BillItem serundeng = new BillItem("Ayam Serundeng", 50000.0, "Makanan", "bakso.png", 3, 0.1);
-        BillItem matah = new BillItem("Nasi Ayam Sambal Matah", 50000.0, "Makanan", "bakso.png", 3, 0.1);
+        this.sidePanel = new CashierSidePanel(this);
+        Item myBalls = new Item("Balls", 50000.0, "Makanan", "bakso.png", 3);
+        Item mawutSosis = new Item("Boll", 50000.0, "Makanan", "bakso.png", 3);
+        Item mawut = new Item("Nasi Goreng", 50000.0, "Makanan", "bakso.png", 3);
+        Item serundeng = new Item("Ayam Serundeng", 50000.0, "Makanan", "bakso.png", 3);
+        Item matah = new Item("Nasi Ayam Sambal Matah", 50000.0, "Makanan", "bakso.png", 3);
         sidePanel.getBc().addItem(myBalls);
         sidePanel.getBc().addItem(mawutSosis);
         sidePanel.getBc().addItem(mawut);
         sidePanel.getBc().addItem(serundeng);
         sidePanel.getBc().addItem(matah);
+        sidePanel.setPrice();
 
         this.getSidePanel().getAddCustomer().setOnAction(this::addNewCustomerTab);
 
         HBox container = new HBox();
         container.getChildren().addAll(mainContent, sidePanel);
         this.setContent(container);
-
     }
 
     private void addNewCustomerTab(ActionEvent actionEvent) {
@@ -63,6 +65,13 @@ public class Cashier extends Tab {
         this.sidePanel = sidePanel;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 }
 
 

@@ -1,10 +1,11 @@
 package com.kon.bnmo.items;
 
-public abstract class   Item {
+public class Item {
     private String name;
     private double price;
     private String category;
     private String imgName;
+    private Integer stock;
 
     public String getName() {
         return name;
@@ -38,11 +39,12 @@ public abstract class   Item {
         this.imgName = imgName;
     }
 
-    public Item(String name, double price, String category, String imgName) {
+    public Item(String name, double price, String category, String imgName, Integer stock) {
         this.name = name;
         this.price = price;
         this.category = category;
         this.imgName = imgName;
+        this.stock = stock;
     }
 
     public Item(Item other) {
@@ -50,15 +52,16 @@ public abstract class   Item {
         this.price = other.price;
         this.category = other.category;
         this.imgName = other.imgName;
+        this.stock = other.stock;
     }
 
-    public abstract void setAmount(Integer amount);
+    public Integer getStock() {
+        return stock;
+    }
 
-    public abstract Integer getAmount();
-
-    public abstract void addAmount(Integer amount);
-
-    public abstract void decreaseAmount(Integer amount);
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 
     public static void main(String[] args) {
     }
