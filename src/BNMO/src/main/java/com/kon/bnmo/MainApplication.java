@@ -1,9 +1,9 @@
 package com.kon.bnmo;
 
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.main.LayarUtama;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
-import com.kon.bnmo.items.StorageItem;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -64,12 +64,12 @@ public class MainApplication extends Application {
 //        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
 //        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
 //        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
-        itemHolder.add(new StorageItem("Buku",10.000, "Alat tulis", "Buku Tulis", 10));
-        itemHolder.add(new StorageItem("Pensil", 5.000, "Alat tulis", "Pensil 2B", 10));
-        itemHolder.add(new StorageItem("Penghapus", 5.000, "Alat tulis", "Penghapus", 10));
-        itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-        itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-        itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
+        itemHolder.add(new Item("Buku",10.000, "Alat tulis", "Buku Tulis", 10));
+        itemHolder.add(new Item("Pensil", 5.000, "Alat tulis", "Pensil 2B", 10));
+        itemHolder.add(new Item("Penghapus", 5.000, "Alat tulis", "Penghapus", 10));
+        itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
+        itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
+        itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
 
 
         Tab sistemBarang = new SistemBarang(itemHolder);

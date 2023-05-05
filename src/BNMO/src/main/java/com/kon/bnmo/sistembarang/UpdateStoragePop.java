@@ -1,6 +1,6 @@
 package com.kon.bnmo.sistembarang;
 
-import com.kon.bnmo.items.StorageItem;
+import com.kon.bnmo.items.Item;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,12 +9,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class UpdateStoragePop extends Stage {
-    StorageItem item;
+    Item item;
     Barang barang;
     Scene scene;
     VBox layout;
 
-    public UpdateStoragePop(StorageItem item, Barang barang) {
+    public UpdateStoragePop(Item item, Barang barang) {
         this.item = item;
         this.scene = new Scene(new Label("Update Storage"));
         this.barang = barang;
