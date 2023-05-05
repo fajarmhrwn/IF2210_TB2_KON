@@ -1,5 +1,6 @@
 package com.kon.bnmo;
 
+import com.kon.bnmo.main.LayarUtama;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.StorageItem;
@@ -9,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     private TabPane tabPane;
 
     public void addTab(Tab tab){
@@ -38,7 +39,7 @@ public class HelloApplication extends Application {
 
         dropdownMenu.getItems().addAll(menuItem1, menuItem2);
 
-        Tab tab1 = new Tab();
+        LayarUtama tab1 = new LayarUtama();
         CustomerPage customerPage = new CustomerPage("hakwe");
         tab1.setText("Home");
         this.tabPane.getTabs().add(tab1);

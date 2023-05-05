@@ -1,6 +1,7 @@
 package com.kon.bnmo.datastore;
 
 import com.kon.bnmo.holder.holder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public abstract class JSONDataAdapter implements DataAdapter {
@@ -9,6 +10,8 @@ public abstract class JSONDataAdapter implements DataAdapter {
         /* TODO: parse JSON ke List */
         if(dataHolder.getType() == "Item") {
             /* TODO: parse JSON ke List Item */
+            ObjectMapper objectMapper = new ObjectMapper();
+//            objectMapper
         }
         else if(dataHolder.getType() == "Customer") {
             /* TODO: parse JSON ke List Customer */

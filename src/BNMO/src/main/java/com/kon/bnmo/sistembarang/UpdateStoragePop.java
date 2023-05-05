@@ -13,6 +13,7 @@ public class UpdateStoragePop extends Stage {
     Barang barang;
     Scene scene;
     VBox layout;
+
     public UpdateStoragePop(StorageItem item, Barang barang) {
         this.item = item;
         this.scene = new Scene(new Label("Update Storage"));

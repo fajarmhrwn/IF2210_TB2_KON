@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
-public class BillExporter implements PrintAble{
+public class BillExporter extends Thread{
     private final ItemHolder<BillItem> bill;
 
     public BillExporter(ItemHolder<BillItem> bill){
@@ -55,7 +55,7 @@ public class BillExporter implements PrintAble{
         t.start();
         try {
             Thread.sleep(10000); // simulate long print process
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
