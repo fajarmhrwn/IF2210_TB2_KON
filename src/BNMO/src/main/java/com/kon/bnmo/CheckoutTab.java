@@ -1,4 +1,5 @@
 package  com.kon.bnmo;
+import com.kon.bnmo.items.Item;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

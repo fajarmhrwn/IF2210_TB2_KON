@@ -40,7 +40,7 @@ public class Settings extends Tab {
 
         Label pluginLabel = new Label("Plugin");
 
-// Membuat Button untuk mengimpor plugin
+        // Membuat Button untuk mengimpor plugin
         Button pluginButton = new Button("Impor Plugin");
         pluginButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -52,7 +52,7 @@ public class Settings extends Tab {
             }
         });
 
-// Menambahkan Label dan Button ke dalam VBox
-        root.getChildren().addAll(directoryLabel, directoryButton, pluginLabel, pluginButton);
+        // Menambahkan Label dan Button ke dalam VBox
+        root.getChildren().addAll(pluginLabel, pluginButton);
     }
 }

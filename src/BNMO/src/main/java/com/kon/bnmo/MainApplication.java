@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     private TabPane tabPane;
 
     public void addTab(Tab tab){
