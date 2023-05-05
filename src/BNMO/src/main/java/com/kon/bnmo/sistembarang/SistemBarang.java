@@ -84,5 +84,6 @@ public class SistemBarang extends  Tab {
         borderPane.setTop(keterangan);
 
         this.setContent(borderPane);
+
     }
 }
