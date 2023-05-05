@@ -48,6 +48,10 @@ public class ItemContainer extends HBox {
     public ItemContainer(Item item, BillContainer billContainer) {
         this.containedItem = item;
         this.billContainer = billContainer;
+        this.amount = 1;
+        this.buyingPrice = item.getPrice();
+        this.useMemberDiscount = false;
+        this.useVIPPoints = false;
 
         Label itemName = new Label(item.getName());
         itemName.setWrapText(false);

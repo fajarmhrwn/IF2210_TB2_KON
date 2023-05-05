@@ -2,7 +2,6 @@ package com.kon.bnmo.items;
 
 import com.kon.bnmo.holder.holder;
 
-
 public class ItemHolder extends holder<Item> {
     public ItemHolder() {
         super("Item");

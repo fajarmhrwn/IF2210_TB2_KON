@@ -36,11 +36,16 @@ public class Cashier extends Tab {
         Item mawut = new Item("Nasi Goreng", 50000.0, "Makanan", "bakso.png", 3);
         Item serundeng = new Item("Ayam Serundeng", 50000.0, "Makanan", "bakso.png", 3);
         Item matah = new Item("Nasi Ayam Sambal Matah", 50000.0, "Makanan", "bakso.png", 3);
-        sidePanel.getBc().addItem(myBalls);
-        sidePanel.getBc().addItem(mawutSosis);
-        sidePanel.getBc().addItem(mawut);
-        sidePanel.getBc().addItem(serundeng);
-        sidePanel.getBc().addItem(matah);
+        ItemContainer containMyBalls = new ItemContainer(myBalls, sidePanel.getBc());
+        ItemContainer containMawut = new ItemContainer(mawutSosis, sidePanel.getBc());
+        ItemContainer containM = new ItemContainer(mawut, sidePanel.getBc());
+        ItemContainer containSerundeng = new ItemContainer(serundeng, sidePanel.getBc());
+        ItemContainer containMatah = new ItemContainer(matah, sidePanel.getBc());
+        sidePanel.getBc().addItem(containMyBalls);
+        sidePanel.getBc().addItem(containMawut);
+        sidePanel.getBc().addItem(containM);
+        sidePanel.getBc().addItem(containSerundeng);
+        sidePanel.getBc().addItem(containMatah);
         sidePanel.setPrice();
 
         this.getSidePanel().getAddCustomer().setOnAction(this::addNewCustomerTab);

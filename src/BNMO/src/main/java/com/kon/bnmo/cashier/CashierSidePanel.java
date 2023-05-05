@@ -1,7 +1,5 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.items.Item;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -10,7 +8,7 @@ import javafx.scene.layout.VBox;
 public class CashierSidePanel extends VBox {
     private Button addCustomer;
     private BillContainer bc;
-    private HBox buttonContainer;
+    private Button checkout;
     private HBox priceContainer;
     private Label totalPrice;
     private Cashier parent;
@@ -20,13 +18,7 @@ public class CashierSidePanel extends VBox {
 
         this.bc = new BillContainer(this);
 
-        this.buttonContainer = new HBox();
-        Button checkout = new Button ("Checkout");
-        Button addItem = new Button ("+ Add Item");
-        addItem.setOnAction(event -> {
-
-        });
-        this.buttonContainer.getChildren().addAll(addItem, checkout);
+        this.checkout = new Button ("Checkout");
 
         this.priceContainer = new HBox();
         Label priceLabel = new Label("Total: ");
@@ -36,7 +28,7 @@ public class CashierSidePanel extends VBox {
                 this.totalPrice
         );
 
-        this.getChildren().addAll(this.addCustomer, this.bc, this.buttonContainer, this.priceContainer);
+        this.getChildren().addAll(this.addCustomer, this.bc, this.checkout, this.priceContainer);
     }
 
     public Button getAddCustomer() {
@@ -55,12 +47,12 @@ public class CashierSidePanel extends VBox {
         this.bc = bc;
     }
 
-    public HBox getButtonContainer() {
-        return buttonContainer;
+    public Button getCheckout() {
+        return this.checkout;
     }
 
-    public void setButtonContainer(HBox buttonContainer) {
-        this.buttonContainer = buttonContainer;
+    public void setCheckout(Button checkout) {
+        this.checkout = checkout;
     }
 
     public Label getPriceLabel() {
@@ -95,11 +87,9 @@ public class CashierSidePanel extends VBox {
 
     public void setPrice() {
         double tempTotal = 0.0;
-        for (Node bi: this.bc.getvBox().getChildren()) {
-            if (bi instanceof ItemContainer) {
-                // If else to know whether the use points checkbox is checked
-                tempTotal += ((ItemContainer) bi).getBuyingPrice();
-            }
+        for (ItemContainer bi: this.bc.getBillHolder().getItemList()) {
+            // If else to know whether the use points checkbox is checked
+            tempTotal += ((ItemContainer) bi).getBuyingPrice();
         }
         this.setTotalPrice(tempTotal);
     }
