@@ -1,0 +1,931 @@
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/src/main/resources\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision 8cdfceccc0838da53e0b8d52bd83faf0e0b6866c)
++++ b/.idea/encodings.xml	(date 1683308832027)
+@@ -3,5 +3,7 @@
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/../../../../../../Kuliah!!!/!/OOP/Tubes 2/IF2210_TB2_KON/src/BNMO/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/../../../../../../Kuliah!!!/!/OOP/Tubes 2/IF2210_TB2_KON/src/BNMO/src/main/resources" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1683309299102)
++++ b/.idea/workspace.xml	(date 1683309299102)
+@@ -0,0 +1,199 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="ed08ac6f-62bf-478a-89ef-74d4cef0b825" name="Changes" comment="bill exporter, ubah tab jadi stage, settings">
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/settings.txt" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/test.pdf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/test2" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/test2.pdf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/test2txt" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/testpadang.pdf" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/testpadang2.pdf" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/CheckoutTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/CheckoutTab.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Settings.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="generalSettings">
++      <MavenGeneralSettings>
++        <option name="mavenHome" value="Use Maven wrapper" />
++        <option name="useMavenConfig" value="true" />
++      </MavenGeneralSettings>
++    </option>
++  </component>
++  <component name="ProjectId" id="2PC4mbZXe7XxsIQjYWVkmVh1pyK" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "git-widget-placeholder": "main",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "vue.rearranger.settings.migration": "true"
++  }
++}]]></component>
++  <component name="RunManager" selected="Application.HelloApplication">
++    <configuration name="BillExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.BillExporter" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="CheckoutTab" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.CheckoutTab" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="PdfCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.PdfCreator" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="Settings" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.Settings" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.HelloApplication" />
++        <item itemvalue="Application.BillExporter" />
++        <item itemvalue="Application.PdfCreator" />
++        <item itemvalue="Application.Settings" />
++        <item itemvalue="Application.CheckoutTab" />
++      </list>
++    </recent_temporary>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="ed08ac6f-62bf-478a-89ef-74d4cef0b825" name="Changes" comment="" />
++      <created>1682947898158</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1682947898158</updated>
++      <workItem from="1682947900809" duration="12367000" />
++      <workItem from="1683120284983" duration="3745000" />
++      <workItem from="1683297872078" duration="6660000" />
++    </task>
++    <task id="LOCAL-00001" summary="setting (sementara)">
++      <created>1682954379273</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1682954379273</updated>
++    </task>
++    <task id="LOCAL-00002" summary="bill exporter">
++      <created>1682966263362</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1682966263362</updated>
++    </task>
++    <task id="LOCAL-00003" summary="bill exporter">
++      <created>1683298109731</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1683298109731</updated>
++    </task>
++    <task id="LOCAL-00004" summary="bill exporter, ubah tab jadi stage, settings">
++      <created>1683306440117</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1683306440117</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
++    <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="setting (sementara)" />
++    <MESSAGE value="bill exporter" />
++    <MESSAGE value="bill exporter, ubah tab jadi stage, settings" />
++    <option name="LAST_COMMIT_MESSAGE" value="bill exporter, ubah tab jadi stage, settings" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module com.kon.bnmo {\r\n    requires javafx.controls;\r\n    requires javafx.fxml;\r\n    requires itextpdf;\r\n        requires org.controlsfx.controls;\r\n            requires com.dlsc.formsfx;\r\n                    requires org.kordamp.bootstrapfx.core;\r\n            \r\n    opens com.kon.bnmo to javafx.fxml;\r\n    exports com.kon.bnmo;\r\n    exports com.kon.bnmo.items;\r\n    opens com.kon.bnmo.items to javafx.fxml;\r\n    exports com.kon.bnmo.cashier;\r\n    opens com.kon.bnmo.cashier to javafx.fxml;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	(revision 8cdfceccc0838da53e0b8d52bd83faf0e0b6866c)
++++ b/src/main/java/module-info.java	(date 1683309298610)
+@@ -5,7 +5,8 @@
+         requires org.controlsfx.controls;
+             requires com.dlsc.formsfx;
+                     requires org.kordamp.bootstrapfx.core;
+-            
++    requires com.fasterxml.jackson.databind;
++
+     opens com.kon.bnmo to javafx.fxml;
+     exports com.kon.bnmo;
+     exports com.kon.bnmo.items;
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1682948212727)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch	(date 1682948212727)
+@@ -0,0 +1,233 @@
++Index: .idea/uiDesigner.xml
++===================================================================
++diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
++deleted file mode 100644
++--- a/.idea/uiDesigner.xml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,124 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="Palette2">
++-    <group name="Swing">
++-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++-      </item>
++-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++-      </item>
++-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++-        <initial-values>
++-          <property name="text" value="Button" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="RadioButton" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="CheckBox" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="Label" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++-          <preferred-size width="200" height="200" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++-          <preferred-size width="200" height="200" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++-      </item>
++-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++-          <preferred-size width="-1" height="20" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++-      </item>
++-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++-      </item>
++-    </group>
++-  </component>
++-</project>
++\ No newline at end of file
++Index: ../../.idea/misc.xml
++===================================================================
++diff --git a/../../.idea/misc.xml b/../../.idea/misc.xml
++deleted file mode 100644
++--- a/../../.idea/misc.xml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,6 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="ProjectRootManager">
++-    <output url="file://$PROJECT_DIR$/out" />
++-  </component>
++-</project>
++\ No newline at end of file
++Index: ../../.idea/.gitignore
++===================================================================
++diff --git a/../../.idea/.gitignore b/../../.idea/.gitignore
++deleted file mode 100644
++--- a/../../.idea/.gitignore	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,3 +0,0 @@
++-# Default ignored files
++-/shelf/
++-/workspace.xml
++Index: ../../.idea/modules.xml
++===================================================================
++diff --git a/../../.idea/modules.xml b/../../.idea/modules.xml
++deleted file mode 100644
++--- a/../../.idea/modules.xml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,8 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="ProjectModuleManager">
++-    <modules>
++-      <module fileurl="file://$PROJECT_DIR$/.idea/Tubes2.iml" filepath="$PROJECT_DIR$/.idea/Tubes2.iml" />
++-    </modules>
++-  </component>
++-</project>
++\ No newline at end of file
++Index: .idea/.gitignore
++===================================================================
++diff --git a/.idea/.gitignore b/.idea/.gitignore
++deleted file mode 100644
++--- a/.idea/.gitignore	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,3 +0,0 @@
++-# Default ignored files
++-/shelf/
++-/workspace.xml
++Index: ../../.idea/Tubes2.iml
++===================================================================
++diff --git a/../../.idea/Tubes2.iml b/../../.idea/Tubes2.iml
++deleted file mode 100644
++--- a/../../.idea/Tubes2.iml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,9 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<module type="JAVA_MODULE" version="4">
++-  <component name="NewModuleRootManager" inherit-compiler-output="true">
++-    <exclude-output />
++-    <content url="file://$MODULE_DIR$" />
++-    <orderEntry type="inheritedJdk" />
++-    <orderEntry type="sourceFolder" forTests="false" />
++-  </component>
++-</module>
++\ No newline at end of file
++Index: ../../.idea/vcs.xml
++===================================================================
++diff --git a/../../.idea/vcs.xml b/../../.idea/vcs.xml
++deleted file mode 100644
++--- a/../../.idea/vcs.xml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ /dev/null	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
++@@ -1,6 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="VcsDirectoryMappings">
++-    <mapping directory="" vcs="Git" />
++-  </component>
++-</project>
++\ No newline at end of file
++Index: .idea/misc.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_18\" default=\"true\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/../../../../../../Kuliah!!!/!/OOP/Tubes 2/IF2210_TB2_KON/src/BNMO/out\" />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/misc.xml b/.idea/misc.xml
++--- a/.idea/misc.xml	(revision 8da8983e85c99e4fea7993144888aa61ad2eb0fd)
+++++ b/.idea/misc.xml	(date 1682948026472)
++@@ -8,7 +8,5 @@
++       </list>
++     </option>
++   </component>
++-  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
++-    <output url="file://$PROJECT_DIR$/../../../../../../Kuliah!!!/!/OOP/Tubes 2/IF2210_TB2_KON/src/BNMO/out" />
++-  </component>
+++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK" />
++ </project>
++\ No newline at end of file
+Index: settings.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.txt b/settings.txt
+new file mode 100644
+--- /dev/null	(date 1682954256151)
++++ b/settings.txt	(date 1682954256151)
+@@ -0,0 +1,1 @@
++Directory:C:\Data
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml
+new file mode 100644
+--- /dev/null	(date 1683297903825)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml	(date 1683297903825)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1" date="1682954303843" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 01/05/2023 22:18 [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1683297903725)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml	(date 1683297903725)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]" date="1682948254476" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 01/05/2023 20:36 [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1683297903806)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml	(date 1683297903806)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]" date="1682954289833" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 01/05/2023 22:18 [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1682954303827)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch	(date 1682954303827)
+@@ -0,0 +1,17 @@
++Index: src/main/java/com/kon/bnmo/SimplePane.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.kon.bnmo;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Tab;\r\nimport javafx.scene.control.TabPane;\r\nimport javafx.scene.layout.StackPane;\r\nimport javafx.stage.Stage;\r\n\r\npublic class SimplePane extends Application {\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) {\r\n        // Create a new TabPane\r\n        TabPane tabPane = new TabPane();\r\n\r\n        // Create two tabs with their content\r\n        Cashier tab1 = new Cashier(\"Nawwar\");\r\n\r\n        Tab tab2 = new Tab(\"Tab 2\");\r\n        StackPane tab2Content = new StackPane();\r\n        tab2.setContent(tab2Content);\r\n\r\n        // Add the tabs to the TabPane\r\n        tabPane.getTabs().addAll(tab1, tab2);\r\n\r\n        // Create a new Scene with the TabPane as its root\r\n        Scene scene = new Scene(tabPane, 1200, 675);\r\n\r\n        // Set the Scene to the primary Stage and show it\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}\r\n
++===================================================================
++diff --git a/src/main/java/com/kon/bnmo/SimplePane.java b/src/main/java/com/kon/bnmo/SimplePane.java
++--- a/src/main/java/com/kon/bnmo/SimplePane.java	
+++++ b/src/main/java/com/kon/bnmo/SimplePane.java	
++@@ -17,6 +17,8 @@
++         // Create two tabs with their content
++         Cashier tab1 = new Cashier("Nawwar");
++ 
+++
+++
++         Tab tab2 = new Tab("Tab 2");
++         StackPane tab2Content = new StackPane();
++         tab2.setContent(tab2Content);
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1682954303843)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch	(date 1682954303843)
+@@ -0,0 +1,346 @@
++Index: src/main/java/com/kon/bnmo/CheckoutTab.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.kon.bnmo;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TableColumn;\r\nimport javafx.scene.control.TableView;\r\nimport javafx.scene.control.cell.PropertyValueFactory;\r\nimport javafx.scene.layout.BorderPane;\r\nimport javafx.scene.layout.HBox;\r\nimport javafx.stage.Stage;\r\n\r\npublic class CheckoutTab extends Application {\r\n\r\n    @Override\r\n    public void start(Stage stage) {\r\n\r\n        // Create a table to display the items in the cart\r\n        TableView<Item> table = new TableView<>();\r\n        table.setEditable(true);\r\n        table.setPrefWidth(400);\r\n\r\n        // Define the columns of the table\r\n        TableColumn<Item, String> nameCol = new TableColumn<>(\"Name\");\r\n        nameCol.setCellValueFactory(new PropertyValueFactory<>(\"name\"));\r\n        TableColumn<Item, Double> priceCol = new TableColumn<>(\"Price\");\r\n        priceCol.setCellValueFactory(new PropertyValueFactory<>(\"price\"));\r\n        TableColumn<Item, Integer> quantityCol = new TableColumn<>(\"Quantity\");\r\n        quantityCol.setCellValueFactory(new PropertyValueFactory<>(\"quantity\"));\r\n        TableColumn<Item, Double> subtotalCol = new TableColumn<>(\"Subtotal\");\r\n        subtotalCol.setCellValueFactory(new PropertyValueFactory<>(\"subtotal\"));\r\n\r\n        // Add the columns to the table\r\n        table.getColumns().addAll(nameCol, priceCol, quantityCol, subtotalCol);\r\n\r\n        // Create a label to display the total price of the items in the cart\r\n        Label totalLabel = new Label(\"Total: $0.00\");\r\n\r\n        // Create a button to remove the selected item from the cart\r\n        Button removeButton = new Button(\"Remove\");\r\n        removeButton.setOnAction(event -> {\r\n            Item selectedItem = table.getSelectionModel().getSelectedItem();\r\n            if (selectedItem != null) {\r\n                table.getItems().remove(selectedItem);\r\n            }\r\n        });\r\n\r\n        // Create a button to clear the cart\r\n        Button clearButton = new Button(\"Clear\");\r\n        clearButton.setOnAction(event -> {\r\n            table.getItems().clear();\r\n            totalLabel.setText(\"Total: $0.00\");\r\n        });\r\n\r\n        // Create a horizontal box to hold the buttons\r\n        HBox buttonBox = new HBox(removeButton, clearButton);\r\n        buttonBox.setSpacing(10);\r\n\r\n        // Create a border pane to hold the table and the buttons\r\n        BorderPane root = new BorderPane();\r\n        root.setCenter(table);\r\n        root.setBottom(new HBox(totalLabel, buttonBox));\r\n        root.setPrefSize(500, 400);\r\n\r\n        // Create a scene and add it to the stage\r\n        Scene scene = new Scene(root);\r\n        stage.setScene(scene);\r\n        stage.setTitle(\"Checkout Tab Example\");\r\n        stage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/kon/bnmo/CheckoutTab.java b/src/main/java/com/kon/bnmo/CheckoutTab.java
++--- a/src/main/java/com/kon/bnmo/CheckoutTab.java	
+++++ b/src/main/java/com/kon/bnmo/CheckoutTab.java	
++@@ -66,7 +66,7 @@
++         // Create a scene and add it to the stage
++         Scene scene = new Scene(root);
++         stage.setScene(scene);
++-        stage.setTitle("Checkout Tab Example");
+++        stage.setTitle("Checkout");
++         stage.show();
++     }
++ 
++Index: src/main/java/com/kon/bnmo/HelloApplication.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.kon.bnmo;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.layout.*;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class HelloApplication extends Application {\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n\r\n        MenuButton dropdownMenu = new MenuButton(\"Pilih Menu\");\r\n        \r\n        MenuItem menuItem1 = new MenuItem(\"Menu 1\");\r\n        TabPane tabPane = new TabPane();\r\n\r\n        menuItem1.setOnAction(event -> {\r\n            Tab tab = new Tab(\"Tab 1\");\r\n            tab.setContent(new Label(\"Konten Tab 1\"));\r\n            tabPane.getTabs().add(tab);\r\n        });\r\n\r\n        MenuItem menuItem2 = new MenuItem(\"Menu 2\");\r\n        menuItem2.setOnAction(event -> {\r\n            Tab tab = new Tab(\"Tab 2\");\r\n            tab.setContent(new Label(\"Konten Tab 2\"));\r\n            tabPane.getTabs().add(tab);\r\n        });\r\n\r\n        dropdownMenu.getItems().addAll(menuItem1, menuItem2);\r\n\r\n        Tab tab1 = new Tab();\r\n        CustomerPage customerPage = new CustomerPage(\"hakwe\");\r\n        tab1.setText(\"Home\");\r\n        tabPane.getTabs().add(tab1);\r\n        tabPane.getTabs().add(customerPage);\r\n\r\n        BorderPane borderPane = new BorderPane();\r\n        borderPane.setCenter(tabPane);\r\n        VBox root = new VBox(dropdownMenu, tabPane);\r\n\r\n        Scene scene = new Scene(root, 800, 600);\r\n        primaryStage.setTitle(\"JavaFX Tab Example\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/kon/bnmo/HelloApplication.java b/src/main/java/com/kon/bnmo/HelloApplication.java
++--- a/src/main/java/com/kon/bnmo/HelloApplication.java	
+++++ b/src/main/java/com/kon/bnmo/HelloApplication.java	
++@@ -38,6 +38,9 @@
++         tabPane.getTabs().add(tab1);
++         tabPane.getTabs().add(customerPage);
++ 
+++        Settings settingsPage = new Settings();
+++        tabPane.getTabs().add(settingsPage);
+++
++         BorderPane borderPane = new BorderPane();
++         borderPane.setCenter(tabPane);
++         VBox root = new VBox(dropdownMenu, tabPane);
++Index: .idea/uiDesigner.xml
++===================================================================
++diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
++deleted file mode 100644
++--- a/.idea/uiDesigner.xml	
+++++ /dev/null	
++@@ -1,124 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="Palette2">
++-    <group name="Swing">
++-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++-      </item>
++-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++-      </item>
++-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++-        <initial-values>
++-          <property name="text" value="Button" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="RadioButton" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="CheckBox" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++-        <initial-values>
++-          <property name="text" value="Label" />
++-        </initial-values>
++-      </item>
++-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++-          <preferred-size width="150" height="-1" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++-          <preferred-size width="150" height="50" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++-          <preferred-size width="200" height="200" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++-          <preferred-size width="200" height="200" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++-      </item>
++-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++-      </item>
++-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++-      </item>
++-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++-          <preferred-size width="-1" height="20" />
++-        </default-constraints>
++-      </item>
++-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++-      </item>
++-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++-      </item>
++-    </group>
++-  </component>
++-</project>
++\ No newline at end of file
++Index: ../../.idea/misc.xml
++===================================================================
++diff --git a/../../.idea/misc.xml b/../../.idea/misc.xml
++deleted file mode 100644
++--- a/../../.idea/misc.xml	
+++++ /dev/null	
++@@ -1,6 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="ProjectRootManager">
++-    <output url="file://$PROJECT_DIR$/out" />
++-  </component>
++-</project>
++\ No newline at end of file
++Index: ../../.idea/.gitignore
++===================================================================
++diff --git a/../../.idea/.gitignore b/../../.idea/.gitignore
++deleted file mode 100644
++--- a/../../.idea/.gitignore	
+++++ /dev/null	
++@@ -1,3 +0,0 @@
++-# Default ignored files
++-/shelf/
++-/workspace.xml
++Index: ../../.idea/modules.xml
++===================================================================
++diff --git a/../../.idea/modules.xml b/../../.idea/modules.xml
++deleted file mode 100644
++--- a/../../.idea/modules.xml	
+++++ /dev/null	
++@@ -1,8 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="ProjectModuleManager">
++-    <modules>
++-      <module fileurl="file://$PROJECT_DIR$/.idea/Tubes2.iml" filepath="$PROJECT_DIR$/.idea/Tubes2.iml" />
++-    </modules>
++-  </component>
++-</project>
++\ No newline at end of file
++Index: .idea/.gitignore
++===================================================================
++diff --git a/.idea/.gitignore b/.idea/.gitignore
++deleted file mode 100644
++--- a/.idea/.gitignore	
+++++ /dev/null	
++@@ -1,3 +0,0 @@
++-# Default ignored files
++-/shelf/
++-/workspace.xml
++Index: ../../.idea/Tubes2.iml
++===================================================================
++diff --git a/../../.idea/Tubes2.iml b/../../.idea/Tubes2.iml
++deleted file mode 100644
++--- a/../../.idea/Tubes2.iml	
+++++ /dev/null	
++@@ -1,9 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<module type="JAVA_MODULE" version="4">
++-  <component name="NewModuleRootManager" inherit-compiler-output="true">
++-    <exclude-output />
++-    <content url="file://$MODULE_DIR$" />
++-    <orderEntry type="inheritedJdk" />
++-    <orderEntry type="sourceFolder" forTests="false" />
++-  </component>
++-</module>
++\ No newline at end of file
++Index: ../../.idea/vcs.xml
++===================================================================
++diff --git a/../../.idea/vcs.xml b/../../.idea/vcs.xml
++deleted file mode 100644
++--- a/../../.idea/vcs.xml	
+++++ /dev/null	
++@@ -1,6 +0,0 @@
++-<?xml version="1.0" encoding="UTF-8"?>
++-<project version="4">
++-  <component name="VcsDirectoryMappings">
++-    <mapping directory="" vcs="Git" />
++-  </component>
++-</project>
++\ No newline at end of file
++Index: src/main/java/com/kon/bnmo/Settings.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/kon/bnmo/Settings.java b/src/main/java/com/kon/bnmo/Settings.java
++new file mode 100644
++--- /dev/null	
+++++ b/src/main/java/com/kon/bnmo/Settings.java	
++@@ -0,0 +1,84 @@
+++package com.kon.bnmo;
+++
+++import javafx.geometry.Insets;
+++import javafx.geometry.Pos;
+++import javafx.scene.control.Button;
+++import javafx.scene.control.Label;
+++import javafx.scene.control.Tab;
+++import javafx.scene.control.TextField;
+++import javafx.scene.layout.GridPane;
+++import javafx.scene.layout.HBox;
+++import javafx.scene.layout.VBox;
+++import java.io.File;
+++import java.io.FileNotFoundException;
+++import java.io.PrintWriter;
+++import javafx.scene.control.Alert;
+++
+++public class Settings extends Tab {
+++
+++    private TextField directoryField;
+++    private TextField formatField;
+++
+++    public Settings() {
+++        this.setText("Settings");
+++
+++        // create UI elements
+++        Label directoryLabel = new Label("File Directory:");
+++        directoryField = new TextField();
+++        directoryField.setPromptText("Enter directory path");
+++
+++        Label formatLabel = new Label("File Format:");
+++        formatField = new TextField();
+++        formatField.setPromptText("Enter file format");
+++
+++        Button saveButton = new Button("Save");
+++
+++        // create layout
+++        GridPane gridPane = new GridPane();
+++        gridPane.setHgap(10);
+++        gridPane.setVgap(10);
+++        gridPane.setPadding(new Insets(10, 10, 10, 10));
+++        gridPane.setAlignment(Pos.CENTER);
+++
+++        gridPane.add(directoryLabel, 0, 0);
+++        gridPane.add(directoryField, 1, 0);
+++        gridPane.add(formatLabel, 0, 1);
+++        gridPane.add(formatField, 1, 1);
+++
+++        HBox buttonBox = new HBox();
+++        buttonBox.setAlignment(Pos.CENTER_RIGHT);
+++        buttonBox.getChildren().add(saveButton);
+++        gridPane.add(buttonBox, 1, 2);
+++
+++        VBox vbox = new VBox();
+++        vbox.getChildren().addAll(gridPane);
+++        this.setContent(vbox);
+++
+++        File storageLocation = new File("C:\\Data");
+++        // set save button action
+++        saveButton.setOnAction(event -> {
+++            String directory = directoryField.getText();
+++            String format = formatField.getText();
+++
+++            // save directory and format to settings file or database
+++            File settingsFile = new File("settings.txt");
+++            try (PrintWriter writer = new PrintWriter(settingsFile)) {
+++                writer.println("Directory:" + storageLocation.getAbsolutePath());
+++            } catch (FileNotFoundException e) {
+++                e.printStackTrace();
+++            }
+++
+++
+++
+++            // show confirmation message
+++            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+++            alert.setTitle("Settings Saved");
+++            alert.setHeaderText(null);
+++            alert.setContentText("Your settings have been saved successfully.");
+++            alert.showAndWait();
+++        });
+++    }
+++
+++}
+++
+++

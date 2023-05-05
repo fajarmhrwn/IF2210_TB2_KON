@@ -1,0 +1,17 @@
+Index: src/main/java/com/kon/bnmo/SimplePane.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Tab;\r\nimport javafx.scene.control.TabPane;\r\nimport javafx.scene.layout.StackPane;\r\nimport javafx.stage.Stage;\r\n\r\npublic class SimplePane extends Application {\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) {\r\n        // Create a new TabPane\r\n        TabPane tabPane = new TabPane();\r\n\r\n        // Create two tabs with their content\r\n        Cashier tab1 = new Cashier(\"Nawwar\");\r\n\r\n        Tab tab2 = new Tab(\"Tab 2\");\r\n        StackPane tab2Content = new StackPane();\r\n        tab2.setContent(tab2Content);\r\n\r\n        // Add the tabs to the TabPane\r\n        tabPane.getTabs().addAll(tab1, tab2);\r\n\r\n        // Create a new Scene with the TabPane as its root\r\n        Scene scene = new Scene(tabPane, 1200, 675);\r\n\r\n        // Set the Scene to the primary Stage and show it\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/SimplePane.java b/src/main/java/com/kon/bnmo/SimplePane.java
+--- a/src/main/java/com/kon/bnmo/SimplePane.java	
++++ b/src/main/java/com/kon/bnmo/SimplePane.java	
+@@ -17,6 +17,8 @@
+         // Create two tabs with their content
+         Cashier tab1 = new Cashier("Nawwar");
+ 
++
++
+         Tab tab2 = new Tab("Tab 2");
+         StackPane tab2Content = new StackPane();
+         tab2.setContent(tab2Content);

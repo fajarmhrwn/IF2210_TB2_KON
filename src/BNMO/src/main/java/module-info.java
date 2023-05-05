@@ -5,6 +5,7 @@ module com.kon.bnmo {
         requires org.controlsfx.controls;
             requires com.dlsc.formsfx;
                     requires org.kordamp.bootstrapfx.core;
+    requires com.fasterxml.jackson.databind;
 
     opens com.kon.bnmo to javafx.fxml;
     exports com.kon.bnmo;
@@ -12,6 +13,5 @@ module com.kon.bnmo {
     opens com.kon.bnmo.items to javafx.fxml;
     exports com.kon.bnmo.cashier;
     opens com.kon.bnmo.cashier to javafx.fxml;
-    exports com.kon.bnmo.main;
-    opens com.kon.bnmo.main to javafx.fxml;
+    opens com.kon.bnmo.datastore to com.fasterxml.jackson.databind;
 }
