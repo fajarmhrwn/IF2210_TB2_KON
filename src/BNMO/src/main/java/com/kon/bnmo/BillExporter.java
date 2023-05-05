@@ -4,7 +4,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.kon.bnmo.items.BillItem;
 import com.itextpdf.text.Font;
 import com.kon.bnmo.items.ItemHolder;
 import com.itextpdf.text.Element;
@@ -59,6 +58,15 @@ public class BillExporter extends Thread{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public static void main(String[] args){
+        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
+        BillItem padangA = new BillItem("Nasi padang", 18000.0, "Food", "png", 5, 0.1);
+        BillItem padangB = new BillItem("Nasi padang Ayam", 18000.0, "Food", "png", 5, 0.1);
+        bill.add(padangA);
+        bill.add(padangB);
+        BillExporter test = new BillExporter(bill);
+        test.exportToPdf("testpadang2");
     }
 //    public static void main(String[] args){
 //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();

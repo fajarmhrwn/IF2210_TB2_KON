@@ -3,25 +3,25 @@ package com.kon.bnmo.items;
 import com.kon.bnmo.holder.holder;
 
 
-public class ItemHolder<T extends Item> extends holder<T> {
+public class ItemHolder extends holder<Item> {
     public ItemHolder() {
         super("Item");
     }
 
-    public ItemHolder(ItemHolder<T> other) {
+    public ItemHolder(ItemHolder other) {
         super("Item", other.getItemList());
     }
     @Override
-    public void add(T item) {
+    public void add(Item item) {
         int index = this.itemList.indexOf(item);
         if (index == -1) {
             this.itemList.add(item);
         } else {
-            this.itemList.get(index).setAmount(this.itemList.get(index).getAmount() + item.getAmount());
+            this.itemList.get(index).setStock(this.itemList.get(index).getStock() + item.getStock());
         }
     }
     @Override
-    public void remove(T item) {
+    public void remove(Item item) {
         this.itemList.remove(item);
     }
 

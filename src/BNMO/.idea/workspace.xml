@@ -4,29 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed08ac6f-62bf-478a-89ef-74d4cef0b825" name="Changes" comment="dependency">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_20_36__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_2023_22_18__Changes_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/FixedBill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testpadang.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testpadang2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="Resolve conflict">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/BillItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +23,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/Cashier.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -51,36 +42,36 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2PC4mbZXe7XxsIQjYWVkmVh1pyK" />
+  <component name="ProjectId" id="2P9RNd3pUPiRQ91vn7afQxq0oap" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.kon.bnmo" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
-    <configuration name="BillExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.BillExporter" />
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="BillItem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.items.BillItem" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
+          <option name="PATTERN" value="com.kon.bnmo.items.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,12 +92,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
+    <configuration name="NonModalDialogBoxInTabExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.NonModalDialogBoxInTabExample" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
+          <option name="PATTERN" value="com.kon.bnmo.cashier.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.MainApplication" />
+    <configuration name="PopupInTabExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.PopupInTabExample" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
+          <option name="PATTERN" value="com.kon.bnmo.cashier.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,12 +118,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PdfCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.PdfCreator" />
+    <configuration name="SimplePane" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.SimplePane" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
+          <option name="PATTERN" value="com.kon.bnmo.items.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,87 +133,67 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainApplication" />
-        <item itemvalue="Application.JSONDataAdapter" />
         <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.BillExporter" />
-        <item itemvalue="Application.PdfCreator" />
+        <item itemvalue="Application.SimplePane" />
+        <item itemvalue="Application.PopupInTabExample" />
+        <item itemvalue="Application.NonModalDialogBoxInTabExample" />
+        <item itemvalue="Application.BillItem" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ed08ac6f-62bf-478a-89ef-74d4cef0b825" name="Changes" comment="" />
-      <created>1682947898158</created>
+      <changelist id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="" />
+      <created>1682867276210</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1682947898158</updated>
-      <workItem from="1682947900809" duration="12367000" />
-      <workItem from="1683120284983" duration="3745000" />
-      <workItem from="1683297872078" duration="8691000" />
+      <updated>1682867276210</updated>
     </task>
-    <task id="LOCAL-00001" summary="setting (sementara)">
-      <created>1682954379273</created>
+    <task id="LOCAL-00001" summary="Resolve conflict">
+      <created>1682946340954</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1682954379273</updated>
+      <updated>1682946340954</updated>
     </task>
-    <task id="LOCAL-00002" summary="bill exporter">
-      <created>1682966263362</created>
+    <task id="LOCAL-00002" summary="Resolve conflict">
+      <created>1683120956658</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1682966263362</updated>
+      <updated>1683120956658</updated>
     </task>
-    <task id="LOCAL-00003" summary="bill exporter">
-      <created>1683298109731</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683298109731</updated>
-    </task>
-    <task id="LOCAL-00004" summary="bill exporter, ubah tab jadi stage, settings">
-      <created>1683306440117</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683306440117</updated>
-    </task>
-    <task id="LOCAL-00005" summary="dependency">
-      <created>1683309544646</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1683309544646</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="setting (sementara)" />
-    <MESSAGE value="bill exporter" />
-    <MESSAGE value="bill exporter, ubah tab jadi stage, settings" />
-    <MESSAGE value="dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="dependency" />
+    <MESSAGE value="Resolve conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolve conflict" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
-          <line>33</line>
-          <properties class="com.kon.bnmo.datastore.JSONDataAdapter" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoSuchFieldError" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

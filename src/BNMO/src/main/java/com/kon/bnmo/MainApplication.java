@@ -52,14 +52,24 @@ public class MainApplication extends Application {
         borderPane.setCenter(this.tabPane);
         VBox root = new VBox(dropdownMenu, this.tabPane);
 
-        ItemHolder<StorageItem> itemHolder = new ItemHolder<>();
+        ItemHolder itemHolder = new ItemHolder();
+//        itemHolder.add(new StorageItem("Buku",10.000, 10));
+//        itemHolder.add(new StorageItem("Pensil", 5.000, 10));
+//        itemHolder.add(new StorageItem("Penghapus", 2.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
         itemHolder.add(new StorageItem("Buku",10.000, "Alat tulis", "Buku Tulis", 10));
         itemHolder.add(new StorageItem("Pensil", 5.000, "Alat tulis", "Pensil 2B", 10));
         itemHolder.add(new StorageItem("Penghapus", 5.000, "Alat tulis", "Penghapus", 10));
         itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
         itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
         itemHolder.add(new StorageItem("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-
 
 
         Tab sistemBarang = new SistemBarang(itemHolder);

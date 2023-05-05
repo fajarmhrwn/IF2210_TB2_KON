@@ -1,38 +1,52 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.items.BillItem;
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
-import com.kon.bnmo.items.StorageItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 public class BillContainer extends ScrollPane {
-    private ItemHolder<BillItem> billItemItemHolder;
-    private final VBox content;
+    private ItemHolder<Item> billItemItemHolder;
+    private final VBox vBox;
+    private CashierSidePanel sidePanel;
 
-    public BillContainer() {
+    public BillContainer(CashierSidePanel sidePanel) {
         this.billItemItemHolder = new ItemHolder<>();
-        this.content = new VBox();
-        this.setContent(this.content);
+        this.sidePanel = sidePanel;
+        this.vBox = new VBox();
+        this.setContent(this.vBox);
     }
 
-    public void addItem(BillItem item) {
+    public void addItem(Item item) {
         this.billItemItemHolder.add(item);
-        this.content.getChildren().add(new ItemContainer(item));
-        this.setContent(this.content);
+        this.vBox.getChildren().add(new ItemContainer(item, this));
+        this.setContent(this.vBox);
     }
 
-    public void removeItem(String name, double price, String category, String imgName, Integer amount, double discount) {
-        this.billItemItemHolder.remove(new BillItem(name, price, category, imgName, amount, discount));
-        this.content.getChildren().remove(new ItemContainer(name, price, category, imgName, amount, discount));
-        this.setContent(this.content);
+    public void removeItem(String name, double price, String category, String imgName, Integer stock,
+                           Integer amount, Double sellingPrice) {
+        this.billItemItemHolder.remove(new Item(name, price, category, imgName, stock));
+        this.vBox.getChildren().remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
+                sellingPrice));
+        this.setContent(this.vBox);
     }
 
-    public ItemHolder<BillItem> getBillItemItemHolder() {
+    public CashierSidePanel getSidePanel() {
+        return sidePanel;
+    }
+
+    public VBox getvBox() {
+        return this.vBox;
+    }
+    public void setSidePanel(CashierSidePanel sidePanel) {
+        this.sidePanel = sidePanel;
+    }
+
+    public ItemHolder<Item> getBillItemItemHolder() {
         return billItemItemHolder;
     }
 
-    public void setBillItemItemHolder(ItemHolder<BillItem> billItemItemHolder) {
+    public void setBillItemItemHolder(ItemHolder<Item> billItemItemHolder) {
         this.billItemItemHolder = billItemItemHolder;
     }
 }
