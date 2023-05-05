@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kon.bnmo.holder.holder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.Console;
+
 
 public abstract class JSONDataAdapter implements DataAdapter {
     @Override
@@ -37,5 +39,6 @@ public abstract class JSONDataAdapter implements DataAdapter {
         String json = "{\"name\":\"John\",\"age\":30}";
 
         Person person = objectMapper.readValue(json, Person.class);
+        System.out.println(person.getName());
     }
 }

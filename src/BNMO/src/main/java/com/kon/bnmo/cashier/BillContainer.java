@@ -27,10 +27,7 @@ public class BillContainer extends ScrollPane {
     public void removeItem(String name, double price, String category, String imgName, Integer stock,
                            Integer amount, Double sellingPrice) {
         this.billItemItemHolder.remove(new Item(name, price, category, imgName, stock));
-        this.itemContainersList.remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
-                sellingPrice));
-        this.vBox.getChildren().remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
-                sellingPrice));
+        this.vBox.getChildren().remove(new ItemContainer(name, price, category, imgName, stock, this, amount, sellingPrice));
         this.setContent(this.vBox);
     }
 

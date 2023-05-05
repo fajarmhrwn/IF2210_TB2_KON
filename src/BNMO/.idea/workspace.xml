@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="Resolve conflict">
+    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="dependency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/StorageItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/Barang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/Barang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +48,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.3&quot;,
@@ -72,13 +60,13 @@
       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SimplePane">
-    <configuration name="BillItem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.items.BillItem" />
+  <component name="RunManager" selected="Application.JSONDataAdapter">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.items.*" />
+          <option name="PATTERN" value="com.kon.bnmo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,12 +74,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
+    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
+          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SimplePane" />
+        <item itemvalue="Application.JSONDataAdapter" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.SimplePane" />
         <item itemvalue="Application.PopupInTabExample" />
         <item itemvalue="Application.NonModalDialogBoxInTabExample" />
-        <item itemvalue="Application.BillItem" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +184,15 @@
           <properties class="java.lang.NoSuchFieldError" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
+          <line>35</line>
+          <properties class="com.kon.bnmo.datastore.JSONDataAdapter" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
