@@ -21,30 +21,30 @@ public class ReportExporter {
         this.filename = filename;
     }
 
-    public void exportToPdf() throws Exception {
-        Thread t = new Thread(() -> {
-            try {
-                Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-                PdfWriter.getInstance(document, new FileOutputStream(filename));
-                document.open();
-                for (FixedBill fb : fixedBills) {
-                    document.add(new Paragraph("Bill No. " + fb.getBillNumber()));
-                    document.add(new Paragraph("Customer: " + fb.getCustomerName()));
-                    document.add(new Paragraph("Date: " + fb.getBillDate()));
-                    document.add(new Paragraph("Items: "));
-                    for (Item item : fb.getItems()) {
-                        document.add(new Paragraph("- " + item.getName() + " x " + item.getQuantity() + " = " + item.getTotal()));
-                    }
-                    document.add(new Paragraph("Total: " + fb.getTotal()));
-                    document.add(new Paragraph("=============================================="));
-                }
-                document.close();
-            } catch (FileNotFoundException | DocumentException e) {
-                e.printStackTrace();
-            }
-        });
-        t.start();
-        Thread.sleep(10000); // simulate long print process
-    }
+//    public void exportToPdf() throws Exception {
+//        Thread t = new Thread(() -> {
+//            try {
+//                Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+//                PdfWriter.getInstance(document, new FileOutputStream(filename));
+//                document.open();
+//                for (FixedBill fb : fixedBills) {
+//                    document.add(new Paragraph("Bill No. " + fb.getBillNumber()));
+//                    document.add(new Paragraph("Customer: " + fb.getCustomerName()));
+//                    document.add(new Paragraph("Date: " + fb.getBillDate()));
+//                    document.add(new Paragraph("Items: "));
+//                    for (Item item : fb.getItems()) {
+//                        document.add(new Paragraph("- " + item.getName() + " x " + item.getQuantity() + " = " + item.getTotal()));
+//                    }
+//                    document.add(new Paragraph("Total: " + fb.getTotal()));
+//                    document.add(new Paragraph("=============================================="));
+//                }
+//                document.close();
+//            } catch (FileNotFoundException | DocumentException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//        t.start();
+//        Thread.sleep(10000); // simulate long print process
+//    }
 }
 
