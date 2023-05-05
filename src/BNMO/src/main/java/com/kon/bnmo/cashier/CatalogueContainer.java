@@ -13,7 +13,7 @@ public class CatalogueContainer extends HBox {
 
     public CatalogueContainer(Item containedItem, Catalogue catalogue) {
         this.containedItem = containedItem;
-        ImageView image = new ImageView()
+        ImageView image = new ImageView();
         this.addButton = new Button("+");
         this.catalogue = catalogue;
         this.getChildren().addAll();

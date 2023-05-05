@@ -21,7 +21,7 @@ public class Cashier extends Tab {
     private CashierSidePanel sidePanel;
     private String customerName;
 
-    Cashier(String customerName) {
+    public Cashier(String customerName) {
         super("Cashier: " + customerName);
         this.customerName = customerName;
 
