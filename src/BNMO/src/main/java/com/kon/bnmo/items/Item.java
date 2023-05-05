@@ -1,6 +1,9 @@
 package com.kon.bnmo.items;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private double price;
     private String category;
@@ -53,6 +56,14 @@ public class Item {
         this.category = other.category;
         this.imgName = other.imgName;
         this.stock = other.stock;
+    }
+
+    public  Item(){
+        this.name = "";
+        this.price = 0;
+        this.category = "";
+        this.imgName = "";
+        this.stock = 0;
     }
 
     public Integer getStock() {

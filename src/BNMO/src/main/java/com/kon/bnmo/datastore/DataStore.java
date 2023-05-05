@@ -3,6 +3,8 @@ package com.kon.bnmo.datastore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kon.bnmo.holder.holder;
 
+import java.io.IOException;
+
 
 public class DataStore {
     private  DataAdapter dataAdapter;
@@ -13,11 +15,11 @@ public class DataStore {
         this.path = path;
     }
 
-    public void readData(holder dataHolder) throws JsonProcessingException {
+    public void readData(holder dataHolder) throws IOException {
         dataAdapter.readData(dataHolder, this.path);
     }
 
-    public void writeData(holder dataHolder){
+    public void writeData(holder dataHolder) throws IOException {
         dataAdapter.writeData(dataHolder, this.path);
     }
 
