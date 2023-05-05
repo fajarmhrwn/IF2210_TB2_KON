@@ -3,17 +3,20 @@ package com.kon.bnmo.cashier;
 import com.kon.bnmo.items.Item;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
-public class CatalogueContainer extends VBox {
+public class CatalogueContainer extends HBox {
     private Item containedItem;
     private Button addButton;
     private Catalogue catalogue;
 
     public CatalogueContainer(Item containedItem, Catalogue catalogue) {
         this.containedItem = containedItem;
+        ImageView image = new ImageView()
         this.addButton = new Button("+");
         this.catalogue = catalogue;
+        this.getChildren().addAll();
     }
 
     public CatalogueContainer(double v, Item containedItem, Button addButton, Catalogue catalogue) {

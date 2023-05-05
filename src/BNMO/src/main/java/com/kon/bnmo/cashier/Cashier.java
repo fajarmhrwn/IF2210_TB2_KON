@@ -18,7 +18,6 @@ public class Cashier extends Tab {
     // add item
     // checkout
     HBox mainContent;
-    private GridPane itemPictureList;
     private CashierSidePanel sidePanel;
     private String customerName;
 
