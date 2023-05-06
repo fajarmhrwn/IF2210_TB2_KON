@@ -4,23 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/input.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/items.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yourfile.txt" afterDir="false" />
+    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : Main">
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerListItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/Barang.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,29 +57,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.3073005",
-    "project.structure.side.proportion": "0.29022557",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.3073005&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.29022557&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.kon.bnmo.SistemBarang" />
@@ -102,12 +98,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.cobaadapter">
-    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
+    <configuration name="LayarUtama" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.main.LayarUtama" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
+          <option name="PATTERN" value="com.kon.bnmo.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -183,10 +179,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.cobaadapter" />
+        <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.LayarUtama" />
         <item itemvalue="Application.OBJDataAdapter" />
         <item itemvalue="Application.XMLDataAdapter" />
-        <item itemvalue="Application.JSONDataAdapter" />
-        <item itemvalue="Application.MainApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -207,8 +203,39 @@
       <workItem from="1682958838223" duration="36097000" />
       <workItem from="1683259715809" duration="3540000" />
       <workItem from="1683265250024" duration="3346000" />
-      <workItem from="1683273558603" duration="12997000" />
+      <workItem from="1683273558603" duration="17901000" />
+      <workItem from="1683360557039" duration="2498000" />
+      <workItem from="1683373198255" duration="6904000" />
     </task>
+    <task id="LOCAL-00001" summary="Feat : DataAdapter">
+      <created>1683319484234</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683319484234</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Feat : DataAdapter">
+      <created>1683319494601</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683319494601</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feat : Main">
+      <created>1683324196965</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683324196965</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat : Main">
+      <created>1683324206652</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683324206652</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,5 +260,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Feat : DataAdapter" />
+    <MESSAGE value="Feat : Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat : Main" />
   </component>
 </project>

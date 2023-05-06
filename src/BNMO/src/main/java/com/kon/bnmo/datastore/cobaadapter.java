@@ -9,54 +9,41 @@ import java.util.List;
 
 public class cobaadapter {
     public static void main(String[] args) {
-        ItemHolder itemHolder = new ItemHolder();
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-
-        ItemHolder itemHolder2 = new ItemHolder();
-
-        DataStore dataStore = new DataStore(new JSONDataAdapter(), "items.json");
+        DataStore dataStore = new DataStore();
+        dataStore.setDataAdapter(new JSONDataAdapter());
         try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
+            dataStore.readItem("items.json");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        dataStore.setPath("input.xml");
+        ItemHolder itemHolder = dataStore.getItemHolder();
+        List<Item> items = itemHolder.getItemList();
+        for (Item item : items) {
+            System.out.println(item.getName());
+        }
+
         dataStore.setDataAdapter(new XMLDataAdapter());
         try{
-            dataStore.readData(itemHolder2);
+            dataStore.readItem("input.xml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(itemHolder2.getItemList().size());
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
+        itemHolder = dataStore.getItemHolder();
+        items = itemHolder.getItemList();
+        for (Item item : items) {
+            System.out.println(item.getName());
         }
 
-        dataStore.setPath("testobj.txt");
         dataStore.setDataAdapter(new OBJDataAdapter());
         try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
-        }
-        ItemHolder itemHolder3 = new ItemHolder();
-        try{
-            dataStore.readData(itemHolder3);
+            dataStore.readItem("testobj.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(itemHolder3.getItemList().size());
+        itemHolder = dataStore.getItemHolder();
+        items = itemHolder.getItemList();
+        for (Item item : items) {
+            System.out.println(item.getName());
+        }
     }
 }

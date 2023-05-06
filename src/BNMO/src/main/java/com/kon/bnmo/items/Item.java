@@ -3,12 +3,12 @@ package com.kon.bnmo.items;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private String name;
-    private double price;
-    private String category;
-    private String imgName;
-    private Integer stock;
+    protected static final long serialVersionUID = 1L;
+    protected String name;
+    protected double price;
+    protected String category;
+    protected String imgName;
+    protected Integer stock;
 
     public String getName() {
         return name;
