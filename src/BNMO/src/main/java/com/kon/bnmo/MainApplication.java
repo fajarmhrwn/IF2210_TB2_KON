@@ -1,11 +1,9 @@
 package com.kon.bnmo;
 
 import com.kon.bnmo.cashier.Cashier;
-import com.kon.bnmo.cashier.SimplePane;
 import com.kon.bnmo.customers.CustomerPage;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.main.DigitalClock;
-import com.kon.bnmo.main.LayarUtama;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.application.Application;
@@ -103,13 +101,13 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            Settings tab = new Settings();
+            SettingsDB tab = new SettingsDB();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem7.setOnAction(event -> {
-            Tab tab = new Tab("Settings Plugin");
+            SettingsPlug tab = new SettingsPlug();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });

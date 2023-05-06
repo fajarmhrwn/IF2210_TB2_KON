@@ -1,9 +1,14 @@
 package com.kon.bnmo.datastore;
 
+import com.kon.bnmo.customers.*;
 import com.kon.bnmo.holder.holder;
 import com.kon.bnmo.items.Item;
+import com.kon.bnmo.items.ItemHolder;
+import com.kon.bnmo.transaction.Transaction;
+import com.kon.bnmo.transaction.TransactionHolder;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,7 +18,8 @@ public class OBJDataAdapter implements DataAdapter {
         /* TODO: parse OBJ ke List */
         if(dataHolder.getType() == "Item") {
             /* TODO: parse OBJ ke List Item */
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            dataHolder.setItemList(new ArrayList<Item>());
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/item.txt"))) {
                 dataHolder.setItemList((List<Item>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -21,6 +27,36 @@ public class OBJDataAdapter implements DataAdapter {
             }
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse OBJ ke List Customer */
+            dataHolder.setItemList(new ArrayList<Person>());
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/customer.txt"))) {
+                dataHolder.addAll((List<CustomerModel>) ois.readObject());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+            try{
+                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/member.txt"));
+                dataHolder.addAll((List<MemberModel>) ois.readObject());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+            try{
+                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/VIP.txt"));
+                dataHolder.addAll((List<VIPModel>) ois.readObject());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+        } else if (dataHolder.getType() == "Transaction") {
+            dataHolder.setItemList(new ArrayList<Transaction>());
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/transaction.txt"))) {
+                dataHolder.addAll((List<Transaction>) ois.readObject());
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                return;
+            }
+
         }
     }
     @Override
@@ -29,7 +65,7 @@ public class OBJDataAdapter implements DataAdapter {
         if(dataHolder.getType() == "Item") {
             /* TODO: parse List Item ke OBJ */
             List<Item> itemList = dataHolder.getItemList();
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/item.txt"))) {
                 oos.writeObject(itemList);
                 oos.flush();
             } catch (IOException e) {
@@ -37,6 +73,49 @@ public class OBJDataAdapter implements DataAdapter {
             }
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse List Customer ke OBJ */
+            List<Person> personList = dataHolder.getItemList();
+            List<CustomerModel> customerList = new ArrayList<CustomerModel>();
+            List<MemberModel> memberList = new ArrayList<MemberModel>();
+            List<VIPModel> vipList = new ArrayList<VIPModel>();
+            for(Person person : personList){
+                if(person.getType() == "customer"){
+                    customerList.add((CustomerModel) person);
+                }else if(person.getType() == "member"){
+                    memberList.add((MemberModel) person);
+                }else if(person.getType() == "vip"){
+                    vipList.add((VIPModel) person);
+                }
+            }
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/customer.txt"))) {
+                oos.writeObject(customerList);
+                oos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/member.txt"))) {
+                oos.writeObject(memberList);
+                oos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/VIP.txt"))) {
+                oos.writeObject(vipList);
+                oos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(dataHolder.getType() == "Transaction") {
+            try{
+                List<Transaction> transactionList = dataHolder.getItemList();
+                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/transaction.txt"))) {
+                    oos.writeObject(transactionList);
+                    oos.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

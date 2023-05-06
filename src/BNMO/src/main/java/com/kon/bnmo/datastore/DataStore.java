@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kon.bnmo.customers.CustomerHolder;
 import com.kon.bnmo.holder.holder;
 import com.kon.bnmo.items.ItemHolder;
+import com.kon.bnmo.transaction.TransactionHolder;
 
 import java.io.IOException;
 
@@ -11,28 +12,38 @@ import java.io.IOException;
 public class DataStore {
     private  DataAdapter dataAdapter;
     private ItemHolder itemHolder;
+
     private CustomerHolder customerHolder;
+
+    private TransactionHolder transactionHolder;
+
+    public TransactionHolder getTransactionHolder() {
+        return transactionHolder;
+    }
+
+    public void setTransactionHolder(TransactionHolder transactionHolder) {
+        this.transactionHolder = transactionHolder;
+    }
+
 
     public DataStore(){
         itemHolder = new ItemHolder();
         customerHolder = new CustomerHolder();
+        transactionHolder = new TransactionHolder();
     }
 
-    public void readItem(String path) throws IOException {
+    public  void read(String path) throws IOException {
         dataAdapter.readData(this.itemHolder, path);
-    }
-
-    public  void readCustomer(String path) throws IOException {
         dataAdapter.readData(this.customerHolder, path);
+        dataAdapter.readData(this.transactionHolder, path);
     }
 
-    public void writeItem(String path) throws IOException {
+    public void write(String path) throws IOException {
         dataAdapter.writeData(this.itemHolder, path);
+        dataAdapter.writeData(this.customerHolder, path);
+        dataAdapter.writeData(this.transactionHolder, path);
     }
 
-    public void writeCustomer(String path) throws IOException {
-        dataAdapter.writeData(this.customerHolder, path);
-    }
 
     public void setDataAdapter(DataAdapter dataAdapter){
         this.dataAdapter = dataAdapter;
@@ -58,4 +69,22 @@ public class DataStore {
         this.customerHolder = customerHolder;
     }
 
+
+    public void printCustomerHolder(){
+        for (int i = 0; i < customerHolder.getItemList().size(); i++) {
+            System.out.println(customerHolder.getItemList().get(i).getType());
+        }
+    }
+
+    public void printItemHolder(){
+        for (int i = 0; i < itemHolder.getItemList().size(); i++) {
+            System.out.println(itemHolder.getItemList().get(i).getName());
+        }
+    }
+
+    public void printTransactionHolder(){
+        for (int i = 0; i < transactionHolder.getItemList().size(); i++) {
+            System.out.println(transactionHolder.getItemList().get(i).getIdCustomer());
+        }
+    }
 }

@@ -1,21 +1,26 @@
 package com.kon.bnmo.customers;
 
+import com.kon.bnmo.items.FixedBill;
+
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
+    protected static final long serialVersionUID = 1L;
     protected String id;
-    protected List<String> fixBills;
+    protected String type;
 
-    public List<String> getFixBills(){
-        return this.fixBills;
-    }
-    public void addFixBill(String fixBill){
-        this.fixBills.add(fixBill);
+    public String getId() {
+        return id;
     }
 
-    public void removeFixBill(String fixBill){
-        this.fixBills.remove(fixBill);
+    public void setId(String id) {
+        this.id = id;
     }
 
     public abstract String getType();
+
+    public abstract  void setType(String type);
+
+
 }

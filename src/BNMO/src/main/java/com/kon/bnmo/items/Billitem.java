@@ -24,6 +24,12 @@ public class Billitem extends Item{
         this.stock = 0;
     }
 
+    public Billitem(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.amount = quantity;
+    }
+
     public int getAmount() {
         return amount;
     }

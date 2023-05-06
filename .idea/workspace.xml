@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : Main">
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerListItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/VIP.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/customer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/member.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/item.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +94,7 @@
       <recent name="$PROJECT_DIR$/src/BNMO" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/BNMO/DataStore" />
       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore" />
       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo" />
       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java" />
@@ -205,7 +212,7 @@
       <workItem from="1683265250024" duration="3346000" />
       <workItem from="1683273558603" duration="17901000" />
       <workItem from="1683360557039" duration="2498000" />
-      <workItem from="1683373198255" duration="6904000" />
+      <workItem from="1683373198255" duration="19417000" />
     </task>
     <task id="LOCAL-00001" summary="Feat : DataAdapter">
       <created>1683319484234</created>
@@ -235,7 +242,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683324206652</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Feat : Main">
+      <created>1683383807851</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683383807851</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Feat : Main">
+      <created>1683383822199</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683383822199</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

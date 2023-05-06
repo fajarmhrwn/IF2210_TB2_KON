@@ -1,0 +1,37 @@
+Index: src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport com.kon.bnmo.SistemBarang.SistemBarang;\r\nimport com.kon.bnmo.items.ItemHolder;\r\nimport com.kon.bnmo.items.StorageItem;\r\nimport javafx.application.Application;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.layout.*;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class HelloApplication extends Application {\r\n    private TabPane tabPane;\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n\r\n        MenuButton dropdownMenu = new MenuButton(\"Pilih Menu\");\r\n        \r\n        MenuItem menuItem1 = new MenuItem(\"Menu 1\");\r\n        this.tabPane = new TabPane();\r\n\r\n        menuItem1.setOnAction(event -> {\r\n            Tab tab = new Tab(\"Tab 1\");\r\n            tab.setContent(new Label(\"Konten Tab 1\"));\r\n            this.tabPane.getTabs().add(tab);\r\n        });\r\n\r\n        MenuItem menuItem2 = new MenuItem(\"Menu 2\");\r\n        menuItem2.setOnAction(event -> {\r\n            Tab tab = new Tab(\"Tab 2\");\r\n            tab.setContent(new Label(\"Konten Tab 2\"));\r\n            this.tabPane.getTabs().add(tab);\r\n        });\r\n\r\n        dropdownMenu.getItems().addAll(menuItem1, menuItem2);\r\n\r\n        Tab tab1 = new Tab();\r\n        CustomerPage customerPage = new CustomerPage(\"hakwe\");\r\n        tab1.setText(\"Home\");\r\n        this.tabPane.getTabs().add(tab1);\r\n        this.tabPane.getTabs().add(customerPage);\r\n\r\n        Settings settingsPage = new Settings();\r\n        tabPane.getTabs().add(settingsPage);\r\n\r\n        BorderPane borderPane = new BorderPane();\r\n        borderPane.setCenter(this.tabPane);\r\n        VBox root = new VBox(dropdownMenu, this.tabPane);\r\n\r\n        ItemHolder<StorageItem> itemHolder = new ItemHolder<>();\r\n        itemHolder.add(new StorageItem(\"Buku\",10.000, 10));\r\n        itemHolder.add(new StorageItem(\"Pensil\", 5.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penghapus\", 2.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n        itemHolder.add(new StorageItem(\"Penggaris\", 3.000, 10));\r\n\r\n\r\n        Tab sistemBarang = new SistemBarang(itemHolder);\r\n        tabPane.getTabs().add(sistemBarang);\r\n\r\n        Scene scene = new Scene(root, 800, 600);\r\n        primaryStage.setTitle(\"JavaFX Tab Example\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        launch();\r\n    }\r\n}
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java b/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java	
++++ b/src/BNMO/src/main/java/com/kon/bnmo/HelloApplication.java	
+@@ -50,17 +50,17 @@
+         VBox root = new VBox(dropdownMenu, this.tabPane);
+ 
+         ItemHolder<StorageItem> itemHolder = new ItemHolder<>();
+-        itemHolder.add(new StorageItem("Buku",10.000, 10));
+-        itemHolder.add(new StorageItem("Pensil", 5.000, 10));
+-        itemHolder.add(new StorageItem("Penghapus", 2.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+-        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Buku",10.000, 10));
++//        itemHolder.add(new StorageItem("Pensil", 5.000, 10));
++//        itemHolder.add(new StorageItem("Penghapus", 2.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
++//        itemHolder.add(new StorageItem("Penggaris", 3.000, 10));
+ 
+ 
+         Tab sistemBarang = new SistemBarang(itemHolder);

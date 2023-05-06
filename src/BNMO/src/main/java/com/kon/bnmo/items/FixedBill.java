@@ -1,35 +1,80 @@
 package com.kon.bnmo.items;
 
-import com.kon.bnmo.cashier.BillContainer;
-import com.kon.bnmo.cashier.ItemContainer;
-import com.kon.bnmo.holder.holder;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.xml.transform.Source;
+import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+public class FixedBill implements Serializable {
+    private List<Billitem> listBillItem;
 
-public class FixedBill{
-    private ArrayList<Billitem> listBillItem;
-    private final LocalDate checkoutDate;
+    private String checkoutDate;
 
-    public FixedBill(ArrayList<Billitem> listBillItem){
+    public FixedBill(){
+        listBillItem = new ArrayList<>();
+        checkoutDate = LocalDate.now().toString();
+    }
+//    public FixedBill(List<Billitem> billItems, String date) {
+//        this.listBillItem = new ArrayList<>();
+//        for(int i = 0; i < billItems.size(); i++){
+//            Billitem temp = new Billitem(billItems.get(i));
+//            this.listBillItem.add(temp);
+//        }
+//        checkoutDate = LocalDate.parse(date);
+//    }
+    public FixedBill(List<Billitem> listBillItem){
         this.listBillItem = new ArrayList<>();
         for(int i = 0; i < listBillItem.size(); i++){
             Billitem temp = new Billitem(listBillItem.get(i));
             this.listBillItem.add(listBillItem.get(i));
         }
-        checkoutDate = LocalDate.now();
+        checkoutDate = LocalDate.now().toString();
     }
 
-    public ArrayList<Billitem> getListBillItem() {
+    @JsonCreator
+    public FixedBill(@JsonProperty("listBillItem") List<Billitem> listBillItem,
+                     @JsonProperty("checkoutDate") String checkoutDate) {
+        this.listBillItem = new ArrayList<>();
+        for(int i = 0; i < listBillItem.size(); i++){
+            Billitem temp = new Billitem(listBillItem.get(i));
+            this.listBillItem.add(listBillItem.get(i));
+        }
+        this.checkoutDate = LocalDate.parse(checkoutDate).toString();
+    }
+    public FixedBill(List<Billitem> listBillItem, LocalDate date){
+        this.listBillItem = new ArrayList<>();
+        for(int i = 0; i < listBillItem.size(); i++){
+            Billitem temp = new Billitem(listBillItem.get(i));
+            this.listBillItem.add(listBillItem.get(i));
+        }
+        checkoutDate = date.toString();
+    }
+
+
+    public void setListBillItem(ArrayList<Billitem> listBillItem) {
+        this.listBillItem = listBillItem;
+    }
+
+    public String getCheckoutDate() {
+        return checkoutDate.toString();
+    }
+
+    public void setCheckoutDate(String checkoutDate) {
+        this.checkoutDate = checkoutDate;
+    }
+
+    public List<Billitem> getListBillItem() {
         return listBillItem;
     }
 
-    public LocalDate getCheckoutDateDate(){
-        return checkoutDate;
+    public LocalDate keluarkanTanggal(){
+        return LocalDate.parse(checkoutDate);
     }
+
 //    public static void main(String[] args){
 //        ArrayList<Billitem> bill = new ArrayList<>();
 //

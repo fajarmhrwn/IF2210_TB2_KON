@@ -33,12 +33,16 @@ public class BillExporter extends Thread{
                 title.setAlignment(Element.ALIGN_CENTER);
                 document.add(title);
 
+                Paragraph date = new Paragraph(this.bill.getCheckoutDate().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
+                date.setAlignment(Element.ALIGN_RIGHT);
+                document.add(date);
                 Paragraph itemsTitle = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
                 itemsTitle.setSpacingBefore(20);
                 document.add(itemsTitle);
 
+
 //                List<Item> itemList = bill.getItemList();
-                int totalHarga = 0;
+                double totalHarga = 0;
                 for (int i = 0; i < bill.getListBillItem().size(); i++) {
                     totalHarga += bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount();
                     Paragraph item = new Paragraph(bill.getListBillItem().get(i).getAmount()+ " " + bill.getListBillItem().get(i).getName() + " : Rp " + bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
@@ -77,7 +81,7 @@ public class BillExporter extends Thread{
 
         FixedBill fixbill = new FixedBill(bill);
         BillExporter test = new BillExporter(fixbill);
-        test.exportToPdf("testfix2");
+        test.exportToPdf("testfix3");
     }
 //    public static void main(String[] args){
 //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
