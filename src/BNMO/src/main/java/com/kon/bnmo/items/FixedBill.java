@@ -1,18 +1,18 @@
 package com.kon.bnmo.items;
 
-import com.kon.bnmo.cashier.BillContainer;
-import com.kon.bnmo.cashier.ItemContainer;
-import com.kon.bnmo.holder.holder;
-
-import javax.xml.transform.Source;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class FixedBill{
+public class FixedBill implements Serializable {
+    protected static final long serialVersionUID = 1L;
     private ArrayList<Billitem> listBillItem;
     private final LocalDate checkoutDate;
+    public FixedBill(List<Billitem> billItems, String date) {
+        this.listBillItem = new ArrayList<>();
+        checkoutDate = LocalDate.now();
+    }
 
     public FixedBill(ArrayList<Billitem> listBillItem){
         this.listBillItem = new ArrayList<>();
@@ -29,6 +29,14 @@ public class FixedBill{
             this.listBillItem.add(listBillItem.get(i));
         }
         checkoutDate = date;
+    }
+
+    public void setListBillItem(ArrayList<Billitem> listBillItem) {
+        this.listBillItem = listBillItem;
+    }
+
+    public LocalDate getCheckoutDate() {
+        return checkoutDate;
     }
 
     public ArrayList<Billitem> getListBillItem() {

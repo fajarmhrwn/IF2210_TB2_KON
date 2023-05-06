@@ -16,6 +16,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Settings.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageGrid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/kon/bnmo/img/placeholder.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +47,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2P9RNd3pUPiRQ91vn7afQxq0oap" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -66,10 +71,15 @@
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}]]>]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo" />
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo\cashier" />
       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
@@ -141,9 +151,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.SimplePane" />
         <item itemvalue="Application.JSONDataAdapter" />
         <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.SimplePane" />
         <item itemvalue="Application.PopupInTabExample" />
       </list>
     </recent_temporary>
@@ -190,6 +200,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Resolve conflict" />
     <option name="LAST_COMMIT_MESSAGE" value="Resolve conflict" />
   </component>
@@ -199,6 +210,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NoSuchFieldError" package="java.lang" />
           <option name="timeStamp" value="3" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="5" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>

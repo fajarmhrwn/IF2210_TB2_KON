@@ -6,9 +6,12 @@ import javafx.scene.layout.VBox;
 public class CashierMainPanel extends VBox {
     private Catalogue catalogue;
     private Button restockButton;
+    private Cashier parent;
 
-    public CashierMainPanel() {
+    public CashierMainPanel(Cashier parent) {
+        this.parent = parent;
         this.catalogue = new Catalogue(this);
+        this.catalogue.getvBox().prefWidthProperty().bind(this.widthProperty());
         this.restockButton = new Button("Restock");
         this.getChildren().addAll(this.catalogue, this.restockButton);
     }
@@ -27,5 +30,13 @@ public class CashierMainPanel extends VBox {
 
     public void setRestockButton(Button restockButton) {
         this.restockButton = restockButton;
+    }
+
+    public Cashier getCashier() {
+        return parent;
+    }
+
+    public void setCashier(Cashier parent) {
+        this.parent = parent;
     }
 }

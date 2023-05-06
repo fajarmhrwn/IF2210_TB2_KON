@@ -32,6 +32,9 @@ abstract public class holder<T> {
         return itemList;
     }
 
+    public void addAll(List<T> itemList) {
+        this.itemList.addAll(itemList);
+    }
     public void setItemList(List<T> itemList) {
         this.itemList = itemList;
     }
