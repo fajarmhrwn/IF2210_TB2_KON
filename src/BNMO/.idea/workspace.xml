@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="feat: add item to bill" />
+    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="merge main to local">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -179,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683405951290</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="merge main to local">
+      <created>1683406004305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683406004305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,7 +211,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Resolve conflict" />
     <MESSAGE value="feat: add item to bill" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add item to bill" />
+    <MESSAGE value="merge main to local" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge main to local" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -218,6 +233,11 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

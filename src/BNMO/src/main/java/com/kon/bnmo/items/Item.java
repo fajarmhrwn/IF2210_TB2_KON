@@ -77,4 +77,30 @@ public class Item implements Serializable {
     public static void main(String[] args) {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (Double.compare(item.price, price) != 0) return false;
+        if (!name.equals(item.name)) return false;
+        if (!category.equals(item.category)) return false;
+        if (!imgName.equals(item.imgName)) return false;
+        return stock.equals(item.stock);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name.hashCode();
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + category.hashCode();
+        result = 31 * result + imgName.hashCode();
+        result = 31 * result + stock.hashCode();
+        return result;
+    }
 }

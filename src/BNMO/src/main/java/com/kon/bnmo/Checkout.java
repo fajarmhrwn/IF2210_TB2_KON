@@ -1,7 +1,11 @@
 package  com.kon.bnmo;
 import com.kon.bnmo.cashier.CashierSidePanel;
 import com.kon.bnmo.cashier.ItemContainer;
+import com.kon.bnmo.items.Item;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -35,11 +39,16 @@ public class Checkout extends Stage {
             return new SimpleStringProperty(category);
         });
         TableColumn<ItemContainer, Double> priceCol = new TableColumn<>("Price");
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("buyingPrice"));
         TableColumn<ItemContainer, Integer> quantityCol = new TableColumn<>("Quantity");
-        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("amount"));
         TableColumn<ItemContainer, Double> subtotalCol = new TableColumn<>("Subtotal");
-        subtotalCol.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+        subtotalCol.setCellValueFactory(cellData -> {
+            ItemContainer item = cellData.getValue();
+            Double price = item.getBuyingPrice();
+            int amount = item.getAmount();
+            return new SimpleDoubleProperty(price * amount).asObject();
+        });
 
         // Add the columns to the table
         table.getColumns().addAll(nameCol, priceCol, quantityCol, subtotalCol);
@@ -75,6 +84,12 @@ public class Checkout extends Stage {
 
     public TableView<ItemContainer> getTable() {
         return table;
+    }
+
+    public void updateTable() {
+        ObservableList<ItemContainer> items = FXCollections.observableArrayList();
+        items.addAll(this.sidePanel.getBc().getBillHolder().getItemList());
+        this.table.setItems(items);
     }
 
     public void updatePrice() {

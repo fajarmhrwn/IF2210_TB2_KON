@@ -47,7 +47,6 @@ public class EditItemPopup extends Stage {
                 if (quantity < 0) {
                     throw new NumberFormatException();
                 }
-                itemContainer.setAmount(quantity);
                 if (!memberDiscount.isDisabled()) {
                     if (memberDiscount.isSelected()) {
                         itemContainer.setBuyingPrice(itemContainer.getBuyingPrice() * 0.9);
@@ -58,6 +57,7 @@ public class EditItemPopup extends Stage {
 //
 //                    }
                 this.close();
+                this.itemContainer.getBillContainer().updateAmount(this.itemContainer, quantity);
                 this.itemContainer.getBillContainer().getSidePanel().setPrice();
             } catch (NumberFormatException e) {
                 // Jika input yang dimasukkan tidak valid (tidak angka atau angka kurang dari 0)

@@ -1,6 +1,7 @@
 package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.Bill;
+import com.kon.bnmo.items.Item;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
@@ -28,6 +29,11 @@ public class BillContainer extends ScrollPane {
         this.vBox.getChildren().remove(new ItemContainer(name, price, category, imgName, stock, this, amount,
                 sellingPrice));
         this.setContent(this.vBox);
+    }
+
+    public void updateAmount(ItemContainer itemContainer, Integer amount) {
+        int index = this.billHolder.getItemList().indexOf(itemContainer);
+        this.billHolder.getItemList().get(index).setAmount(amount);
     }
 
     public CashierSidePanel getSidePanel() {
