@@ -1,4 +1,4 @@
-package com.kon.bnmo;
+package com.kon.bnmo.customers;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -8,7 +8,7 @@ public class CustomerPage extends Tab {
         super("erkjgf");
     }
 
-    CustomerPage(String name){
+    public CustomerPage(String name){
         VBox vLayout = new VBox();
 
         Label nameLabel = new Label(name);

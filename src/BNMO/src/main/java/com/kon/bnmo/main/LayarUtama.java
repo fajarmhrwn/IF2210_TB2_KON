@@ -7,21 +7,25 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.time.LocalTime;
 
 public class LayarUtama extends Tab {
 
     private Label time ;
+    private static final DigitalClock digitalClock = new DigitalClock();
 
     public LayarUtama() {
-        GridPane gridPane = new GridPane();
-        this.time = new Label();
-        DigitalClock digitalClock = new DigitalClock(this.time);
+        BorderPane borderPane = new BorderPane();
+        time = new Label();
+        digitalClock.bindLabel(time);
         digitalClock.start();
-        gridPane.add(this.time, 0, 0);
-        gridPane.setAlignment(Pos.CENTER);
-        this.setContent(gridPane);
-        this.setText("Home");
+        borderPane.setCenter(time);
+
+        this.setContent(borderPane);
     }
+
 }

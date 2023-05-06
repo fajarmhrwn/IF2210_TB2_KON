@@ -18,11 +18,10 @@ public class Cashier extends Tab {
     // add item
     // checkout
     HBox mainContent;
-    private GridPane itemPictureList;
     private CashierSidePanel sidePanel;
     private String customerName;
 
-    Cashier(String customerName) {
+    public Cashier(String customerName) {
         super("Cashier: " + customerName);
         this.customerName = customerName;
 

@@ -1,5 +1,6 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.Storage;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -13,7 +14,22 @@ public class Catalogue extends ScrollPane {
     public Catalogue(CashierMainPanel mainPanel) {
         this.storage = new Storage();
         this.vBox = new VBox();
+
+        this.setContent(this.vBox);
+
         this.mainPanel = mainPanel;
+    }
+
+    public void addItem(CatalogueContainer item) {
+        this.storage.add(item);
+        this.vBox.getChildren().add(new CatalogueContainer(item.getContainedItem(), this));
+        this.setContent(this.vBox);
+    }
+
+    public void removeItem(String name, double price, String category, String imgName, Integer stock) {
+        this.storage.remove(new CatalogueContainer(new Item(name, price, category, imgName, stock), this));
+        this.vBox.getChildren().remove(new CatalogueContainer(new Item(name, price, category, imgName, stock), this));
+        this.setContent(this.vBox);
     }
 
     public Catalogue(Storage storage, VBox vBox, CashierMainPanel mainPanel) {

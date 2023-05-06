@@ -1,7 +1,7 @@
-package com.kon.bnmo;
+package com.kon.bnmo.customers;
 
 public class CustomerModel {
-    public String id;
+    protected String id;
     
     public CustomerModel(String id){
         this.id = id;
