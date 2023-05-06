@@ -1,33 +1,61 @@
 package com.kon.bnmo.datastore;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.kon.bnmo.customers.CustomerHolder;
 import com.kon.bnmo.holder.holder;
+import com.kon.bnmo.items.ItemHolder;
 
 import java.io.IOException;
 
 
 public class DataStore {
     private  DataAdapter dataAdapter;
-    private String path;
+    private ItemHolder itemHolder;
+    private CustomerHolder customerHolder;
 
-    public DataStore(DataAdapter dataAdapter, String path){
-        this.dataAdapter = dataAdapter;
-        this.path = path;
+    public DataStore(){
+        itemHolder = new ItemHolder();
+        customerHolder = new CustomerHolder();
     }
 
-    public void readData(holder dataHolder) throws IOException {
-        dataAdapter.readData(dataHolder, this.path);
+    public void readItem(String path) throws IOException {
+        dataAdapter.readData(this.itemHolder, path);
     }
 
-    public void writeData(holder dataHolder) throws IOException {
-        dataAdapter.writeData(dataHolder, this.path);
+    public  void readCustomer(String path) throws IOException {
+        dataAdapter.readData(this.customerHolder, path);
+    }
+
+    public void writeItem(String path) throws IOException {
+        dataAdapter.writeData(this.itemHolder, path);
+    }
+
+    public void writeCustomer(String path) throws IOException {
+        dataAdapter.writeData(this.customerHolder, path);
     }
 
     public void setDataAdapter(DataAdapter dataAdapter){
         this.dataAdapter = dataAdapter;
     }
 
-    public void setPath(String path){
-        this.path = path;
+    public DataAdapter getDataAdapter() {
+        return dataAdapter;
     }
+
+    public ItemHolder getItemHolder() {
+        return itemHolder;
+    }
+
+    public void setItemHolder(ItemHolder itemHolder) {
+        this.itemHolder = itemHolder;
+    }
+
+    public CustomerHolder getCustomerHolder() {
+        return customerHolder;
+    }
+
+    public void setCustomerHolder(CustomerHolder customerHolder) {
+        this.customerHolder = customerHolder;
+    }
+
 }

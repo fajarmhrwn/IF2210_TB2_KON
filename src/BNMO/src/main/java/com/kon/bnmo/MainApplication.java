@@ -40,6 +40,14 @@ public class MainApplication extends Application {
         dropdownMenu.getItems().addAll(menuItem1, menuItem2, menuItem3);
 
         this.tabPane = new TabPane();
+        this.tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
+            // menyembunyikan label waktu ketika suatu tab dipilih
+            if (newTab != null) {
+                time.setVisible(false);
+            } else {
+                time.setVisible(true);
+            }
+        });
 
         MenuItem submenuItem1 = new MenuItem("Menu Register");
         MenuItem submenuItem2 = new MenuItem("Menu Update Member");
@@ -47,8 +55,8 @@ public class MainApplication extends Application {
 
         menuItem1.getItems().addAll(submenuItem1, submenuItem2, submenuItem3);
 
-        MenuItem submenuItem4 = new MenuItem("Menu Inventory");
-        MenuItem submenuItem5 = new MenuItem("Menu Cashier");
+        MenuItem submenuItem4 = new MenuItem("Menu Cashier");
+        MenuItem submenuItem5 = new MenuItem("Menu Inventory");
 
         menuItem2.getItems().addAll(submenuItem4, submenuItem5);
 
@@ -58,19 +66,19 @@ public class MainApplication extends Application {
         menuItem3.getItems().addAll(submenuItem6, submenuItem7);
 
         submenuItem1.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Register");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem2.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Update Member");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem3.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Transaction History");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });

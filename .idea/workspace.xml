@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : DataAdapter">
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Transactions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
+    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : Main">
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerListItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MemberModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/VIPModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/cashier/CatalogueContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/cashier/CatalogueContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/DigitalClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/DigitalClock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/main/LayarUtama.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,7 @@
       <recent name="com.kon.bnmo" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
+  <component name="RunManager" selected="Application.cobaadapter">
     <configuration name="LayarUtama" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.main.LayarUtama" />
       <module name="BNMO" />
@@ -179,9 +178,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.cobaadapter" />
         <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.LayarUtama" />
-        <item itemvalue="Application.cobaadapter" />
         <item itemvalue="Application.OBJDataAdapter" />
         <item itemvalue="Application.XMLDataAdapter" />
       </list>
@@ -204,7 +203,9 @@
       <workItem from="1682958838223" duration="36097000" />
       <workItem from="1683259715809" duration="3540000" />
       <workItem from="1683265250024" duration="3346000" />
-      <workItem from="1683273558603" duration="17592000" />
+      <workItem from="1683273558603" duration="17901000" />
+      <workItem from="1683360557039" duration="2498000" />
+      <workItem from="1683373198255" duration="6904000" />
     </task>
     <task id="LOCAL-00001" summary="Feat : DataAdapter">
       <created>1683319484234</created>
@@ -220,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683319494601</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Feat : Main">
+      <created>1683324196965</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683324196965</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat : Main">
+      <created>1683324206652</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683324206652</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +261,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Feat : DataAdapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat : DataAdapter" />
+    <MESSAGE value="Feat : Main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat : Main" />
   </component>
 </project>

@@ -2,77 +2,45 @@ package com.kon.bnmo.customers;
 
 import com.kon.bnmo.customers.CustomerModel;
 
-public class MemberModel extends CustomerModel {
-    protected String name;
-    protected String phoneNumber;
-    protected int points;
+import java.util.ArrayList;
 
-    public MemberModel(String id, String name, String phoneNumber,int points){
-        super(id);
+public class MemberModel extends Person {
+    private String name;
+    private String phoneNumber;
+
+    public MemberModel(String id, String name, String phoneNumber){
+        this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.points = points;
-    }
-
-    public MemberModel(String id, String name){
-        super(id);
-        this.name = name;
-        this.phoneNumber = "";
-        this.points = 0;
+        this.fixBills = new ArrayList<String>();
     }
 
     public MemberModel(MemberModel other){
-        super(other.id);
+        this.id = other.id;
         this.name = other.name;
         this.phoneNumber = other.phoneNumber;
-        this.points = other.points;
+        this.fixBills = other.fixBills;
     }
 
-    public String getName() {
-        return name;
+    //getter setter
+    public String getName(){
+        return this.name;
     }
 
-    public void setName(String name) {
+    public String getPhoneNumber(){
+        return this.phoneNumber;
+    }
+
+    public void setName(String name){
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public  void addPoints(int points){
-        this.points += points;
-    }
-
-    public void redeemPoints(int points){
-        this.points -= points;
-    }
-
-    public void redeemAllPoints(){
-        this.points = 0;
-    }
-
-    public void addPhoneNumber(String phoneNumber){
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void removePhoneNumber(){
-        this.phoneNumber = "";
-    }
-
-    public boolean isVIP(){
-        return false;
+    @Override
+    public String getType() {
+        return "member";
     }
 }
