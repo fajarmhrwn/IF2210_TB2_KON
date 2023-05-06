@@ -2,22 +2,15 @@ package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.Item;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+import javax.xml.catalog.Catalog;
 import java.util.Arrays;
 import java.util.List;
 
 public class Cashier extends Tab {
-
-    // new customer
-    // main page
-    // edit item
-    // add item
-    // checkout
-    HBox mainContent;
+    private CashierMainPanel mainPanel;
     private CashierSidePanel sidePanel;
     private String customerName;
 
@@ -25,16 +18,27 @@ public class Cashier extends Tab {
         super("Cashier: " + customerName);
         this.customerName = customerName;
 
-        Label mainContent = new Label("Main content goes here");
-        mainContent.setPrefWidth(800);
-        mainContent.setMaxWidth(Double.MAX_VALUE);
+        this.mainPanel = new CashierMainPanel(this);
+        this.mainPanel.setPrefWidth(850);
+
+        Item myBalls = new Item("Balls", 50000.0, "Makanan", "", 3);
+        Item mawutSosis = new Item("Boll", 50000.0, "Makanan", "", 3);
+        Item mawut = new Item("Nasi Goreng", 50000.0, "Makanan", "", 3);
+        Item serundeng = new Item("Ayam Serundeng", 50000.0, "Makanan", "", 3);
+        Item matah = new Item("Nasi Ayam Sambal Matah", 50000.0, "Makanan", "", 3);
+
+        CatalogueContainer myBallsCatalogue = new CatalogueContainer(myBalls, mainPanel.getCatalogue());
+        CatalogueContainer mawutSosisCatalogue = new CatalogueContainer(mawutSosis, mainPanel.getCatalogue());
+        CatalogueContainer mawutCatalogue = new CatalogueContainer(mawut, mainPanel.getCatalogue());
+        CatalogueContainer serundengCatalogue = new CatalogueContainer(serundeng, mainPanel.getCatalogue());
+        CatalogueContainer matahCatalogue = new CatalogueContainer(matah, mainPanel.getCatalogue());
+        mainPanel.getCatalogue().addItem(myBallsCatalogue);
+        mainPanel.getCatalogue().addItem(mawutSosisCatalogue);
+        mainPanel.getCatalogue().addItem(mawutCatalogue);
+        mainPanel.getCatalogue().addItem(serundengCatalogue);
+        mainPanel.getCatalogue().addItem(matahCatalogue);
 
         this.sidePanel = new CashierSidePanel(this);
-        Item myBalls = new Item("Balls", 50000.0, "Makanan", "bakso.png", 3);
-        Item mawutSosis = new Item("Boll", 50000.0, "Makanan", "bakso.png", 3);
-        Item mawut = new Item("Nasi Goreng", 50000.0, "Makanan", "bakso.png", 3);
-        Item serundeng = new Item("Ayam Serundeng", 50000.0, "Makanan", "bakso.png", 3);
-        Item matah = new Item("Nasi Ayam Sambal Matah", 50000.0, "Makanan", "bakso.png", 3);
         ItemContainer containMyBalls = new ItemContainer(myBalls, sidePanel.getBc());
         ItemContainer containMawut = new ItemContainer(mawutSosis, sidePanel.getBc());
         ItemContainer containM = new ItemContainer(mawut, sidePanel.getBc());
@@ -50,7 +54,7 @@ public class Cashier extends Tab {
         this.getSidePanel().getAddCustomer().setOnAction(this::addNewCustomerTab);
 
         HBox container = new HBox();
-        container.getChildren().addAll(mainContent, sidePanel);
+        container.getChildren().addAll(this.mainPanel, sidePanel);
         this.setContent(container);
     }
 
@@ -75,6 +79,14 @@ public class Cashier extends Tab {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public CashierMainPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setMainPanel(CashierMainPanel mainPanel) {
+        this.mainPanel = mainPanel;
     }
 }
 
