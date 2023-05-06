@@ -22,6 +22,14 @@ public class FixedBill{
         }
         checkoutDate = LocalDate.now();
     }
+    public FixedBill(ArrayList<Billitem> listBillItem, LocalDate date){
+        this.listBillItem = new ArrayList<>();
+        for(int i = 0; i < listBillItem.size(); i++){
+            Billitem temp = new Billitem(listBillItem.get(i));
+            this.listBillItem.add(listBillItem.get(i));
+        }
+        checkoutDate = date;
+    }
 
     public ArrayList<Billitem> getListBillItem() {
         return listBillItem;

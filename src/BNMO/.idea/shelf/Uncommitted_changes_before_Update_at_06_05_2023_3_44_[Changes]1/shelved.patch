@@ -1,0 +1,159 @@
+Index: src/main/java/com/kon/bnmo/BillExporter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport com.itextpdf.text.Document;\r\nimport com.itextpdf.text.DocumentException;\r\nimport com.itextpdf.text.Paragraph;\r\nimport com.itextpdf.text.pdf.PdfWriter;\r\nimport com.itextpdf.text.Font;\r\nimport com.kon.bnmo.items.Item;\r\nimport com.kon.bnmo.items.ItemHolder;\r\nimport com.itextpdf.text.Element;\r\n\r\nimport java.io.FileNotFoundException;\r\nimport java.io.FileOutputStream;\r\nimport java.util.List;\r\n\r\npublic class BillExporter extends Thread{\r\n    private final ItemHolder bill;\r\n\r\n    public BillExporter(ItemHolder bill){\r\n        this.bill = bill;\r\n    }\r\n\r\n    public void exportToPdf(String filename){\r\n        Thread t = new Thread(() -> {\r\n            try {\r\n                Document document = new Document();\r\n                PdfWriter.getInstance(document, new FileOutputStream(filename+\".pdf\"));\r\n                document.open();\r\n                Paragraph title = new Paragraph(\"Toko KON\", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));\r\n                title.setAlignment(Element.ALIGN_CENTER);\r\n                document.add(title);\r\n\r\n                Paragraph itemsTitle = new Paragraph(\"Daftar Belanjaan\", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));\r\n                itemsTitle.setSpacingBefore(20);\r\n                document.add(itemsTitle);\r\n\r\n                List<Item> itemList = bill.getItemList();\r\n                int totalHarga = 0;\r\n                for (int i = 0; i < itemList.size(); i++) {\r\n                    totalHarga += itemList.get(i).getPrice()*itemList.get(i).getStock();\r\n                    Paragraph item = new Paragraph(itemList.get(i).getStock()+ \" \" + itemList.get(i).getName() + \" : Rp \" + itemList.get(i).getPrice()*itemList.get(i).getStock(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                    item.setIndentationLeft(20);\r\n                    document.add(item);\r\n                }\r\n\r\n                Paragraph total = new Paragraph(\"Total: Rp \" + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                total.setAlignment(Element.ALIGN_RIGHT);\r\n                total.setSpacingBefore(20);\r\n                document.add(total);\r\n                // add fixed bill data to document\r\n                document.close();\r\n            } catch (FileNotFoundException | DocumentException e) {\r\n                e.printStackTrace();\r\n            }\r\n        });\r\n        t.start();\r\n        try {\r\n            Thread.sleep(10000); // simulate long print process\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    public static void main(String[] args){\r\n        ItemHolder bill = new ItemHolder();\r\n        Item padangA = new Item(\"Nasi padang\", 18000.0, \"Food\", \"png\", 5);\r\n        Item padangB = new Item(\"Nasi padang Ayam\", 18000.0, \"Food\", \"png\", 5);\r\n        bill.add(padangA);\r\n        bill.add(padangB);\r\n        BillExporter test = new BillExporter(bill);\r\n        test.exportToPdf(\"testpadang2\");\r\n    }\r\n//    public static void main(String[] args){\r\n//        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();\r\n//        BillItem padangA = new BillItem(\"Nasi padang\", 18000.0, 2, \"Dine in\");\r\n//        BillItem padangB = new BillItem(\"Nasi padang ayam\", 18000.0, 2, \"Dine in\");\r\n//        bill.add(padangA);\r\n//        bill.add(padangB);\r\n//        BillExporter test = new BillExporter(bill);\r\n//        test.exportToPdf(\"testpadang2\");\r\n//    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/BillExporter.java b/src/main/java/com/kon/bnmo/BillExporter.java
+--- a/src/main/java/com/kon/bnmo/BillExporter.java	
++++ b/src/main/java/com/kon/bnmo/BillExporter.java	
+@@ -67,7 +67,7 @@
+         bill.add(padangA);
+         bill.add(padangB);
+         BillExporter test = new BillExporter(bill);
+-        test.exportToPdf("testpadang2");
++        test.exportToPdf("testpadang1212");
+     }
+ //    public static void main(String[] args){
+ //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
+Index: src/main/java/com/kon/bnmo/items/FixedBill.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/items/FixedBill.java b/src/main/java/com/kon/bnmo/items/FixedBill.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/kon/bnmo/items/FixedBill.java	
+@@ -0,0 +1,5 @@
++package com.kon.bnmo.items;
++
++public class FixedBill {
++
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c547f345-ad1a-403d-8ed1-7ab3788452ea\" name=\"Changes\" comment=\"dependency\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/../..\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/Cashier.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2P9RNd3pUPiRQ91vn7afQxq0oap\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.3&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\ITB\\Semester 4\\Object Oriented Programming\\Tubes2\\src\\BNMO\\src\\main\\resources\\com\\kon\\bnmo\\img\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.JSONDataAdapter\">\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.HelloApplication\" />\r\n      <module name=\"BNMO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"JSONDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.JSONDataAdapter\" />\r\n      <module name=\"BNMO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"NonModalDialogBoxInTabExample\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.cashier.NonModalDialogBoxInTabExample\" />\r\n      <module name=\"BNMO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.cashier.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PopupInTabExample\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.cashier.PopupInTabExample\" />\r\n      <module name=\"BNMO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.cashier.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SimplePane\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.cashier.SimplePane\" />\r\n      <module name=\"BNMO\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.items.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.JSONDataAdapter\" />\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n        <item itemvalue=\"Application.SimplePane\" />\r\n        <item itemvalue=\"Application.PopupInTabExample\" />\r\n        <item itemvalue=\"Application.NonModalDialogBoxInTabExample\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c547f345-ad1a-403d-8ed1-7ab3788452ea\" name=\"Changes\" comment=\"\" />\r\n      <created>1682867276210</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1682867276210</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Resolve conflict\">\r\n      <created>1682946340954</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1682946340954</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Resolve conflict\">\r\n      <created>1683120956658</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683120956658</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Resolve conflict\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Resolve conflict\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NoSuchFieldError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>\r\n          <line>35</line>\r\n          <properties class=\"com.kon.bnmo.datastore.JSONDataAdapter\" method=\"main\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,10 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="dependency">
++    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="Resolve conflict, capek anjg tiap dipush konflik">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/ReportExporter.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -60,9 +61,9 @@
+       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.JSONDataAdapter">
+-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
++  <component name="RunManager" selected="Application.BillExporter">
++    <configuration name="BillExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.BillExporter" />
+       <module name="BNMO" />
+       <extension name="coverage">
+         <pattern>
+@@ -74,12 +75,12 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
++    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
+       <module name="BNMO" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
++          <option name="PATTERN" value="com.kon.bnmo.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -87,12 +88,12 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="NonModalDialogBoxInTabExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.NonModalDialogBoxInTabExample" />
++    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
+       <module name="BNMO" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.kon.bnmo.cashier.*" />
++          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -128,11 +129,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.BillExporter" />
+         <item itemvalue="Application.JSONDataAdapter" />
+         <item itemvalue="Application.HelloApplication" />
+         <item itemvalue="Application.SimplePane" />
+         <item itemvalue="Application.PopupInTabExample" />
+-        <item itemvalue="Application.NonModalDialogBoxInTabExample" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -159,7 +160,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683120956658</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Resolve conflict, capek anjg tiap dipush konflik">
++      <created>1683313445153</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1683313445153</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -175,7 +183,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Resolve conflict" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Resolve conflict" />
++    <MESSAGE value="Resolve conflict, capek anjg tiap dipush konflik" />
++    <option name="LAST_COMMIT_MESSAGE" value="Resolve conflict, capek anjg tiap dipush konflik" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+@@ -184,15 +193,6 @@
+           <properties class="java.lang.NoSuchFieldError" package="java.lang" />
+           <option name="timeStamp" value="3" />
+         </breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
+-          <line>35</line>
+-          <properties class="com.kon.bnmo.datastore.JSONDataAdapter" method="main">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+   </component>
