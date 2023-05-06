@@ -1,16 +1,13 @@
 package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.Item;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-
-import java.io.InputStream;
-import java.util.Objects;
 
 public class CatalogueContainer extends HBox {
     private Item containedItem;
@@ -30,10 +27,27 @@ public class CatalogueContainer extends HBox {
         this.catalogue = catalogue;
         this.getChildren().addAll(image, itemName, this.addButton);
         this.setAlignment(Pos.CENTER_RIGHT);
+        this.addButton.setOnAction(this::addToBill);
+    }
+
+    private void addToBill(ActionEvent actionEvent) {
+        BillContainer billContainer = this.catalogue
+        .getMainPanel().getCashier().getSidePanel()
+                .getBc();
+        if (!billContainer.getBillHolder().getItemList().contains(new com.kon.bnmo.cashier.ItemContainer(this.containedItem, billContainer))) {
+           billContainer.addItem(new com.kon.bnmo.cashier.ItemContainer(this.containedItem, billContainer));
+           billContainer.getSidePanel().setPrice();
+        }
     }
 
     public Item getContainedItem() {
         return containedItem;
+    }
+
+    public void resetAddButton() {
+        this.addButton = new Button("+ Add Item");
+        this.addButton.setOnAction(this::addToBill);
+        this.addButton.setDisable(false);
     }
 
     public void setContainedItem(Item containedItem) {
@@ -44,16 +58,16 @@ public class CatalogueContainer extends HBox {
         return addButton;
     }
 
-    public void setAddButton(Button addButton) {
-        this.addButton = addButton;
-    }
-
     public Catalogue getCatalogue() {
         return catalogue;
     }
 
     public void setCatalogue(Catalogue catalogue) {
         this.catalogue = catalogue;
+    }
+
+    public void enableAddButton() {
+        this.addButton.setDisable(false);
     }
 
     @Override
@@ -63,7 +77,7 @@ public class CatalogueContainer extends HBox {
 
         CatalogueContainer that = (CatalogueContainer) o;
 
-        return (!containedItem.equals(that.containedItem));
+        return (containedItem.equals(that.containedItem));
     }
 
     @Override

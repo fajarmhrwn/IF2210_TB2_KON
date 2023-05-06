@@ -4,17 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="resolve conflict">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/kon/bnmo/image.png" afterDir="false" />
+    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="Resolve conflict">
+      <change afterPath="$PROJECT_DIR$/items.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/CheckoutTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierMainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierMainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Catalogue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CatalogueContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CatalogueContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageGrid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/kon/bnmo/img/placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/PopupInTabExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Billitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Billitem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/ItemHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/ItemHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/Barang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/Barang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/java/com/kon/bnmo",
+    "last_opened_file_path": "D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/java/com/kon/bnmo/items",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
@@ -68,6 +79,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo\items" />
       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo" />
       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo\cashier" />
       <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
@@ -175,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683120956658</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Resolve conflict">
+      <created>1683385538218</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683385538218</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -207,7 +226,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
-          <line>53</line>
+          <line>51</line>
           <properties class="com.kon.bnmo.datastore.JSONDataAdapter" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -216,6 +235,11 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="catalogueContainer.addButton.graphic" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

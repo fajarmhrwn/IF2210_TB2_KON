@@ -1,5 +1,7 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.Checkout;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -12,7 +14,10 @@ public class CashierSidePanel extends VBox {
     private HBox priceContainer;
     private Label totalPrice;
     private Cashier parent;
+    private Double priceTotal;
+    private Checkout checkoutPage;
     public CashierSidePanel(Cashier parent) {
+        this.priceTotal = 0.0;
         this.parent = parent;
         this.addCustomer = new Button("+ Add Customer");
 
@@ -27,8 +32,16 @@ public class CashierSidePanel extends VBox {
                 priceLabel,
                 this.totalPrice
         );
+        this.checkoutPage = new Checkout(this);
+        this.checkout.setOnAction(this::openCheckout);
 
         this.getChildren().addAll(this.addCustomer, this.bc, this.checkout, this.priceContainer);
+
+    }
+
+    private void openCheckout(ActionEvent actionEvent) {
+        this.checkoutPage.updatePrice();
+        this.checkoutPage.show();
     }
 
     public Button getAddCustomer() {
@@ -86,15 +99,27 @@ public class CashierSidePanel extends VBox {
     }
 
     public void setPrice() {
-        double tempTotal = 0.0;
+        this.priceTotal = 0.0;
         for (ItemContainer bi: this.bc.getBillHolder().getItemList()) {
             // If else to know whether the use points checkbox is checked
-            tempTotal += ((ItemContainer) bi).getBuyingPrice();
+            this.priceTotal += ((ItemContainer) bi).getBuyingPrice();
         }
-        this.setTotalPrice(tempTotal);
+        this.setTotalPrice(this.priceTotal);
     }
 
     public void setPriceLabel(Label priceLabel) {
         this.totalPrice = priceLabel;
+    }
+
+    public void setTotalPrice(Label totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Double getPriceTotal() {
+        return priceTotal;
+    }
+
+    public void setPriceTotal(Double priceTotal) {
+        this.priceTotal = priceTotal;
     }
 }

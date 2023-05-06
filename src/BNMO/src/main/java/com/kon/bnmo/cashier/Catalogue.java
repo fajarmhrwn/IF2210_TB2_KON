@@ -1,10 +1,14 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.datastore.DataStore;
+import com.kon.bnmo.datastore.JSONDataAdapter;
 import com.kon.bnmo.items.Item;
+import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.Storage;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 public class Catalogue extends ScrollPane {
     private Storage storage;
@@ -15,8 +19,18 @@ public class Catalogue extends ScrollPane {
         this.storage = new Storage();
         this.mainPanel = mainPanel;
         this.vBox = new VBox();
+        DataStore dataStore = new DataStore();
+        dataStore.setDataAdapter(new JSONDataAdapter());
+        try {
+            dataStore.readItem("items.json");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ItemHolder itemHolder = dataStore.getItemHolder();
+        for (Item item : itemHolder.getItemList()) {
+            this.addItem(new CatalogueContainer(item, this));
+        }
         this.setContent(this.vBox);
-
     }
 
     public void addItem(CatalogueContainer item) {
@@ -29,19 +43,6 @@ public class Catalogue extends ScrollPane {
         this.storage.remove(new CatalogueContainer(new Item(name, price, category, imgName, stock), this));
         this.vBox.getChildren().remove(new CatalogueContainer(new Item(name, price, category, imgName, stock), this));
         this.setContent(this.vBox);
-    }
-
-    public Catalogue(Storage storage, VBox vBox, CashierMainPanel mainPanel) {
-        this.storage = storage;
-        this.vBox = vBox;
-        this.mainPanel = mainPanel;
-    }
-
-    public Catalogue(Node node, Storage storage, VBox vBox, CashierMainPanel mainPanel) {
-        super(node);
-        this.storage = storage;
-        this.vBox = vBox;
-        this.mainPanel = mainPanel;
     }
 
     public Storage getStorage() {

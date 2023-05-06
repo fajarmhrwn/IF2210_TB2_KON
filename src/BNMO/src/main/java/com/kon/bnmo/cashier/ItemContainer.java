@@ -64,20 +64,30 @@ public class ItemContainer extends HBox {
     }
 
 
-    public ItemContainer(Item item, BillContainer billContainer) {
-        this.containedItem = item;
+    public ItemContainer(Item itemContainer, BillContainer billContainer) {
+        this.containedItem = itemContainer;
         this.billContainer = billContainer;
         this.amount = 1;
-        this.buyingPrice = item.getPrice();
+        this.buyingPrice = itemContainer.getPrice();
         this.useMemberDiscount = false;
         this.useVIPPoints = false;
 
-        Label itemName = new Label(item.getName());
+        // Set the background color and border
+//        this.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1px;");
+//
+//        // Set padding and spacing
+//        this.setPadding(new Insets(10));
+//        this.setSpacing(10);
+
+        Label itemName = new Label(itemContainer.getName());
+//        itemName.setStyle("-fx-font-size: 16px; -fx-text-fill: #333333;");
         itemName.setWrapText(false);
         itemName.setMinWidth(300);
         itemName.setMaxWidth(Double.MAX_VALUE);
         this.editButton = new Button("Edit");
         this.editButton.setOnAction(this::showEditPopup);
+        // Set the font and text color of the Edit Button
+//        this.editButton.setStyle("-fx-font-size: 12px; -fx-text-fill: #ffffff; -fx-background-color: #0077cc;");
         this.editItem = new EditItemPopup(this.containedItem, this);
         this.getChildren().addAll(itemName, this.editButton);
         this.setAlignment(Pos.CENTER_RIGHT);

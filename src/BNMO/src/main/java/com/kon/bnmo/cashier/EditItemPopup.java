@@ -10,15 +10,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class EditItemPopup extends Stage {
-    Item item;
-    Scene scene;
     ItemContainer itemContainer;
+    Scene scene;
 
     public EditItemPopup(Item item, ItemContainer itemContainer) {
-        this.item = item;
+        this.itemContainer = itemContainer;
         this.scene = new Scene(new Label("Edit Barang"));
         this.setTitle("Edit Barang");
-        this.itemContainer = itemContainer;
 
         VBox layout = new VBox();
 
