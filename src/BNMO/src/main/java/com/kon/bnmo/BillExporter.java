@@ -5,19 +5,22 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Font;
+import com.kon.bnmo.items.Billitem;
+import com.kon.bnmo.items.FixedBill;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
 import com.itextpdf.text.Element;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillExporter extends Thread{
-    private final ItemHolder bill;
+    private final FixedBill bill;
 
-    public BillExporter(ItemHolder bill){
-        this.bill = bill;
+    public BillExporter(FixedBill bill){
+        this.bill = new FixedBill(bill.getListBillItem());
     }
 
     public void exportToPdf(String filename){
@@ -30,15 +33,19 @@ public class BillExporter extends Thread{
                 title.setAlignment(Element.ALIGN_CENTER);
                 document.add(title);
 
+                Paragraph date = new Paragraph(this.bill.getCheckoutDateDate().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
+                date.setAlignment(Element.ALIGN_RIGHT);
+                document.add(date);
                 Paragraph itemsTitle = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
                 itemsTitle.setSpacingBefore(20);
                 document.add(itemsTitle);
 
-                List<Item> itemList = bill.getItemList();
-                int totalHarga = 0;
-                for (int i = 0; i < itemList.size(); i++) {
-                    totalHarga += itemList.get(i).getPrice()*itemList.get(i).getStock();
-                    Paragraph item = new Paragraph(itemList.get(i).getStock()+ " " + itemList.get(i).getName() + " : Rp " + itemList.get(i).getPrice()*itemList.get(i).getStock(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
+
+//                List<Item> itemList = bill.getItemList();
+                double totalHarga = 0;
+                for (int i = 0; i < bill.getListBillItem().size(); i++) {
+                    totalHarga += bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount();
+                    Paragraph item = new Paragraph(bill.getListBillItem().get(i).getAmount()+ " " + bill.getListBillItem().get(i).getName() + " : Rp " + bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
                     item.setIndentationLeft(20);
                     document.add(item);
                 }
@@ -61,13 +68,20 @@ public class BillExporter extends Thread{
         }
     }
     public static void main(String[] args){
-        ItemHolder bill = new ItemHolder();
-        Item padangA = new Item("Nasi padang", 18000.0, "Food", "png", 5);
-        Item padangB = new Item("Nasi padang Ayam", 18000.0, "Food", "png", 5);
-        bill.add(padangA);
-        bill.add(padangB);
-        BillExporter test = new BillExporter(bill);
-        test.exportToPdf("testpadang2");
+        ArrayList<Billitem> bill = new ArrayList<>();
+
+//        BillContainer billCon1 = new BillContainer();
+        Billitem item1 =  new Billitem("barang1", 100.0, "barang", "sdjakjsd",
+                10, 3);
+        Billitem item2 =  new Billitem("barang2", 200.0, "barang", "sdjakjsd",
+                10, 4);
+
+        bill.add(item1);
+        bill.add(item2);
+
+        FixedBill fixbill = new FixedBill(bill);
+        BillExporter test = new BillExporter(fixbill);
+        test.exportToPdf("testfix3");
     }
 //    public static void main(String[] args){
 //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();

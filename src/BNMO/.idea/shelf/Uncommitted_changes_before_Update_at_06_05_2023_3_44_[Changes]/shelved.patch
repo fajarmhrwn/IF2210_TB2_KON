@@ -1,0 +1,18 @@
+Index: src/main/java/com/kon/bnmo/ReportExporter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport java.io.File;\r\nimport java.io.FileNotFoundException;\r\nimport java.io.FileOutputStream;\r\nimport java.util.List;\r\n\r\nimport com.itextpdf.text.Document;\r\nimport com.itextpdf.text.DocumentException;\r\nimport com.itextpdf.text.PageSize;\r\nimport com.itextpdf.text.Paragraph;\r\nimport com.itextpdf.text.pdf.PdfWriter;\r\nimport com.kon.bnmo.items.Item;\r\n\r\npublic class ReportExporter {\r\n    private List<FixedBill> fixedBills;\r\n    private String filename;\r\n\r\n    public ReportExporter(List<FixedBill> fixedBills, String filename) {\r\n        this.fixedBills = fixedBills;\r\n        this.filename = filename;\r\n    }\r\n\r\n//    public void exportToPdf() throws Exception {\r\n//        Thread t = new Thread(() -> {\r\n//            try {\r\n//                Document document = new Document(PageSize.A4, 50, 50, 50, 50);\r\n//                PdfWriter.getInstance(document, new FileOutputStream(filename));\r\n//                document.open();\r\n//                for (FixedBill fb : fixedBills) {\r\n//                    document.add(new Paragraph(\"Bill No. \" + fb.getBillNumber()));\r\n//                    document.add(new Paragraph(\"Customer: \" + fb.getCustomerName()));\r\n//                    document.add(new Paragraph(\"Date: \" + fb.getBillDate()));\r\n//                    document.add(new Paragraph(\"Items: \"));\r\n//                    for (Item item : fb.getItems()) {\r\n//                        document.add(new Paragraph(\"- \" + item.getName() + \" x \" + item.getQuantity() + \" = \" + item.getTotal()));\r\n//                    }\r\n//                    document.add(new Paragraph(\"Total: \" + fb.getTotal()));\r\n//                    document.add(new Paragraph(\"==============================================\"));\r\n//                }\r\n//                document.close();\r\n//            } catch (FileNotFoundException | DocumentException e) {\r\n//                e.printStackTrace();\r\n//            }\r\n//        });\r\n//        t.start();\r\n//        Thread.sleep(10000); // simulate long print process\r\n//    }\r\n}\r\n\r\n
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/ReportExporter.java b/src/main/java/com/kon/bnmo/ReportExporter.java
+--- a/src/main/java/com/kon/bnmo/ReportExporter.java	
++++ b/src/main/java/com/kon/bnmo/ReportExporter.java	
+@@ -13,8 +13,7 @@
+ import com.kon.bnmo.items.Item;
+ 
+ public class ReportExporter {
+-    private List<FixedBill> fixedBills;
+-    private String filename;
++    private List<Item> Bills;
+ 
+     public ReportExporter(List<FixedBill> fixedBills, String filename) {
+         this.fixedBills = fixedBills;

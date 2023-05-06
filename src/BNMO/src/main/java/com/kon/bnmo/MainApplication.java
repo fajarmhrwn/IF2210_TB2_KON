@@ -1,11 +1,9 @@
 package com.kon.bnmo;
 
 import com.kon.bnmo.cashier.Cashier;
-import com.kon.bnmo.cashier.SimplePane;
 import com.kon.bnmo.customers.CustomerPage;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.main.DigitalClock;
-import com.kon.bnmo.main.LayarUtama;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.application.Application;
@@ -40,6 +38,14 @@ public class MainApplication extends Application {
         dropdownMenu.getItems().addAll(menuItem1, menuItem2, menuItem3);
 
         this.tabPane = new TabPane();
+        this.tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
+            // menyembunyikan label waktu ketika suatu tab dipilih
+            if (newTab != null) {
+                time.setVisible(false);
+            } else {
+                time.setVisible(true);
+            }
+        });
 
         MenuItem submenuItem1 = new MenuItem("Menu Register");
         MenuItem submenuItem2 = new MenuItem("Menu Update Member");
@@ -47,8 +53,8 @@ public class MainApplication extends Application {
 
         menuItem1.getItems().addAll(submenuItem1, submenuItem2, submenuItem3);
 
-        MenuItem submenuItem4 = new MenuItem("Menu Inventory");
-        MenuItem submenuItem5 = new MenuItem("Menu Cashier");
+        MenuItem submenuItem4 = new MenuItem("Menu Cashier");
+        MenuItem submenuItem5 = new MenuItem("Menu Inventory");
 
         menuItem2.getItems().addAll(submenuItem4, submenuItem5);
 
@@ -58,19 +64,19 @@ public class MainApplication extends Application {
         menuItem3.getItems().addAll(submenuItem6, submenuItem7);
 
         submenuItem1.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Register");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem2.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Update Member");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem3.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage("Transaction History");
+            CustomerPage tab = new CustomerPage();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
@@ -95,13 +101,13 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            Settings tab = new Settings();
+            SettingsDB tab = new SettingsDB();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem7.setOnAction(event -> {
-            Tab tab = new Tab("Settings Plugin");
+            SettingsPlug tab = new SettingsPlug();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });

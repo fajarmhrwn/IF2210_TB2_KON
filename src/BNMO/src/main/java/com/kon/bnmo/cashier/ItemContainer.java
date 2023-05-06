@@ -40,6 +40,25 @@ public class ItemContainer extends HBox {
         this.getStyleClass().add("item-container");
     }
 
+    public ItemContainer(String name, double price, String category, String imgName, Integer stock,
+                         Integer amount, Double buyingPrice) {
+        this.containedItem = new Item(name, price, category, imgName, stock);
+        this.billContainer = null;
+        this.amount = amount;
+        this.buyingPrice = buyingPrice;
+
+        Label itemName = new Label(name);
+        itemName.setWrapText(false);
+        this.editButton = new Button("Edit");
+        this.getChildren().addAll(itemName, this.editButton);
+        this.editButton.setOnAction(this::showEditPopup);
+        this.editItem = new EditItemPopup(this.containedItem, this);
+        this.setAlignment(Pos.CENTER_RIGHT);
+        HBox.setHgrow(itemName, Priority.ALWAYS);
+
+        this.getStyleClass().add("item-container");
+    }
+
     private void showEditPopup(ActionEvent actionEvent) {
         this.editItem.show();
     }

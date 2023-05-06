@@ -1,5 +1,9 @@
 package com.kon.bnmo.datastore;
 
+import com.kon.bnmo.customers.CustomerHolder;
+import com.kon.bnmo.customers.CustomerModel;
+import com.kon.bnmo.customers.MemberModel;
+import com.kon.bnmo.customers.Person;
 import com.kon.bnmo.holder.holder;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
@@ -8,55 +12,29 @@ import java.io.IOException;
 import java.util.List;
 
 public class cobaadapter {
-    public static void main(String[] args) {
-        ItemHolder itemHolder = new ItemHolder();
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-
-        ItemHolder itemHolder2 = new ItemHolder();
-
-        DataStore dataStore = new DataStore(new JSONDataAdapter(), "items.json");
+    public static void main(String[] args) throws IOException {
+        DataStore dataStore = new DataStore();
+        dataStore.setDataAdapter(new JSONDataAdapter());
         try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
-        }
-        dataStore.setPath("input.xml");
-        dataStore.setDataAdapter(new XMLDataAdapter());
-        try{
-            dataStore.readData(itemHolder2);
+            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(itemHolder2.getItemList().size());
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        itemHolder.add(new Item("Nasi padang", 18000.0, "makanan", "dummy.jpg", 10));
-        try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
+        ItemHolder itemHolder = dataStore.getItemHolder();
+        CustomerHolder customerHolder = dataStore.getCustomerHolder();
+        for(Item item : itemHolder.getItemList()){
+            System.out.println(item.getName());
+        }
+        for(Person person : customerHolder.getItemList()){
+            System.out.println(person.getType());
         }
 
-        dataStore.setPath("testobj.txt");
-        dataStore.setDataAdapter(new OBJDataAdapter());
-        try{
-            dataStore.writeData(itemHolder);
-        }catch (Exception e){
-            System.out.println("Error");
-            System.out.println(e.getMessage());
-        }
-        ItemHolder itemHolder3 = new ItemHolder();
-        try{
-            dataStore.readData(itemHolder3);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(itemHolder3.getItemList().size());
+        customerHolder.add(new MemberModel("1","fajar","08123456789"));
+        customerHolder.add(new MemberModel("2","herawan","08123456789"));
+        customerHolder.add(new MemberModel("3","fajarherawan","08123456789"));
+        customerHolder.add(new MemberModel("4","fajar herawan","08123456789"));
+
+        dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
+
     }
 }

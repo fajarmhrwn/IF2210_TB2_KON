@@ -13,11 +13,10 @@ public class Catalogue extends ScrollPane {
 
     public Catalogue(CashierMainPanel mainPanel) {
         this.storage = new Storage();
+        this.mainPanel = mainPanel;
         this.vBox = new VBox();
-
         this.setContent(this.vBox);
 
-        this.mainPanel = mainPanel;
     }
 
     public void addItem(CatalogueContainer item) {
