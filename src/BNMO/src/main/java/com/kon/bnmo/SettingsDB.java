@@ -45,30 +45,30 @@ public class SettingsDB extends Tab {
         extensionDropdown.setOnAction(event -> {
             String selectedExtension = extensionDropdown.getValue();
             dataStore = new DataStore();
-            if(selectedExtension == ".xml"){
-                System.out.println("masuk");
-
-                dataStore.setDataAdapter(new XMLDataAdapter());
-                try{
-                    dataStore.readItem(directory);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }else if(selectedExtension == ".json"){
-                dataStore.setDataAdapter(new JSONDataAdapter());
-                try{
-                    dataStore.readItem(directory);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }else if(selectedExtension == ".obj"){
-                dataStore.setDataAdapter(new OBJDataAdapter());
-                try{
-                    dataStore.readItem(directory);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+//            if(selectedExtension == ".xml"){
+//                System.out.println("masuk");
+//
+//                dataStore.setDataAdapter(new XMLDataAdapter());
+//                try{
+//                    dataStore.readItem(directory);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }else if(selectedExtension == ".json"){
+//                dataStore.setDataAdapter(new JSONDataAdapter());
+//                try{
+////                    dataStore.readItem(directory);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }else if(selectedExtension == ".obj"){
+//                dataStore.setDataAdapter(new OBJDataAdapter());
+//                try{
+//                    dataStore.readItem(directory);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
             // melakukan aksi ketika ekstensi dipilih
         });
         GridPane extensionGrid = new GridPane();

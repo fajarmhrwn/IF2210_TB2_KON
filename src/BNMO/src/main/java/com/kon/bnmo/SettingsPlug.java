@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.*;
 
 public class SettingsPlug extends Tab {
     private String FilePath;
@@ -28,18 +29,33 @@ public class SettingsPlug extends Tab {
         // Menambahkan VBox ke dalam Tab
         setContent(root);
 
-        Label pluginLabel = new Label("Plugin");
+        Label pluginLabel = new Label(System.getProperty("user.dir"));
 
         // Membuat Button untuk mengimpor plugin
         Button pluginButton = new Button("Impor Plugin");
         pluginButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Pilih File Plugin");
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".jar", "*.class"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".jar", "*.jar"));
             File selectedFile = fileChooser.showOpenDialog(null);
             if (selectedFile != null) {
-                FilePath = selectedFile.toString();
-                System.out.println(selectedFile.toString());
+                String fileSource = selectedFile.getAbsolutePath();
+                String target = System.getProperty("user.dir") + "\\src\\BNMO\\src\\main\\java\\com\\kon\\bnmo\\plugin";
+                System.out.println(target);
+                try {
+                    Path filePath = Paths.get(fileSource);
+                    Path destinationPath = Paths.get(target);
+                    if (Files.exists(filePath)){
+                        System.out.println("File exists");
+                        Files.copy(filePath, destinationPath.resolve(filePath.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
+                    }else{
+                        System.out.println("File doesn't exist");
+                    }
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                pluginLabel.setText(selectedFile.toString());
             }
         });
 

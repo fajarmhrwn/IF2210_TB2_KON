@@ -23,7 +23,6 @@ public class DigitalClock extends Thread {
             try {
                 Thread.sleep(1000); // wait for 1 second
                 Platform.runLater(() -> label.setText(dateFormat.format(new Date()))); // update UI in JavaFX thread
-                System.out.println("Clock updated");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

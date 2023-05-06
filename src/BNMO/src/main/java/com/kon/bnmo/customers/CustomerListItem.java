@@ -2,6 +2,7 @@ package com.kon.bnmo.customers;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
@@ -21,7 +22,8 @@ public class CustomerListItem extends HBox {
     }
 
     public void editCustomer(){
-
+        UpdateCustomerPopUp popup = new UpdateCustomerPopUp();
+        popup.showAndWait();
     }
 
     public void deleteCustomer(){
