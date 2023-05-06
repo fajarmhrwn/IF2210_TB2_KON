@@ -86,6 +86,17 @@
           <artifactId>jakarta.xml.bind-api</artifactId>
           <version>2.3.2</version>
       </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jsr310</artifactId>
+          <version>2.14.2</version>
+      </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr353</artifactId>
+      <version>2.14.2</version>
+      <scope>compile</scope>
+    </dependency>
 
 
   </dependencies>

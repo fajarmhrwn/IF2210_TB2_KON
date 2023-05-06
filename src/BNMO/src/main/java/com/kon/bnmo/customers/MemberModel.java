@@ -15,27 +15,17 @@ public class MemberModel extends Person {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.fixBills = new ArrayList<>();
-    }
-
-    public  MemberModel(String id, String name, String phoneNumber, List<FixedBill> fixBills){
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.fixBills = fixBills;
     }
 
     public  MemberModel(){
         this.id = "";
         this.name = "";
         this.phoneNumber = "";
-        this.fixBills = new ArrayList<FixedBill>();
     }
     public MemberModel(MemberModel other){
         this.id = other.id;
         this.name = other.name;
         this.phoneNumber = other.phoneNumber;
-        this.fixBills = other.fixBills;
     }
 
     //getter setter

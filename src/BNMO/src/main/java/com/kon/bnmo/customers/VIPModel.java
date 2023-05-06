@@ -15,29 +15,19 @@ public class VIPModel extends Person{
         this.name = "";
         this.phoneNumber = "";
         this.point = 0;
-        this.fixBills = new ArrayList<FixedBill>();
     }
+
     public VIPModel(String id, String name, String phoneNumber, int point){
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.point = point;
-        this.fixBills = new ArrayList<FixedBill>();
-    }
-
-    public VIPModel(String id, String name, String phoneNumber, int point, List<FixedBill> fixBills){
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.point = point;
-        this.fixBills = fixBills;
     }
     public VIPModel(VIPModel other){
         this.id = other.id;
         this.name = other.name;
         this.phoneNumber = other.phoneNumber;
         this.point = other.point;
-        this.fixBills = other.fixBills;
     }
 
     //getter setter

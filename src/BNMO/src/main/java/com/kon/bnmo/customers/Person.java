@@ -9,7 +9,6 @@ public abstract class Person implements Serializable {
     protected static final long serialVersionUID = 1L;
     protected String id;
     protected String type;
-    protected List<FixedBill> fixBills;
 
     public String getId() {
         return id;
@@ -17,21 +16,6 @@ public abstract class Person implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setFixBills(List<FixedBill> fixBills) {
-        this.fixBills = fixBills;
-    }
-
-    public List<FixedBill> getFixBills(){
-        return this.fixBills;
-    }
-    public void addFixBill(FixedBill fixBill){
-        this.fixBills.add(fixBill);
-    }
-
-    public void removeFixBill(FixedBill fixBill){
-        this.fixBills.remove(fixBill);
     }
 
     public abstract String getType();

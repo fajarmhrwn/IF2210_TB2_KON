@@ -17,11 +17,11 @@ public class History {
     public History(ArrayList<FixedBill> listFixedBill){
         this.listFixedBill = new ArrayList<>();
         for(int i = 0; i < listFixedBill.size(); i++){
-            FixedBill temp = new FixedBill(listFixedBill.get(i).getListBillItem(), listFixedBill.get(i).getCheckoutDateDate());
+            FixedBill temp = new FixedBill(listFixedBill.get(i).getListBillItem(), listFixedBill.get(i).keluarkanTanggal());
             this.listFixedBill.add(temp);
         }
 
-        Collections.sort(this.listFixedBill, Comparator.comparing(FixedBill::getCheckoutDateDate));
+//        Collections.sort(this.listFixedBill, Comparator.comparing(FixedBill::keluarkanTanggal));
     }
 
     public void exportToPdf(String filename){
@@ -37,7 +37,7 @@ public class History {
                 double totalPenghasilan = 0;
                 for(int i = 0; i < this.listFixedBill.size(); i++){
                     FixedBill bill = this.listFixedBill.get(i);
-                    Paragraph date = new Paragraph("Bill" + (i+1) +" " + bill.getCheckoutDateDate().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
+                    Paragraph date = new Paragraph("Bill" + (i+1) +" " + bill.keluarkanTanggal().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
                     date.setAlignment(Element.ALIGN_RIGHT);
                     document.add(date);
                     Paragraph daftarBelanjaan = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD));

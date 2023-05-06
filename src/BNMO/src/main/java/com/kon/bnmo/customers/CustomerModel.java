@@ -8,18 +8,13 @@ import java.util.List;
 public class CustomerModel extends Person {
     public CustomerModel(String id){
         this.id = id;
-        this.fixBills = new ArrayList<FixedBill>();
     }
 
     public  CustomerModel(){
         this.id = "";
-        this.fixBills = new ArrayList<FixedBill>();
+        this.type = "";
     }
 
-    public CustomerModel(String id, List<FixedBill> fixBills){
-        this.id = id;
-        this.fixBills = fixBills;
-    }
     @Override
     public String getType() {
         return "customer";

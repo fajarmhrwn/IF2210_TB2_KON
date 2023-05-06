@@ -1,40 +1,83 @@
 package com.kon.bnmo.datastore;
 
-import com.kon.bnmo.customers.CustomerHolder;
-import com.kon.bnmo.customers.CustomerModel;
-import com.kon.bnmo.customers.MemberModel;
-import com.kon.bnmo.customers.Person;
-import com.kon.bnmo.holder.holder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kon.bnmo.customers.*;
+import com.kon.bnmo.items.Billitem;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
+import com.kon.bnmo.transaction.Transaction;
+import com.kon.bnmo.transaction.TransactionHolder;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class cobaadapter {
     public static void main(String[] args) throws IOException {
         DataStore dataStore = new DataStore();
-        dataStore.setDataAdapter(new JSONDataAdapter());
+        dataStore.setDataAdapter(new OBJDataAdapter());
         try{
-            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
+        }catch (IOException e){
+            System.out.println("Error");
         }
+        System.out.println("JSON");
+        dataStore.printItemHolder();
+        System.out.println("JSON");
+        dataStore.printCustomerHolder();
+        System.out.println("JSON");
+        dataStore.printTransactionHolder();
+
+//        dataStore.setDataAdapter(new XMLDataAdapter());
+//        try{
+//            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
+//        }catch (IOException e) {
+//            System.out.println("Error");
+//        }
+//        try{
+//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
+//        }catch (IOException e){
+//            System.out.println("Error");
+//        }
         ItemHolder itemHolder = dataStore.getItemHolder();
         CustomerHolder customerHolder = dataStore.getCustomerHolder();
-        for(Item item : itemHolder.getItemList()){
+        TransactionHolder transactionHolder = dataStore.getTransactionHolder();
+        List<Item> items = itemHolder.getItemList();
+        List<Person> customers = customerHolder.getItemList();
+        List<Transaction> transactions = transactionHolder.getItemList();
+
+        for (Item item : items) {
             System.out.println(item.getName());
         }
-        for(Person person : customerHolder.getItemList()){
-            System.out.println(person.getType());
+
+        for (Person customer : customers) {
+            System.out.println(customer.getType());
         }
 
-        customerHolder.add(new MemberModel("1","fajar","08123456789"));
-        customerHolder.add(new MemberModel("2","herawan","08123456789"));
-        customerHolder.add(new MemberModel("3","fajarherawan","08123456789"));
-        customerHolder.add(new MemberModel("4","fajar herawan","08123456789"));
+        for (Transaction transaction : transactions) {
+            System.out.println(transaction.getIdCustomer());
+        }
 
-        dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
+
+
+//        try{
+//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON");
+//        }catch (IOException e){
+//            System.out.println("Error");
+//        }
+//        try{
+//            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON");
+//        }catch (IOException e){
+//            System.out.println("Error");
+//        }
+//
+//        dataStore.setDataAdapter(new OBJDataAdapter());
+//        try{
+//            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
+//        }catch (IOException e){
+//            System.out.println("Error");
+//        }
+
 
     }
 }
