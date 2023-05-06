@@ -1,5 +1,9 @@
 package com.kon.bnmo.datastore;
 
+import com.kon.bnmo.customers.CustomerHolder;
+import com.kon.bnmo.customers.CustomerModel;
+import com.kon.bnmo.customers.MemberModel;
+import com.kon.bnmo.customers.Person;
 import com.kon.bnmo.holder.holder;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
@@ -8,42 +12,29 @@ import java.io.IOException;
 import java.util.List;
 
 public class cobaadapter {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         DataStore dataStore = new DataStore();
         dataStore.setDataAdapter(new JSONDataAdapter());
         try{
-            dataStore.readItem("items.json");
+            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         ItemHolder itemHolder = dataStore.getItemHolder();
-        List<Item> items = itemHolder.getItemList();
-        for (Item item : items) {
+        CustomerHolder customerHolder = dataStore.getCustomerHolder();
+        for(Item item : itemHolder.getItemList()){
             System.out.println(item.getName());
+        }
+        for(Person person : customerHolder.getItemList()){
+            System.out.println(person.getType());
         }
 
-        dataStore.setDataAdapter(new XMLDataAdapter());
-        try{
-            dataStore.readItem("input.xml");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        itemHolder = dataStore.getItemHolder();
-        items = itemHolder.getItemList();
-        for (Item item : items) {
-            System.out.println(item.getName());
-        }
+        customerHolder.add(new MemberModel("1","fajar","08123456789"));
+        customerHolder.add(new MemberModel("2","herawan","08123456789"));
+        customerHolder.add(new MemberModel("3","fajarherawan","08123456789"));
+        customerHolder.add(new MemberModel("4","fajar herawan","08123456789"));
 
-        dataStore.setDataAdapter(new OBJDataAdapter());
-        try{
-            dataStore.readItem("testobj.txt");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        itemHolder = dataStore.getItemHolder();
-        items = itemHolder.getItemList();
-        for (Item item : items) {
-            System.out.println(item.getName());
-        }
+        dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
+
     }
 }

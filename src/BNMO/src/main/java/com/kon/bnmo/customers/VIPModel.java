@@ -1,20 +1,37 @@
 package com.kon.bnmo.customers;
 
+import com.kon.bnmo.items.FixedBill;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class VIPModel extends Person{
     private String name;
     private String phoneNumber;
     private int point;
 
+    public  VIPModel(){
+        this.id = "";
+        this.name = "";
+        this.phoneNumber = "";
+        this.point = 0;
+        this.fixBills = new ArrayList<FixedBill>();
+    }
     public VIPModel(String id, String name, String phoneNumber, int point){
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.point = point;
-        this.fixBills = new ArrayList<String>();
+        this.fixBills = new ArrayList<FixedBill>();
     }
 
+    public VIPModel(String id, String name, String phoneNumber, int point, List<FixedBill> fixBills){
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.point = point;
+        this.fixBills = fixBills;
+    }
     public VIPModel(VIPModel other){
         this.id = other.id;
         this.name = other.name;
@@ -59,5 +76,10 @@ public class VIPModel extends Person{
     @Override
     public String getType() {
         return "vip";
+    }
+
+    @Override
+    public void setType(String type) {
+        this.type = type;
     }
 }

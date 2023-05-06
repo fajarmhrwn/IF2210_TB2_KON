@@ -18,21 +18,16 @@ public class DataStore {
         customerHolder = new CustomerHolder();
     }
 
-    public void readItem(String path) throws IOException {
+    public  void read(String path) throws IOException {
         dataAdapter.readData(this.itemHolder, path);
-    }
-
-    public  void readCustomer(String path) throws IOException {
         dataAdapter.readData(this.customerHolder, path);
     }
 
-    public void writeItem(String path) throws IOException {
+    public void write(String path) throws IOException {
         dataAdapter.writeData(this.itemHolder, path);
-    }
-
-    public void writeCustomer(String path) throws IOException {
         dataAdapter.writeData(this.customerHolder, path);
     }
+
 
     public void setDataAdapter(DataAdapter dataAdapter){
         this.dataAdapter = dataAdapter;
