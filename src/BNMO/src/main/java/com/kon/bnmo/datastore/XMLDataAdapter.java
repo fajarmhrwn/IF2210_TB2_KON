@@ -65,6 +65,7 @@ public class XMLDataAdapter implements  DataAdapter{
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                throw new IOException(e);
             }
 
         }else if(dataHolder.getType() == "Customer") {
@@ -90,6 +91,7 @@ public class XMLDataAdapter implements  DataAdapter{
 
             }catch (Exception e) {
                 e.printStackTrace();
+                throw new IOException(e);
             }
 
             try{
@@ -114,6 +116,7 @@ public class XMLDataAdapter implements  DataAdapter{
                 }
             }catch (Exception e) {
                 e.printStackTrace();
+                throw new IOException(e);
             }
 
             try{
@@ -141,6 +144,7 @@ public class XMLDataAdapter implements  DataAdapter{
                 }
             }catch (Exception e) {
                 e.printStackTrace();
+                throw new IOException(e);
             }
         } else if (dataHolder.getType()=="Transaction") {
             dataHolder.setList(new ArrayList<Transaction>());
@@ -180,6 +184,7 @@ public class XMLDataAdapter implements  DataAdapter{
 
             } catch (Exception e) {
                 e.printStackTrace();
+                throw new IOException(e);
             }
         }
     }
@@ -231,6 +236,8 @@ public class XMLDataAdapter implements  DataAdapter{
                 e.printStackTrace();
             } catch (TransformerException e) {
                 e.printStackTrace();
+            } catch (Exception e){
+                throw new IOException(e);
             }
 
         }else if(dataHolder.getType() == "Customer"){
@@ -278,6 +285,8 @@ public class XMLDataAdapter implements  DataAdapter{
                 throw new RuntimeException(e);
             } catch (TransformerException e) {
                 throw new RuntimeException(e);
+            }catch (Exception e){
+                throw new IOException(e);
             }
 
             try{
@@ -315,6 +324,8 @@ public class XMLDataAdapter implements  DataAdapter{
                 throw new RuntimeException(e);
             } catch (TransformerException e) {
                 throw new RuntimeException(e);
+            }catch (Exception e){
+                throw new IOException(e);
             }
 
             try{
@@ -355,6 +366,8 @@ public class XMLDataAdapter implements  DataAdapter{
                 throw new RuntimeException(e);
             } catch (TransformerException e) {
                 throw new RuntimeException(e);
+            } catch (Exception e){
+                throw new IOException(e);
             }
         } else if (dataHolder.getType() == "Transaction") {
             List<Transaction> transactionList = dataHolder.getList();
@@ -417,6 +430,8 @@ public class XMLDataAdapter implements  DataAdapter{
                 throw new RuntimeException(e);
             } catch (TransformerException e) {
                 throw new RuntimeException(e);
+            }catch (Exception e){
+                throw new IOException(e);
             }
         }
     }

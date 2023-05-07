@@ -1,0 +1,237 @@
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.fasterxml.jackson.databind.ObjectMapper;\nimport com.kon.bnmo.customers.*;\nimport com.kon.bnmo.items.Billitem;\nimport com.kon.bnmo.items.Item;\nimport com.kon.bnmo.items.ItemHolder;\nimport com.kon.bnmo.transaction.Transaction;\nimport com.kon.bnmo.transaction.TransactionHolder;\n\nimport java.io.IOException;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class cobaadapter {\n    public static void main(String[] args) throws IOException {\n        DataStore dataStore = new DataStore();\n        dataStore.setDataAdapter(new OBJDataAdapter());\n        try{\n            dataStore.read(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ\");\n        }catch (IOException e){\n            System.out.println(\"Error\");\n        }\n        System.out.println(\"JSON\");\n        dataStore.printItemHolder();\n        System.out.println(\"JSON\");\n        dataStore.printCustomerHolder();\n        System.out.println(\"JSON\");\n        dataStore.printTransactionHolder();\n\n//        dataStore.setDataAdapter(new XMLDataAdapter());\n//        try{\n//            dataStore.write(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML\");\n//        }catch (IOException e) {\n//            System.out.println(\"Error\");\n//        }\n//        try{\n//            dataStore.read(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML\");\n//        }catch (IOException e){\n//            System.out.println(\"Error\");\n//        }\n        ItemHolder itemHolder = dataStore.getItemHolder();\n        CustomerHolder customerHolder = dataStore.getCustomerHolder();\n        TransactionHolder transactionHolder = dataStore.getTransactionHolder();\n        List<Item> items = itemHolder.getItemList();\n        List<Person> customers = customerHolder.getItemList();\n        List<Transaction> transactions = transactionHolder.getItemList();\n\n        for (Item item : items) {\n            System.out.println(item.getName());\n        }\n\n        for (Person customer : customers) {\n            System.out.println(customer.getType());\n        }\n\n        for (Transaction transaction : transactions) {\n            System.out.println(transaction.getIdCustomer());\n        }\n\n\n\n//        try{\n//            dataStore.read(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON\");\n//        }catch (IOException e){\n//            System.out.println(\"Error\");\n//        }\n//        try{\n//            dataStore.write(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON\");\n//        }catch (IOException e){\n//            System.out.println(\"Error\");\n//        }\n//\n//        dataStore.setDataAdapter(new OBJDataAdapter());\n//        try{\n//            dataStore.write(\"/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ\");\n//        }catch (IOException e){\n//            System.out.println(\"Error\");\n//        }\n\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java	(date 1683417021555)
+@@ -28,17 +28,6 @@
+         System.out.println("JSON");
+         dataStore.printTransactionHolder();
+ 
+-//        dataStore.setDataAdapter(new XMLDataAdapter());
+-//        try{
+-//            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
+-//        }catch (IOException e) {
+-//            System.out.println("Error");
+-//        }
+-//        try{
+-//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
+-//        }catch (IOException e){
+-//            System.out.println("Error");
+-//        }
+         ItemHolder itemHolder = dataStore.getItemHolder();
+         CustomerHolder customerHolder = dataStore.getCustomerHolder();
+         TransactionHolder transactionHolder = dataStore.getTransactionHolder();
+@@ -59,6 +48,20 @@
+         }
+ 
+ 
++        dataStore.setDataAdapter(new OBJDataAdapter());
++        try{
++            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
++        }catch (IOException e) {
++            System.out.println("Error");
++        }
++//        try{
++//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
++//        }catch (IOException e){
++//            System.out.println("Error");
++//        }
++
++
++
+ 
+ //        try{
+ //            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON");
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.kon.bnmo.customers.*;\nimport com.kon.bnmo.holder.holder;\nimport com.kon.bnmo.items.Item;\nimport com.kon.bnmo.items.ItemHolder;\nimport com.kon.bnmo.transaction.Transaction;\nimport com.kon.bnmo.transaction.TransactionHolder;\n\nimport java.io.*;\nimport java.util.ArrayList;\nimport java.util.List;\n\n\npublic class OBJDataAdapter implements DataAdapter {\n    @Override\n    public void readData(holder dataHolder, String path) {\n        /* TODO: parse OBJ ke List */\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse OBJ ke List Item */\n            dataHolder.setItemList(new ArrayList<Item>());\n            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+\"/item.txt\"))) {\n                dataHolder.setItemList((List<Item>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n        }else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse OBJ ke List Customer */\n            dataHolder.setItemList(new ArrayList<Person>());\n            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+\"/customer.txt\"))) {\n                dataHolder.addAll((List<CustomerModel>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n            try{\n                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+\"/member.txt\"));\n                dataHolder.addAll((List<MemberModel>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n            try{\n                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+\"/VIP.txt\"));\n                dataHolder.addAll((List<VIPModel>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n        } else if (dataHolder.getType() == \"Transaction\") {\n            dataHolder.setItemList(new ArrayList<Transaction>());\n            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+\"/transaction.txt\"))) {\n                dataHolder.addAll((List<Transaction>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n\n        }\n    }\n    @Override\n    public void writeData(holder dataHolder, String path) {\n        /* TODO: parse List ke OBJ */\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse List Item ke OBJ */\n            List<Item> itemList = dataHolder.getItemList();\n            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+\"/item.txt\"))) {\n                oos.writeObject(itemList);\n                oos.flush();\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        }else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse List Customer ke OBJ */\n            List<Person> personList = dataHolder.getItemList();\n            List<CustomerModel> customerList = new ArrayList<CustomerModel>();\n            List<MemberModel> memberList = new ArrayList<MemberModel>();\n            List<VIPModel> vipList = new ArrayList<VIPModel>();\n            for(Person person : personList){\n                if(person.getType() == \"customer\"){\n                    customerList.add((CustomerModel) person);\n                }else if(person.getType() == \"member\"){\n                    memberList.add((MemberModel) person);\n                }else if(person.getType() == \"vip\"){\n                    vipList.add((VIPModel) person);\n                }\n            }\n            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+\"/customer.txt\"))) {\n                oos.writeObject(customerList);\n                oos.flush();\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+\"/member.txt\"))) {\n                oos.writeObject(memberList);\n                oos.flush();\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+\"/VIP.txt\"))) {\n                oos.writeObject(vipList);\n                oos.flush();\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        }else if(dataHolder.getType() == \"Transaction\") {\n            try{\n                List<Transaction> transactionList = dataHolder.getItemList();\n                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+\"/transaction.txt\"))) {\n                    oos.writeObject(transactionList);\n                    oos.flush();\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }catch (Exception e) {\n                e.printStackTrace();\n            }\n        }\n    }\n\n    public static void main(String[] args) throws IOException, ClassNotFoundException {\n        Item item = new Item(\"barang 1\",10.000,\"kategori 1\",\"dummy.jpg\",10);\n\n        FileOutputStream fileOutputStream = new FileOutputStream(\"yourfile.txt\");\n        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);\n        objectOutputStream.writeObject(item);\n        objectOutputStream.flush();\n        objectOutputStream.close();\n\n        FileInputStream fileInputStream = new FileInputStream(\"yourfile.txt\");\n        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);\n        Item p2 = (Item) objectInputStream.readObject();\n        objectInputStream.close();\n\n        assertTrue(item.equals(p2));\n        System.out.println(item.getName());\n        System.out.println(p2.getName());\n    }\n\n    private static void assertTrue(boolean b) {\n        System.out.println(b);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java	(date 1683416764031)
+@@ -18,7 +18,6 @@
+         /* TODO: parse OBJ ke List */
+         if(dataHolder.getType() == "Item") {
+             /* TODO: parse OBJ ke List Item */
+-            dataHolder.setItemList(new ArrayList<Item>());
+             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/item.txt"))) {
+                 dataHolder.setItemList((List<Item>) ois.readObject());
+             } catch (IOException | ClassNotFoundException e) {
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json b/src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json
+deleted file mode 100644
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
++++ /dev/null	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
+@@ -1,16 +0,0 @@
+-[
+-  {"nama": "Keyboard","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Mouse","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Monitor","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Laptop","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "PC","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Headset","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Speaker","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10},
+-  {"nama": "Kabel","price": 10.00,"category": "alat elektronik","imgName": "dummy.jpg","stock": 10}
+-]
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/src/BNMO/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_19\" default=\"true\" project-jdk-name=\"18\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
++++ b/.idea/misc.xml	(date 1683415886019)
+@@ -8,7 +8,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"Feat : Main\">\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/DataStore/VIP.json\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/DataStore/customer.json\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/DataStore/member.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/items.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/DataStore/item.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2PBqaNfSu8DqDaVdwzVbNO2Qsf1\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.3073005&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.29022557&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CreateClassDialog.RecentsKey\">\n      <recent name=\"com.kon.bnmo.SistemBarang\" />\n    </key>\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/BNMO\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/BNMO/DataStore\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/resources\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.kon.bnmo\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.cobaadapter\">\n    <configuration name=\"LayarUtama\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.main.LayarUtama\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"MainApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.MainApplication\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"OBJDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.OBJDataAdapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"XMLDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.XMLDataAdapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"cobaadapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.cobaadapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.cobaadapter\" />\n        <item itemvalue=\"Application.MainApplication\" />\n        <item itemvalue=\"Application.LayarUtama\" />\n        <item itemvalue=\"Application.OBJDataAdapter\" />\n        <item itemvalue=\"Application.XMLDataAdapter\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"\" />\n      <created>1682940886174</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1682940886174</updated>\n      <workItem from=\"1682940887278\" duration=\"749000\" />\n      <workItem from=\"1682941738002\" duration=\"409000\" />\n      <workItem from=\"1682944518421\" duration=\"1805000\" />\n      <workItem from=\"1682946444229\" duration=\"1015000\" />\n      <workItem from=\"1682957972709\" duration=\"30000\" />\n      <workItem from=\"1682958032946\" duration=\"796000\" />\n      <workItem from=\"1682958838223\" duration=\"36097000\" />\n      <workItem from=\"1683259715809\" duration=\"3540000\" />\n      <workItem from=\"1683265250024\" duration=\"3346000\" />\n      <workItem from=\"1683273558603\" duration=\"17901000\" />\n      <workItem from=\"1683360557039\" duration=\"2498000\" />\n      <workItem from=\"1683373198255\" duration=\"19417000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Feat : DataAdapter\">\n      <created>1683319484234</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683319484234</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Feat : DataAdapter\">\n      <created>1683319494601</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683319494601</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Feat : Main\">\n      <created>1683324196965</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683324196965</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Feat : Main\">\n      <created>1683324206652</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683324206652</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Feat : Main\">\n      <created>1683383807851</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683383807851</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Feat : Main\">\n      <created>1683383822199</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683383822199</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"7\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"Feat : DataAdapter\" />\n    <MESSAGE value=\"Feat : Main\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Feat : Main\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b438fe7991f2aabd2e289643412bdbe7e71cbda5)
++++ b/.idea/workspace.xml	(date 1683417021595)
+@@ -4,25 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : Main">
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/VIP.json" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/customer.json" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/member.json" afterDir="false" />
++    <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : DataStore">
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/items.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/item.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/VIP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/VIP.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/customer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/customer.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/item.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/item.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/member.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/member.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/transaction.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/OBJ/transaction.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/Barang.json" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -256,7 +248,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683383822199</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="Feat : DataStore">
++      <created>1683415750287</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1683415750287</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -283,6 +282,63 @@
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="Feat : DataAdapter" />
+     <MESSAGE value="Feat : Main" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Feat : Main" />
++    <MESSAGE value="Feat : DataStore" />
++    <option name="LAST_COMMIT_MESSAGE" value="Feat : DataStore" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
++          <line>40</line>
++          <option name="timeStamp" value="12" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
++          <line>50</line>
++          <option name="timeStamp" value="13" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
++          <line>85</line>
++          <option name="timeStamp" value="14" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
++          <line>98</line>
++          <option name="timeStamp" value="15" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java</url>
++          <line>25</line>
++          <option name="timeStamp" value="16" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java</url>
++          <line>56</line>
++          <option name="timeStamp" value="17" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java</url>
++          <line>48</line>
++          <option name="timeStamp" value="18" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java</url>
++          <line>18</line>
++          <option name="timeStamp" value="19" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java</url>
++          <line>31</line>
++          <option name="timeStamp" value="20" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
++  </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/IF2210_TB2_KON$cobaadapter.ic" NAME="cobaadapter Coverage Results" MODIFIED="1683403476320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>com.kon.bnmo.transaction.*</FILTER>
++    </SUITE>
+   </component>
+ </project>
+\ No newline at end of file
