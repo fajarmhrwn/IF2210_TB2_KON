@@ -9,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+import java.io.InputStream;
+
 public class CatalogueContainer extends HBox {
     private Item containedItem;
     private Button addButton;
@@ -16,16 +18,21 @@ public class CatalogueContainer extends HBox {
 
     public CatalogueContainer(Item containedItem, Catalogue catalogue) {
         this.containedItem = containedItem;
-        ImageView image = new ImageView(new Image("D:\\ITB\\Semester 4\\Object Oriented Programming\\Tubes2\\src\\BNMO\\src\\main\\java\\com\\kon\\bnmo\\cashier\\image.png"));
-        image.setFitHeight(50);
-        image.setFitWidth(50);
+        InputStream stream = getClass().getResourceAsStream("/img/" + containedItem.getImgName());
+        if (stream == null) {
+            stream = getClass().getResourceAsStream("/img/image.png");
+        }
+        assert stream != null;
+        ImageView imageView = new ImageView(new Image(stream));
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
 
         Label itemName = new Label(this.containedItem.getName());
         itemName.setWrapText(false);
         itemName.setMinWidth(700);
         this.addButton = new Button("+ Add Item");
         this.catalogue = catalogue;
-        this.getChildren().addAll(image, itemName, this.addButton);
+        this.getChildren().addAll(imageView, itemName, this.addButton);
         this.setAlignment(Pos.CENTER_RIGHT);
         this.addButton.setOnAction(this::addToBill);
     }
