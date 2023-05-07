@@ -18,16 +18,15 @@ public class OBJDataAdapter implements DataAdapter {
         /* TODO: parse OBJ ke List */
         if(dataHolder.getType() == "Item") {
             /* TODO: parse OBJ ke List Item */
-            dataHolder.setItemList(new ArrayList<Item>());
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/item.txt"))) {
-                dataHolder.setItemList((List<Item>) ois.readObject());
+                dataHolder.setList((List<Item>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
                 return;
             }
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse OBJ ke List Customer */
-            dataHolder.setItemList(new ArrayList<Person>());
+            dataHolder.setList(new ArrayList<Person>());
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/customer.txt"))) {
                 dataHolder.addAll((List<CustomerModel>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
@@ -49,7 +48,7 @@ public class OBJDataAdapter implements DataAdapter {
                 return;
             }
         } else if (dataHolder.getType() == "Transaction") {
-            dataHolder.setItemList(new ArrayList<Transaction>());
+            dataHolder.setList(new ArrayList<Transaction>());
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/transaction.txt"))) {
                 dataHolder.addAll((List<Transaction>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
@@ -64,7 +63,7 @@ public class OBJDataAdapter implements DataAdapter {
         /* TODO: parse List ke OBJ */
         if(dataHolder.getType() == "Item") {
             /* TODO: parse List Item ke OBJ */
-            List<Item> itemList = dataHolder.getItemList();
+            List<Item> itemList = dataHolder.getList();
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/item.txt"))) {
                 oos.writeObject(itemList);
                 oos.flush();
@@ -73,7 +72,7 @@ public class OBJDataAdapter implements DataAdapter {
             }
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse List Customer ke OBJ */
-            List<Person> personList = dataHolder.getItemList();
+            List<Person> personList = dataHolder.getList();
             List<CustomerModel> customerList = new ArrayList<CustomerModel>();
             List<MemberModel> memberList = new ArrayList<MemberModel>();
             List<VIPModel> vipList = new ArrayList<VIPModel>();
@@ -106,7 +105,7 @@ public class OBJDataAdapter implements DataAdapter {
             }
         }else if(dataHolder.getType() == "Transaction") {
             try{
-                List<Transaction> transactionList = dataHolder.getItemList();
+                List<Transaction> transactionList = dataHolder.getList();
                 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/transaction.txt"))) {
                     oos.writeObject(transactionList);
                     oos.flush();

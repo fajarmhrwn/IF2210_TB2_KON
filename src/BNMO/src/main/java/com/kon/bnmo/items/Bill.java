@@ -9,16 +9,16 @@ public class Bill extends holder<ItemContainer> {
     }
     @Override
     public void add(ItemContainer item) {
-        int index = this.itemList.indexOf(item);
+        int index = this.list.indexOf(item);
         if (index == -1) {
-            this.itemList.add(item);
+            this.list.add(item);
         } else {
-            this.itemList.get(index).setAmount(this.itemList.get(index).getAmount() + item.getAmount());
+            this.list.get(index).setAmount(this.list.get(index).getAmount() + item.getAmount());
         }
     }
     @Override
     public void remove(ItemContainer item) {
-        this.itemList.remove(item);
+        this.list.remove(item);
     }
 
 }

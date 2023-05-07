@@ -29,7 +29,7 @@ public class JSONDataAdapter implements DataAdapter {
         System.out.println(absolutePath);
         System.out.println(file.exists());
         if(dataHolder.getType() == "Item") {
-            dataHolder.setItemList(new ArrayList<Item>());
+            dataHolder.setList(new ArrayList<Item>());
             /* TODO: parse JSON ke List Item */
             if (file.exists()) {
                 try {
@@ -38,7 +38,7 @@ public class JSONDataAdapter implements DataAdapter {
                     for (Item item : itemList) {
                         System.out.println(item.getName());
                     }
-                    dataHolder.setItemList(itemList);
+                    dataHolder.setList(itemList);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -49,7 +49,7 @@ public class JSONDataAdapter implements DataAdapter {
 
         }
         else if(dataHolder.getType() == "Customer") {
-            dataHolder.setItemList(new ArrayList<Person>());
+            dataHolder.setList(new ArrayList<Person>());
             /* TODO: parse JSON ke List Customer */
             File file1 = new File(path + "/customer.json");
             if (file.exists()) {
@@ -87,13 +87,13 @@ public class JSONDataAdapter implements DataAdapter {
             }
         }
         else if(dataHolder.getType() == "Transaction") {
-            dataHolder.setItemList(new ArrayList<Transaction>());
+            dataHolder.setList(new ArrayList<Transaction>());
             File file1 = new File(path + "/transaction.json");
             if (file.exists()) {
                 try {
                     List<Transaction> transactionList = objectMapper.readValue(file1, new TypeReference<List<Transaction>>() {
                     });
-                    dataHolder.setItemList(transactionList);
+                    dataHolder.setList(transactionList);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -106,7 +106,7 @@ public class JSONDataAdapter implements DataAdapter {
         if(dataHolder.getType() == "Item") {
             /* TODO: parse List Item ke JSON */
             ObjectMapper objectMapper = new ObjectMapper();
-            String jsonString = objectMapper.writeValueAsString(dataHolder.getItemList());
+            String jsonString = objectMapper.writeValueAsString(dataHolder.getList());
             /* Save to file */
             File file = new File(path+"/item.json");
             FileWriter fileWriter = new FileWriter(file);
@@ -115,7 +115,7 @@ public class JSONDataAdapter implements DataAdapter {
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse List Customer ke JSON */
             ObjectMapper objectMapper = new ObjectMapper();
-            List<Person> personList = dataHolder.getItemList();
+            List<Person> personList = dataHolder.getList();
             List<CustomerModel> customerList = new ArrayList<CustomerModel>();
             List<MemberModel> memberList = new ArrayList<MemberModel>();
             List<VIPModel> VIPList = new ArrayList<VIPModel>();
@@ -147,7 +147,7 @@ public class JSONDataAdapter implements DataAdapter {
             fileWriter3.close();
         }else if(dataHolder.getType() == "Transaction") {
             ObjectMapper objectMapper = new ObjectMapper();
-            String jsonString = objectMapper.writeValueAsString(dataHolder.getItemList());
+            String jsonString = objectMapper.writeValueAsString(dataHolder.getList());
             /* Save to file */
             File file = new File(path+"/transaction.json");
             FileWriter fileWriter = new FileWriter(file);

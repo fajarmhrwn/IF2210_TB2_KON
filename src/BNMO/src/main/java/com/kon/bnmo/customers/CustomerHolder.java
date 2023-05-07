@@ -9,20 +9,20 @@ public class CustomerHolder extends holder<Person>{
         super("Customer");
     }
     public CustomerHolder(CustomerHolder other){
-        super("Customer", other.getItemList());
+        super("Customer", other.getList());
     }
 
     @Override
     public void add(Person item) {
-        List<Person> listPerson = super.getItemList();
+        List<Person> listPerson = super.getList();
         listPerson.add(item);
-        super.setItemList(listPerson);
+        super.setList(listPerson);
     }
 
     @Override
     public void remove(Person item) {
-        List<Person> listPerson = super.getItemList();
+        List<Person> listPerson = super.getList();
         listPerson.remove(item);
-        super.setItemList(listPerson);
+        super.setList(listPerson);
     }
 }

@@ -32,8 +32,8 @@ public class BillContainer extends ScrollPane {
     }
 
     public void updateAmount(ItemContainer itemContainer, Integer amount) {
-        int index = this.billHolder.getItemList().indexOf(itemContainer);
-        this.billHolder.getItemList().get(index).setAmount(amount);
+        int index = this.billHolder.getList().indexOf(itemContainer);
+        this.billHolder.getList().get(index).setAmount(amount);
     }
 
     public CashierSidePanel getSidePanel() {

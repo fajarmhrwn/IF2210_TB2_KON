@@ -10,18 +10,18 @@ public class Storage extends holder<CatalogueContainer> {
 
     @Override
     public void add(CatalogueContainer item) {
-        int index = this.itemList.indexOf(item);
+        int index = this.list.indexOf(item);
         if (index == -1) {
-            this.itemList.add(item);
+            this.list.add(item);
         } else {
-            this.itemList.get(index).getContainedItem().setStock(
-                    this.itemList.get(index).getContainedItem().getStock() +
+            this.list.get(index).getContainedItem().setStock(
+                    this.list.get(index).getContainedItem().getStock() +
                             item.getContainedItem().getStock());
         }
     }
     @Override
     public void remove(CatalogueContainer item) {
-        this.itemList.remove(item);
+        this.list.remove(item);
     }
 
 
