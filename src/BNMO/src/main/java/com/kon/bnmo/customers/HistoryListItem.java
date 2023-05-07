@@ -16,7 +16,9 @@ public class HistoryListItem extends HBox {
             }
         }
         Label label = new Label(listName.toString());
+        Label date = new Label(transaction.getCheckoutDate());
         this.setAlignment(Pos.CENTER);
-        this.getChildren().add(label);
+        this.setSpacing(10);
+        this.getChildren().addAll(label, date);
     }
 }

@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Fix: Exit loop">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SuccessfulPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageContainer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SimplePane.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/TryRead.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore/JSON/item.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore/JSON/item.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore/JSON/transaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore/JSON/transaction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore/OBJ/transaction.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore/OBJ/transaction.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/HistoryListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/HistoryListItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +46,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "last_opened_file_path": "D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.4045977"
@@ -229,5 +223,9 @@
         <watch expression="catalogueContainer.addButton.graphic" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
