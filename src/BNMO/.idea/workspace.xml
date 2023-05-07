@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="dependency">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/SettingsDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/SettingsPlug.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/AddCustomerDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Settings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageGrid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/kon/bnmo/img/placeholder.png" beforeDir="false" />
-    </list>
+    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Clean: Refactor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,208 +13,36 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/Cashier.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2P9RNd3pUPiRQ91vn7afQxq0oap" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+    "git-widget-placeholder": "main"
   }
-}]]>]]></component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo" />
-      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\java\com\kon\bnmo\cashier" />
-      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.kon.bnmo.cashier" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.HelloApplication" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JSONDataAdapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.JSONDataAdapter" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.MainApplication" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PopupInTabExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.PopupInTabExample" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.cashier.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SimplePane" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.SimplePane" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.items.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MainApplication" />
-        <item itemvalue="Application.SimplePane" />
-        <item itemvalue="Application.JSONDataAdapter" />
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.PopupInTabExample" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="c547f345-ad1a-403d-8ed1-7ab3788452ea" name="Changes" comment="" />
-      <created>1682867276210</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1682867276210</updated>
-      <workItem from="1683387270683" duration="6720000" />
-    </task>
-    <task id="LOCAL-00001" summary="Resolve conflict">
-      <created>1682946340954</created>
+    <task id="LOCAL-00001" summary="Clean: Refactor">
+      <created>1683449395825</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1682946340954</updated>
+      <updated>1683449395825</updated>
     </task>
-    <task id="LOCAL-00002" summary="Resolve conflict">
-      <created>1683120956658</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683120956658</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Resolve conflict" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolve conflict" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NoSuchFieldError" package="java.lang" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="5" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java</url>
-          <line>35</line>
-          <properties class="com.kon.bnmo.datastore.JSONDataAdapter">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Clean: Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean: Refactor" />
   </component>
 </project>
