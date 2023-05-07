@@ -92,29 +92,25 @@ public class Checkout extends Stage {
                     this.getSidePanel().getThisParent().getTabPane().getTabs()) {
                 if (tab.getText().contains("Cashier:")) {
                     Cashier cashier = (Cashier) tab;
-                    cashier
-                            .getMainPanel()
-                            .getCatalogue()
-                            .getAvailableItems()
-                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier
-                            .getMainPanel()
-                            .getCatalogue()
-                            .getAvailableItems()
-                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier.getAvailableItems().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier.getMainPanel().getCatalogue().updateCatalogue();
+//                    cashier
+//                            .getMainPanel()
+//                            .getCatalogue()
+//                            .getAvailableItems()
+//                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+//                    cashier.getAvailableItems().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
                     cashier.getSidePanel().getBc().updateBillContainer(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    MainApplication mainApplication = (MainApplication) cashier.getMainClass();
-                    mainApplication.getDataStore().getItemHolder().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    cashier.getMainPanel().getCatalogue().updateCatalogue();
+                    cashier.getMainPanel().getSistemBarang().updateUI();
+//                    MainApplication mainApplication = (MainApplication) cashier.getMainClass();
+//                    mainApplication.getDataStore().getItemHolder().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
                 }
             }
             fixedBill.getListBillItem().add(new Billitem(ic));
         }
-        this.close();
         fixedBill.setIdCustomer(Integer.parseInt(this.sidePanel.getThisParent().getCustomerName().getId()));
         MainApplication mainApplication = (MainApplication) this.sidePanel.getThisParent().getMainClass();
         mainApplication.getDataStore().getTransactionHolder().getList().add(fixedBill);
+        this.close();
     }
 
     private void updateTotal() {

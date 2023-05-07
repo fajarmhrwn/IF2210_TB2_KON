@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 public class SistemBarang extends Tab {
 
     private int jumlahBarang;
+    private ScrollPane scrollPane;
 
     private ItemHolder itemHolder;
 
@@ -52,9 +53,9 @@ public class SistemBarang extends Tab {
         }
 
         // create a ScrollPane layout and add the VBox to it
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(layout);
-        scrollPane.setFitToWidth(true);
+        this.scrollPane = new ScrollPane();
+        this.scrollPane.setContent(layout);
+        this.scrollPane.setFitToWidth(true);
 
         TextField textField = new TextField();
         textField.setPromptText("Nama Barang");
@@ -82,8 +83,19 @@ public class SistemBarang extends Tab {
         borderPane.setTop(keterangan);
 
         this.setContent(borderPane);
-        this.setStyle("-fx-background-color: #f0f0f0;");
 
+    }
+
+    public void updateUI() {
+        this.layout = new VBox();
+
+        layout.setAlignment(javafx.geometry.Pos.CENTER); // set alignment to center
+
+        for (Item item : itemHolder.getList()){
+            Barang barang = new Barang(item, this);
+            layout.getChildren().add(barang);
+        }
+        this.scrollPane.setContent(this.layout);
     }
 
 }

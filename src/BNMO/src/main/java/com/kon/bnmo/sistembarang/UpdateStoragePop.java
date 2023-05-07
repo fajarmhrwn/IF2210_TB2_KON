@@ -53,7 +53,6 @@ public class UpdateStoragePop extends Stage {
                     if (tab.getText().contains("Cashier:")) {
                         Cashier cashier = (Cashier) tab;
                         cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
-                        cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
                         cashier.getAvailableItems().setItemStock(this.item, quantity);
                         MainApplication mainApplication = (MainApplication) cashier.getMainClass();
                         mainApplication.getDataStore().getItemHolder().setItemStock(this.item, quantity);
