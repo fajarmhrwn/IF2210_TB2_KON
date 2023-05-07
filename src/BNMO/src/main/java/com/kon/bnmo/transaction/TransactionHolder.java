@@ -8,13 +8,13 @@ public class TransactionHolder extends holder<Transaction>{
     }
     @Override
     public void add(Transaction transaction) {
-        int index = this.itemList.indexOf(transaction);
+        int index = this.list.indexOf(transaction);
         if (index == -1) {
-            this.itemList.add(transaction);
+            this.list.add(transaction);
         }
     }
     @Override
     public void remove(Transaction transaction) {
-        this.itemList.remove(transaction);
+        this.list.remove(transaction);
     }
 }

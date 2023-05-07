@@ -7,6 +7,8 @@ import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.transaction.TransactionHolder;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DataStore {
@@ -17,14 +19,7 @@ public class DataStore {
 
     private TransactionHolder transactionHolder;
 
-    public TransactionHolder getTransactionHolder() {
-        return transactionHolder;
-    }
-
-    public void setTransactionHolder(TransactionHolder transactionHolder) {
-        this.transactionHolder = transactionHolder;
-    }
-
+    public static List<Double> kursMataUang = new ArrayList<Double>(); /* Kurs mata uang relatif thd IDR */
 
     public DataStore(){
         itemHolder = new ItemHolder();
@@ -44,6 +39,35 @@ public class DataStore {
         dataAdapter.writeData(this.transactionHolder, path);
     }
 
+    public TransactionHolder getTransactionHolder() {
+        return transactionHolder;
+    }
+
+    public void setTransactionHolder(TransactionHolder transactionHolder) {
+        this.transactionHolder = transactionHolder;
+    }
+
+    public static List<Double> getKursMataUang() {
+        return kursMataUang;
+    }
+
+    public static void setKursMataUang(List<Double> kursMataUang) {
+        DataStore.kursMataUang = kursMataUang;
+    }
+
+    public static  void addKursMataUang(Double kurs){
+        kursMataUang.add(kurs);
+    }
+
+    public static void removeKursMataUang(int index){
+        kursMataUang.remove(index);
+    }
+
+    public static void printKursMataUang(){
+        for (int i = 0; i < kursMataUang.size(); i++) {
+            System.out.println(kursMataUang.get(i));
+        }
+    }
 
     public void setDataAdapter(DataAdapter dataAdapter){
         this.dataAdapter = dataAdapter;
@@ -71,20 +95,20 @@ public class DataStore {
 
 
     public void printCustomerHolder(){
-        for (int i = 0; i < customerHolder.getItemList().size(); i++) {
-            System.out.println(customerHolder.getItemList().get(i).getType());
+        for (int i = 0; i < customerHolder.getList().size(); i++) {
+            System.out.println(customerHolder.getList().get(i).getType());
         }
     }
 
     public void printItemHolder(){
-        for (int i = 0; i < itemHolder.getItemList().size(); i++) {
-            System.out.println(itemHolder.getItemList().get(i).getName());
+        for (int i = 0; i < itemHolder.getList().size(); i++) {
+            System.out.println(itemHolder.getList().get(i).getName());
         }
     }
 
     public void printTransactionHolder(){
-        for (int i = 0; i < transactionHolder.getItemList().size(); i++) {
-            System.out.println(transactionHolder.getItemList().get(i).getIdCustomer());
+        for (int i = 0; i < transactionHolder.getList().size(); i++) {
+            System.out.println(transactionHolder.getList().get(i).getIdCustomer());
         }
     }
 }

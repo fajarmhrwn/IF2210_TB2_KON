@@ -36,7 +36,7 @@ public class XMLDataAdapter implements  DataAdapter{
     @Override
     public void readData(holder dataHolder, String path) throws IOException {
         if(dataHolder.getType() == "Item") {
-            dataHolder.setItemList(new ArrayList<Item>());
+            dataHolder.setList(new ArrayList<Item>());
             try {
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -68,7 +68,7 @@ public class XMLDataAdapter implements  DataAdapter{
             }
 
         }else if(dataHolder.getType() == "Customer") {
-            dataHolder.setItemList(new ArrayList<Person>());
+            dataHolder.setList(new ArrayList<Person>());
             try{
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -143,7 +143,7 @@ public class XMLDataAdapter implements  DataAdapter{
                 e.printStackTrace();
             }
         } else if (dataHolder.getType()=="Transaction") {
-            dataHolder.setItemList(new ArrayList<Transaction>());
+            dataHolder.setList(new ArrayList<Transaction>());
             try{
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -187,7 +187,7 @@ public class XMLDataAdapter implements  DataAdapter{
     @Override
     public void writeData(holder dataHolder, String path) throws IOException {
         if(dataHolder.getType() == "Item") {
-            List<Item> itemList = dataHolder.getItemList(); // your list of Item objects
+            List<Item> itemList = dataHolder.getList(); // your list of Item objects
                     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder;
             try {
@@ -234,7 +234,7 @@ public class XMLDataAdapter implements  DataAdapter{
             }
 
         }else if(dataHolder.getType() == "Customer"){
-            List<Person> listPerson = dataHolder.getItemList();
+            List<Person> listPerson = dataHolder.getList();
             System.out.println("List Person: "+listPerson.size());
             List<CustomerModel> customerList = new ArrayList<>();
             List<MemberModel> memberList = new ArrayList<>();
@@ -357,7 +357,7 @@ public class XMLDataAdapter implements  DataAdapter{
                 throw new RuntimeException(e);
             }
         } else if (dataHolder.getType() == "Transaction") {
-            List<Transaction> transactionList = dataHolder.getItemList();
+            List<Transaction> transactionList = dataHolder.getList();
             System.out.println("List Transaction: " + transactionList.size());
             try {
                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

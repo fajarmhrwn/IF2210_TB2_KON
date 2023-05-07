@@ -5,16 +5,16 @@ import java.util.List;
 
 /* class parent dari kumpulan items atau kumpulan customer*/
 abstract public class holder<T> {
-    protected List<T> itemList;
+    protected List<T> list;
     protected String type;
 
     public holder(String type){
-        this.itemList = new ArrayList<T>();
+        this.list = new ArrayList<T>();
         this.type = type;
     }
 
     public  holder(String type, List<T> itemList){
-        this.itemList = new ArrayList<T>(itemList);
+        this.list = new ArrayList<T>(itemList);
     }
     public String getType(){
         return this.type;
@@ -28,14 +28,14 @@ abstract public class holder<T> {
 
     abstract public void remove(T item);
 
-    public List<T> getItemList() {
-        return itemList;
+    public List<T> getList() {
+        return list;
     }
 
     public void addAll(List<T> itemList) {
-        this.itemList.addAll(itemList);
+        this.list.addAll(itemList);
     }
-    public void setItemList(List<T> itemList) {
-        this.itemList = itemList;
+    public void setList(List<T> itemList) {
+        this.list = itemList;
     }
 }

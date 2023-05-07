@@ -34,7 +34,7 @@ public class CatalogueContainer extends HBox {
         BillContainer billContainer = this.catalogue
         .getMainPanel().getCashier().getSidePanel()
                 .getBc();
-        if (!billContainer.getBillHolder().getItemList().contains(new com.kon.bnmo.cashier.ItemContainer(this.containedItem, billContainer))) {
+        if (!billContainer.getBillHolder().getList().contains(new com.kon.bnmo.cashier.ItemContainer(this.containedItem, billContainer))) {
            billContainer.addItem(new com.kon.bnmo.cashier.ItemContainer(this.containedItem, billContainer));
            billContainer.getSidePanel().setPrice();
         }

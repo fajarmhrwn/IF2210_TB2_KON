@@ -8,20 +8,20 @@ public class ItemHolder extends holder<Item> {
     }
 
     public ItemHolder(ItemHolder other) {
-        super("Item", other.getItemList());
+        super("Item", other.getList());
     }
     @Override
     public void add(Item item) {
-        int index = this.itemList.indexOf(item);
+        int index = this.list.indexOf(item);
         if (index == -1) {
-            this.itemList.add(item);
+            this.list.add(item);
         } else {
-            this.itemList.get(index).setStock(this.itemList.get(index).getStock() + item.getStock());
+            this.list.get(index).setStock(this.list.get(index).getStock() + item.getStock());
         }
     }
     @Override
     public void remove(Item item) {
-        this.itemList.remove(item);
+        this.list.remove(item);
     }
 
 //    public static void main(String[] args) {

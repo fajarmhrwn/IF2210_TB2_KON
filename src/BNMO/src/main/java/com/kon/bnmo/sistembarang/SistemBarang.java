@@ -14,7 +14,7 @@ public class SistemBarang extends  Tab {
 
     public void setItemHolder(ItemHolder itemHolder) {
         this.itemHolder = itemHolder;
-        this.jumlahBarang = itemHolder.getItemList().size();
+        this.jumlahBarang = itemHolder.getList().size();
     }
 
     public ItemHolder getItemHolder() {
@@ -30,7 +30,7 @@ public class SistemBarang extends  Tab {
         jumlahBarang--;
         jumlahBarangLabel.setText("Jumlah Barang : " + jumlahBarang);
         layout.getChildren().clear();
-        this.itemHolder.getItemList().forEach(Item -> {
+        this.itemHolder.getList().forEach(Item -> {
             Barang barang = new Barang(Item, this);
             layout.getChildren().add(barang);
         });
@@ -40,13 +40,13 @@ public class SistemBarang extends  Tab {
     public SistemBarang(ItemHolder itemHolder) {
         super("Sistem Barang");
         this.itemHolder = new ItemHolder(itemHolder);
-        this.jumlahBarang = itemHolder.getItemList().size();
+        this.jumlahBarang = itemHolder.getList().size();
         this.jumlahBarangLabel = new Label("Jumlah Barang : " + jumlahBarang);
         this.layout = new VBox();
 
         layout.setAlignment(javafx.geometry.Pos.CENTER); // set alignment to center
 
-        for (Item item : itemHolder.getItemList()){
+        for (Item item : itemHolder.getList()){
             Barang barang = new Barang(item, this);
             layout.getChildren().add(barang);
         }

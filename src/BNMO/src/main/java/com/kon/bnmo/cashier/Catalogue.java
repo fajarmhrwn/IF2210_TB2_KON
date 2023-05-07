@@ -22,12 +22,12 @@ public class Catalogue extends ScrollPane {
         DataStore dataStore = new DataStore();
         dataStore.setDataAdapter(new JSONDataAdapter());
         try {
-            dataStore.readItem("items.json");
+            dataStore.read("items.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         ItemHolder itemHolder = dataStore.getItemHolder();
-        for (Item item : itemHolder.getItemList()) {
+        for (Item item : itemHolder.getList()) {
             this.addItem(new CatalogueContainer(item, this));
         }
         this.setContent(this.vBox);

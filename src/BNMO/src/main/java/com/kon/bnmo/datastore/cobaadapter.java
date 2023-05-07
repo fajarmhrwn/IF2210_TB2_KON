@@ -18,6 +18,7 @@ public class cobaadapter {
         dataStore.setDataAdapter(new OBJDataAdapter());
         try{
             dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
+            System.out.println("File berhasil di read");
         }catch (IOException e){
             System.out.println("Error");
         }
@@ -28,23 +29,12 @@ public class cobaadapter {
         System.out.println("JSON");
         dataStore.printTransactionHolder();
 
-//        dataStore.setDataAdapter(new XMLDataAdapter());
-//        try{
-//            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
-//        }catch (IOException e) {
-//            System.out.println("Error");
-//        }
-//        try{
-//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
-//        }catch (IOException e){
-//            System.out.println("Error");
-//        }
         ItemHolder itemHolder = dataStore.getItemHolder();
         CustomerHolder customerHolder = dataStore.getCustomerHolder();
         TransactionHolder transactionHolder = dataStore.getTransactionHolder();
-        List<Item> items = itemHolder.getItemList();
-        List<Person> customers = customerHolder.getItemList();
-        List<Transaction> transactions = transactionHolder.getItemList();
+        List<Item> items = itemHolder.getList();
+        List<Person> customers = customerHolder.getList();
+        List<Transaction> transactions = transactionHolder.getList();
 
         for (Item item : items) {
             System.out.println(item.getName());
@@ -57,6 +47,21 @@ public class cobaadapter {
         for (Transaction transaction : transactions) {
             System.out.println(transaction.getIdCustomer());
         }
+
+
+        dataStore.setDataAdapter(new OBJDataAdapter());
+        try{
+            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
+            System.out.println("File berhasil dibuat");
+        }catch (IOException e) {
+            System.out.println("Error");
+        }
+//        try{
+//            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/XML");
+//        }catch (IOException e){
+//            System.out.println("Error");
+//        }
+
 
 
 
