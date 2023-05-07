@@ -1,11 +1,14 @@
 package com.kon.bnmo.customers;
 
+import com.kon.bnmo.datastore.DataStore;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
+
 public class CustomerPage extends Tab {
 
-    public CustomerPage(){
+    public CustomerPage(DataStore dataStore, TabPane tabPane){
         super();
         VBox vLayout = new VBox();
 
@@ -14,8 +17,10 @@ public class CustomerPage extends Tab {
 
         ListView list = new ListView();
 
-        for(int i=0;i<10;i++){
-            list.getItems().add(new CustomerListItem("Kimochi", "2"));
+        List<Person> listPerson = dataStore.getCustomerHolder().getList();
+        for(int i=0;i<listPerson.size();i++){
+            CustomerListItem item = new CustomerListItem(dataStore, listPerson.get(i), tabPane);
+            list.getItems().add(item);
         }
 
         vLayout.getChildren().add(nameLabel);

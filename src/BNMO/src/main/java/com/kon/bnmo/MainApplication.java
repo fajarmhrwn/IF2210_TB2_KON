@@ -1,17 +1,23 @@
 package com.kon.bnmo;
 
 import com.kon.bnmo.cashier.Cashier;
-import com.kon.bnmo.customers.CustomerPage;
+import com.kon.bnmo.customers.*;
+import com.kon.bnmo.datastore.DataStore;
+import com.kon.bnmo.items.Billitem;
+import com.kon.bnmo.items.FixedBill;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.main.DigitalClock;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.items.ItemHolder;
+import com.kon.bnmo.transaction.Transaction;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+
+import java.util.List;
 
 public class MainApplication extends Application {
     private TabPane tabPane;
@@ -64,19 +70,23 @@ public class MainApplication extends Application {
         menuItem3.getItems().addAll(submenuItem6, submenuItem7);
 
         submenuItem1.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage();
-            tabPane.getTabs().add(tab);
-            tabPane.getSelectionModel().select(tab);
-        });
+            DataStore data = new DataStore();
 
-        submenuItem2.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage();
-            tabPane.getTabs().add(tab);
-            tabPane.getSelectionModel().select(tab);
-        });
+            CustomerModel customer1 = new CustomerModel("1");
+            MemberModel member1 = new MemberModel("2","Kimochi","088736248");
+            VIPModel vip1 = new VIPModel("3","Kim","088736248", 0);
 
-        submenuItem3.setOnAction(event -> {
-            CustomerPage tab = new CustomerPage();
+            data.getCustomerHolder().add(customer1);
+            data.getCustomerHolder().add(member1);
+            data.getCustomerHolder().add(vip1);
+
+            Billitem billItem1 = new Billitem("name", 9.0, "dweu", "", 9, 1);
+            List<Billitem> billItems = List.of(billItem1);
+            Transaction transaction1 = new Transaction(1, billItems);
+
+            data.getTransactionHolder().add(transaction1);
+
+            CustomerPage tab = new CustomerPage(data, tabPane);
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
