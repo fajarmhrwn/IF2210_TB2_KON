@@ -86,6 +86,7 @@ public class Checkout extends Stage {
     }
 
     public void updateTable() {
+        this.table.getItems().clear();
         ObservableList<ItemContainer> items = FXCollections.observableArrayList();
         items.addAll(this.sidePanel.getBc().getBillHolder().getList());
         this.table.setItems(items);

@@ -44,7 +44,9 @@ public class SettingsDB extends Tab {
         Button directoryButton = new Button("Pilih Direktori");
 
         directoryButton.setOnAction(event -> {
+            File initialDirectory = new File("DataStore");
             DirectoryChooser directoryChooser = new DirectoryChooser();
+            directoryChooser.setInitialDirectory(initialDirectory);
             File selectedDirectory = directoryChooser.showDialog(null);
             if (selectedDirectory != null) {
                 directoryChooser.setInitialDirectory(selectedDirectory);

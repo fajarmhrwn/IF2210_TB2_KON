@@ -1,18 +1,20 @@
 package com.kon.bnmo.sistembarang;
 
+import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.items.Item;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class UpdateStoragePop extends Stage {
-    Item item;
-    Barang barang;
-    Scene scene;
-    VBox layout;
+    private Item item;
+    private Barang barang;
+    private Scene scene;
+    private VBox layout;
 
     public UpdateStoragePop(Item item, Barang barang) {
         this.item = item;
@@ -38,6 +40,25 @@ public class UpdateStoragePop extends Stage {
                 if (quantity < 0) {
                     throw new NumberFormatException();
                 }
+
+                // Update item holder in SistemBarang
+                this.barang.getSistemBarang().getItemHolder().getList().get(
+                        this.barang.getSistemBarang().getItemHolder().getList().indexOf(item)
+                ).setStock(quantity);
+
+                // Update item holder pada catalogue serta pada cashier
+                for (Tab tab:
+                     this.barang.getSistemBarang().getTabPane().getTabs()) {
+                    if (tab.getText().contains("Cashier:")) {
+                        Cashier cashier = (Cashier) tab;
+                        cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
+                        cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
+                        cashier.getAvailableItems().setItemStock(this.item, quantity);
+                        cashier.getMainPanel().getCatalogue().updateCatalogue();
+                        cashier.getSidePanel().getBc().updateBillContainer(this.item, quantity);
+                    }
+                }
+
                 item.setStock(quantity);
                 item.setCategory(textFieldCategory.getText());
                 barang.update(item);
@@ -62,4 +83,19 @@ public class UpdateStoragePop extends Stage {
         super.close();
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Barang getBarang() {
+        return barang;
+    }
+
+    public void setBarang(Barang barang) {
+        this.barang = barang;
+    }
 }

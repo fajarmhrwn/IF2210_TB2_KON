@@ -2,27 +2,25 @@ package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.items.Item;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class EditItemPopup extends Stage {
     ItemContainer itemContainer;
     Scene scene;
+    private Spinner<Integer> quantitySpinner;
+    private VBox layout;
 
-    public EditItemPopup(Item item, ItemContainer itemContainer) {
+    public EditItemPopup(Item item, ItemContainer itemContainer, Integer initAmount) {
         this.itemContainer = itemContainer;
         this.scene = new Scene(new Label("Edit Barang"));
         this.setTitle("Edit Barang");
 
-        VBox layout = new VBox();
+        this.layout = new VBox();
 
         Label itemName = new Label(item.getName());
-        TextField itemAmount = new TextField();
-        itemAmount.setText(String.valueOf(itemContainer.getAmount()));
+        this.quantitySpinner = new Spinner<>(0, item.getStock(), initAmount);
         Label discountLabel = new Label("Discount Type");
         CheckBox memberDiscount = new CheckBox("Member discount");
         // If customer is member then enable
@@ -43,7 +41,7 @@ public class EditItemPopup extends Stage {
         Button updateButton = new Button("Update");
         updateButton.setOnAction(event -> {
             try {
-                int quantity = Integer.parseInt(itemAmount.getText());
+                int quantity = quantitySpinner.getValue();
                 if (quantity < 0) {
                     throw new NumberFormatException();
                 }
@@ -58,6 +56,9 @@ public class EditItemPopup extends Stage {
 //                    }
                 this.close();
                 this.itemContainer.getBillContainer().updateAmount(this.itemContainer, quantity);
+                if (quantitySpinner.getValue() == 0) {
+                    this.itemContainer.delete();
+                }
                 this.itemContainer.getBillContainer().getSidePanel().setPrice();
             } catch (NumberFormatException e) {
                 // Jika input yang dimasukkan tidak valid (tidak angka atau angka kurang dari 0)
@@ -74,7 +75,7 @@ public class EditItemPopup extends Stage {
 
         layout.getChildren().addAll(
                 itemName,
-                itemAmount,
+                quantitySpinner,
                 discountLabel,
                 memberDiscount,
                 usePoints,
@@ -86,9 +87,28 @@ public class EditItemPopup extends Stage {
 
     }
 
+    public void updateSpinner(Integer amount) {
+        this.quantitySpinner = new Spinner<>(0, amount, this.quantitySpinner.getValue());
+    }
+
     @Override
     public void close(){
         super.close();
     }
 
+    public Spinner<Integer> getQuantitySpinner() {
+        return quantitySpinner;
+    }
+
+    public void setQuantitySpinner(Spinner<Integer> quantitySpinner) {
+        this.quantitySpinner = quantitySpinner;
+    }
+
+    public VBox getLayout() {
+        return layout;
+    }
+
+    public void setLayout(VBox layout) {
+        this.layout = layout;
+    }
 }

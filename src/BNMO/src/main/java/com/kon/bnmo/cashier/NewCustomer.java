@@ -6,6 +6,7 @@ import com.kon.bnmo.customers.Person;
 import com.kon.bnmo.customers.VIPModel;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -18,12 +19,14 @@ public class NewCustomer extends Tab {
     private final Button enterButton;
     private CustomerHolder personList;
     private ItemHolder availableItems;
+    private Application mainClass;
 
-    public NewCustomer(CustomerHolder personList, ItemHolder availableItems) {
+    public NewCustomer(CustomerHolder personList, ItemHolder availableItems, Application mainClass) {
 
         super("Cashier: New Customer");
         this.personList = personList;
         this.availableItems = availableItems;
+        this.mainClass = mainClass;
 
         // Add the members to the dropdown selection
         this.memberList = new ChoiceBox<>();
@@ -62,9 +65,23 @@ public class NewCustomer extends Tab {
         } else {
             value = this.nonMember.getText();
         }
-        Cashier cashierPage = new Cashier(value, this.availableItems, this.personList);
-        this.getTabPane().getTabs().add(cashierPage);
-        this.getTabPane().getSelectionModel().select(cashierPage);
+        Cashier cashierPage = new Cashier(value, this.availableItems, this.personList, this.mainClass);
+        Tab existingTab = null;
+
+        for (Tab tab: this.getTabPane().getTabs()) {
+            if (tab.getText().equals(cashierPage.getText())) {
+                existingTab = tab;
+                break;
+            }
+        }
+
+        if (existingTab != null) {
+            this.getTabPane().getSelectionModel().select(existingTab);
+        } else {
+            this.getTabPane().getTabs().add(cashierPage);
+            this.getTabPane().getSelectionModel().select(cashierPage);
+        }
+
         TabPane tabPane = getTabPane();
         if (tabPane != null) {
             tabPane.getTabs().remove(this);
@@ -106,5 +123,13 @@ public class NewCustomer extends Tab {
 
     public void setAvailableItems(ItemHolder availableItems) {
         this.availableItems = availableItems;
+    }
+
+    public Application getMainClass() {
+        return mainClass;
+    }
+
+    public void setMainClass(Application mainClass) {
+        this.mainClass = mainClass;
     }
 }
