@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UpdateStoragePop extends Stage {
     private Item item;
     private Barang barang;
@@ -37,6 +40,7 @@ public class UpdateStoragePop extends Stage {
 
         buttonUpdate.setOnAction(event -> {
             try {
+
                 int quantity = Integer.parseInt(textFieldQuantity.getText());
                 if (quantity < 0) {
                     throw new NumberFormatException();
@@ -52,7 +56,6 @@ public class UpdateStoragePop extends Stage {
                      this.barang.getSistemBarang().getTabPane().getTabs()) {
                     if (tab.getText().contains("Cashier:")) {
                         Cashier cashier = (Cashier) tab;
-                        cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
                         cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
                         cashier.getAvailableItems().setItemStock(this.item, quantity);
                         MainApplication mainApplication = (MainApplication) cashier.getMainClass();

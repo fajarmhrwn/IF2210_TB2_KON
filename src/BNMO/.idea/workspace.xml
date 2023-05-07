@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="set initialdirect">
+    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Fix: Exit loop">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SuccessfulPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/History.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/LaporanExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/LaporanExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/SettingsDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/SettingsDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/HistoryListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/HistoryListItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/ListHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/customers/ListHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SimplePane.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/TryRead.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,40 +27,72 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PTqtfyiOCGAqzVEA5YMTISLHXK" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+    "project.structure.side.proportion": "0.4045977"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.kon.bnmo.cashier" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ITB\Semester 4\Object Oriented Programming\Tubes2\src\BNMO\src\main\resources\com\kon\bnmo\img" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
-    <configuration name="LaporanExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.LaporanExporter" />
-      <module name="BNMO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
+      <option name="appName" />
+      <option name="appServicePlanName" />
+      <option name="appServicePlanResourceGroup" />
+      <option name="appSettingsKey" value="857d43e4-48e1-42a9-8c23-ff595ac773a7" />
+      <option name="artifact" />
+      <option name="debugOptions" />
+      <option name="deployment" />
+      <option name="deploymentStagingDirectoryPath" />
+      <option name="funcPath" />
+      <option name="functionHostArguments" />
+      <option name="hostJsonPath" />
+      <option name="insightsName" />
+      <option name="instrumentationKey" />
+      <option name="javaVersion" />
+      <option name="localSettingsJsonPath" />
+      <option name="moduleName" />
+      <option name="os" />
+      <option name="pricingTier" />
+      <option name="providerMap">
+        <map />
+      </option>
+      <option name="region" />
+      <option name="resourceGroup" />
+      <option name="stagingFolder" />
+      <option name="subscription" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -87,12 +123,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="cobaadapter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.datastore.cobaadapter" />
+    <configuration name="TryRead" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.TryRead" />
       <module name="BNMO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.kon.bnmo.datastore.*" />
+          <option name="PATTERN" value="com.kon.bnmo.cashier.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,12 +139,12 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
-        <item itemvalue="Application.cobaadapter" />
-        <item itemvalue="Application.LaporanExporter" />
         <item itemvalue="Application.SimplePane" />
+        <item itemvalue="Application.TryRead" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Clean: Refactor">
       <created>1683449395825</created>
@@ -131,51 +167,67 @@
       <option name="project" value="LOCAL" />
       <updated>1683463960011</updated>
     </task>
-    <task id="LOCAL-00004" summary="set initialdirect">
-      <created>1683490993858</created>
+    <task id="LOCAL-00004" summary="Fix: workspace.xml">
+      <created>1683463990971</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1683490993858</updated>
+      <updated>1683463990971</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Feat: Buy">
+      <created>1683472254122</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683472254122</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge: Origin to local">
+      <created>1683472506180</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683472506180</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Ganti">
+      <created>1683473201741</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683473201741</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Ganti" />
+      <created>1683491637562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683491637562</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix: Exit loop">
+      <created>1683494799636</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683494799636</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Clean: Refactor" />
     <MESSAGE value="Merge: Workspace" />
     <MESSAGE value="Feat: Integrate SistemBarang.java with Cashier.java" />
-    <MESSAGE value="set initialdirect" />
-    <option name="LAST_COMMIT_MESSAGE" value="set initialdirect" />
+    <MESSAGE value="Fix: workspace.xml" />
+    <MESSAGE value="Feat: Buy" />
+    <MESSAGE value="Merge: Origin to local" />
+    <MESSAGE value="Ganti" />
+    <MESSAGE value="Fix: Exit loop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Exit loop" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/datastore/cobaadapter.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="catalogueContainer.addButton.graphic" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

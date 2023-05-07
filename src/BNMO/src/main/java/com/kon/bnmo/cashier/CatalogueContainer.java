@@ -20,7 +20,7 @@ public class CatalogueContainer extends HBox {
         this.containedItem = containedItem;
         InputStream stream = getClass().getResourceAsStream("/img/" + containedItem.getImgName());
         if (stream == null) {
-            stream = getClass().getResourceAsStream("/img/image.png");
+            stream = getClass().getResourceAsStream("/com/kon/bnmo/img/image.png");
         }
         assert stream != null;
         ImageView imageView = new ImageView(new Image(stream));

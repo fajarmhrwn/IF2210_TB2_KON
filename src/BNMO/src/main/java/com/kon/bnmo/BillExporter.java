@@ -20,6 +20,8 @@ public class BillExporter extends Thread{
     private final FixedBill bill;
     private String filename;
 
+    private boolean isCompleted = false;
+
     public BillExporter(FixedBill bill, String filename){
         this.filename = filename;
         this.bill = new FixedBill(bill.getListBillItem());
@@ -27,8 +29,7 @@ public class BillExporter extends Thread{
 
     @Override
     public void run(){
-        try {
-            Thread.sleep(10000); // simulate long print process
+        while(!isCompleted) {
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
@@ -60,11 +61,15 @@ public class BillExporter extends Thread{
                 document.add(total);
                 // add fixed bill data to document
                 document.close();
+                isCompleted = true;
             } catch (FileNotFoundException | DocumentException e) {
                 e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                Thread.sleep(10000); // simulate long print process
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public static void main(String[] args){

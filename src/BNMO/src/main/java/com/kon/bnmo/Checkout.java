@@ -3,6 +3,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.cashier.CashierSidePanel;
 import com.kon.bnmo.cashier.ItemContainer;
+import com.kon.bnmo.cashier.SuccessfulPayment;
 import com.kon.bnmo.items.Bill;
 import com.kon.bnmo.items.Billitem;
 import com.kon.bnmo.items.FixedBill;
@@ -30,9 +31,11 @@ public class Checkout extends Stage {
     private TableView<ItemContainer> table;
     private Label totalLabel;
     private CashierSidePanel sidePanel;
+    private SuccessfulPayment successfulPayment;
 
     public Checkout(CashierSidePanel sidePanel) {
         this.sidePanel = sidePanel;
+        this.successfulPayment = null;
         setTitle("Checkout");
 
         // Create a table to display the items in the cart
@@ -92,29 +95,19 @@ public class Checkout extends Stage {
                     this.getSidePanel().getThisParent().getTabPane().getTabs()) {
                 if (tab.getText().contains("Cashier:")) {
                     Cashier cashier = (Cashier) tab;
-                    cashier
-                            .getMainPanel()
-                            .getCatalogue()
-                            .getAvailableItems()
-                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier
-                            .getMainPanel()
-                            .getCatalogue()
-                            .getAvailableItems()
-                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier.getAvailableItems().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    cashier.getMainPanel().getCatalogue().updateCatalogue();
                     cashier.getSidePanel().getBc().updateBillContainer(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
-                    MainApplication mainApplication = (MainApplication) cashier.getMainClass();
-                    mainApplication.getDataStore().getItemHolder().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    cashier.getMainPanel().getCatalogue().updateCatalogue();
+                    cashier.getMainPanel().getSistemBarang().updateUI();
                 }
             }
             fixedBill.getListBillItem().add(new Billitem(ic));
         }
-        this.close();
+        this.successfulPayment = new SuccessfulPayment(fixedBill);
         fixedBill.setIdCustomer(Integer.parseInt(this.sidePanel.getThisParent().getCustomerName().getId()));
         MainApplication mainApplication = (MainApplication) this.sidePanel.getThisParent().getMainClass();
         mainApplication.getDataStore().getTransactionHolder().getList().add(fixedBill);
+        this.close();
+        this.successfulPayment.show();
     }
 
     private void updateTotal() {
@@ -155,5 +148,13 @@ public class Checkout extends Stage {
 
     public void setSidePanel(CashierSidePanel sidePanel) {
         this.sidePanel = sidePanel;
+    }
+
+    public SuccessfulPayment getSuccessfulPayment() {
+        return successfulPayment;
+    }
+
+    public void setSuccessfulPayment(SuccessfulPayment successfulPayment) {
+        this.successfulPayment = successfulPayment;
     }
 }
