@@ -131,4 +131,5 @@ public class CashierSidePanel extends VBox {
     public void setCheckoutPage(Checkout checkoutPage) {
         this.checkoutPage = checkoutPage;
     }
+
 }

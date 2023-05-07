@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UpdateStoragePop extends Stage {
     private Item item;
     private Barang barang;
@@ -37,6 +40,7 @@ public class UpdateStoragePop extends Stage {
 
         buttonUpdate.setOnAction(event -> {
             try {
+
                 int quantity = Integer.parseInt(textFieldQuantity.getText());
                 if (quantity < 0) {
                     throw new NumberFormatException();

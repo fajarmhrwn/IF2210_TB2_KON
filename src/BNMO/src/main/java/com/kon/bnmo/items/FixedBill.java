@@ -2,9 +2,8 @@ package com.kon.bnmo.items;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kon.bnmo.cashier.ItemContainer;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,14 +16,15 @@ public class FixedBill implements Serializable {
         listBillItem = new ArrayList<>();
         checkoutDate = LocalDate.now().toString();
     }
-//    public FixedBill(List<Billitem> billItems, String date) {
-//        this.listBillItem = new ArrayList<>();
-//        for(int i = 0; i < billItems.size(); i++){
-//            Billitem temp = new Billitem(billItems.get(i));
-//            this.listBillItem.add(temp);
-//        }
-//        checkoutDate = LocalDate.parse(date);
-//    }
+
+    public FixedBill(Bill bill) {
+        this.listBillItem = new ArrayList<>();
+        for (ItemContainer ic :
+                bill.getList()) {
+            this.listBillItem.add(new Billitem(ic));
+        }
+    }
+
     public FixedBill(List<Billitem> listBillItem){
         this.listBillItem = new ArrayList<>();
         for(int i = 0; i < listBillItem.size(); i++){
@@ -46,9 +46,9 @@ public class FixedBill implements Serializable {
     }
     public FixedBill(List<Billitem> listBillItem, LocalDate date){
         this.listBillItem = new ArrayList<>();
-        for(int i = 0; i < listBillItem.size(); i++){
-            Billitem temp = new Billitem(listBillItem.get(i));
-            this.listBillItem.add(listBillItem.get(i));
+        for (Billitem billitem : listBillItem) {
+            Billitem temp = new Billitem(billitem);
+            this.listBillItem.add(billitem);
         }
         checkoutDate = date.toString();
     }

@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox;
 
 public class NewCustomer extends Tab {
     private ChoiceBox<String> memberList;
-    private TextField nonMember;
     private final Button enterButton;
     private CustomerHolder personList;
     private ItemHolder availableItems;
@@ -26,59 +25,55 @@ public class NewCustomer extends Tab {
         // Add the members to the dropdown selection
         this.memberList = new ChoiceBox<>();
         for (Person p : this.personList.getList()) {
-            if (p.getType().equals("member") || p.getType().equals("vip")) {
-                if (p.getType().equals("member")) {
-                    MemberModel memberPerson = (MemberModel) p;
-                    this.memberList.getItems().add(memberPerson.getName());
-                } else if (p.getType().equals("vip")) {
-                    VIPModel vipPerson = (VIPModel) p;
-                    this.memberList.getItems().add(vipPerson.getName());
-                }
+            if (p.getType().equals("member")) {
+                MemberModel memberPerson = (MemberModel) p;
+                this.memberList.getItems().add(memberPerson.getName());
+            } else if (p.getType().equals("vip")) {
+                VIPModel vipPerson = (VIPModel) p;
+                this.memberList.getItems().add(vipPerson.getName());
+            } else {
+                CustomerModel customer = (CustomerModel) p;
+                this.memberList.getItems().add("Customer " + customer.getId());
             }
         }
-        this.memberList.getItems().add("Other");
-        this.memberList.setValue("Choose Member");
+        this.memberList.setValue("Choose Customer");
         this.memberList.setOnAction(this::setActive);
-
-        // Set text field to disabled
-        this.nonMember = new TextField();
-        this.nonMember.setDisable(true);
 
         enterButton = new Button("Enter");
         enterButton.setOnAction(this::createCashierPage);
         enterButton.setDisable(true);
 
         // Set the container as a vbox
-        VBox container = new VBox(this.memberList, this.nonMember, enterButton);
+        VBox container = new VBox(this.memberList, enterButton);
         this.setContent(container);
     }
 
     private void createCashierPage(ActionEvent actionEvent) {
         Person buyer = null;
-        if (this.nonMember.isDisabled()) {
-            for (Person p: this.personList.getList()) {
-                if (p.getType().equals("member")) {
-                    MemberModel pMember = (MemberModel) p;
-                    if (pMember.getName().equals(this.memberList.getValue())) {
-                        buyer = pMember;
-                        break;
-                    }
-                } else if (p.getType().equals("vip")) {
-                    VIPModel pVIP = (VIPModel) p;
-                    if (pVIP.getName().equals(this.memberList.getValue())) {
-                        buyer = pVIP;
-                        break;
-                    }
+        for (Person p: this.personList.getList()) {
+            if (p.getType().equals("member")) {
+                MemberModel pMember = (MemberModel) p;
+                if (pMember.getName().equals(this.memberList.getValue())) {
+                    buyer = pMember;
+                    break;
+                }
+            } else if (p.getType().equals("vip")) {
+                VIPModel pVIP = (VIPModel) p;
+                if (pVIP.getName().equals(this.memberList.getValue())) {
+                    buyer = pVIP;
+                    break;
+                }
+            } else {
+                CustomerModel customerModel = (CustomerModel) p;
+                String toCompare = "Customer " + customerModel.getId();
+                if (toCompare.equals(this.memberList.getValue())) {
+                    buyer = customerModel;
+                    break;
                 }
             }
-        } else {
-            buyer = new CustomerModel();
-            int newID = Integer.parseInt(this.personList.getList().get(this.personList.getList().size() - 1)
-                    .getId()) + 1;
-            buyer.setId(Integer.toString(newID));
-            MainApplication mainApplication = (MainApplication) this.mainClass;
-            mainApplication.getDataStore().getCustomerHolder().add(buyer);
         }
+        MainApplication mainApplication = (MainApplication) this.mainClass;
+        mainApplication.getDataStore().getCustomerHolder().add(buyer);
         assert buyer != null;
         Cashier cashierPage = new Cashier(buyer, this.availableItems, this.personList, this.mainClass);
         Tab existingTab = null;
@@ -104,7 +99,6 @@ public class NewCustomer extends Tab {
     }
 
     private void setActive(ActionEvent actionEvent) {
-        this.nonMember.setDisable(!this.memberList.getValue().equals("Other"));
         this.enterButton.setDisable(this.memberList.getValue().equals("Choose Member"));
     }
 
@@ -114,14 +108,6 @@ public class NewCustomer extends Tab {
 
     public void setMemberList(ChoiceBox<String> memberList) {
         this.memberList = memberList;
-    }
-
-    public TextField getNonMember() {
-        return nonMember;
-    }
-
-    public void setNonMember(TextField nonMember) {
-        this.nonMember = nonMember;
     }
 
     public CustomerHolder getPersonList() {
