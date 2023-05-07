@@ -1,5 +1,6 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.customers.VIPModel;
 import com.kon.bnmo.items.Item;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,7 +24,22 @@ public class EditItemPopup extends Stage {
         this.quantitySpinner = new Spinner<>(0, item.getStock(), initAmount);
         Label discountLabel = new Label("Discount Type");
         CheckBox memberDiscount = new CheckBox("Member discount");
-        // If customer is member then enable
+        if (this.itemContainer
+                .getBillContainer()
+                .getSidePanel()
+                .getThisParent()
+                .getCustomerName()
+                .getType()
+                .equals("member")) {
+            memberDiscount.setDisable(false);
+        } else memberDiscount.setDisable(!this.itemContainer
+                .getBillContainer()
+                .getSidePanel()
+                .getThisParent()
+                .getCustomerName()
+                .getType()
+                .equals("vip"));
+
         memberDiscount.setOnAction(event -> {
             if (memberDiscount.isSelected()) {
                 this.itemContainer.setUseMemberDiscount(true);
@@ -37,6 +53,22 @@ public class EditItemPopup extends Stage {
                 this.itemContainer.setUseVIPPoints(true);
             }
         });
+        if (this.itemContainer
+                .getBillContainer()
+                .getSidePanel()
+                .getThisParent()
+                .getCustomerName()
+                .getType()
+                .equals("member")) {
+            usePoints.setDisable(true);
+        } else usePoints.setDisable(!this.itemContainer
+                .getBillContainer()
+                .getSidePanel()
+                .getThisParent()
+                .getCustomerName()
+                .getType()
+                .equals("vip"));
+
 
         Button updateButton = new Button("Update");
         updateButton.setOnAction(event -> {
@@ -47,13 +79,21 @@ public class EditItemPopup extends Stage {
                 }
                 if (!memberDiscount.isDisabled()) {
                     if (memberDiscount.isSelected()) {
-                        itemContainer.setBuyingPrice(itemContainer.getBuyingPrice() * 0.9);
+                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer, itemContainer.getBuyingPrice() * 0.9);
                     }
                 }
-//                if (!usePoints.isDisabled()) {
-//                    if (usePoints.isSelected()) {
-//
-//                    }
+                if (!usePoints.isDisabled()) {
+                    if (usePoints.isSelected()) {
+                        VIPModel vip = (VIPModel) this.
+                                itemContainer
+                                        .getBillContainer()
+                                                .getSidePanel()
+                                                        .getThisParent()
+                                                                .getCustomerName();
+                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer,
+                                this.itemContainer.getBillContainer().getBillHolder().getBuyingPrice(itemContainer) - vip.getPoint());
+                    }
+                }
                 this.close();
                 this.itemContainer.getBillContainer().updateAmount(this.itemContainer, quantity);
                 if (quantitySpinner.getValue() == 0) {

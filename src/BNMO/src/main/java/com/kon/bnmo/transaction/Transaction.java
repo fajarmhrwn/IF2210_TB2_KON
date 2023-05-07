@@ -7,7 +7,7 @@ import com.kon.bnmo.items.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Transaction extends FixedBill{
+public class Transaction extends FixedBill {
     private int idCustomer;
     public Transaction(){
         super();

@@ -1,11 +1,18 @@
 package  com.kon.bnmo;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.cashier.CashierSidePanel;
 import com.kon.bnmo.cashier.ItemContainer;
+import com.kon.bnmo.items.Bill;
+import com.kon.bnmo.items.Billitem;
+import com.kon.bnmo.items.FixedBill;
 import com.kon.bnmo.items.Item;
+import com.kon.bnmo.transaction.Transaction;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,9 +23,11 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
+import java.time.LocalDate;
+
 public class Checkout extends Stage {
 
-    private TableView<com.kon.bnmo.cashier.ItemContainer> table;
+    private TableView<ItemContainer> table;
     private Label totalLabel;
     private CashierSidePanel sidePanel;
 
@@ -58,9 +67,7 @@ public class Checkout extends Stage {
 
         // Create a button to clear the cart
         Button buyButton = new Button("Buy");
-        buyButton.setOnAction(event -> {
-
-        });
+        buyButton.setOnAction(this::buyProduct);
 
         // Create a horizontal box to hold the buttons
         HBox buttonBox = new HBox(buyButton);
@@ -76,6 +83,40 @@ public class Checkout extends Stage {
         // Create a scene and set it on the stage
         setScene(new Scene(root));
     }
+
+    private void buyProduct(ActionEvent actionEvent) {
+        // Update item holder pada catalogue serta pada cashier
+        Transaction fixedBill = new Transaction();
+        for (ItemContainer ic: this.getSidePanel().getBc().getBillHolder().getList()) {
+            for (Tab tab:
+                    this.getSidePanel().getThisParent().getTabPane().getTabs()) {
+                if (tab.getText().contains("Cashier:")) {
+                    Cashier cashier = (Cashier) tab;
+                    cashier
+                            .getMainPanel()
+                            .getCatalogue()
+                            .getAvailableItems()
+                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    cashier
+                            .getMainPanel()
+                            .getCatalogue()
+                            .getAvailableItems()
+                            .setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    cashier.getAvailableItems().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    cashier.getMainPanel().getCatalogue().updateCatalogue();
+                    cashier.getSidePanel().getBc().updateBillContainer(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                    MainApplication mainApplication = (MainApplication) cashier.getMainClass();
+                    mainApplication.getDataStore().getItemHolder().setItemStock(ic.getContainedItem(), ic.getContainedItem().getStock() - ic.getAmount());
+                }
+            }
+            fixedBill.getListBillItem().add(new Billitem(ic));
+        }
+        this.close();
+        fixedBill.setIdCustomer(Integer.parseInt(this.sidePanel.getThisParent().getCustomerName().getId()));
+        MainApplication mainApplication = (MainApplication) this.sidePanel.getThisParent().getMainClass();
+        mainApplication.getDataStore().getTransactionHolder().getList().add(fixedBill);
+    }
+
     private void updateTotal() {
     }
     public void addItem(ItemContainer itemContainer) {

@@ -103,7 +103,7 @@ public class CashierSidePanel extends VBox {
         this.priceTotal = 0.0;
         for (ItemContainer bi: this.bc.getBillHolder().getList()) {
             // If else to know whether the use points checkbox is checked
-            this.priceTotal += ((ItemContainer) bi).getBuyingPrice() * bi.getAmount();
+            this.priceTotal += bi.getBuyingPrice() * bi.getAmount();
         }
         this.setTotalPrice(this.priceTotal);
     }

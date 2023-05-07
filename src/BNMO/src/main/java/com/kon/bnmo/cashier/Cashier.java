@@ -1,6 +1,6 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.customers.CustomerHolder;
+import com.kon.bnmo.customers.*;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -10,15 +10,24 @@ import javafx.scene.layout.HBox;
 public class Cashier extends Tab {
     private CashierMainPanel mainPanel;
     private CashierSidePanel sidePanel;
-    private String customerName;
+    private Person customer;
     private ItemHolder availableItems;
     private CustomerHolder memberList;
     private Application mainClass;
 
-    public Cashier(String customerName, ItemHolder availableItems, CustomerHolder memberList, Application mainClass) {
-        super("Cashier: " + customerName);
-        this.customerName = customerName;
+    public Cashier(Person customer, ItemHolder availableItems, CustomerHolder memberList, Application mainClass) {
+        super();
+        String name;
+        if (customer.getType().equals("customer")) {
+            name = customer.getId();
+        } else if (customer.getType().equals("member")) {
+            name = ((MemberModel) customer).getName();
+        } else {
+            name = ((VIPModel) customer).getName();
+        }
+        this.setText("Cashier: " + name);
 
+        this.customer = customer;
         this.availableItems = availableItems;
         this.memberList = memberList;
         this.mainClass = mainClass;
@@ -49,12 +58,12 @@ public class Cashier extends Tab {
         this.sidePanel = sidePanel;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Person getCustomerName() {
+        return customer;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomerName(Person customerName) {
+        this.customer = customerName;
     }
 
     public CashierMainPanel getMainPanel() {
@@ -79,6 +88,10 @@ public class Cashier extends Tab {
 
     public void setMemberList(CustomerHolder memberList) {
         this.memberList = memberList;
+    }
+
+    public void updateUI() {
+
     }
 
     public Application getMainClass() {

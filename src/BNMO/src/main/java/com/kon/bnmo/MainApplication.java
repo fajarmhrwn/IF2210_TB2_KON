@@ -124,6 +124,13 @@ public class MainApplication extends Application {
         });
     }
 
+    public DataStore getDataStore() {
+        return dataStore;
+    }
+
+    public void setDataStore(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
 
     public static void main(String[] args) {
         Application.launch(MainApplication.class, args);

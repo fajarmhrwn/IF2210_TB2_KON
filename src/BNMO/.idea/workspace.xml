@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Feat: Integrate SistemBarang.java with Cashier.java" />
+    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Feat: Buy" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +25,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.3"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -33,7 +36,20 @@
       <recent name="com.kon.bnmo.cashier" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainApplication">
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.MainApplication" />
+      <module name="BNMO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kon.bnmo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SimplePane" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.cashier.SimplePane" />
       <module name="BNMO" />
@@ -49,6 +65,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.SimplePane" />
       </list>
     </recent_temporary>
@@ -75,24 +92,40 @@
       <option name="project" value="LOCAL" />
       <updated>1683463960011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix: workspace.xml">
+      <created>1683463990971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683463990971</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feat: Buy">
+      <created>1683472254122</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683472254122</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Clean: Refactor" />
     <MESSAGE value="Merge: Workspace" />
     <MESSAGE value="Feat: Integrate SistemBarang.java with Cashier.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: Integrate SistemBarang.java with Cashier.java" />
+    <MESSAGE value="Fix: workspace.xml" />
+    <MESSAGE value="Feat: Buy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: Buy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java</url>
           <line>31</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java</url>
           <line>26</line>
           <option name="timeStamp" value="31" />
