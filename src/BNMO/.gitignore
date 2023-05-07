@@ -8,11 +8,12 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/workspace.xml
+.idea/misc.xml
 *.iws
 *.iml
 *.ipr
-misc.xml
-workspace.xml
+
 
 ### Eclipse ###
 .apt_generated
