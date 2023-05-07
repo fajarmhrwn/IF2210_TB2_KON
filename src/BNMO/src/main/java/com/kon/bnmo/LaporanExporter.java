@@ -21,6 +21,7 @@ public class LaporanExporter extends Thread{
     @Override
     public void run(){
         try {
+            Thread.sleep(10000); // simulate long print process
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
@@ -61,7 +62,7 @@ public class LaporanExporter extends Thread{
             } catch (FileNotFoundException | DocumentException e) {
                 e.printStackTrace();
             }
-            Thread.sleep(10000); // simulate long print process
+
         } catch (Exception e) {
             e.printStackTrace();
         }
