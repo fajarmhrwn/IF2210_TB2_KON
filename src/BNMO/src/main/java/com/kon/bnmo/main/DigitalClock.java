@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class DigitalClock extends Thread {
     private Label label;
@@ -16,6 +18,7 @@ public class DigitalClock extends Thread {
 
     public void bindLabel(Label label) {
         this.label = label;
+        label.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 32));
     }
     @Override
     public void run() {
