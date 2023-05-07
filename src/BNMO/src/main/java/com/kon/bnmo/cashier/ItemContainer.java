@@ -33,7 +33,7 @@ public class ItemContainer extends HBox {
         this.editButton = new Button("Edit");
         this.getChildren().addAll(itemName, this.editButton);
         this.editButton.setOnAction(this::showEditPopup);
-        this.editItem = new EditItemPopup(this.containedItem, this);
+        this.editItem = new EditItemPopup(this.containedItem, this, 1);
         this.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(itemName, Priority.ALWAYS);
 
@@ -52,7 +52,7 @@ public class ItemContainer extends HBox {
         this.editButton = new Button("Edit");
         this.getChildren().addAll(itemName, this.editButton);
         this.editButton.setOnAction(this::showEditPopup);
-        this.editItem = new EditItemPopup(this.containedItem, this);
+        this.editItem = new EditItemPopup(this.containedItem, this, 1);
         this.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(itemName, Priority.ALWAYS);
 
@@ -88,7 +88,7 @@ public class ItemContainer extends HBox {
         this.editButton.setOnAction(this::showEditPopup);
         // Set the font and text color of the Edit Button
 //        this.editButton.setStyle("-fx-font-size: 12px; -fx-text-fill: #ffffff; -fx-background-color: #0077cc;");
-        this.editItem = new EditItemPopup(this.containedItem, this);
+        this.editItem = new EditItemPopup(this.containedItem, this, 1);
         this.getChildren().addAll(itemName, this.editButton);
         this.setAlignment(Pos.CENTER_RIGHT);
         HBox.setHgrow(itemName, Priority.ALWAYS);

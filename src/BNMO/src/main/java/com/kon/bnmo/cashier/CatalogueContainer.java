@@ -44,12 +44,6 @@ public class CatalogueContainer extends HBox {
         return containedItem;
     }
 
-    public void resetAddButton() {
-        this.addButton = new Button("+ Add Item");
-        this.addButton.setOnAction(this::addToBill);
-        this.addButton.setDisable(false);
-    }
-
     public void setContainedItem(Item containedItem) {
         this.containedItem = containedItem;
     }

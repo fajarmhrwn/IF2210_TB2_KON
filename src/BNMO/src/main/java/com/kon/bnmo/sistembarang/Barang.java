@@ -67,6 +67,24 @@ public class Barang extends HBox {
 ////        System.out.println(item.getAmount()); // print jumlah item
     }
 
+    public Item getItem() {
+        return item;
+    }
 
+    public SistemBarang getSistemBarang() {
+        return sistemBarang;
+    }
+
+    public void setSistemBarang(SistemBarang sistemBarang) {
+        this.sistemBarang = sistemBarang;
+    }
+
+    public UpdateStoragePop getUpdateStoragePop() {
+        return updateStoragePop;
+    }
+
+    public void setUpdateStoragePop(UpdateStoragePop updateStoragePop) {
+        this.updateStoragePop = updateStoragePop;
+    }
 }
 

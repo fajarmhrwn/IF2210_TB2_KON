@@ -2,6 +2,7 @@ package com.kon.bnmo.cashier;
 
 import com.kon.bnmo.customers.CustomerHolder;
 import com.kon.bnmo.items.ItemHolder;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
@@ -12,13 +13,15 @@ public class Cashier extends Tab {
     private String customerName;
     private ItemHolder availableItems;
     private CustomerHolder memberList;
+    private Application mainClass;
 
-    public Cashier(String customerName, ItemHolder availableItems, CustomerHolder memberList) {
+    public Cashier(String customerName, ItemHolder availableItems, CustomerHolder memberList, Application mainClass) {
         super("Cashier: " + customerName);
         this.customerName = customerName;
 
         this.availableItems = availableItems;
         this.memberList = memberList;
+        this.mainClass = mainClass;
 
         this.mainPanel = new CashierMainPanel(this, this.availableItems);
         this.mainPanel.setPrefWidth(850);
@@ -33,7 +36,7 @@ public class Cashier extends Tab {
     }
 
     private void addNewCustomerTab(ActionEvent actionEvent) {
-        NewCustomer newPage = new NewCustomer(memberList, availableItems);
+        NewCustomer newPage = new NewCustomer(memberList, availableItems, this.mainClass);
         this.getTabPane().getTabs().add(newPage);
         this.getTabPane().getSelectionModel().select(newPage);
     }
@@ -76,6 +79,14 @@ public class Cashier extends Tab {
 
     public void setMemberList(CustomerHolder memberList) {
         this.memberList = memberList;
+    }
+
+    public Application getMainClass() {
+        return mainClass;
+    }
+
+    public void setMainClass(Application mainClass) {
+        this.mainClass = mainClass;
     }
 }
 

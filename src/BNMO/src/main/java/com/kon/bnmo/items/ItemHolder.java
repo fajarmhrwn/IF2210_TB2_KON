@@ -24,11 +24,8 @@ public class ItemHolder extends holder<Item> {
         this.list.remove(item);
     }
 
-//    public static void main(String[] args) {
-//        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
-////        BillItem padangA = new BillItem("Nasi padang", 18000.0, 2, "Dine in");
-////        BillItem padangB = new BillItem("Nasi padang", 18000.0, 2, "Dine in");
-////        bill.add(padangA);
-////        bill.remove(padangB);
-//    }
+    public void setItemStock(Item item, Integer stock) {
+        this.list.get(this.list.indexOf(item)).setStock(stock);
+    }
+
 }

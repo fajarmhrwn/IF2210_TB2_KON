@@ -6,11 +6,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
 
-public class SistemBarang extends  Tab {
+public class SistemBarang extends Tab {
 
-    private int jumlahBarang ;
+    private int jumlahBarang;
 
-    private ItemHolder itemHolder ;
+    private ItemHolder itemHolder;
 
     public void setItemHolder(ItemHolder itemHolder) {
         this.itemHolder = itemHolder;
@@ -70,8 +70,6 @@ public class SistemBarang extends  Tab {
         hBox.getChildren().add(textField);
         hBox.getChildren().add(button);
 
-        ;
-
         VBox keterangan = new VBox();
         keterangan.setSpacing(10);
         keterangan.setAlignment(javafx.geometry.Pos.CENTER);
@@ -87,4 +85,5 @@ public class SistemBarang extends  Tab {
         this.setStyle("-fx-background-color: #f0f0f0;");
 
     }
+
 }

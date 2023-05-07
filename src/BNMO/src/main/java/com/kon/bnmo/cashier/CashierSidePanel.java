@@ -123,4 +123,12 @@ public class CashierSidePanel extends VBox {
     public void setPriceTotal(Double priceTotal) {
         this.priceTotal = priceTotal;
     }
+
+    public Checkout getCheckoutPage() {
+        return checkoutPage;
+    }
+
+    public void setCheckoutPage(Checkout checkoutPage) {
+        this.checkoutPage = checkoutPage;
+    }
 }

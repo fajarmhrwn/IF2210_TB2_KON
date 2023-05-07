@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 
 public class BillContainer extends ScrollPane {
     private Bill billHolder;
-    private final VBox vBox;
+    private VBox vBox;
     private CashierSidePanel sidePanel;
 
     public BillContainer(CashierSidePanel sidePanel) {
@@ -21,6 +21,29 @@ public class BillContainer extends ScrollPane {
         this.billHolder.add(item);
         this.vBox.getChildren().add(new ItemContainer(item.getContainedItem(), this));
         this.setContent(this.vBox);
+    }
+
+    public void updateBillContainer(Item itemToUpdate, Integer amount) {
+        VBox newBox = new VBox();
+        for (ItemContainer item: this.billHolder.getList()) {
+            if (item.getContainedItem().equals(itemToUpdate)) {
+                item.getContainedItem().setStock(amount);
+                Integer changeAmount;
+                if (item.getAmount() > amount) {
+                    changeAmount = amount;
+                } else {
+                    changeAmount = item.getAmount();
+                }
+                item.setAmount(changeAmount);
+                item.setEditItem(new EditItemPopup(item.getContainedItem(), item, changeAmount));
+                newBox.getChildren().add(item);
+            } else {
+                newBox.getChildren().add(new ItemContainer(item.getContainedItem(), this));
+            }
+        }
+        this.setContent(newBox);
+        this.vBox = newBox;
+        this.getSidePanel().setPrice();
     }
 
     public void removeItem(String name, double price, String category, String imgName, Integer stock,

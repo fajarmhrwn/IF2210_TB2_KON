@@ -3,6 +3,8 @@ package com.kon.bnmo.cashier;
 import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
 import com.kon.bnmo.items.Storage;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
@@ -16,16 +18,9 @@ public class Catalogue extends ScrollPane {
         this.storage = new Storage();
         this.mainPanel = mainPanel;
         this.vBox = new VBox();
-//        DataStore dataStore = new DataStore();
-//        dataStore.setDataAdapter(new JSONDataAdapter());
-//        try {
-//            dataStore.readItem("items.json");
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        ItemHolder itemHolder = dataStore.getItemHolder();
+
         this.availableItems = availableItems;
-        for (Item item : availableItems.getItemList()) {
+        for (Item item : availableItems.getList()) {
             this.addItem(new CatalogueContainer(item, this));
         }
         this.setContent(this.vBox);
@@ -35,6 +30,21 @@ public class Catalogue extends ScrollPane {
         this.storage.add(item);
         this.vBox.getChildren().add(new CatalogueContainer(item.getContainedItem(), this));
         this.setContent(this.vBox);
+    }
+
+    public void updateCatalogue() {
+        this.clearContent();
+        VBox newVBox = new VBox();
+        for (Item item : availableItems.getList()) {
+            this.storage.add(new CatalogueContainer(item, this));
+            newVBox.getChildren().add(new CatalogueContainer(item, this));
+        }
+        this.setContent(newVBox);
+        this.vBox = newVBox;
+    }
+
+    public void clearContent() {
+        this.storage.getList().clear();
     }
 
     public void removeItem(String name, double price, String category, String imgName, Integer stock) {
