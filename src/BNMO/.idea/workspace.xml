@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Feat: Buy" />
+    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Merge: Origin to local">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683472254122</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge: Origin to local">
+      <created>1683472506180</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683472506180</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -115,7 +125,8 @@
     <MESSAGE value="Feat: Integrate SistemBarang.java with Cashier.java" />
     <MESSAGE value="Fix: workspace.xml" />
     <MESSAGE value="Feat: Buy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: Buy" />
+    <MESSAGE value="Merge: Origin to local" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge: Origin to local" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
