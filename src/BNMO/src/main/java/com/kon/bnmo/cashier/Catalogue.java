@@ -25,7 +25,7 @@ public class Catalogue extends ScrollPane {
 //        }
 //        ItemHolder itemHolder = dataStore.getItemHolder();
         this.availableItems = availableItems;
-        for (Item item : availableItems.getItemList()) {
+        for (Item item : availableItems.getList()) {
             this.addItem(new CatalogueContainer(item, this));
         }
         this.setContent(this.vBox);

@@ -60,6 +60,8 @@ public class JSONDataAdapter implements DataAdapter {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else{
+                throw new IOException("File tidak ada");
             }
             File file2 = new File(path + "/member.json");
             if(file2.exists()){
@@ -70,6 +72,8 @@ public class JSONDataAdapter implements DataAdapter {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else{
+                throw new IOException("File tidak ada");
             }
             File file3 = new File(path + "/VIP.json");
             if(file3.exists()){
@@ -84,6 +88,8 @@ public class JSONDataAdapter implements DataAdapter {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else{
+                throw new IOException("File tidak ada");
             }
         }
         else if(dataHolder.getType() == "Transaction") {
@@ -98,6 +104,8 @@ public class JSONDataAdapter implements DataAdapter {
                     e.printStackTrace();
                 }
             }
+        }else{
+            throw new IOException("File tidak ada");
         }
     }
     @Override

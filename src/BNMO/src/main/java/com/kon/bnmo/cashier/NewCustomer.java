@@ -27,7 +27,7 @@ public class NewCustomer extends Tab {
 
         // Add the members to the dropdown selection
         this.memberList = new ChoiceBox<>();
-        for (Person p : this.personList.getItemList()) {
+        for (Person p : this.personList.getList()) {
             if (p.getType().equals("member") || p.getType().equals("vip")) {
                 if (p.getType().equals("member")) {
                     MemberModel memberPerson = (MemberModel) p;

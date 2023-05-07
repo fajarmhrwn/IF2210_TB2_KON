@@ -14,7 +14,7 @@ import java.util.List;
 
 public class OBJDataAdapter implements DataAdapter {
     @Override
-    public void readData(holder dataHolder, String path) {
+    public void readData(holder dataHolder, String path) throws IOException {
         /* TODO: parse OBJ ke List */
         if(dataHolder.getType() == "Item") {
             /* TODO: parse OBJ ke List Item */
@@ -22,7 +22,7 @@ public class OBJDataAdapter implements DataAdapter {
                 dataHolder.setList((List<Item>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                return;
+                throw new IOException("File tidak ada");
             }
         }else if(dataHolder.getType() == "Customer") {
             /* TODO: parse OBJ ke List Customer */
@@ -31,21 +31,21 @@ public class OBJDataAdapter implements DataAdapter {
                 dataHolder.addAll((List<CustomerModel>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                return;
+                throw new IOException("File tidak ada");
             }
             try{
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/member.txt"));
                 dataHolder.addAll((List<MemberModel>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                return;
+                throw new IOException("File tidak ada");
             }
             try{
                 ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/VIP.txt"));
                 dataHolder.addAll((List<VIPModel>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                return;
+                throw new IOException("File tidak ada");
             }
         } else if (dataHolder.getType() == "Transaction") {
             dataHolder.setList(new ArrayList<Transaction>());
@@ -53,7 +53,7 @@ public class OBJDataAdapter implements DataAdapter {
                 dataHolder.addAll((List<Transaction>) ois.readObject());
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-                return;
+                throw new IOException("File tidak ada");
             }
 
         }

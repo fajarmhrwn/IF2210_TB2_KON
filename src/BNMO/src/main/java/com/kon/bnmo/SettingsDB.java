@@ -5,6 +5,7 @@ import com.kon.bnmo.datastore.JSONDataAdapter;
 import com.kon.bnmo.datastore.OBJDataAdapter;
 import com.kon.bnmo.datastore.XMLDataAdapter;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 
 
 public class SettingsDB extends Tab {
@@ -87,25 +89,32 @@ public class SettingsDB extends Tab {
         Impor.setOnAction(event -> {
             dataStore = new DataStore();
             if(extension == ".xml"){
-                System.out.println("masuk");
 
                 dataStore.setDataAdapter(new XMLDataAdapter());
                 try{
                     dataStore.read(directory);
-                }  catch(FileNotFoundException e){
-                    exception.setText(e.getMessage());
                 }catch (IOException e) {
-                    exception.setText(e.getMessage());
+                    Stage ex = new Stage();
+                    ex.setWidth(300);
+                    ex.setHeight(200);
+                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
+                    Scene scene = new Scene(label);
+                    ex.setScene(scene);
+                    ex.show();
                     throw new RuntimeException(e);
                 }
             }else if(extension == ".json"){
                 dataStore.setDataAdapter(new JSONDataAdapter());
                 try{
                     dataStore.read(directory);
-                }  catch(FileNotFoundException e){
-                    exception.setText(e.getMessage());
-                }catch (IOException e) {
-                    exception.setText(e.getMessage());
+                } catch (IOException e) {
+                    Stage ex = new Stage();
+                    ex.setWidth(300);
+                    ex.setHeight(200);
+                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
+                    Scene scene = new Scene(label);
+                    ex.setScene(scene);
+                    ex.show();
                     throw new RuntimeException(e);
                 }
 
@@ -114,10 +123,14 @@ public class SettingsDB extends Tab {
                 dataStore.setDataAdapter(new OBJDataAdapter());
                 try{
                     dataStore.read(directory);
-                } catch(FileNotFoundException e){
-                    exception.setText(e.getMessage());
                 } catch (IOException e) {
-                    exception.setText(e.getMessage());
+                    Stage ex = new Stage();
+                    ex.setWidth(300);
+                    ex.setHeight(200);
+                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
+                    Scene scene = new Scene(label);
+                    ex.setScene(scene);
+                    ex.show();
                     throw new RuntimeException(e);
                 }
             }
@@ -125,10 +138,10 @@ public class SettingsDB extends Tab {
             dataStore.printItemHolder();
             dataStore.printTransactionHolder();
         });
+//        exception.setText("konto");
 
 // Menambahkan Label dan Button ke dalam VBox
-        root.getChildren().addAll(imporlabel, Impor, exception);
-
+        root.getChildren().addAll(imporlabel, Impor);
     }
 
     public DataStore getDataStore() {
