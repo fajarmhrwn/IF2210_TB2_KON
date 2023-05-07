@@ -1,0 +1,1007 @@
+Index: src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.customers;\n\nimport java.util.List;\n\npublic abstract class Person {\n    protected String id;\n    protected List<String> fixBills;\n\n    public List<String> getFixBills(){\n        return this.fixBills;\n    }\n    public void addFixBill(String fixBill){\n        this.fixBills.add(fixBill);\n    }\n\n    public void removeFixBill(String fixBill){\n        this.fixBills.remove(fixBill);\n    }\n\n    public abstract String getType();\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java b/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java	(date 1683397125416)
+@@ -1,21 +1,42 @@
+ package com.kon.bnmo.customers;
+ 
++import com.kon.bnmo.items.FixedBill;
++
++import java.io.Serializable;
+ import java.util.List;
+ 
+-public abstract class Person {
++public abstract class Person implements Serializable {
++    protected static final long serialVersionUID = 1L;
+     protected String id;
+-    protected List<String> fixBills;
++    protected String type;
++    protected List<FixedBill> fixBills;
++
++    public String getId() {
++        return id;
++    }
+ 
+-    public List<String> getFixBills(){
++    public void setId(String id) {
++        this.id = id;
++    }
++
++    public void setFixBills(List<FixedBill> fixBills) {
++        this.fixBills = fixBills;
++    }
++
++    public List<FixedBill> getFixBills(){
+         return this.fixBills;
+     }
+-    public void addFixBill(String fixBill){
++    public void addFixBill(FixedBill fixBill){
+         this.fixBills.add(fixBill);
+     }
+ 
+-    public void removeFixBill(String fixBill){
++    public void removeFixBill(FixedBill fixBill){
+         this.fixBills.remove(fixBill);
+     }
+ 
+     public abstract String getType();
++
++    public abstract  void setType(String type);
++
++
+ }
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.kon.bnmo.holder.holder;\nimport com.kon.bnmo.items.Item;\n\nimport java.io.*;\nimport java.util.List;\n\n\npublic class OBJDataAdapter implements DataAdapter {\n    @Override\n    public void readData(holder dataHolder, String path) {\n        /* TODO: parse OBJ ke List */\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse OBJ ke List Item */\n            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {\n                dataHolder.setItemList((List<Item>) ois.readObject());\n            } catch (IOException | ClassNotFoundException e) {\n                e.printStackTrace();\n                return;\n            }\n        }else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse OBJ ke List Customer */\n        }\n    }\n    @Override\n    public void writeData(holder dataHolder, String path) {\n        /* TODO: parse List ke OBJ */\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse List Item ke OBJ */\n            List<Item> itemList = dataHolder.getItemList();\n            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {\n                oos.writeObject(itemList);\n                oos.flush();\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        }else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse List Customer ke OBJ */\n        }\n    }\n\n    public static void main(String[] args) throws IOException, ClassNotFoundException {\n        Item item = new Item(\"barang 1\",10.000,\"kategori 1\",\"dummy.jpg\",10);\n\n        FileOutputStream fileOutputStream = new FileOutputStream(\"yourfile.txt\");\n        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);\n        objectOutputStream.writeObject(item);\n        objectOutputStream.flush();\n        objectOutputStream.close();\n\n        FileInputStream fileInputStream = new FileInputStream(\"yourfile.txt\");\n        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);\n        Item p2 = (Item) objectInputStream.readObject();\n        objectInputStream.close();\n\n        assertTrue(item.equals(p2));\n        System.out.println(item.getName());\n        System.out.println(p2.getName());\n    }\n\n    private static void assertTrue(boolean b) {\n        System.out.println(b);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java	(date 1683393057901)
+@@ -1,9 +1,14 @@
+ package com.kon.bnmo.datastore;
+ 
++import com.kon.bnmo.customers.CustomerModel;
++import com.kon.bnmo.customers.MemberModel;
++import com.kon.bnmo.customers.Person;
++import com.kon.bnmo.customers.VIPModel;
+ import com.kon.bnmo.holder.holder;
+ import com.kon.bnmo.items.Item;
+ 
+ import java.io.*;
++import java.util.ArrayList;
+ import java.util.List;
+ 
+ 
+@@ -13,7 +18,7 @@
+         /* TODO: parse OBJ ke List */
+         if(dataHolder.getType() == "Item") {
+             /* TODO: parse OBJ ke List Item */
+-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
++            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/item.obj"))) {
+                 dataHolder.setItemList((List<Item>) ois.readObject());
+             } catch (IOException | ClassNotFoundException e) {
+                 e.printStackTrace();
+@@ -21,6 +26,26 @@
+             }
+         }else if(dataHolder.getType() == "Customer") {
+             /* TODO: parse OBJ ke List Customer */
++            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/customer.obj"))) {
++                dataHolder.addAll((List<CustomerModel>) ois.readObject());
++            } catch (IOException | ClassNotFoundException e) {
++                e.printStackTrace();
++                return;
++            }
++            try{
++                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/member.obj"));
++                dataHolder.addAll((List<MemberModel>) ois.readObject());
++            } catch (IOException | ClassNotFoundException e) {
++                e.printStackTrace();
++                return;
++            }
++            try{
++                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path+"/member.obj"));
++                dataHolder.addAll((List<VIPModel>) ois.readObject());
++            } catch (IOException | ClassNotFoundException e) {
++                e.printStackTrace();
++                return;
++            }
+         }
+     }
+     @Override
+@@ -29,7 +54,7 @@
+         if(dataHolder.getType() == "Item") {
+             /* TODO: parse List Item ke OBJ */
+             List<Item> itemList = dataHolder.getItemList();
+-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
++            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/item.obj"))) {
+                 oos.writeObject(itemList);
+                 oos.flush();
+             } catch (IOException e) {
+@@ -37,6 +62,37 @@
+             }
+         }else if(dataHolder.getType() == "Customer") {
+             /* TODO: parse List Customer ke OBJ */
++            List<Person> personList = dataHolder.getItemList();
++            List<CustomerModel> customerList = new ArrayList<CustomerModel>();
++            List<MemberModel> memberList = new ArrayList<MemberModel>();
++            List<VIPModel> vipList = new ArrayList<VIPModel>();
++            for(Person person : personList){
++                if(person.getType() == "customer"){
++                    customerList.add((CustomerModel) person);
++                }else if(person.getType() == "member"){
++                    memberList.add((MemberModel) person);
++                }else if(person.getType() == "vip"){
++                    vipList.add((VIPModel) person);
++                }
++            }
++            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/customer.obj"))) {
++                oos.writeObject(customerList);
++                oos.flush();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/member.obj"))) {
++                oos.writeObject(memberList);
++                oos.flush();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path+"/vip.obj"))) {
++                oos.writeObject(vipList);
++                oos.flush();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
+         }
+     }
+ 
+Index: src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.customers;\n\nimport com.kon.bnmo.customers.CustomerModel;\n\nimport java.util.ArrayList;\n\npublic class MemberModel extends Person {\n    private String name;\n    private String phoneNumber;\n\n    public MemberModel(String id, String name, String phoneNumber){\n        this.id = id;\n        this.name = name;\n        this.phoneNumber = phoneNumber;\n        this.fixBills = new ArrayList<String>();\n    }\n\n    public MemberModel(MemberModel other){\n        this.id = other.id;\n        this.name = other.name;\n        this.phoneNumber = other.phoneNumber;\n        this.fixBills = other.fixBills;\n    }\n\n    //getter setter\n    public String getName(){\n        return this.name;\n    }\n\n    public String getPhoneNumber(){\n        return this.phoneNumber;\n    }\n\n    public void setName(String name){\n        this.name = name;\n    }\n\n    public void setPhoneNumber(String phoneNumber){\n        this.phoneNumber = phoneNumber;\n    }\n\n    @Override\n    public String getType() {\n        return \"member\";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java b/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java	(date 1683397125412)
+@@ -1,8 +1,11 @@
+ package com.kon.bnmo.customers;
+ 
+ import com.kon.bnmo.customers.CustomerModel;
++import com.kon.bnmo.items.FixedBill;
++import javafx.scene.control.Label;
+ 
+ import java.util.ArrayList;
++import java.util.List;
+ 
+ public class MemberModel extends Person {
+     private String name;
+@@ -12,9 +15,22 @@
+         this.id = id;
+         this.name = name;
+         this.phoneNumber = phoneNumber;
+-        this.fixBills = new ArrayList<String>();
++        this.fixBills = new ArrayList<>();
++    }
++
++    public  MemberModel(String id, String name, String phoneNumber, List<FixedBill> fixBills){
++        this.id = id;
++        this.name = name;
++        this.phoneNumber = phoneNumber;
++        this.fixBills = fixBills;
+     }
+ 
++    public  MemberModel(){
++        this.id = "";
++        this.name = "";
++        this.phoneNumber = "";
++        this.fixBills = new ArrayList<FixedBill>();
++    }
+     public MemberModel(MemberModel other){
+         this.id = other.id;
+         this.name = other.name;
+@@ -43,4 +59,9 @@
+     public String getType() {
+         return "member";
+     }
++
++    @Override
++    public void setType(String type) {
++        this.type = type;
++    }
+ }
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.kon.bnmo.holder.holder;\nimport com.kon.bnmo.items.Item;\nimport com.kon.bnmo.items.ItemHolder;\n\nimport java.io.IOException;\nimport java.util.List;\n\npublic class cobaadapter {\n    public static void main(String[] args) {\n        DataStore dataStore = new DataStore();\n        dataStore.setDataAdapter(new JSONDataAdapter());\n        try{\n            dataStore.readItem(\"items.json\");\n        } catch (IOException e) {\n            throw new RuntimeException(e);\n        }\n        ItemHolder itemHolder = dataStore.getItemHolder();\n        List<Item> items = itemHolder.getItemList();\n        for (Item item : items) {\n            System.out.println(item.getName());\n        }\n\n        dataStore.setDataAdapter(new XMLDataAdapter());\n        try{\n            dataStore.readItem(\"input.xml\");\n        } catch (IOException e) {\n            throw new RuntimeException(e);\n        }\n        itemHolder = dataStore.getItemHolder();\n        items = itemHolder.getItemList();\n        for (Item item : items) {\n            System.out.println(item.getName());\n        }\n\n        dataStore.setDataAdapter(new OBJDataAdapter());\n        try{\n            dataStore.readItem(\"testobj.txt\");\n        } catch (IOException e) {\n            throw new RuntimeException(e);\n        }\n        itemHolder = dataStore.getItemHolder();\n        items = itemHolder.getItemList();\n        for (Item item : items) {\n            System.out.println(item.getName());\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java	(date 1683396746513)
+@@ -1,5 +1,9 @@
+ package com.kon.bnmo.datastore;
+ 
++import com.kon.bnmo.customers.CustomerHolder;
++import com.kon.bnmo.customers.CustomerModel;
++import com.kon.bnmo.customers.MemberModel;
++import com.kon.bnmo.customers.Person;
+ import com.kon.bnmo.holder.holder;
+ import com.kon.bnmo.items.Item;
+ import com.kon.bnmo.items.ItemHolder;
+@@ -8,42 +12,29 @@
+ import java.util.List;
+ 
+ public class cobaadapter {
+-    public static void main(String[] args) {
++    public static void main(String[] args) throws IOException {
+         DataStore dataStore = new DataStore();
+         dataStore.setDataAdapter(new JSONDataAdapter());
+         try{
+-            dataStore.readItem("items.json");
++            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+         ItemHolder itemHolder = dataStore.getItemHolder();
+-        List<Item> items = itemHolder.getItemList();
+-        for (Item item : items) {
+-            System.out.println(item.getName());
+-        }
+-
+-        dataStore.setDataAdapter(new XMLDataAdapter());
+-        try{
+-            dataStore.readItem("input.xml");
+-        } catch (IOException e) {
+-            throw new RuntimeException(e);
+-        }
+-        itemHolder = dataStore.getItemHolder();
+-        items = itemHolder.getItemList();
+-        for (Item item : items) {
+-            System.out.println(item.getName());
+-        }
+-
+-        dataStore.setDataAdapter(new OBJDataAdapter());
+-        try{
+-            dataStore.readItem("testobj.txt");
+-        } catch (IOException e) {
+-            throw new RuntimeException(e);
+-        }
+-        itemHolder = dataStore.getItemHolder();
+-        items = itemHolder.getItemList();
+-        for (Item item : items) {
++        CustomerHolder customerHolder = dataStore.getCustomerHolder();
++        for(Item item : itemHolder.getItemList()){
+             System.out.println(item.getName());
+         }
++        for(Person person : customerHolder.getItemList()){
++            System.out.println(person.getType());
++        }
++
++        customerHolder.add(new MemberModel("1","fajar","08123456789"));
++        customerHolder.add(new MemberModel("2","herawan","08123456789"));
++        customerHolder.add(new MemberModel("3","fajarherawan","08123456789"));
++        customerHolder.add(new MemberModel("4","fajar herawan","08123456789"));
++
++        dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore");
++
+     }
+ }
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.fasterxml.jackson.core.JsonProcessingException;\nimport com.fasterxml.jackson.core.type.TypeReference;\nimport com.kon.bnmo.holder.holder;\nimport com.fasterxml.jackson.databind.ObjectMapper;\nimport com.kon.bnmo.items.Item;\n\nimport java.io.*;\nimport java.util.List;\n\n\npublic class JSONDataAdapter implements DataAdapter {\n    @Override\n    public void readData(holder dataHolder, String path) throws IOException {\n        /* TODO: parse JSON ke List */\n        ObjectMapper objectMapper = new ObjectMapper();\n\n        File file = new File(path);\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse JSON ke List Item */\n            if (file.exists()) {\n                List<Item> itemList = objectMapper.readValue(file, new TypeReference<List<Item>>() {});\n                for (Item item : itemList) {\n                    System.out.println(item.getName());\n                }\n                dataHolder.setItemList(itemList);\n            } else {\n                throw new FileNotFoundException(\"File not found at path: \" + path);\n            }\n\n        }\n        else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse JSON ke List Customer */\n        }\n    }\n    @Override\n    public void writeData(holder dataHolder, String path) throws IOException {\n        /* TODO: parse List ke JSON */\n        if(dataHolder.getType() == \"Item\") {\n            /* TODO: parse List Item ke JSON */\n            ObjectMapper objectMapper = new ObjectMapper();\n            String jsonString = objectMapper.writeValueAsString(dataHolder.getItemList());\n            /* Save to file */\n            File file = new File(path);\n            FileWriter fileWriter = new FileWriter(file);\n            fileWriter.write(jsonString);\n            fileWriter.close();\n        }else if(dataHolder.getType() == \"Customer\") {\n            /* TODO: parse List Customer ke JSON */\n        }\n    }\n\n    public static void main(String[] args) throws IOException {\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java	(date 1683391892443)
+@@ -2,11 +2,13 @@
+ 
+ import com.fasterxml.jackson.core.JsonProcessingException;
+ import com.fasterxml.jackson.core.type.TypeReference;
++import com.kon.bnmo.customers.*;
+ import com.kon.bnmo.holder.holder;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import com.kon.bnmo.items.Item;
+ 
+ import java.io.*;
++import java.util.ArrayList;
+ import java.util.List;
+ 
+ 
+@@ -15,16 +17,25 @@
+     public void readData(holder dataHolder, String path) throws IOException {
+         /* TODO: parse JSON ke List */
+         ObjectMapper objectMapper = new ObjectMapper();
+-
+-        File file = new File(path);
++        System.out.println(path+"/item.json");
++        File file = new File(path+"/item.json");
++        String absolutePath = file.getAbsolutePath();
++        System.out.println(absolutePath);
++        System.out.println(file.exists());
+         if(dataHolder.getType() == "Item") {
+             /* TODO: parse JSON ke List Item */
+             if (file.exists()) {
+-                List<Item> itemList = objectMapper.readValue(file, new TypeReference<List<Item>>() {});
+-                for (Item item : itemList) {
+-                    System.out.println(item.getName());
+-                }
+-                dataHolder.setItemList(itemList);
++                try {
++                    List<Item> itemList = objectMapper.readValue(file, new TypeReference<List<Item>>() {
++                    });
++                    for (Item item : itemList) {
++                        System.out.println(item.getName());
++                    }
++                    dataHolder.setItemList(itemList);
++                } catch (IOException e) {
++                    e.printStackTrace();
++                }
++
+             } else {
+                 throw new FileNotFoundException("File not found at path: " + path);
+             }
+@@ -32,6 +43,36 @@
+         }
+         else if(dataHolder.getType() == "Customer") {
+             /* TODO: parse JSON ke List Customer */
++            File file1 = new File(path + "/customer.json");
++            if (file.exists()) {
++                try {
++                    List<CustomerModel> customerList = objectMapper.readValue(file1, new TypeReference<List<CustomerModel>>() {
++                    });
++                    dataHolder.addAll(customerList);
++                } catch (IOException e) {
++                    e.printStackTrace();
++                }
++            }
++            File file2 = new File(path + "/member.json");
++            if(file2.exists()){
++                try {
++                    List<MemberModel> memberList = objectMapper.readValue(file2, new TypeReference<List<MemberModel>>() {
++                    });
++                    dataHolder.addAll(memberList);
++                } catch (IOException e) {
++                    e.printStackTrace();
++                }
++            }
++            File file3 = new File(path + "/VIP.json");
++            if(file3.exists()){
++                try {
++                    List<VIPModel> personList = objectMapper.readValue(file3, new TypeReference<List<VIPModel>>() {
++                    });
++                    dataHolder.addAll(personList);
++                } catch (IOException e) {
++                    e.printStackTrace();
++                }
++            }
+         }
+     }
+     @Override
+@@ -42,12 +83,42 @@
+             ObjectMapper objectMapper = new ObjectMapper();
+             String jsonString = objectMapper.writeValueAsString(dataHolder.getItemList());
+             /* Save to file */
+-            File file = new File(path);
++            File file = new File(path+"/item.json");
+             FileWriter fileWriter = new FileWriter(file);
+             fileWriter.write(jsonString);
+             fileWriter.close();
+         }else if(dataHolder.getType() == "Customer") {
+             /* TODO: parse List Customer ke JSON */
++            ObjectMapper objectMapper = new ObjectMapper();
++            List<Person> personList = dataHolder.getItemList();
++            List<CustomerModel> customerList = new ArrayList<CustomerModel>();
++            List<MemberModel> memberList = new ArrayList<MemberModel>();
++            List<VIPModel> VIPList = new ArrayList<VIPModel>();
++            for(Person person : personList){
++                if(person.getType() == "customer"){
++                    customerList.add((CustomerModel) person);
++                }else if(person.getType() == "member"){
++                    memberList.add((MemberModel) person);
++                }else if(person.getType() == "VIP"){
++                    VIPList.add((VIPModel) person);
++                }
++            }
++            String jsonString1 = objectMapper.writeValueAsString(customerList);
++            String jsonString2 = objectMapper.writeValueAsString(memberList);
++            String jsonString3 = objectMapper.writeValueAsString(VIPList);
++            /* Save to file */
++            File file1 = new File(path+"/customer.json");
++            FileWriter fileWriter1 = new FileWriter(file1);
++            fileWriter1.write(jsonString1);
++            fileWriter1.close();
++            File file2 = new File(path+"/member.json");
++            FileWriter fileWriter2 = new FileWriter(file2);
++            fileWriter2.write(jsonString2);
++            fileWriter2.close();
++            File file3 = new File(path+"/VIP.json");
++            FileWriter fileWriter3 = new FileWriter(file3);
++            fileWriter3.write(jsonString3);
++            fileWriter3.close();
+         }
+     }
+ 
+Index: src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.customers;\n\nimport java.util.ArrayList;\n\npublic class CustomerModel extends Person {\n    public CustomerModel(String id){\n        this.id = id;\n        this.fixBills = new ArrayList<String>();\n    }\n\n    @Override\n    public String getType() {\n        return \"customer\";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java b/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java	(date 1683397125414)
+@@ -1,15 +1,32 @@
+ package com.kon.bnmo.customers;
+ 
++import com.kon.bnmo.items.FixedBill;
++
+ import java.util.ArrayList;
++import java.util.List;
+ 
+ public class CustomerModel extends Person {
+     public CustomerModel(String id){
+         this.id = id;
+-        this.fixBills = new ArrayList<String>();
++        this.fixBills = new ArrayList<FixedBill>();
++    }
++
++    public  CustomerModel(){
++        this.id = "";
++        this.fixBills = new ArrayList<FixedBill>();
++    }
++
++    public CustomerModel(String id, List<FixedBill> fixBills){
++        this.id = id;
++        this.fixBills = fixBills;
+     }
+-
+     @Override
+     public String getType() {
+         return "customer";
+     }
++
++    @Override
++    public void setType(String type) {
++        this.type = type;
++    }
+ }
+Index: src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.customers;\n\nimport java.util.ArrayList;\n\npublic class VIPModel extends Person{\n    private String name;\n    private String phoneNumber;\n    private int point;\n\n    public VIPModel(String id, String name, String phoneNumber, int point){\n        this.id = id;\n        this.name = name;\n        this.phoneNumber = phoneNumber;\n        this.point = point;\n        this.fixBills = new ArrayList<String>();\n    }\n\n    public VIPModel(VIPModel other){\n        this.id = other.id;\n        this.name = other.name;\n        this.phoneNumber = other.phoneNumber;\n        this.point = other.point;\n        this.fixBills = other.fixBills;\n    }\n\n    //getter setter\n    public String getName(){\n        return this.name;\n    }\n\n    public String getPhoneNumber(){\n        return this.phoneNumber;\n    }\n\n    public int getPoint(){\n        return this.point;\n    }\n\n    public void setName(String name){\n        this.name = name;\n    }\n\n    public void setPhoneNumber(String phoneNumber){\n        this.phoneNumber = phoneNumber;\n    }\n\n    public void setPoint(int point){\n        this.point = point;\n    }\n\n    public void addPoint(int point){\n        this.point += point;\n    }\n\n    public void reducePoint(int point){\n        this.point -= point;\n    }\n\n    @Override\n    public String getType() {\n        return \"vip\";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java b/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java	(date 1683397125419)
+@@ -1,20 +1,37 @@
+ package com.kon.bnmo.customers;
+ 
++import com.kon.bnmo.items.FixedBill;
++
+ import java.util.ArrayList;
++import java.util.List;
+ 
+ public class VIPModel extends Person{
+     private String name;
+     private String phoneNumber;
+     private int point;
+ 
++    public  VIPModel(){
++        this.id = "";
++        this.name = "";
++        this.phoneNumber = "";
++        this.point = 0;
++        this.fixBills = new ArrayList<FixedBill>();
++    }
+     public VIPModel(String id, String name, String phoneNumber, int point){
+         this.id = id;
+         this.name = name;
+         this.phoneNumber = phoneNumber;
+         this.point = point;
+-        this.fixBills = new ArrayList<String>();
++        this.fixBills = new ArrayList<FixedBill>();
+     }
+ 
++    public VIPModel(String id, String name, String phoneNumber, int point, List<FixedBill> fixBills){
++        this.id = id;
++        this.name = name;
++        this.phoneNumber = phoneNumber;
++        this.point = point;
++        this.fixBills = fixBills;
++    }
+     public VIPModel(VIPModel other){
+         this.id = other.id;
+         this.name = other.name;
+@@ -60,4 +77,9 @@
+     public String getType() {
+         return "vip";
+     }
++
++    @Override
++    public void setType(String type) {
++        this.type = type;
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"Feat : Main\">\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerHolder.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerListItem.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2PBqaNfSu8DqDaVdwzVbNO2Qsf1\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.3073005&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.29022557&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CreateClassDialog.RecentsKey\">\n      <recent name=\"com.kon.bnmo.SistemBarang\" />\n    </key>\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/BNMO\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/java\" />\n      <recent name=\"$PROJECT_DIR$/src/BNMO/src/main/resources\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.kon.bnmo\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.cobaadapter\">\n    <configuration name=\"LayarUtama\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.main.LayarUtama\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"MainApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.MainApplication\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.main.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"OBJDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.OBJDataAdapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"XMLDataAdapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.XMLDataAdapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"cobaadapter\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.kon.bnmo.datastore.cobaadapter\" />\n      <module name=\"BNMO\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.kon.bnmo.datastore.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <module name=\"Tubes2\" />\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.cobaadapter\" />\n        <item itemvalue=\"Application.MainApplication\" />\n        <item itemvalue=\"Application.LayarUtama\" />\n        <item itemvalue=\"Application.OBJDataAdapter\" />\n        <item itemvalue=\"Application.XMLDataAdapter\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"9f6c3d4e-734d-4fd0-8929-939d6d99d209\" name=\"Changes\" comment=\"\" />\n      <created>1682940886174</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1682940886174</updated>\n      <workItem from=\"1682940887278\" duration=\"749000\" />\n      <workItem from=\"1682941738002\" duration=\"409000\" />\n      <workItem from=\"1682944518421\" duration=\"1805000\" />\n      <workItem from=\"1682946444229\" duration=\"1015000\" />\n      <workItem from=\"1682957972709\" duration=\"30000\" />\n      <workItem from=\"1682958032946\" duration=\"796000\" />\n      <workItem from=\"1682958838223\" duration=\"36097000\" />\n      <workItem from=\"1683259715809\" duration=\"3540000\" />\n      <workItem from=\"1683265250024\" duration=\"3346000\" />\n      <workItem from=\"1683273558603\" duration=\"17901000\" />\n      <workItem from=\"1683360557039\" duration=\"2498000\" />\n      <workItem from=\"1683373198255\" duration=\"6904000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Feat : DataAdapter\">\n      <created>1683319484234</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683319484234</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Feat : DataAdapter\">\n      <created>1683319494601</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683319494601</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Feat : Main\">\n      <created>1683324196965</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683324196965</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Feat : Main\">\n      <created>1683324206652</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683324206652</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"5\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"false\" />\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"Feat : DataAdapter\" />\n    <MESSAGE value=\"Feat : Main\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Feat : Main\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/.idea/workspace.xml	(date 1683397125450)
+@@ -5,18 +5,24 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="9f6c3d4e-734d-4fd0-8929-939d6d99d209" name="Changes" comment="Feat : Main">
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerHolder.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerListItem.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/VIP.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/customer.json" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/BNMO/DataStore/member.json" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/items.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/DataStore/item.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerModel.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/CustomerPage.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/MemberModel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/Person.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/customers/VIPModel.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/JSONDataAdapter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/OBJDataAdapter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore/cobaadapter.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/sistembarang/SistemBarang.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -88,6 +94,7 @@
+       <recent name="$PROJECT_DIR$/src/BNMO" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/src/BNMO/DataStore" />
+       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo/datastore" />
+       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java/com/kon/bnmo" />
+       <recent name="$PROJECT_DIR$/src/BNMO/src/main/java" />
+@@ -205,7 +212,7 @@
+       <workItem from="1683265250024" duration="3346000" />
+       <workItem from="1683273558603" duration="17901000" />
+       <workItem from="1683360557039" duration="2498000" />
+-      <workItem from="1683373198255" duration="6904000" />
++      <workItem from="1683373198255" duration="19417000" />
+     </task>
+     <task id="LOCAL-00001" summary="Feat : DataAdapter">
+       <created>1683319484234</created>
+@@ -235,7 +242,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683324206652</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Feat : Main">
++      <created>1683383807851</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1683383807851</updated>
++    </task>
++    <task id="LOCAL-00006" summary="Feat : Main">
++      <created>1683383822199</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1683383822199</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.holder;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n/* class parent dari kumpulan items atau kumpulan customer*/\nabstract public class holder<T> {\n    protected List<T> itemList;\n    protected String type;\n\n    public holder(String type){\n        this.itemList = new ArrayList<T>();\n        this.type = type;\n    }\n\n    public  holder(String type, List<T> itemList){\n        this.itemList = new ArrayList<T>(itemList);\n    }\n    public String getType(){\n        return this.type;\n    }\n\n    public void setType(){\n        this.type = type;\n    }\n\n    abstract public  void add(T item);\n\n    abstract public void remove(T item);\n\n    public List<T> getItemList() {\n        return itemList;\n    }\n\n    public void setItemList(List<T> itemList) {\n        this.itemList = itemList;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java b/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/holder/holder.java	(date 1683389741753)
+@@ -32,6 +32,9 @@
+         return itemList;
+     }
+ 
++    public void addAll(List<T> itemList) {
++        this.itemList.addAll(itemList);
++    }
+     public void setItemList(List<T> itemList) {
+         this.itemList = itemList;
+     }
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.kon.bnmo.holder.holder;\n\nimport java.io.IOException;\n\nimport javax.xml.parsers.DocumentBuilderFactory;\nimport javax.xml.parsers.DocumentBuilder;\nimport javax.xml.parsers.ParserConfigurationException;\nimport javax.xml.transform.Transformer;\nimport javax.xml.transform.TransformerConfigurationException;\nimport javax.xml.transform.TransformerException;\nimport javax.xml.transform.TransformerFactory;\nimport javax.xml.transform.dom.DOMSource;\nimport javax.xml.transform.stream.StreamResult;\n\nimport com.kon.bnmo.items.Item;\nimport org.w3c.dom.Document;\nimport org.w3c.dom.NodeList;\nimport org.w3c.dom.Node;\nimport org.w3c.dom.Element;\nimport java.io.File;\nimport java.util.List;\n\npublic class XMLDataAdapter implements  DataAdapter{\n    @Override\n    public void readData(holder dataHolder, String path) throws IOException {\n        if(dataHolder.getType() == \"Item\") {\n            try {\n                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();\n                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();\n                Document doc = dBuilder.parse(path);\n                doc.getDocumentElement().normalize();\n                System.out.println(\"Root element :\" + doc.getDocumentElement().getNodeName());\n                NodeList nList = doc.getElementsByTagName(\"item\");\n                System.out.println(\"----------------------------\");\n                for (int temp = 0; temp < nList.getLength(); temp++) {\n                    Node nNode = nList.item(temp);\n                    System.out.println(\"\\nCurrent Element :\" + nNode.getNodeName());\n                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {\n                        Element eElement = (Element) nNode;\n                        System.out.println(\"Name : \" + eElement.getElementsByTagName(\"name\").item(0).getTextContent());\n                        System.out.println(\"Price : \" + eElement.getElementsByTagName(\"price\").item(0).getTextContent());\n                        System.out.println(\"Category : \" + eElement.getElementsByTagName(\"category\").item(0).getTextContent());\n                        System.out.println(\"Image Name : \" + eElement.getElementsByTagName(\"imgName\").item(0).getTextContent());\n                        System.out.println(\"Stock : \" + eElement.getElementsByTagName(\"stock\").item(0).getTextContent());\n                        Item item = new Item(eElement.getElementsByTagName(\"name\").item(0).getTextContent(),\n                                Double.parseDouble(eElement.getElementsByTagName(\"price\").item(0).getTextContent()),\n                                eElement.getElementsByTagName(\"category\").item(0).getTextContent(),\n                                eElement.getElementsByTagName(\"imgName\").item(0).getTextContent(),\n                                Integer.parseInt(eElement.getElementsByTagName(\"stock\").item(0).getTextContent()));\n                        dataHolder.add(item);\n                    }\n                }\n            } catch (Exception e) {\n                e.printStackTrace();\n            }\n\n        }else if(dataHolder.getType() == \"Customer\") {\n\n        }\n    }\n\n    @Override\n    public void writeData(holder dataHolder, String path) throws IOException {\n        if(dataHolder.getType() == \"Item\") {\n            List<Item> itemList = dataHolder.getItemList(); // your list of Item objects\n                    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();\n            DocumentBuilder dBuilder;\n            try {\n                dBuilder = dbFactory.newDocumentBuilder();\n                Document doc = dBuilder.newDocument();\n                Element rootElement = doc.createElement(\"items\");\n                doc.appendChild(rootElement);\n\n                for (Item item : itemList) {\n                    Element itemElement = doc.createElement(\"item\");\n                    rootElement.appendChild(itemElement);\n\n                    Element nameElement = doc.createElement(\"name\");\n                    nameElement.appendChild(doc.createTextNode(item.getName()));\n                    itemElement.appendChild(nameElement);\n\n                    Element priceElement = doc.createElement(\"price\");\n                    priceElement.appendChild(doc.createTextNode(String.valueOf(item.getPrice())));\n                    itemElement.appendChild(priceElement);\n\n                    Element categoryElement = doc.createElement(\"category\");\n                    categoryElement.appendChild(doc.createTextNode(item.getCategory()));\n                    itemElement.appendChild(categoryElement);\n\n                    Element imgNameElement = doc.createElement(\"imgName\");\n                    imgNameElement.appendChild(doc.createTextNode(item.getImgName()));\n                    itemElement.appendChild(imgNameElement);\n\n                    Element stockElement = doc.createElement(\"stock\");\n                    stockElement.appendChild(doc.createTextNode(String.valueOf(item.getStock())));\n                    itemElement.appendChild(stockElement);\n                }\n\n                TransformerFactory transformerFactory = TransformerFactory.newInstance();\n                Transformer transformer = transformerFactory.newTransformer();\n                DOMSource source = new DOMSource(doc);\n                StreamResult result = new StreamResult(new File(path));\n                transformer.transform(source, result);\n                System.out.println(\"XML file saved successfully!\");\n            } catch (ParserConfigurationException | TransformerConfigurationException e) {\n                e.printStackTrace();\n            } catch (TransformerException e) {\n                e.printStackTrace();\n            }\n\n        }else if(dataHolder.getType() == \"Customer\") {\n\n        }\n    }\n\n    public static void main(String[] args) {\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/XMLDataAdapter.java	(date 1683396746525)
+@@ -1,5 +1,8 @@
+ package com.kon.bnmo.datastore;
+ 
++import com.kon.bnmo.customers.CustomerModel;
++import com.kon.bnmo.customers.MemberModel;
++import com.kon.bnmo.customers.VIPModel;
+ import com.kon.bnmo.holder.holder;
+ 
+ import java.io.IOException;
+@@ -14,14 +17,19 @@
+ import javax.xml.transform.dom.DOMSource;
+ import javax.xml.transform.stream.StreamResult;
+ 
++import com.kon.bnmo.items.Billitem;
++import com.kon.bnmo.items.FixedBill;
+ import com.kon.bnmo.items.Item;
+ import org.w3c.dom.Document;
+ import org.w3c.dom.NodeList;
+ import org.w3c.dom.Node;
+ import org.w3c.dom.Element;
+ import java.io.File;
++import java.util.ArrayList;
+ import java.util.List;
+ 
++import  javax.xml.*;
++
+ public class XMLDataAdapter implements  DataAdapter{
+     @Override
+     public void readData(holder dataHolder, String path) throws IOException {
+@@ -29,7 +37,7 @@
+             try {
+                 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+-                Document doc = dBuilder.parse(path);
++                Document doc = dBuilder.parse(path+"/item.xml");
+                 doc.getDocumentElement().normalize();
+                 System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+                 NodeList nList = doc.getElementsByTagName("item");
+@@ -57,7 +65,124 @@
+             }
+ 
+         }else if(dataHolder.getType() == "Customer") {
++            try{
++                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
++                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
++                Document doc = dBuilder.parse(path+"/customer.xml");
++                doc.getDocumentElement().normalize();
++                System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
++                NodeList nList = doc.getElementsByTagName("customer");
++                System.out.println("----------------------------");
++                for (int temp = 0; temp < nList.getLength(); temp++) {
++                    Node nNode = nList.item(temp);
++                    System.out.println("\nCurrent Element :" + nNode.getNodeName());
++                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
++                        Element eElement = (Element) nNode;
++                        Element fixbills = (Element) eElement.getElementsByTagName("fixbills").item(0);
++                        List<FixedBill> fixedBills = new ArrayList<FixedBill>();
++                        for (int i = 0; i < fixbills.getElementsByTagName("fixedbill").getLength(); i++) {
++                            Element billItem = (Element) fixbills.getElementsByTagName("listBillItem").item(i);
++                            List<Billitem> billItems = new ArrayList<Billitem>();
++                            for (int j = 0; j < billItem.getElementsByTagName("billitem").getLength(); j++) {
++                                Element item = (Element) billItem.getElementsByTagName("billitem").item(j);
++                                Billitem billitem = new Billitem(item.getElementsByTagName("name").item(0).getTextContent(),
++                                        Double.parseDouble(item.getElementsByTagName("price").item(0).getTextContent()),
++                                        Integer.parseInt(item.getElementsByTagName("quantity").item(0).getTextContent()));
++                                billItems.add(billitem);
++                            }
++                            FixedBill fixedBill = new FixedBill(billItems, fixbills.getElementsByTagName("date").item(i).getTextContent());
++                            fixedBills.add(fixedBill);
++                        }
++                        CustomerModel customerModel = new CustomerModel(eElement.getElementsByTagName("id").item(0).getTextContent(),fixedBills);
++                        dataHolder.add(customerModel);
++                    }
++
++                }
+ 
++            }catch (Exception e) {
++                e.printStackTrace();
++            }
++
++            try{
++                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
++                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
++                Document doc = dBuilder.parse(path+"/member.xml");
++                doc.getDocumentElement().normalize();
++                System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
++                NodeList nList = doc.getElementsByTagName("member");
++                System.out.println("----------------------------");
++                for (int temp = 0; temp < nList.getLength(); temp++) {
++                    Node nNode = nList.item(temp);
++                    System.out.println("\nCurrent Element :" + nNode.getNodeName());
++                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
++                        Element eElement = (Element) nNode;
++                        Element fixbills = (Element) eElement.getElementsByTagName("fixbills").item(0);
++                        List<FixedBill> fixedBills = new ArrayList<FixedBill>();
++                        for (int i = 0; i < fixbills.getElementsByTagName("fixedbill").getLength(); i++) {
++                            Element billItem = (Element) fixbills.getElementsByTagName("listBillItem").item(i);
++                            List<Billitem> billItems = new ArrayList<Billitem>();
++                            for (int j = 0; j < billItem.getElementsByTagName("billitem").getLength(); j++) {
++                                Element item = (Element) billItem.getElementsByTagName("billitem").item(j);
++                                Billitem billitem = new Billitem(item.getElementsByTagName("name").item(0).getTextContent(),
++                                        Double.parseDouble(item.getElementsByTagName("price").item(0).getTextContent()),
++                                        Integer.parseInt(item.getElementsByTagName("quantity").item(0).getTextContent()));
++                                billItems.add(billitem);
++                            }
++                            FixedBill fixedBill = new FixedBill(billItems, fixbills.getElementsByTagName("date").item(i).getTextContent());
++                            fixedBills.add(fixedBill);
++                        }
++                        MemberModel memberModel = new MemberModel(eElement.getElementsByTagName("id").item(0).getTextContent(),
++                                eElement.getElementsByTagName("name").item(0).getTextContent(),
++                                eElement.getElementsByTagName("phoneNumber").item(0).getTextContent(),
++                                fixedBills);
++                        dataHolder.add(memberModel);
++                    }
++
++                }
++            }catch (Exception e) {
++                e.printStackTrace();
++            }
++
++            try{
++                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
++                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
++                Document doc = dBuilder.parse(path+"/VIP.xml");
++                doc.getDocumentElement().normalize();
++                System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
++                NodeList nList = doc.getElementsByTagName("vip");
++                System.out.println("----------------------------");
++                for (int temp = 0; temp < nList.getLength(); temp++) {
++                    Node nNode = nList.item(temp);
++                    System.out.println("\nCurrent Element :" + nNode.getNodeName());
++                    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
++                        Element eElement = (Element) nNode;
++                        Element fixbills = (Element) eElement.getElementsByTagName("fixbills").item(0);
++                        List<FixedBill> fixedBills = new ArrayList<FixedBill>();
++                        for (int i = 0; i < fixbills.getElementsByTagName("fixedbill").getLength(); i++) {
++                            Element billItem = (Element) fixbills.getElementsByTagName("listBillItem").item(i);
++                            List<Billitem> billItems = new ArrayList<Billitem>();
++                            for (int j = 0; j < billItem.getElementsByTagName("billitem").getLength(); j++) {
++                                Element item = (Element) billItem.getElementsByTagName("billitem").item(j);
++                                Billitem billitem = new Billitem(item.getElementsByTagName("name").item(0).getTextContent(),
++                                        Double.parseDouble(item.getElementsByTagName("price").item(0).getTextContent()),
++                                        Integer.parseInt(item.getElementsByTagName("quantity").item(0).getTextContent()));
++                                billItems.add(billitem);
++                            }
++                            FixedBill fixedBill = new FixedBill(billItems, fixbills.getElementsByTagName("date").item(i).getTextContent());
++                            fixedBills.add(fixedBill);
++                        }
++                        VIPModel vipModel = new VIPModel(eElement.getElementsByTagName("id").item(0).getTextContent(),
++                                eElement.getElementsByTagName("name").item(0).getTextContent(),
++                                eElement.getElementsByTagName("phoneNumber").item(0).getTextContent(),
++                                Integer.parseInt(eElement.getElementsByTagName("point").item(0).getTextContent()),
++                                fixedBills);
++                        dataHolder.add(vipModel);
++                    }
++
++                }
++            }catch (Exception e) {
++                e.printStackTrace();
++            }
+         }
+     }
+ 
+@@ -87,7 +212,7 @@
+ 
+                     Element categoryElement = doc.createElement("category");
+                     categoryElement.appendChild(doc.createTextNode(item.getCategory()));
+-                    itemElement.appendChild(categoryElement);
++                        itemElement.appendChild(categoryElement);
+ 
+                     Element imgNameElement = doc.createElement("imgName");
+                     imgNameElement.appendChild(doc.createTextNode(item.getImgName()));
+@@ -112,6 +237,7 @@
+ 
+         }else if(dataHolder.getType() == "Customer") {
+ 
++
+         }
+     }
+ 
+Index: src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.items;\n\nimport com.kon.bnmo.cashier.BillContainer;\nimport com.kon.bnmo.cashier.ItemContainer;\nimport com.kon.bnmo.holder.holder;\n\nimport javax.xml.transform.Source;\nimport java.time.LocalDate;\nimport java.util.ArrayList;\nimport java.util.Date;\nimport java.util.List;\n\npublic class FixedBill{\n    private ArrayList<Billitem> listBillItem;\n    private final LocalDate checkoutDate;\n\n    public FixedBill(ArrayList<Billitem> listBillItem){\n        this.listBillItem = new ArrayList<>();\n        for(int i = 0; i < listBillItem.size(); i++){\n            Billitem temp = new Billitem(listBillItem.get(i));\n            this.listBillItem.add(listBillItem.get(i));\n        }\n        checkoutDate = LocalDate.now();\n    }\n\n    public ArrayList<Billitem> getListBillItem() {\n        return listBillItem;\n    }\n\n    public LocalDate getCheckoutDateDate(){\n        return checkoutDate;\n    }\n//    public static void main(String[] args){\n//        ArrayList<Billitem> bill = new ArrayList<>();\n//\n////        BillContainer billCon1 = new BillContainer();\n//        Billitem item1 =  new Billitem(\"barang1\", 100.0, \"barang\", \"sdjakjsd\",\n//                10, 3);\n//        Billitem item2 =  new Billitem(\"barang2\", 200.0, \"barang\", \"sdjakjsd\",\n//                10, 4);\n//\n//        bill.add(item1);\n//        bill.add(item2);\n//\n//        FixedBill fixbill = new FixedBill(bill);\n//\n//        for(int i = 0; i < fixbill.getListBillItem().size(); i++){\n//            System.out.println(fixbill.getListBillItem().get(i).getName());\n//        }\n//        System.out.println(fixbill.getCheckoutDateDate());\n//\n//    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java b/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/items/FixedBill.java	(date 1683396746510)
+@@ -1,18 +1,18 @@
+ package com.kon.bnmo.items;
+ 
+-import com.kon.bnmo.cashier.BillContainer;
+-import com.kon.bnmo.cashier.ItemContainer;
+-import com.kon.bnmo.holder.holder;
+-
+-import javax.xml.transform.Source;
++import java.io.Serializable;
+ import java.time.LocalDate;
+ import java.util.ArrayList;
+-import java.util.Date;
+ import java.util.List;
+ 
+-public class FixedBill{
++public class FixedBill implements Serializable {
++    protected static final long serialVersionUID = 1L;
+     private ArrayList<Billitem> listBillItem;
+     private final LocalDate checkoutDate;
++    public FixedBill(List<Billitem> billItems, String date) {
++        this.listBillItem = new ArrayList<>();
++        checkoutDate = LocalDate.now();
++    }
+ 
+     public FixedBill(ArrayList<Billitem> listBillItem){
+         this.listBillItem = new ArrayList<>();
+@@ -23,6 +23,14 @@
+         checkoutDate = LocalDate.now();
+     }
+ 
++    public void setListBillItem(ArrayList<Billitem> listBillItem) {
++        this.listBillItem = listBillItem;
++    }
++
++    public LocalDate getCheckoutDate() {
++        return checkoutDate;
++    }
++
+     public ArrayList<Billitem> getListBillItem() {
+         return listBillItem;
+     }
+Index: src/BNMO/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n  <modelVersion>4.0.0</modelVersion>\n\n  <groupId>com.kon</groupId>\n  <artifactId>BNMO</artifactId>\n  <version>1.0-SNAPSHOT</version>\n  <name>BNMO</name>\n\n  <properties>\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    <junit.version>5.9.2</junit.version>      </properties>\n\n  <dependencies>\n    <dependency>\n      <groupId>org.openjfx</groupId>\n      <artifactId>javafx-controls</artifactId>\n      <version>17.0.6</version>\n    </dependency>\n    <dependency>\n      <groupId>org.openjfx</groupId>\n      <artifactId>javafx-fxml</artifactId>\n      <version>17.0.6</version>\n    </dependency>\n            <dependency>\n      <groupId>org.controlsfx</groupId>\n      <artifactId>controlsfx</artifactId>\n      <version>11.1.2</version>\n    </dependency>    <dependency>\n      <groupId>com.dlsc.formsfx</groupId>\n      <artifactId>formsfx-core</artifactId>\n      <version>11.6.0</version>\n      <exclusions>\n        <exclusion>\n          <groupId>org.openjfx</groupId>\n          <artifactId>*</artifactId>\n        </exclusion>\n      </exclusions>\n    </dependency>            <dependency>\n      <groupId>org.kordamp.bootstrapfx</groupId>\n      <artifactId>bootstrapfx-core</artifactId>\n      <version>0.4.0</version>\n    </dependency>        \n    <dependency>\n      <groupId>org.junit.jupiter</groupId>\n      <artifactId>junit-jupiter-api</artifactId>\n      <version>${junit.version}</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>org.junit.jupiter</groupId>\n      <artifactId>junit-jupiter-engine</artifactId>\n      <version>${junit.version}</version>\n      <scope>test</scope>\n    </dependency>\n    <dependency>\n      <groupId>com.itextpdf</groupId>\n      <artifactId>itextpdf</artifactId>\n      <version>5.5.13</version>\n    </dependency>\n    <dependency>\n      <groupId>org.jetbrains</groupId>\n      <artifactId>annotations</artifactId>\n      <version>13.0</version>\n      <scope>compile</scope>\n    </dependency>\n      <dependency>\n          <groupId>org.openjfx</groupId>\n          <artifactId>javafx-graphics</artifactId>\n          <version>18.0.2</version>\n      </dependency>\n    <dependency>\n      <groupId>com.fasterxml.jackson.core</groupId>\n      <artifactId>jackson-databind</artifactId>\n      <version>2.11.3</version>\n    </dependency>\n    <dependency>\n      <groupId>org.jetbrains.kotlin</groupId>\n      <artifactId>kotlin-compiler</artifactId>\n      <version>1.6.21</version>\n    </dependency>\n\n\n  </dependencies>\n\n  <build>\n        <plugins>\n            <plugin>\n        <groupId>org.apache.maven.plugins</groupId>\n        <artifactId>maven-compiler-plugin</artifactId>\n        <version>3.11.0</version>\n        <configuration>\n          <source>17</source>\n          <target>17</target>\n        </configuration>\n            </plugin>\n      <plugin>\n        <groupId>org.openjfx</groupId>\n        <artifactId>javafx-maven-plugin</artifactId>\n        <version>0.0.8</version>\n        <executions>\n          <execution>\n            <!-- Default configuration for running with: mvn clean javafx:run -->\n            <id>default-cli</id>\n            <configuration>\n              <mainClass>com.kon.bnmo/com.kon.bnmo.HelloApplication</mainClass>\n              <launcher>app</launcher>\n              <jlinkZipName>app</jlinkZipName>\n              <jlinkImageName>app</jlinkImageName>\n              <noManPages>true</noManPages>\n              <stripDebug>true</stripDebug>\n              <noHeaderFiles>true</noHeaderFiles>\n            </configuration>\n          </execution>\n        </executions>\n      </plugin>\n          </plugins>\n  </build>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/pom.xml b/src/BNMO/pom.xml
+--- a/src/BNMO/pom.xml	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/pom.xml	(date 1683393919266)
+@@ -81,6 +81,11 @@
+       <artifactId>kotlin-compiler</artifactId>
+       <version>1.6.21</version>
+     </dependency>
++      <dependency>
++          <groupId>jakarta.xml.bind</groupId>
++          <artifactId>jakarta.xml.bind-api</artifactId>
++          <version>2.3.2</version>
++      </dependency>
+ 
+ 
+   </dependencies>
+Index: src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.items;\n\npublic class Billitem extends Item{\n    private int amount;\n    public Billitem(String name, double price, String category, String imgName, Integer stock, Integer amount) {\n        super(name, price, category, imgName, stock);\n        this.amount = amount;\n    }\n\n    public Billitem(Billitem other) {\n        this.name = other.name;\n        this.price = other.price;\n        this.category = other.category;\n        this.imgName = other.imgName;\n        this.stock = other.stock;\n        this.amount = other.amount;\n    }\n\n    public  Billitem(){\n        this.name = \"\";\n        this.price = 0;\n        this.category = \"\";\n        this.imgName = \"\";\n        this.stock = 0;\n    }\n\n    public int getAmount() {\n        return amount;\n    }\n\n    public  void setAmount(int amount){\n        this.amount = amount;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java b/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/items/Billitem.java	(date 1683396746492)
+@@ -24,6 +24,12 @@
+         this.stock = 0;
+     }
+ 
++    public Billitem(String name, double price, int quantity) {
++        this.name = name;
++        this.price = price;
++        this.amount = quantity;
++    }
++
+     public int getAmount() {
+         return amount;
+     }
+Index: src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo.datastore;\n\nimport com.fasterxml.jackson.core.JsonProcessingException;\nimport com.kon.bnmo.customers.CustomerHolder;\nimport com.kon.bnmo.holder.holder;\nimport com.kon.bnmo.items.ItemHolder;\n\nimport java.io.IOException;\n\n\npublic class DataStore {\n    private  DataAdapter dataAdapter;\n    private ItemHolder itemHolder;\n    private CustomerHolder customerHolder;\n\n    public DataStore(){\n        itemHolder = new ItemHolder();\n        customerHolder = new CustomerHolder();\n    }\n\n    public void readItem(String path) throws IOException {\n        dataAdapter.readData(this.itemHolder, path);\n    }\n\n    public  void readCustomer(String path) throws IOException {\n        dataAdapter.readData(this.customerHolder, path);\n    }\n\n    public void writeItem(String path) throws IOException {\n        dataAdapter.writeData(this.itemHolder, path);\n    }\n\n    public void writeCustomer(String path) throws IOException {\n        dataAdapter.writeData(this.customerHolder, path);\n    }\n\n    public void setDataAdapter(DataAdapter dataAdapter){\n        this.dataAdapter = dataAdapter;\n    }\n\n    public DataAdapter getDataAdapter() {\n        return dataAdapter;\n    }\n\n    public ItemHolder getItemHolder() {\n        return itemHolder;\n    }\n\n    public void setItemHolder(ItemHolder itemHolder) {\n        this.itemHolder = itemHolder;\n    }\n\n    public CustomerHolder getCustomerHolder() {\n        return customerHolder;\n    }\n\n    public void setCustomerHolder(CustomerHolder customerHolder) {\n        this.customerHolder = customerHolder;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java b/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java
+--- a/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java	(revision af5c3bf9b45d2237e1a1bd4d2cb7bb7fb1662978)
++++ b/src/BNMO/src/main/java/com/kon/bnmo/datastore/DataStore.java	(date 1683390264389)
+@@ -18,22 +18,17 @@
+         customerHolder = new CustomerHolder();
+     }
+ 
+-    public void readItem(String path) throws IOException {
++    public  void read(String path) throws IOException {
+         dataAdapter.readData(this.itemHolder, path);
+-    }
+-
+-    public  void readCustomer(String path) throws IOException {
+         dataAdapter.readData(this.customerHolder, path);
+     }
+ 
+-    public void writeItem(String path) throws IOException {
++    public void write(String path) throws IOException {
+         dataAdapter.writeData(this.itemHolder, path);
+-    }
+-
+-    public void writeCustomer(String path) throws IOException {
+         dataAdapter.writeData(this.customerHolder, path);
+     }
+ 
++
+     public void setDataAdapter(DataAdapter dataAdapter){
+         this.dataAdapter = dataAdapter;
+     }
+Index: src/BNMO/DataStore/customer.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/DataStore/customer.json b/src/BNMO/DataStore/customer.json
+new file mode 100644
+--- /dev/null	(date 1683397125406)
++++ b/src/BNMO/DataStore/customer.json	(date 1683397125406)
+@@ -0,0 +1,4 @@
++[
++  {"id": "1","fixBills": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]},
++  {"id": "2","fixBills": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"]}
++]
+\ No newline at end of file
+Index: src/BNMO/DataStore/member.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/DataStore/member.json b/src/BNMO/DataStore/member.json
+new file mode 100644
+--- /dev/null	(date 1683391893496)
++++ b/src/BNMO/DataStore/member.json	(date 1683391893496)
+@@ -0,0 +1,1 @@
++[{"id":"2","fixBills":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],"name":"john","phoneNumber":"0812019238123","type":"member"},{"id":"3","fixBills":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],"name":"oke","phoneNumber":"0812019238123","type":"member"},{"id":"4","fixBills":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"],"name":"aku","phoneNumber":"0812019238123","type":"member"},{"id":"1","fixBills":[],"name":"fajar","phoneNumber":"08123456789","type":"member"},{"id":"2","fixBills":[],"name":"herawan","phoneNumber":"08123456789","type":"member"},{"id":"3","fixBills":[],"name":"fajarherawan","phoneNumber":"08123456789","type":"member"},{"id":"4","fixBills":[],"name":"fajar herawan","phoneNumber":"08123456789","type":"member"}]
+\ No newline at end of file
+Index: src/BNMO/DataStore/VIP.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/BNMO/DataStore/VIP.json b/src/BNMO/DataStore/VIP.json
+new file mode 100644
+--- /dev/null	(date 1683391893497)
++++ b/src/BNMO/DataStore/VIP.json	(date 1683391893497)
+@@ -0,0 +1,1 @@
++[]
+\ No newline at end of file
+diff --git a/items.json b/src/BNMO/DataStore/item.json
+rename from items.json
+rename to src/BNMO/DataStore/item.json
