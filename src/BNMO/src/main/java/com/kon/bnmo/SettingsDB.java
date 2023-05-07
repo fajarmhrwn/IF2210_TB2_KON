@@ -32,7 +32,8 @@ public class SettingsDB extends Tab {
 //    private String extension;
     private Label exception;
 
-    public SettingsDB() {
+    public SettingsDB(DataStore other){
+        this.dataStore = other;
         setText("Setting Database");
         exception = new Label(" ");
 
@@ -87,7 +88,6 @@ public class SettingsDB extends Tab {
 // Membuat Button untuk mengimpor plugin
         Button Impor = new Button("Impor data");
         Impor.setOnAction(event -> {
-            dataStore = new DataStore();
             if(extension == ".xml"){
 
                 dataStore.setDataAdapter(new XMLDataAdapter());

@@ -24,11 +24,14 @@ public class MainApplication extends Application {
 
     private Label time ;
 
+    private DataStore dataStore;
+
     public void addTab(Tab tab){
         this.tabPane.getTabs().add(tab);
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
+        dataStore = new DataStore();
 
         time = new Label();
         DigitalClock digitalClock = new DigitalClock();
@@ -70,23 +73,8 @@ public class MainApplication extends Application {
         menuItem3.getItems().addAll(submenuItem6, submenuItem7);
 
         submenuItem1.setOnAction(event -> {
-            DataStore data = new DataStore();
-
-            CustomerModel customer1 = new CustomerModel("1");
-            MemberModel member1 = new MemberModel("2","Kimochi","088736248");
-            VIPModel vip1 = new VIPModel("3","Kim","088736248", 0);
-
-            data.getCustomerHolder().add(customer1);
-            data.getCustomerHolder().add(member1);
-            data.getCustomerHolder().add(vip1);
-
-            Billitem billItem1 = new Billitem("name", 9.0, "dweu", "", 9, 1);
-            List<Billitem> billItems = List.of(billItem1);
-            Transaction transaction1 = new Transaction(1, billItems);
-
-            data.getTransactionHolder().add(transaction1);
-
-            CustomerPage tab = new CustomerPage(data, tabPane);
+            dataStore.printCustomerHolder();
+            CustomerPage tab = new CustomerPage(dataStore, tabPane);
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
@@ -111,7 +99,7 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            SettingsDB tab = new SettingsDB();
+            SettingsDB tab = new SettingsDB(this.dataStore);
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
