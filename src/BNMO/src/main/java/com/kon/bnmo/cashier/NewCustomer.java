@@ -1,17 +1,12 @@
 package com.kon.bnmo.cashier;
 
-import com.kon.bnmo.customers.CustomerHolder;
-import com.kon.bnmo.customers.MemberModel;
-import com.kon.bnmo.customers.Person;
-import com.kon.bnmo.customers.VIPModel;
-import com.kon.bnmo.items.Item;
+import com.kon.bnmo.MainApplication;
+import com.kon.bnmo.customers.*;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-
-import java.util.List;
 
 public class NewCustomer extends Tab {
     private ChoiceBox<String> memberList;
@@ -59,13 +54,33 @@ public class NewCustomer extends Tab {
     }
 
     private void createCashierPage(ActionEvent actionEvent) {
-        String value;
+        Person buyer = null;
         if (this.nonMember.isDisabled()) {
-            value = this.memberList.getValue();
+            for (Person p: this.personList.getList()) {
+                if (p.getType().equals("member")) {
+                    MemberModel pMember = (MemberModel) p;
+                    if (pMember.getName().equals(this.memberList.getValue())) {
+                        buyer = pMember;
+                        break;
+                    }
+                } else if (p.getType().equals("vip")) {
+                    VIPModel pVIP = (VIPModel) p;
+                    if (pVIP.getName().equals(this.memberList.getValue())) {
+                        buyer = pVIP;
+                        break;
+                    }
+                }
+            }
         } else {
-            value = this.nonMember.getText();
+            buyer = new CustomerModel();
+            int newID = Integer.parseInt(this.personList.getList().get(this.personList.getList().size() - 1)
+                    .getId()) + 1;
+            buyer.setId(Integer.toString(newID));
+            MainApplication mainApplication = (MainApplication) this.mainClass;
+            mainApplication.getDataStore().getCustomerHolder().add(buyer);
         }
-        Cashier cashierPage = new Cashier(value, this.availableItems, this.personList, this.mainClass);
+        assert buyer != null;
+        Cashier cashierPage = new Cashier(buyer, this.availableItems, this.personList, this.mainClass);
         Tab existingTab = null;
 
         for (Tab tab: this.getTabPane().getTabs()) {

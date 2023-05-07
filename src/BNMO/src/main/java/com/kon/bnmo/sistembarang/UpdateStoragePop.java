@@ -1,5 +1,6 @@
 package com.kon.bnmo.sistembarang;
 
+import com.kon.bnmo.MainApplication;
 import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.items.Item;
 import javafx.scene.Scene;
@@ -54,6 +55,8 @@ public class UpdateStoragePop extends Stage {
                         cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
                         cashier.getMainPanel().getCatalogue().getAvailableItems().setItemStock(this.item, quantity);
                         cashier.getAvailableItems().setItemStock(this.item, quantity);
+                        MainApplication mainApplication = (MainApplication) cashier.getMainClass();
+                        mainApplication.getDataStore().getItemHolder().setItemStock(this.item, quantity);
                         cashier.getMainPanel().getCatalogue().updateCatalogue();
                         cashier.getSidePanel().getBc().updateBillContainer(this.item, quantity);
                     }

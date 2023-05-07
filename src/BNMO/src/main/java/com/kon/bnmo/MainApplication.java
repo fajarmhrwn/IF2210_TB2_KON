@@ -1,8 +1,10 @@
 package com.kon.bnmo;
 
 import com.kon.bnmo.cashier.Cashier;
+import com.kon.bnmo.cashier.NewCustomer;
 import com.kon.bnmo.customers.*;
 import com.kon.bnmo.datastore.DataStore;
+import com.kon.bnmo.datastore.JSONDataAdapter;
 import com.kon.bnmo.items.Billitem;
 import com.kon.bnmo.items.FixedBill;
 import com.kon.bnmo.items.Item;
@@ -17,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MainApplication extends Application {
@@ -32,6 +35,12 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         dataStore = new DataStore();
+//        dataStore.setDataAdapter(new JSONDataAdapter());
+//        try {
+//            dataStore.read("D:\\ITB\\Semester 4\\Object Oriented Programming\\Tubes2\\src\\BNMO\\DataStore\\JSON");
+//        } catch (IOException err) {
+//            System.out.println(err.getMessage());
+//        }
 
         time = new Label();
         DigitalClock digitalClock = new DigitalClock();
@@ -80,20 +89,13 @@ public class MainApplication extends Application {
         });
 
         submenuItem4.setOnAction(event -> {
-//            Cashier tab = new Cashier("Inventory");
-//            tabPane.getTabs().add(tab);
-//            tabPane.getSelectionModel().select(tab);
+            NewCustomer cashier = new NewCustomer(dataStore.getCustomerHolder(), dataStore.getItemHolder(), this);
+            tabPane.getTabs().add(cashier);
+            tabPane.getSelectionModel().select(cashier);
         });
 
         submenuItem5.setOnAction(event -> {
-            ItemHolder itemHolder = new ItemHolder();
-            itemHolder.add(new Item("Buku",10.000, "Alat tulis", "Buku Tulis", 10));
-            itemHolder.add(new Item("Pensil", 5.000, "Alat tulis", "Pensil 2B", 10));
-            itemHolder.add(new Item("Penghapus", 5.000, "Alat tulis", "Penghapus", 10));
-            itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-            itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-            itemHolder.add(new Item("Penggaris", 5.000, "Alat tulis", "Penggaris", 10));
-            SistemBarang tab = new SistemBarang(itemHolder);
+            SistemBarang tab = new SistemBarang(dataStore.getItemHolder());
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
@@ -122,6 +124,13 @@ public class MainApplication extends Application {
         primaryStage.show();
     }
 
+    public DataStore getDataStore() {
+        return dataStore;
+    }
+
+    public void setDataStore(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
 
     public static void main(String[] args) {
         Application.launch(MainApplication.class, args);

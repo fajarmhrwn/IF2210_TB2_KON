@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 public class FixedBill implements Serializable {
     private List<Billitem> listBillItem;
-
     private String checkoutDate;
 
     public FixedBill(){

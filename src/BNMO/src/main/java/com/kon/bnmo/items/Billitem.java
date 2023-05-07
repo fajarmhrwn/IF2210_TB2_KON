@@ -1,6 +1,8 @@
 package com.kon.bnmo.items;
 
-public class Billitem extends Item{
+import com.kon.bnmo.cashier.ItemContainer;
+
+public class Billitem extends Item {
     private int amount;
     public Billitem(String name, double price, String category, String imgName, Integer stock, Integer amount) {
         super(name, price, category, imgName, stock);
@@ -14,6 +16,15 @@ public class Billitem extends Item{
         this.imgName = other.imgName;
         this.stock = other.stock;
         this.amount = other.amount;
+    }
+
+    public Billitem(ItemContainer ic) {
+        this.name = ic.getContainedItem().getName();
+        this.category = ic.getContainedItem().getCategory();
+        this.imgName = ic.getContainedItem().getImgName();
+        this.price = ic.getContainedItem().getPrice();
+        this.stock = ic.getContainedItem().getStock();
+        this.amount = ic.getAmount();
     }
 
     public  Billitem(){
