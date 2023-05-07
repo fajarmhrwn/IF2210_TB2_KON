@@ -29,13 +29,14 @@ public class CustomerListItem extends HBox {
         this.getChildren().addAll(nameLabel, detailButton, editButton, deleteButton);
 
         detailButton.setOnAction(event -> {
-            ListHistory listHistory = new ListHistory(data.getTransactionHolder(), person.getId());
+            ListHistory listHistory = new ListHistory(data.getTransactionHolder(), person);
             tabPane.getTabs().add(listHistory);
         });
 
         // menambahkan listener pada tombol edit dan delete
         editButton.setOnAction(event -> editCustomer(tabPane, customerPage, data, person));
         deleteButton.setOnAction(event -> deleteCustomer(tabPane, customerPage, data, person));
+        this.setAlignment(Pos.CENTER);
     }
 
     private void deleteCustomer(TabPane tabPane, CustomerPage customerPage, DataStore data, Person person) {

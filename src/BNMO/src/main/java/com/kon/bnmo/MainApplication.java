@@ -40,7 +40,7 @@ public class MainApplication extends Application {
 
         MenuButton dropdownMenu = new MenuButton("Pilih Menu");
 
-        Menu menuItem1 = new Menu("Menu Customer");
+        MenuItem menuItem1 = new MenuItem("Menu Customer");
         Menu menuItem2 = new Menu("Menu Inventory");
         Menu menuItem3 = new Menu("Menu Settings");
 
@@ -56,12 +56,6 @@ public class MainApplication extends Application {
             }
         });
 
-        MenuItem submenuItem1 = new MenuItem("Menu Register");
-        MenuItem submenuItem2 = new MenuItem("Menu Update Member");
-        MenuItem submenuItem3 = new MenuItem("Menu Transaction History");
-
-        menuItem1.getItems().addAll(submenuItem1, submenuItem2, submenuItem3);
-
         MenuItem submenuItem4 = new MenuItem("Menu Cashier");
         MenuItem submenuItem5 = new MenuItem("Menu Inventory");
 
@@ -72,7 +66,7 @@ public class MainApplication extends Application {
 
         menuItem3.getItems().addAll(submenuItem6, submenuItem7);
 
-        submenuItem1.setOnAction(event -> {
+        menuItem1.setOnAction(event -> {
             dataStore.printCustomerHolder();
             CustomerPage tab = new CustomerPage(dataStore, tabPane);
             tabPane.getTabs().add(tab);

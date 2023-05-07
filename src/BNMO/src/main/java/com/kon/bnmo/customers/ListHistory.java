@@ -9,7 +9,7 @@ import javafx.scene.layout.HBox;
 import java.util.List;
 
 public class ListHistory extends Tab {
-    ListHistory(TransactionHolder transactionHolder, String idCustomer){
+    ListHistory(TransactionHolder transactionHolder, Person person){
         super();
         ListView list = new ListView();
         List<Transaction> listTransaction = transactionHolder.getList();
@@ -19,6 +19,14 @@ public class ListHistory extends Tab {
                 list.getItems().add(item);
 //            }
         }
+        if(person.getType() == "customer"){
+            this.setText("History " + person.getId());
+        }else if(person.getType() == "member"){
+            this.setText("History " + ((MemberModel)person).getName());
+        }else{
+            this.setText("History " + ((VIPModel)person).getName());
+        }
+
         this.setContent(list);
     }
 }

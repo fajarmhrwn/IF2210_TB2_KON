@@ -1,6 +1,7 @@
 package com.kon.bnmo.customers;
 
 import com.kon.bnmo.datastore.DataStore;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
@@ -19,9 +20,11 @@ public class CustomerPage extends Tab {
         VBox vLayout = new VBox();
 
         Label nameLabel = new Label("Customer");
+        nameLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold");
         Button addButton = new Button("Add");
 
         ListView list = new ListView();
+        list.setStyle("-fx-background-color: #eeeeee");
 
         List<Person> listPerson = this.dataStore.getCustomerHolder().getList();
         for(int i=0;i<listPerson.size();i++){
@@ -44,6 +47,9 @@ public class CustomerPage extends Tab {
         });
 
         this.setText("Customer");
+
+        vLayout.setAlignment(Pos.CENTER);
+        vLayout.setSpacing(10);
         this.setContent(vLayout);
     }
 }

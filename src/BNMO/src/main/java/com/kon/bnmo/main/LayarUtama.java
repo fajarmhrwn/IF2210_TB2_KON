@@ -9,6 +9,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalTime;
@@ -24,6 +25,7 @@ public class LayarUtama extends Tab {
         digitalClock.bindLabel(time);
         digitalClock.start();
         borderPane.setCenter(time);
+
 
         this.setContent(borderPane);
     }
