@@ -15,17 +15,14 @@ public class SimplePane extends Application {
         TabPane tabPane = new TabPane();
 
 //         Create two tabs with their content
-        Cashier tab1 = new Cashier("Nawwar");
-//        tab1.getSidePanel().getAddCustomer().setOnAction(this::onCustomerButtonClick);
-//        List<String> customerList = Arrays.asList("Nawwar", "Ulung", "Zaki");
-//        NewCustomer tab1 = new NewCustomer(customerList);
+//        Cashier tab1 = new Cashier("Nawwar");
 
         Tab tab2 = new Tab("Tab 2");
         StackPane tab2Content = new StackPane();
         tab2.setContent(tab2Content);
 
         // Add the tabs to the TabPane
-        tabPane.getTabs().addAll(tab1, tab2);
+        tabPane.getTabs().addAll(tab2);
 
         // Create a new Scene with the TabPane as its root
         Scene scene = new Scene(tabPane, 1200, 675);

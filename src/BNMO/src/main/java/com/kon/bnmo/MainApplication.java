@@ -92,9 +92,9 @@ public class MainApplication extends Application {
         });
 
         submenuItem4.setOnAction(event -> {
-            Cashier tab = new Cashier("Inventory");
-            tabPane.getTabs().add(tab);
-            tabPane.getSelectionModel().select(tab);
+//            Cashier tab = new Cashier("Inventory");
+//            tabPane.getTabs().add(tab);
+//            tabPane.getSelectionModel().select(tab);
         });
 
         submenuItem5.setOnAction(event -> {

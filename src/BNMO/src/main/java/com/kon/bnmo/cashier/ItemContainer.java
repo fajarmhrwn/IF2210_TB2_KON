@@ -19,7 +19,7 @@ public class ItemContainer extends HBox {
     private Boolean useMemberDiscount;
     private Boolean useVIPPoints;
 
-    EditItemPopup editItem;
+    private EditItemPopup editItem;
 
     public ItemContainer(String name, double price, String category, String imgName, Integer stock,
                          BillContainer billContainer, Integer amount, Double buyingPrice) {

@@ -57,14 +57,13 @@ public class Checkout extends Stage {
         totalLabel = new Label();
 
         // Create a button to clear the cart
-        Button clearButton = new Button("Clear");
-        clearButton.setOnAction(event -> {
-            table.getItems().clear();
-            updateTotal();
+        Button buyButton = new Button("Buy");
+        buyButton.setOnAction(event -> {
+
         });
 
         // Create a horizontal box to hold the buttons
-        HBox buttonBox = new HBox(clearButton);
+        HBox buttonBox = new HBox(buyButton);
         buttonBox.setSpacing(10);
 
         // Create a border pane to hold the table and the buttons

@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.scene.control.ComboBox;
@@ -24,10 +25,14 @@ public class SettingsDB extends Tab {
     private String directory;
 
     private DataStore dataStore;
+
+    private  String extension;
 //    private String extension;
+    private Label exception;
 
     public SettingsDB() {
         setText("Setting Database");
+        exception = new Label(" ");
 
         // Membuat VBox sebagai kontainer untuk semua elemen UI
         VBox root = new VBox();
@@ -38,37 +43,28 @@ public class SettingsDB extends Tab {
         // Membuat Button untuk mengganti direktori penyimpanan
         Button directoryButton = new Button("Pilih Direktori");
 
+        directoryButton.setOnAction(event -> {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(null);
+            if (selectedDirectory != null) {
+                directoryChooser.setInitialDirectory(selectedDirectory);
+                System.out.println(selectedDirectory.toString());
+                directory = selectedDirectory.toString();
+                System.out.println(directory);
+                // Mengupdate direktori penyimpanan
+//                if(selectedExtension)
+            }
+        });
+
+        // Menambahkan Label dan Button ke dalam VBox
+        root.getChildren().addAll(directoryLabel, directoryButton);
 
         // Membuat dropdown untuk memilih ekstensi file
         ComboBox<String> extensionDropdown = new ComboBox<>();
         extensionDropdown.getItems().addAll(".xml", ".json", ".obj");
         extensionDropdown.setOnAction(event -> {
-            String selectedExtension = extensionDropdown.getValue();
-            dataStore = new DataStore();
-//            if(selectedExtension == ".xml"){
-//                System.out.println("masuk");
-//
-//                dataStore.setDataAdapter(new XMLDataAdapter());
-//                try{
-//                    dataStore.readItem(directory);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }else if(selectedExtension == ".json"){
-//                dataStore.setDataAdapter(new JSONDataAdapter());
-//                try{
-////                    dataStore.readItem(directory);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }else if(selectedExtension == ".obj"){
-//                dataStore.setDataAdapter(new OBJDataAdapter());
-//                try{
-//                    dataStore.readItem(directory);
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
+            extension = extensionDropdown.getValue();
+
             // melakukan aksi ketika ekstensi dipilih
         });
         GridPane extensionGrid = new GridPane();
@@ -81,40 +77,58 @@ public class SettingsDB extends Tab {
         // Menambahkan GridPane ke dalam VBox
         root.getChildren().addAll(extensionGrid);
 
-        directoryButton.setOnAction(event -> {
-            DirectoryChooser directoryChooser = new DirectoryChooser();
-            File selectedDirectory = directoryChooser.showDialog(null);
-            if (selectedDirectory != null) {
-                directoryChooser.setInitialDirectory(selectedDirectory);
-                System.out.println(selectedDirectory.toString());
-                directory = selectedDirectory.toString();
-                // Mengupdate direktori penyimpanan
-//                if(selectedExtension)
-            }
-        });
-
-        // Menambahkan Label dan Button ke dalam VBox
-        root.getChildren().addAll(directoryLabel, directoryButton);
-
         // Menambahkan VBox ke dalam Tab
         setContent(root);
 
-        Label pluginLabel = new Label("Plugin");
+        Label imporlabel = new Label("import data");
 
 // Membuat Button untuk mengimpor plugin
-        Button pluginButton = new Button("Impor Plugin");
-        pluginButton.setOnAction(event -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Pilih File Plugin");
-            fileChooser.getExtensionFilters().add(new ExtensionFilter(".jar", "*.jar"));
-            File selectedFile = fileChooser.showOpenDialog(null);
-            if (selectedFile != null) {
-                // Mengimpor plugin
+        Button Impor = new Button("Impor data");
+        Impor.setOnAction(event -> {
+            dataStore = new DataStore();
+            if(extension == ".xml"){
+                System.out.println("masuk");
+
+                dataStore.setDataAdapter(new XMLDataAdapter());
+                try{
+                    dataStore.read(directory);
+                }  catch(FileNotFoundException e){
+                    exception.setText(e.getMessage());
+                }catch (IOException e) {
+                    exception.setText(e.getMessage());
+                    throw new RuntimeException(e);
+                }
+            }else if(extension == ".json"){
+                dataStore.setDataAdapter(new JSONDataAdapter());
+                try{
+                    dataStore.read(directory);
+                }  catch(FileNotFoundException e){
+                    exception.setText(e.getMessage());
+                }catch (IOException e) {
+                    exception.setText(e.getMessage());
+                    throw new RuntimeException(e);
+                }
+
+
+            }else if(extension == ".obj"){
+                dataStore.setDataAdapter(new OBJDataAdapter());
+                try{
+                    dataStore.read(directory);
+                } catch(FileNotFoundException e){
+                    exception.setText(e.getMessage());
+                } catch (IOException e) {
+                    exception.setText(e.getMessage());
+                    throw new RuntimeException(e);
+                }
             }
+            dataStore.printCustomerHolder();
+            dataStore.printItemHolder();
+            dataStore.printTransactionHolder();
         });
 
 // Menambahkan Label dan Button ke dalam VBox
-        root.getChildren().addAll(pluginLabel, pluginButton);
+        root.getChildren().addAll(imporlabel, Impor, exception);
+
     }
 
     public DataStore getDataStore() {

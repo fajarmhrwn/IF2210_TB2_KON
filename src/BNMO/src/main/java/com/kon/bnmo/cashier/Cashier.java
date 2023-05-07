@@ -1,22 +1,26 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.customers.CustomerHolder;
+import com.kon.bnmo.items.ItemHolder;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.HBox;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Cashier extends Tab {
     private CashierMainPanel mainPanel;
     private CashierSidePanel sidePanel;
     private String customerName;
+    private ItemHolder availableItems;
+    private CustomerHolder memberList;
 
-    public Cashier(String customerName) {
+    public Cashier(String customerName, ItemHolder availableItems, CustomerHolder memberList) {
         super("Cashier: " + customerName);
         this.customerName = customerName;
 
-        this.mainPanel = new CashierMainPanel(this);
+        this.availableItems = availableItems;
+        this.memberList = memberList;
+
+        this.mainPanel = new CashierMainPanel(this, this.availableItems);
         this.mainPanel.setPrefWidth(850);
 
         this.sidePanel = new CashierSidePanel(this);
@@ -29,8 +33,7 @@ public class Cashier extends Tab {
     }
 
     private void addNewCustomerTab(ActionEvent actionEvent) {
-        List<String> customerList = Arrays.asList("Nawwar", "Ulung", "Zaki");
-        NewCustomer newPage = new NewCustomer(customerList);
+        NewCustomer newPage = new NewCustomer(memberList, availableItems);
         this.getTabPane().getTabs().add(newPage);
         this.getTabPane().getSelectionModel().select(newPage);
     }
@@ -57,6 +60,22 @@ public class Cashier extends Tab {
 
     public void setMainPanel(CashierMainPanel mainPanel) {
         this.mainPanel = mainPanel;
+    }
+
+    public ItemHolder getAvailableItems() {
+        return availableItems;
+    }
+
+    public void setAvailableItems(ItemHolder availableItems) {
+        this.availableItems = availableItems;
+    }
+
+    public CustomerHolder getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(CustomerHolder memberList) {
+        this.memberList = memberList;
     }
 }
 
