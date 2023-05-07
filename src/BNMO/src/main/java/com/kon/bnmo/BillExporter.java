@@ -18,13 +18,17 @@ import java.util.List;
 
 public class BillExporter extends Thread{
     private final FixedBill bill;
+    private String filename;
 
-    public BillExporter(FixedBill bill){
+    public BillExporter(FixedBill bill, String filename){
+        this.filename = filename;
         this.bill = new FixedBill(bill.getListBillItem());
     }
 
-    public void exportToPdf(String filename){
-        Thread t = new Thread(() -> {
+    @Override
+    public void run(){
+        try {
+            Thread.sleep(10000); // simulate long print process
             try {
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
@@ -59,10 +63,6 @@ public class BillExporter extends Thread{
             } catch (FileNotFoundException | DocumentException e) {
                 e.printStackTrace();
             }
-        });
-        t.start();
-        try {
-            Thread.sleep(10000); // simulate long print process
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,8 +80,8 @@ public class BillExporter extends Thread{
         bill.add(item2);
 
         FixedBill fixbill = new FixedBill(bill);
-        BillExporter test = new BillExporter(fixbill);
-        test.exportToPdf("testfix3");
+        BillExporter test = new BillExporter(fixbill, "testThread");
+        test.run();
     }
 //    public static void main(String[] args){
 //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();

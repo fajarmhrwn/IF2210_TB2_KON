@@ -29,12 +29,14 @@ public class SettingsPlug extends Tab {
         // Menambahkan VBox ke dalam Tab
         setContent(root);
 
-        Label pluginLabel = new Label(System.getProperty("user.dir"));
+        Label pluginLabel = new Label();
 
         // Membuat Button untuk mengimpor plugin
         Button pluginButton = new Button("Impor Plugin");
         pluginButton.setOnAction(event -> {
+            File initialDirectory = new File("src/main/java/com/kon/bnmo/plugin");
             FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(initialDirectory);
             fileChooser.setTitle("Pilih File Plugin");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(".jar", "*.jar"));
             File selectedFile = fileChooser.showOpenDialog(null);
