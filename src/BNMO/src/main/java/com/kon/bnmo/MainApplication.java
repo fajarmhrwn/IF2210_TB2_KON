@@ -99,7 +99,7 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            SettingsDB tab = new SettingsDB(this.dataStore);
+            SettingsDB tab = new SettingsDB(this.dataStore, this);
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
@@ -120,6 +120,14 @@ public class MainApplication extends Application {
         primaryStage.setTitle("BNMO");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void updateUI(){
+        this.tabPane.getTabs().forEach(tab -> {
+            if(tab instanceof CustomerPage){
+                ((CustomerPage) tab).updateUI(this.tabPane);
+            }
+        });
     }
 
 

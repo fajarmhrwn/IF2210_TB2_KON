@@ -12,11 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.scene.control.ComboBox;
@@ -32,7 +29,7 @@ public class SettingsDB extends Tab {
 //    private String extension;
     private Label exception;
 
-    public SettingsDB(DataStore other){
+    public SettingsDB(DataStore other, MainApplication mainApplication){
         this.dataStore = other;
         setText("Setting Database");
         exception = new Label(" ");
@@ -137,6 +134,7 @@ public class SettingsDB extends Tab {
             dataStore.printCustomerHolder();
             dataStore.printItemHolder();
             dataStore.printTransactionHolder();
+            mainApplication.updateUI();
         });
 //        exception.setText("konto");
 
