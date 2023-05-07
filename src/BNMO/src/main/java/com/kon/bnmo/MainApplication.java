@@ -99,7 +99,7 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            SettingsDB tab = new SettingsDB(this.dataStore);
+            SettingsDB tab = new SettingsDB(this.dataStore, this);
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
