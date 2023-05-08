@@ -1,9 +1,6 @@
 package com.kon.bnmo;
 
-import com.kon.bnmo.datastore.DataStore;
-import com.kon.bnmo.datastore.JSONDataAdapter;
-import com.kon.bnmo.datastore.OBJDataAdapter;
-import com.kon.bnmo.datastore.XMLDataAdapter;
+import com.kon.bnmo.datastore.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
@@ -87,52 +84,20 @@ public class SettingsDB extends Tab {
 // Membuat Button untuk mengimpor plugin
         Button Impor = new Button("Impor data");
         Impor.setOnAction(event -> {
-            if(extension == ".xml"){
-
-                dataStore.setDataAdapter(new XMLDataAdapter());
+                dataStore.setDataAdapter(createAdapter(extension));
                 try{
                     dataStore.read(directory);
                 }catch (IOException e) {
                     Stage ex = new Stage();
                     ex.setWidth(300);
                     ex.setHeight(200);
-                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
-                    Scene scene = new Scene(label);
-                    ex.setScene(scene);
-                    ex.show();
-                    throw new RuntimeException(e);
-                }
-            }else if(extension == ".json"){
-                dataStore.setDataAdapter(new JSONDataAdapter());
-                try{
-                    dataStore.read(directory);
-                } catch (IOException e) {
-                    Stage ex = new Stage();
-                    ex.setWidth(300);
-                    ex.setHeight(200);
-                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
+                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai!");
                     Scene scene = new Scene(label);
                     ex.setScene(scene);
                     ex.show();
                     throw new RuntimeException(e);
                 }
 
-
-            }else if(extension == ".obj"){
-                dataStore.setDataAdapter(new OBJDataAdapter());
-                try{
-                    dataStore.read(directory);
-                } catch (IOException e) {
-                    Stage ex = new Stage();
-                    ex.setWidth(300);
-                    ex.setHeight(200);
-                    Label label = new Label("Folder dan ekstensi yang dipilih ga sesuai blog!");
-                    Scene scene = new Scene(label);
-                    ex.setScene(scene);
-                    ex.show();
-                    throw new RuntimeException(e);
-                }
-            }
             dataStore.printCustomerHolder();
             dataStore.printItemHolder();
             dataStore.printTransactionHolder();
@@ -149,5 +114,17 @@ public class SettingsDB extends Tab {
     }
     public String getDirectory(){
         return this.directory;
+    }
+    public DataAdapter createAdapter(String extension){
+        if(extension == ".obj"){
+            return new OBJDataAdapter();
+        }
+        else if(extension == ".json"){
+            return new JSONDataAdapter();
+        }
+        else if(extension == ".obj"){
+            return  new OBJDataAdapter();
+        }
+        return null;
     }
 }
