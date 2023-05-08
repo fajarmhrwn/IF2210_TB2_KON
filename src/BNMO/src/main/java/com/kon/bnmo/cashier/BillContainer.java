@@ -46,6 +46,20 @@ public class BillContainer extends ScrollPane {
         this.getSidePanel().setPrice();
     }
 
+    public void updateAll() {
+        VBox newBox = new VBox();
+        for (ItemContainer item: this.billHolder.getList()) {
+            for (Item i: this.sidePanel.getThisParent().getAvailableItems().getList()) {
+                if (item.getContainedItem().equalsOtherThanPrice(i)) {
+                    newBox.getChildren().add(new ItemContainer(item.getContainedItem(), this));
+                }
+            }
+        }
+        this.setContent(newBox);
+        this.vBox = newBox;
+        this.getSidePanel().setPrice();
+    }
+
     public void removeItem(String name, double price, String category, String imgName, Integer stock,
                            Integer amount, Double sellingPrice) {
         this.billHolder.remove(new ItemContainer(name, price, category, imgName, stock, this, amount, sellingPrice));

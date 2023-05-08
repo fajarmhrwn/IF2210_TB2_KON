@@ -1,6 +1,8 @@
 package com.kon.bnmo.cashier;
 
+import com.kon.bnmo.MainApplication;
 import com.kon.bnmo.customers.*;
+import com.kon.bnmo.items.Item;
 import com.kon.bnmo.items.ItemHolder;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -90,8 +92,10 @@ public class Cashier extends Tab {
         this.memberList = memberList;
     }
 
-    public void updateUI() {
-
+    public void updateItems() {
+        MainApplication mainApplication = (MainApplication) this.mainClass;
+        this.setAvailableItems(mainApplication.getDataStore().getItemHolder());
+        this.getSidePanel().getBc().updateAll();
     }
 
     public Application getMainClass() {
