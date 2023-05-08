@@ -4,6 +4,7 @@ import com.kon.bnmo.cashier.NewCustomer;
 import com.kon.bnmo.customers.*;
 import com.kon.bnmo.datastore.DataStore;
 import com.kon.bnmo.main.DigitalClock;
+import com.kon.bnmo.plugin.loader;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -65,7 +66,13 @@ public class MainApplication extends Application {
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
-
+        MenuItem submenuItem9 = new MenuItem("Menu Fixed Bill");
+        menuItem2.getItems().add(submenuItem9);
+        submenuItem9.setOnAction(event -> {
+            Tab tab = new Tab("Fixed Bill");
+            loader a = new loader(tab, dataStore);
+            tabPane.getTabs().add(tab);
+        });
         submenuItem4.setOnAction(event -> {
             NewCustomer cashier = new NewCustomer(
                     this.dataStore.getCustomerHolder(),

@@ -1,5 +1,4 @@
 package  com.kon.bnmo;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.cashier.CashierSidePanel;
 import com.kon.bnmo.cashier.ItemContainer;
