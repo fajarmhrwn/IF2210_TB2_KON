@@ -23,51 +23,51 @@ public class EditItemPopup extends Stage {
         Label itemName = new Label(item.getName());
         this.quantitySpinner = new Spinner<>(0, item.getStock(), initAmount);
         Label discountLabel = new Label("Discount Type");
-        CheckBox memberDiscount = new CheckBox("Member discount");
-        if (this.itemContainer
-                .getBillContainer()
-                .getSidePanel()
-                .getThisParent()
-                .getCustomerName()
-                .getType()
-                .equals("member")) {
-            memberDiscount.setDisable(false);
-        } else memberDiscount.setDisable(!this.itemContainer
-                .getBillContainer()
-                .getSidePanel()
-                .getThisParent()
-                .getCustomerName()
-                .getType()
-                .equals("vip"));
-
-        memberDiscount.setOnAction(event -> {
-            if (memberDiscount.isSelected()) {
-                this.itemContainer.setUseMemberDiscount(true);
-            }
-        });
+//        CheckBox memberDiscount = new CheckBox("Member discount");
+//        if (this.itemContainer
+//                .getBillContainer()
+//                .getSidePanel()
+//                .getThisParent()
+//                .getCustomerName()
+//                .getType()
+//                .equals("member")) {
+//            memberDiscount.setDisable(false);
+//        } else memberDiscount.setDisable(!this.itemContainer
+//                .getBillContainer()
+//                .getSidePanel()
+//                .getThisParent()
+//                .getCustomerName()
+//                .getType()
+//                .equals("vip"));
+//
+//        memberDiscount.setOnAction(event -> {
+//            if (memberDiscount.isSelected()) {
+//                this.itemContainer.setUseMemberDiscount(true);
+//            }
+//        });
 
         // If customer is VIP then enable
-        CheckBox usePoints = new CheckBox("Use VIP points");
-        usePoints.setOnAction(event -> {
-            if (usePoints.isSelected()) {
-                this.itemContainer.setUseVIPPoints(true);
-            }
-        });
-        if (this.itemContainer
-                .getBillContainer()
-                .getSidePanel()
-                .getThisParent()
-                .getCustomerName()
-                .getType()
-                .equals("member")) {
-            usePoints.setDisable(true);
-        } else usePoints.setDisable(!this.itemContainer
-                .getBillContainer()
-                .getSidePanel()
-                .getThisParent()
-                .getCustomerName()
-                .getType()
-                .equals("vip"));
+//        CheckBox usePoints = new CheckBox("Use VIP points");
+//        usePoints.setOnAction(event -> {
+//            if (usePoints.isSelected()) {
+//                this.itemContainer.setUseVIPPoints(true);
+//            }
+//        });
+//        if (this.itemContainer
+//                .getBillContainer()
+//                .getSidePanel()
+//                .getThisParent()
+//                .getCustomerName()
+//                .getType()
+//                .equals("member")) {
+//            usePoints.setDisable(true);
+//        } else usePoints.setDisable(!this.itemContainer
+//                .getBillContainer()
+//                .getSidePanel()
+//                .getThisParent()
+//                .getCustomerName()
+//                .getType()
+//                .equals("vip"));
 
 
         Button updateButton = new Button("Update");
@@ -77,23 +77,23 @@ public class EditItemPopup extends Stage {
                 if (quantity < 0) {
                     throw new NumberFormatException();
                 }
-                if (!memberDiscount.isDisabled()) {
-                    if (memberDiscount.isSelected()) {
-                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer, itemContainer.getBuyingPrice() * 0.9);
-                    }
-                }
-                if (!usePoints.isDisabled()) {
-                    if (usePoints.isSelected()) {
-                        VIPModel vip = (VIPModel) this.
-                                itemContainer
-                                        .getBillContainer()
-                                                .getSidePanel()
-                                                        .getThisParent()
-                                                                .getCustomerName();
-                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer,
-                                this.itemContainer.getBillContainer().getBillHolder().getBuyingPrice(itemContainer) - vip.getPoint());
-                    }
-                }
+//                if (!memberDiscount.isDisabled()) {
+//                    if (memberDiscount.isSelected()) {
+//                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer, itemContainer.getBuyingPrice() * 0.9);
+//                    }
+//                }
+//                if (!usePoints.isDisabled()) {
+//                    if (usePoints.isSelected()) {
+//                        VIPModel vip = (VIPModel) this.
+//                                itemContainer
+//                                        .getBillContainer()
+//                                                .getSidePanel()
+//                                                        .getThisParent()
+//                                                                .getCustomerName();
+//                        this.itemContainer.getBillContainer().getBillHolder().changeBuyingPrice(itemContainer,
+//                                this.itemContainer.getBillContainer().getBillHolder().getBuyingPrice(itemContainer) - vip.getPoint());
+//                    }
+//                }
                 this.close();
                 this.itemContainer.getBillContainer().updateAmount(this.itemContainer, quantity);
                 if (quantitySpinner.getValue() == 0) {
@@ -117,8 +117,8 @@ public class EditItemPopup extends Stage {
                 itemName,
                 quantitySpinner,
                 discountLabel,
-                memberDiscount,
-                usePoints,
+//                memberDiscount,
+//                usePoints,
                 updateButton,
                 deleteButton
         );

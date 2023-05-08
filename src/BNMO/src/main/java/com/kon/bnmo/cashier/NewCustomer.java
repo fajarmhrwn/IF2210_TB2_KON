@@ -72,8 +72,6 @@ public class NewCustomer extends Tab {
                 }
             }
         }
-        MainApplication mainApplication = (MainApplication) this.mainClass;
-        mainApplication.getDataStore().getCustomerHolder().add(buyer);
         assert buyer != null;
         Cashier cashierPage = new Cashier(buyer, this.availableItems, this.personList, this.mainClass);
         Tab existingTab = null;

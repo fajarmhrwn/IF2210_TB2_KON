@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Fix: Exit loop">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SuccessfulPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ImageContainer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/EditItemPopup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/ItemContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/NewCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/SimplePane.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/TryRead.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/FixedBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/sistembarang/UpdateStoragePop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -209,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683494799636</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fix: Exit loop">
+      <created>1683501986023</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683501986023</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix: Exit loop">
+      <created>1683502003698</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683502003698</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -224,6 +232,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fix: Exit loop" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="catalogueContainer.addButton.graphic" />
