@@ -1,0 +1,423 @@
+Index: src/main/java/com/kon/bnmo/BillExporter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport com.itextpdf.text.Document;\r\nimport com.itextpdf.text.DocumentException;\r\nimport com.itextpdf.text.Paragraph;\r\nimport com.itextpdf.text.pdf.PdfWriter;\r\nimport com.itextpdf.text.Font;\r\nimport com.kon.bnmo.items.Billitem;\r\nimport com.kon.bnmo.items.FixedBill;\r\nimport com.kon.bnmo.items.Item;\r\nimport com.kon.bnmo.items.ItemHolder;\r\nimport com.itextpdf.text.Element;\r\n\r\nimport java.io.FileNotFoundException;\r\nimport java.io.FileOutputStream;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class BillExporter extends Thread{\r\n    private final FixedBill bill;\r\n\r\n    public BillExporter(FixedBill bill){\r\n        this.bill = new FixedBill(bill.getListBillItem());\r\n    }\r\n\r\n    public void exportToPdf(String filename){\r\n        Thread t = new Thread(() -> {\r\n            try {\r\n                Document document = new Document();\r\n                PdfWriter.getInstance(document, new FileOutputStream(filename+\".pdf\"));\r\n                document.open();\r\n                Paragraph title = new Paragraph(\"Toko KON\", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));\r\n                title.setAlignment(Element.ALIGN_CENTER);\r\n                document.add(title);\r\n\r\n                Paragraph date = new Paragraph(this.bill.getCheckoutDate().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));\r\n                date.setAlignment(Element.ALIGN_RIGHT);\r\n                document.add(date);\r\n                Paragraph itemsTitle = new Paragraph(\"Daftar Belanjaan\", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));\r\n                itemsTitle.setSpacingBefore(20);\r\n                document.add(itemsTitle);\r\n\r\n\r\n//                List<Item> itemList = bill.getItemList();\r\n                double totalHarga = 0;\r\n                for (int i = 0; i < bill.getListBillItem().size(); i++) {\r\n                    totalHarga += bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount();\r\n                    Paragraph item = new Paragraph(bill.getListBillItem().get(i).getAmount()+ \" \" + bill.getListBillItem().get(i).getName() + \" : Rp \" + bill.getListBillItem().get(i).getPrice()*bill.getListBillItem().get(i).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                    item.setIndentationLeft(20);\r\n                    document.add(item);\r\n                }\r\n\r\n                Paragraph total = new Paragraph(\"Total: Rp \" + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                total.setAlignment(Element.ALIGN_RIGHT);\r\n                total.setSpacingBefore(20);\r\n                document.add(total);\r\n                // add fixed bill data to document\r\n                document.close();\r\n            } catch (FileNotFoundException | DocumentException e) {\r\n                e.printStackTrace();\r\n            }\r\n        });\r\n        t.start();\r\n        try {\r\n            Thread.sleep(10000); // simulate long print process\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    public static void main(String[] args){\r\n        ArrayList<Billitem> bill = new ArrayList<>();\r\n\r\n//        BillContainer billCon1 = new BillContainer();\r\n        Billitem item1 =  new Billitem(\"barang1\", 100.0, \"barang\", \"sdjakjsd\",\r\n                10, 3);\r\n        Billitem item2 =  new Billitem(\"barang2\", 200.0, \"barang\", \"sdjakjsd\",\r\n                10, 4);\r\n\r\n        bill.add(item1);\r\n        bill.add(item2);\r\n\r\n        FixedBill fixbill = new FixedBill(bill);\r\n        BillExporter test = new BillExporter(fixbill);\r\n        test.exportToPdf(\"testfix3\");\r\n    }\r\n//    public static void main(String[] args){\r\n//        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();\r\n//        BillItem padangA = new BillItem(\"Nasi padang\", 18000.0, 2, \"Dine in\");\r\n//        BillItem padangB = new BillItem(\"Nasi padang ayam\", 18000.0, 2, \"Dine in\");\r\n//        bill.add(padangA);\r\n//        bill.add(padangB);\r\n//        BillExporter test = new BillExporter(bill);\r\n//        test.exportToPdf(\"testpadang2\");\r\n//    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/BillExporter.java b/src/main/java/com/kon/bnmo/BillExporter.java
+--- a/src/main/java/com/kon/bnmo/BillExporter.java	(revision 36dc89560998a3d605088b71ec6583cffec2e239)
++++ b/src/main/java/com/kon/bnmo/BillExporter.java	(date 1683465665949)
+@@ -18,13 +18,17 @@
+ 
+ public class BillExporter extends Thread{
+     private final FixedBill bill;
++    private String filename;
+ 
+-    public BillExporter(FixedBill bill){
++    public BillExporter(FixedBill bill, String filename){
++        this.filename = filename;
+         this.bill = new FixedBill(bill.getListBillItem());
+     }
+ 
+-    public void exportToPdf(String filename){
+-        Thread t = new Thread(() -> {
++    @Override
++    public void run(){
++        try {
++            Thread.sleep(10000); // simulate long print process
+             try {
+                 Document document = new Document();
+                 PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
+@@ -59,10 +63,6 @@
+             } catch (FileNotFoundException | DocumentException e) {
+                 e.printStackTrace();
+             }
+-        });
+-        t.start();
+-        try {
+-            Thread.sleep(10000); // simulate long print process
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+@@ -80,8 +80,8 @@
+         bill.add(item2);
+ 
+         FixedBill fixbill = new FixedBill(bill);
+-        BillExporter test = new BillExporter(fixbill);
+-        test.exportToPdf("testfix3");
++        BillExporter test = new BillExporter(fixbill, "testThread");
++        test.run();
+     }
+ //    public static void main(String[] args){
+ //        ItemHolder<BillItem> bill = new ItemHolder<BillItem>();
+Index: src/main/java/com/kon/bnmo/History.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.kon.bnmo;\r\n\r\nimport com.itextpdf.text.*;\r\nimport com.itextpdf.text.pdf.PdfWriter;\r\nimport com.kon.bnmo.items.Billitem;\r\nimport com.kon.bnmo.items.FixedBill;\r\n\r\nimport java.io.FileNotFoundException;\r\nimport java.io.FileOutputStream;\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.Comparator;\r\n\r\npublic class History {\r\n    private ArrayList<FixedBill> listFixedBill;\r\n\r\n    public History(ArrayList<FixedBill> listFixedBill){\r\n        this.listFixedBill = new ArrayList<>();\r\n        for(int i = 0; i < listFixedBill.size(); i++){\r\n            FixedBill temp = new FixedBill(listFixedBill.get(i).getListBillItem(), listFixedBill.get(i).keluarkanTanggal());\r\n            this.listFixedBill.add(temp);\r\n        }\r\n\r\n//        Collections.sort(this.listFixedBill, Comparator.comparing(FixedBill::keluarkanTanggal));\r\n    }\r\n\r\n    public void exportToPdf(String filename){\r\n        Thread t = new Thread(() -> {\r\n            try {\r\n                Document document = new Document();\r\n                PdfWriter.getInstance(document, new FileOutputStream(filename+\".pdf\"));\r\n                document.open();\r\n                Paragraph title = new Paragraph(\"Toko KON\", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));\r\n                title.setAlignment(Element.ALIGN_CENTER);\r\n                document.add(title);\r\n\r\n                double totalPenghasilan = 0;\r\n                for(int i = 0; i < this.listFixedBill.size(); i++){\r\n                    FixedBill bill = this.listFixedBill.get(i);\r\n                    Paragraph date = new Paragraph(\"Bill\" + (i+1) +\" \" + bill.keluarkanTanggal().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));\r\n                    date.setAlignment(Element.ALIGN_RIGHT);\r\n                    document.add(date);\r\n                    Paragraph daftarBelanjaan = new Paragraph(\"Daftar Belanjaan\", new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD));\r\n//                    itemsTitle.setSpacingBefore(20);\r\n                    document.add(daftarBelanjaan);\r\n\r\n\r\n//                List<Item> itemList = bill.getItemList();\r\n                    double totalHarga = 0;\r\n                    for (int j = 0; j < bill.getListBillItem().size(); j++) {\r\n                        totalHarga += bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount();\r\n                        Paragraph item = new Paragraph(bill.getListBillItem().get(j).getAmount()+ \" \" + bill.getListBillItem().get(j).getName() + \" : Rp \" + bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                        item.setIndentationLeft(20);\r\n                        document.add(item);\r\n                    }\r\n                    totalPenghasilan += totalHarga;\r\n                    Paragraph total = new Paragraph(\"Total: Rp \" + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                    total.setAlignment(Element.ALIGN_LEFT);\r\n                    document.add(total);\r\n                }\r\n                Paragraph total = new Paragraph(\"Total Penghasilan: Rp \" + totalPenghasilan, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));\r\n                total.setAlignment(Element.ALIGN_RIGHT);\r\n                document.add(total);\r\n                // add fixed bill data to document\r\n                document.close();\r\n            } catch (FileNotFoundException | DocumentException e) {\r\n                e.printStackTrace();\r\n            }\r\n        });\r\n        t.start();\r\n        try {\r\n            Thread.sleep(10000); // simulate long print process\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n    public static void main(String[] args){\r\n        ArrayList<FixedBill> report = new ArrayList<>();\r\n        ArrayList<Billitem> bill1 = new ArrayList<>();\r\n\r\n//        BillContainer billCon1 = new BillContainer();\r\n        Billitem item1 =  new Billitem(\"barang1\", 100.0, \"barang\", \"sdjakjsd\",\r\n                10, 3);\r\n        Billitem item2 =  new Billitem(\"barang2\", 200.0, \"barang\", \"sdjakjsd\",\r\n                10, 4);\r\n\r\n        bill1.add(item1);\r\n        bill1.add(item2);\r\n\r\n        ArrayList<Billitem> bill2 = new ArrayList<>();\r\n\r\n//        BillContainer billCon1 = new BillContainer();\r\n        Billitem item3 =  new Billitem(\"barang3\", 100.0, \"barang\", \"sdjakjsd\",\r\n                10, 3);\r\n        Billitem item4 =  new Billitem(\"barang3\", 200.0, \"barang\", \"sdjakjsd\",\r\n                10, 3);\r\n\r\n        bill2.add(item1);\r\n        bill2.add(item2);\r\n\r\n\r\n        FixedBill fixbill1 = new FixedBill(bill1);\r\n        FixedBill fixbill2 = new FixedBill(bill2);\r\n\r\n        report.add(fixbill1);\r\n        report.add(fixbill2);\r\n        History history = new History(report);\r\n        history.exportToPdf(\"tesssssreport\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/History.java b/src/main/java/com/kon/bnmo/History.java
+--- a/src/main/java/com/kon/bnmo/History.java	(revision 36dc89560998a3d605088b71ec6583cffec2e239)
++++ b/src/main/java/com/kon/bnmo/History.java	(date 1683466342612)
+@@ -11,7 +11,7 @@
+ import java.util.Collections;
+ import java.util.Comparator;
+ 
+-public class History {
++public class History  {
+     private ArrayList<FixedBill> listFixedBill;
+ 
+     public History(ArrayList<FixedBill> listFixedBill){
+@@ -24,87 +24,57 @@
+ //        Collections.sort(this.listFixedBill, Comparator.comparing(FixedBill::keluarkanTanggal));
+     }
+ 
+-    public void exportToPdf(String filename){
+-        Thread t = new Thread(() -> {
+-            try {
+-                Document document = new Document();
+-                PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
+-                document.open();
+-                Paragraph title = new Paragraph("Toko KON", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
+-                title.setAlignment(Element.ALIGN_CENTER);
+-                document.add(title);
+-
+-                double totalPenghasilan = 0;
+-                for(int i = 0; i < this.listFixedBill.size(); i++){
+-                    FixedBill bill = this.listFixedBill.get(i);
+-                    Paragraph date = new Paragraph("Bill" + (i+1) +" " + bill.keluarkanTanggal().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
+-                    date.setAlignment(Element.ALIGN_RIGHT);
+-                    document.add(date);
+-                    Paragraph daftarBelanjaan = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD));
+-//                    itemsTitle.setSpacingBefore(20);
+-                    document.add(daftarBelanjaan);
+-
+-
+-//                List<Item> itemList = bill.getItemList();
+-                    double totalHarga = 0;
+-                    for (int j = 0; j < bill.getListBillItem().size(); j++) {
+-                        totalHarga += bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount();
+-                        Paragraph item = new Paragraph(bill.getListBillItem().get(j).getAmount()+ " " + bill.getListBillItem().get(j).getName() + " : Rp " + bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
+-                        item.setIndentationLeft(20);
+-                        document.add(item);
+-                    }
+-                    totalPenghasilan += totalHarga;
+-                    Paragraph total = new Paragraph("Total: Rp " + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
+-                    total.setAlignment(Element.ALIGN_LEFT);
+-                    document.add(total);
+-                }
+-                Paragraph total = new Paragraph("Total Penghasilan: Rp " + totalPenghasilan, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
+-                total.setAlignment(Element.ALIGN_RIGHT);
+-                document.add(total);
+-                // add fixed bill data to document
+-                document.close();
+-            } catch (FileNotFoundException | DocumentException e) {
+-                e.printStackTrace();
+-            }
+-        });
+-        t.start();
+-        try {
+-            Thread.sleep(10000); // simulate long print process
+-        } catch (Exception e) {
+-            e.printStackTrace();
+-        }
+-    }
+-    public static void main(String[] args){
+-        ArrayList<FixedBill> report = new ArrayList<>();
+-        ArrayList<Billitem> bill1 = new ArrayList<>();
+-
+-//        BillContainer billCon1 = new BillContainer();
+-        Billitem item1 =  new Billitem("barang1", 100.0, "barang", "sdjakjsd",
+-                10, 3);
+-        Billitem item2 =  new Billitem("barang2", 200.0, "barang", "sdjakjsd",
+-                10, 4);
+-
+-        bill1.add(item1);
+-        bill1.add(item2);
+-
+-        ArrayList<Billitem> bill2 = new ArrayList<>();
+-
+-//        BillContainer billCon1 = new BillContainer();
+-        Billitem item3 =  new Billitem("barang3", 100.0, "barang", "sdjakjsd",
+-                10, 3);
+-        Billitem item4 =  new Billitem("barang3", 200.0, "barang", "sdjakjsd",
+-                10, 3);
+-
+-        bill2.add(item1);
+-        bill2.add(item2);
+-
+-
+-        FixedBill fixbill1 = new FixedBill(bill1);
+-        FixedBill fixbill2 = new FixedBill(bill2);
+-
+-        report.add(fixbill1);
+-        report.add(fixbill2);
+-        History history = new History(report);
+-        history.exportToPdf("tesssssreport");
++//    public void exportToPdf(String filename){
++//        Thread t = new Thread(() -> {
++//            try {
++//                Document document = new Document();
++//                PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
++//                document.open();
++//                Paragraph title = new Paragraph("Toko KON", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
++//                title.setAlignment(Element.ALIGN_CENTER);
++//                document.add(title);
++//
++//                double totalPenghasilan = 0;
++//                for(int i = 0; i < this.listFixedBill.size(); i++){
++//                    FixedBill bill = this.listFixedBill.get(i);
++//                    Paragraph date = new Paragraph("Bill" + (i+1) +" " + bill.keluarkanTanggal().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
++//                    date.setAlignment(Element.ALIGN_RIGHT);
++//                    document.add(date);
++//                    Paragraph daftarBelanjaan = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD));
++////                    itemsTitle.setSpacingBefore(20);
++//                    document.add(daftarBelanjaan);
++//
++//
++////                List<Item> itemList = bill.getItemList();
++//                    double totalHarga = 0;
++//                    for (int j = 0; j < bill.getListBillItem().size(); j++) {
++//                        totalHarga += bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount();
++//                        Paragraph item = new Paragraph(bill.getListBillItem().get(j).getAmount()+ " " + bill.getListBillItem().get(j).getName() + " : Rp " + bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++//                        item.setIndentationLeft(20);
++//                        document.add(item);
++//                    }
++//                    totalPenghasilan += totalHarga;
++//                    Paragraph total = new Paragraph("Total: Rp " + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++//                    total.setAlignment(Element.ALIGN_LEFT);
++//                    document.add(total);
++//                }
++//                Paragraph total = new Paragraph("Total Penghasilan: Rp " + totalPenghasilan, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++//                total.setAlignment(Element.ALIGN_RIGHT);
++//                document.add(total);
++//                // add fixed bill data to document
++//                document.close();
++//            } catch (FileNotFoundException | DocumentException e) {
++//                e.printStackTrace();
++//            }
++//        });
++//        t.start();
++//        try {
++//            Thread.sleep(10000); // simulate long print process
++//        } catch (Exception e) {
++//            e.printStackTrace();
++//        }
++//    }
++    public ArrayList<FixedBill> getListOfFixedBill(){
++        return  this.listFixedBill;
+     }
+ }
+Index: src/main/java/com/kon/bnmo/LaporanExporter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/kon/bnmo/LaporanExporter.java b/src/main/java/com/kon/bnmo/LaporanExporter.java
+new file mode 100644
+--- /dev/null	(date 1683466260088)
++++ b/src/main/java/com/kon/bnmo/LaporanExporter.java	(date 1683466260088)
+@@ -0,0 +1,104 @@
++package com.kon.bnmo;
++
++import com.itextpdf.text.*;
++import com.itextpdf.text.pdf.PdfWriter;
++import com.kon.bnmo.items.Billitem;
++import com.kon.bnmo.items.FixedBill;
++
++import java.io.FileNotFoundException;
++import java.io.FileOutputStream;
++import java.util.ArrayList;
++
++public class LaporanExporter extends Thread{
++    private History history;
++    private String filename;
++
++    public LaporanExporter(History history, String filename){
++        this.filename = filename;
++        this.history = history;
++    }
++
++    @Override
++    public void run(){
++        try {
++            try {
++                Document document = new Document();
++                PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
++                document.open();
++                Paragraph title = new Paragraph("Toko KON", new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
++                title.setAlignment(Element.ALIGN_CENTER);
++                document.add(title);
++
++                double totalPenghasilan = 0;
++                for(int i = 0; i < this.history.getListOfFixedBill().size(); i++){
++                    FixedBill bill = this.history.getListOfFixedBill().get(i);
++                    Paragraph date = new Paragraph("Bill" + (i+1) +" " + bill.keluarkanTanggal().toString(), new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.NORMAL));
++                    date.setAlignment(Element.ALIGN_RIGHT);
++                    document.add(date);
++                    Paragraph daftarBelanjaan = new Paragraph("Daftar Belanjaan", new Font(Font.FontFamily.TIMES_ROMAN, 11, Font.BOLD));
++//                    itemsTitle.setSpacingBefore(20);
++                    document.add(daftarBelanjaan);
++
++
++//                List<Item> itemList = bill.getItemList();
++                    double totalHarga = 0;
++                    for (int j = 0; j < bill.getListBillItem().size(); j++) {
++                        totalHarga += bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount();
++                        Paragraph item = new Paragraph(bill.getListBillItem().get(j).getAmount()+ " " + bill.getListBillItem().get(j).getName() + " : Rp " + bill.getListBillItem().get(j).getPrice()*bill.getListBillItem().get(j).getAmount(), new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++                        item.setIndentationLeft(20);
++                        document.add(item);
++                    }
++                    totalPenghasilan += totalHarga;
++                    Paragraph total = new Paragraph("Total: Rp " + totalHarga, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++                    total.setAlignment(Element.ALIGN_LEFT);
++                    document.add(total);
++                }
++                Paragraph total = new Paragraph("Total Penghasilan: Rp " + totalPenghasilan, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL));
++                total.setAlignment(Element.ALIGN_RIGHT);
++                document.add(total);
++                // add fixed bill data to document
++                document.close();
++            } catch (FileNotFoundException | DocumentException e) {
++                e.printStackTrace();
++            }
++            Thread.sleep(10000); // simulate long print process
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++    }
++
++    public static void main(String[] args){
++        ArrayList<FixedBill> report = new ArrayList<>();
++        ArrayList<Billitem> bill1 = new ArrayList<>();
++
++//        BillContainer billCon1 = new BillContainer();
++        Billitem item1 =  new Billitem("barang1", 100.0, "barang", "sdjakjsd",
++                10, 3);
++        Billitem item2 =  new Billitem("barang2", 200.0, "barang", "sdjakjsd",
++                10, 4);
++
++        bill1.add(item1);
++        bill1.add(item2);
++
++        ArrayList<Billitem> bill2 = new ArrayList<>();
++
++//        BillContainer billCon1 = new BillContainer();
++        Billitem item3 =  new Billitem("barang3", 100.0, "barang", "sdjakjsd",
++                10, 3);
++        Billitem item4 =  new Billitem("barang3", 200.0, "barang", "sdjakjsd",
++                10, 3);
++
++        bill2.add(item1);
++        bill2.add(item2);
++
++
++        FixedBill fixbill1 = new FixedBill(bill1);
++        FixedBill fixbill2 = new FixedBill(bill2);
++
++        report.add(fixbill1);
++        report.add(fixbill2);
++        History history = new History(report);
++        LaporanExporter tes = new LaporanExporter(history, "testhistorythread");
++        tes.run();
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7\" name=\"Changes\" comment=\"Clean: Refactor\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"git-widget-placeholder\": \"main\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"com.kon.bnmo.cashier\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Clean: Refactor\">\r\n      <created>1683449395825</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1683449395825</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Clean: Refactor\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Clean: Refactor\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 36dc89560998a3d605088b71ec6583cffec2e239)
++++ b/.idea/workspace.xml	(date 1683466260156)
+@@ -4,7 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Clean: Refactor" />
++    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="setinggssssss fixxxxx kontlo">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/LaporanExporter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/BillExporter.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/History.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -22,13 +27,48 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+-    "git-widget-placeholder": "main"
++    "git-widget-placeholder": "main",
++    "node.js.selected.package.tslint": "(autodetect)"
+   }
+ }]]></component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="com.kon.bnmo.cashier" />
+     </key>
++  </component>
++  <component name="RunManager" selected="Application.LaporanExporter">
++    <configuration name="BillExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.BillExporter" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="LaporanExporter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.kon.bnmo.LaporanExporter" />
++      <module name="BNMO" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.kon.bnmo.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.LaporanExporter" />
++        <item itemvalue="Application.BillExporter" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="TaskManager">
+     <task id="LOCAL-00001" summary="Clean: Refactor">
+@@ -38,11 +78,19 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683449395825</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="setinggssssss fixxxxx kontlo">
++      <created>1683459259059</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1683459259059</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Clean: Refactor" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Clean: Refactor" />
++    <MESSAGE value="setinggssssss fixxxxx kontlo" />
++    <option name="LAST_COMMIT_MESSAGE" value="setinggssssss fixxxxx kontlo" />
+   </component>
+ </project>
+\ No newline at end of file
