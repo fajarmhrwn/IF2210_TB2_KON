@@ -14,10 +14,11 @@ public class ListHistory extends Tab {
         ListView list = new ListView();
         List<Transaction> listTransaction = transactionHolder.getList();
         for(int i=0;i<listTransaction.size();i++){
-//            if(Integer.toString(listTransaction.get(i).getIdCustomer()) == idCustomer){
+            System.out.println(Integer.toString(listTransaction.get(i).getIdCustomer()));
+            if(Integer.toString(listTransaction.get(i).getIdCustomer()).equals(person.getId())){
                 HistoryListItem item = new HistoryListItem(listTransaction.get(i));
                 list.getItems().add(item);
-//            }
+            }
         }
         if(person.getType() == "customer"){
             this.setText("History " + person.getId());
