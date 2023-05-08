@@ -7,7 +7,6 @@ module com.kon.bnmo {
                     requires org.kordamp.bootstrapfx.core;
     requires com.fasterxml.jackson.databind;
     requires java.xml;
-    requires com.fasterxml.jackson.datatype.jsr310;
 
     opens com.kon.bnmo to javafx.fxml;
     exports com.kon.bnmo;
@@ -19,5 +18,9 @@ module com.kon.bnmo {
     opens com.kon.bnmo.customers to javafx.fxml;
     exports com.kon.bnmo.transaction;
     opens com.kon.bnmo.transaction to javafx.fxml;
-//    opens com.kon.bnmo.items to com.fasterxml.jackson.databind;
+    exports com.kon.bnmo.datastore;
+    exports com.kon.bnmo.holder;
+    exports com.kon.bnmo.sistembarang;
+    exports com.kon.bnmo.main;
+    exports com.kon.bnmo.plugin;
 }

@@ -147,4 +147,7 @@ public class SettingsDB extends Tab {
     public DataStore getDataStore() {
         return dataStore;
     }
+    public String getDirectory(){
+        return this.directory;
+    }
 }

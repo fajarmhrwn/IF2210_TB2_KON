@@ -4,13 +4,17 @@ import com.kon.bnmo.cashier.NewCustomer;
 import com.kon.bnmo.customers.*;
 import com.kon.bnmo.datastore.DataStore;
 import com.kon.bnmo.main.DigitalClock;
+import com.kon.bnmo.plugin.loader;
 import com.kon.bnmo.sistembarang.SistemBarang;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+
+import java.io.IOException;
 
 public class MainApplication extends Application {
     private TabPane tabPane;
@@ -18,6 +22,8 @@ public class MainApplication extends Application {
     private Label time ;
 
     private DataStore dataStore;
+
+    private SettingsDB settingsDB;
 
     public void addTab(Tab tab){
         this.tabPane.getTabs().add(tab);
@@ -36,8 +42,9 @@ public class MainApplication extends Application {
         MenuItem menuItem1 = new MenuItem("Menu Customer");
         Menu menuItem2 = new Menu("Menu Inventory");
         Menu menuItem3 = new Menu("Menu Settings");
+        MenuItem menuItem4 = new Menu("Export Laporan");
 
-        dropdownMenu.getItems().addAll(menuItem1, menuItem2, menuItem3);
+        dropdownMenu.getItems().addAll(menuItem1, menuItem2, menuItem3, menuItem4);
 
         this.tabPane = new TabPane();
         this.tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
@@ -65,7 +72,13 @@ public class MainApplication extends Application {
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
-
+        MenuItem submenuItem9 = new MenuItem("Menu Fixed Bill");
+        menuItem2.getItems().add(submenuItem9);
+        submenuItem9.setOnAction(event -> {
+            Tab tab = new Tab("Fixed Bill");
+            loader a = new loader(tab, dataStore);
+            tabPane.getTabs().add(tab);
+        });
         submenuItem4.setOnAction(event -> {
             NewCustomer cashier = new NewCustomer(
                     this.dataStore.getCustomerHolder(),
@@ -82,15 +95,40 @@ public class MainApplication extends Application {
         });
 
         submenuItem6.setOnAction(event -> {
-            SettingsDB tab = new SettingsDB(this.dataStore, this);
-            tabPane.getTabs().add(tab);
-            tabPane.getSelectionModel().select(tab);
+            settingsDB = new SettingsDB(this.dataStore, this);
+            tabPane.getTabs().add(settingsDB);
+            tabPane.getSelectionModel().select(settingsDB);
+//            PathDb = tab.getDirectory();
         });
 
         submenuItem7.setOnAction(event -> {
             SettingsPlug tab = new SettingsPlug();
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
+        });
+
+        menuItem4.setOnAction(event-> {
+            Stage stage = new Stage();
+            VBox vlayout = new VBox();
+            Scene scene = new Scene(vlayout);
+            TextField tf = new TextField("");
+            Button export = new Button("export");
+            System.out.println(tf.getText());
+
+            vlayout.getChildren().addAll(tf, export);
+            stage.setScene(scene);
+            export.setOnAction(event1->{
+                LaporanExporter exporter = new LaporanExporter(dataStore.getTransactionHolder(),tf.getText());
+                exporter.start();
+//                while(!exporter.isCompleted()){
+//                    try{
+//                        Thread.sleep(10000);
+//                    }catch (RuntimeException | InterruptedException e){
+//                        e.printStackTrace();
+//                    }
+//                }
+            });
+            stage.showAndWait();
         });
 
         BorderPane borderPane = new BorderPane();
@@ -124,4 +162,15 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         Application.launch(MainApplication.class, args);
     }
+    @Override
+    public void stop(){
+        try {
+            this.dataStore.write(settingsDB.getDirectory());
+            super.stop();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
+
 }
