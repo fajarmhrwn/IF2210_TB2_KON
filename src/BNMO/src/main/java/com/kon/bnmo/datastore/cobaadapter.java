@@ -17,7 +17,7 @@ public class cobaadapter {
         DataStore dataStore = new DataStore();
         dataStore.setDataAdapter(new JSONDataAdapter());
         try{
-            dataStore.read("C:\\Users\\ACER\\OneDrive\\Dokumen\\Kuliah!!!!\\OOP\\Tubes 2\\IF2210_TB2_KON\\src\\BNMO\\DataStore\\JSON");
+            dataStore.read("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/JSON");
             System.out.println("File berhasil di read");
         }catch (IOException e){
             System.out.println("Error");
@@ -51,7 +51,7 @@ public class cobaadapter {
 
         dataStore.setDataAdapter(new OBJDataAdapter());
         try{
-            dataStore.write("C:\\Users\\ACER\\OneDrive\\Dokumen\\Kuliah!!!!\\OOP\\Tubes 2\\IF2210_TB2_KON\\src\\BNMO\\DataStore\\OBJ");
+            dataStore.write("/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/DataStore/OBJ");
             System.out.println("File berhasil dibuat");
         }catch (IOException e) {
             System.out.println("Error");
