@@ -3,10 +3,8 @@ import com.kon.bnmo.cashier.Cashier;
 import com.kon.bnmo.cashier.CashierSidePanel;
 import com.kon.bnmo.cashier.ItemContainer;
 import com.kon.bnmo.cashier.SuccessfulPayment;
-import com.kon.bnmo.items.Bill;
 import com.kon.bnmo.items.Billitem;
-import com.kon.bnmo.items.FixedBill;
-import com.kon.bnmo.items.Item;
+import com.kon.bnmo.sistembarang.SistemBarang;
 import com.kon.bnmo.transaction.Transaction;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -126,6 +124,7 @@ public class Checkout extends Stage {
     }
 
     public void updatePrice() {
+        MainApplication mainApplication = (MainApplication) this.sidePanel.getThisParent().getMainClass();
         this.totalLabel.setText("Total: Rp." + this.sidePanel.getPriceTotal());
     }
 

@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="refactor SettingsDB">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="176ce8f7-8ceb-4e13-83db-c47fdcbfb0d7" name="Changes" comment="Fix: Change discount and vipPoints">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore/JSON/item.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore/JSON/item.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataStore/JSON/transaction.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataStore/JSON/transaction.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/Checkout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/BillContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kon/bnmo/items/Item.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,7 +49,6 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/ITB/Semester 4/Object Oriented Programming/Tubes2/src/BNMO/src/main/resources/com/kon/bnmo/img&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.4045977&quot;
@@ -200,21 +205,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683494799636</updated>
     </task>
-    <task id="LOCAL-00009" summary="fix: historyItem">
-      <created>1683503887747</created>
+    <task id="LOCAL-00009" summary="Fix: Exit loop">
+      <created>1683501986023</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1683503887747</updated>
+      <updated>1683501986023</updated>
     </task>
-    <task id="LOCAL-00010" summary="refactor SettingsDB">
-      <created>1683510682394</created>
+    <task id="LOCAL-00010" summary="Fix: Exit loop">
+      <created>1683502003698</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1683510682394</updated>
+      <updated>1683502003698</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fix: Change discount and vipPoints">
+      <created>1683506004248</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683506004248</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -226,12 +238,23 @@
     <MESSAGE value="Merge: Origin to local" />
     <MESSAGE value="Ganti" />
     <MESSAGE value="Fix: Exit loop" />
-    <MESSAGE value="fix: historyItem" />
-    <MESSAGE value="refactor SettingsDB" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor SettingsDB" />
+    <MESSAGE value="Fix: Change discount and vipPoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Change discount and vipPoints" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kon/bnmo/cashier/CashierSidePanel.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="catalogueContainer.addButton.graphic" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

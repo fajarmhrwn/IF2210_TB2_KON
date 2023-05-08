@@ -16,8 +16,6 @@ public class ItemContainer extends HBox {
     private BillContainer billContainer;
     private Integer amount;
     private Double buyingPrice;
-    private Boolean useMemberDiscount;
-    private Boolean useVIPPoints;
 
     private EditItemPopup editItem;
 
@@ -69,8 +67,6 @@ public class ItemContainer extends HBox {
         this.billContainer = billContainer;
         this.amount = 1;
         this.buyingPrice = itemContainer.getPrice();
-        this.useMemberDiscount = false;
-        this.useVIPPoints = false;
 
         // Set the background color and border
 //        this.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 1px;");
@@ -154,22 +150,6 @@ public class ItemContainer extends HBox {
 
     public void setBuyingPrice(Double buyingPrice) {
         this.buyingPrice = buyingPrice;
-    }
-
-    public Boolean getUseMemberDiscount() {
-        return useMemberDiscount;
-    }
-
-    public void setUseMemberDiscount(Boolean useMemberDiscount) {
-        this.useMemberDiscount = useMemberDiscount;
-    }
-
-    public Boolean getUseVIPPoints() {
-        return useVIPPoints;
-    }
-
-    public void setUseVIPPoints(Boolean useVIPPoints) {
-        this.useVIPPoints = useVIPPoints;
     }
 
     @Override

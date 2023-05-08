@@ -19,7 +19,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     private TabPane tabPane;
 
-    private Label time ;
+    private Label time;
 
     private DataStore dataStore;
 
@@ -111,7 +111,7 @@ public class MainApplication extends Application {
             Stage stage = new Stage();
             VBox vlayout = new VBox();
             Scene scene = new Scene(vlayout);
-            TextField tf = new TextField("");
+            TextField tf = new TextField("File name");
             Button export = new Button("export");
             System.out.println(tf.getText());
 

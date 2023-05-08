@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
     protected static final long serialVersionUID = 1L;
+    public boolean equalsOtherThanPrice(Item item) {
+        if (!name.equals(item.name)) return false;
+        if (!category.equals(item.category)) return false;
+        if (!imgName.equals(item.imgName)) return false;
+        return stock.equals(item.stock);
+    }
     protected String name;
     protected double price;
     protected String category;
