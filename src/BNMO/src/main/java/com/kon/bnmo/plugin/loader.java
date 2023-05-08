@@ -12,21 +12,46 @@ import java.net.URLClassLoader;
 public class loader extends Tab {
     DataStore dataStore;
 
-    public loader(Tab tab ,DataStore dataStore){
-        String jarFilePath = "/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/demo3-1.0-SNAPSHOT 2.jar"; // Specify the path to the JAR file
+    public loader(Tab tab ,DataStore dataStore,String str){
+        String jarFilePath = "/Users/fajarherawan/Documents/IF2210_TB2_KON/src/BNMO/plugin1.jar"; // Specify the path to the JAR file
         try{
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{new File(jarFilePath).toURI().toURL()});
+            System.out.println(str.substring(str.length()-11));
+            if(str.substring(str.length()-11).equals("plugin1.jar")){
+                URLClassLoader classLoader = new URLClassLoader(new URL[]{new File(jarFilePath).toURI().toURL()});
 
 
-            Class<?> chartPage = classLoader.loadClass("com.example.demo3.ChartPage");
-            Constructor<?> constructor = chartPage.getConstructor(Tab.class, DataStore.class);
+                Class<?> chartPage = classLoader.loadClass("com.example.demo3.ChartPage");
+                Constructor<?> constructor = chartPage.getConstructor(Tab.class, DataStore.class);
 
-            Object chartResult = constructor.newInstance(tab,dataStore);
+                Object chartResult = constructor.newInstance(tab,dataStore);
+
+            }
+            else if(str.substring(str.length()-11).equals("plugin2.jar")) {
+                URLClassLoader classLoader = new URLClassLoader(new URL[]{new File(jarFilePath).toURI().toURL()});
+
+
+                Class<?> chartPage = classLoader.loadClass("com.example.demo3.ChartPage");
+                Constructor<?> constructor = chartPage.getConstructor(Tab.class, DataStore.class);
+
+                Object chartResult = constructor.newInstance(tab, dataStore);
+            }
+            else if(str.substring(str.length()-11).equals("plugin3.jar")) {
+                URLClassLoader classLoader = new URLClassLoader(new URL[]{new File(jarFilePath).toURI().toURL()});
+                Class<?> chartPage = classLoader.loadClass("com.example.demo3.kursPage");
+                Constructor<?> constructor = chartPage.getConstructor(Tab.class, DataStore.class);
+                Object chartResult = constructor.newInstance(tab, dataStore);
+            } else if (str.substring(str.length()-11).equals("plugin4.jar")) {
+                URLClassLoader classLoader = new URLClassLoader(new URL[]{new File(jarFilePath).toURI().toURL()});
+                Class<?> chartPage = classLoader.loadClass("com.example.demo3.discountPage");
+                Constructor<?> constructor = chartPage.getConstructor(Tab.class, DataStore.class);
+                Object chartResult = constructor.newInstance(tab, dataStore);
+            }
 
 
         }
         catch (Exception e){
             e.printStackTrace();
         }
+
     }
 }

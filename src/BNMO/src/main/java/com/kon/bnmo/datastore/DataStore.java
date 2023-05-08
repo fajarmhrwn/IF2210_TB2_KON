@@ -8,7 +8,9 @@ import com.kon.bnmo.transaction.TransactionHolder;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class DataStore {
@@ -19,9 +21,64 @@ public class DataStore {
 
     private TransactionHolder transactionHolder;
 
-    public static List<Double> kursMataUang = new ArrayList<Double>(); /* Kurs mata uang relatif thd IDR */
+    private  Map<String, Double> kursMataUangMap = new HashMap<>();
+    // Populate kursMataUang with currency values relative to IDR
+    private  String kursSekarang = "IDR";
 
+    private Double fixprice = 1.05;
+
+    private Boolean isPlugin = false;
+
+    public Boolean getPlugin() {
+        return isPlugin;
+    }
+
+    public void setPlugin(Boolean plugin) {
+        isPlugin = plugin;
+    }
+
+    public Double getFixprice() {
+        return fixprice;
+    }
+
+    public void setFixprice(Double fixprice) {
+        this.fixprice = fixprice;
+    }
+
+    public Map<String, Double> getKursMataUangMap() {
+        return kursMataUangMap;
+    }
+
+    public void setKursMataUangMap(Map<String, Double> kursMataUangMap) {
+        this.kursMataUangMap = kursMataUangMap;
+    }
+
+
+    public String getKursSekarang() {
+        return kursSekarang;
+    }
+
+    public void setKursSekarang(String kursSekarang) {
+        this.kursSekarang = kursSekarang;
+    }
+
+    public void addKursMataUang(String mataUang, Double kurs){
+        this.kursMataUangMap.put(mataUang, kurs);
+    }
+
+    public Double getDiskon() {
+        return Diskon;
+    }
+
+    public void setDiskon(Double diskon) {
+        Diskon = diskon;
+    }
+
+    private  Double Diskon = 0.0;
     public DataStore(){
+        this.kursMataUangMap.put("IDR", 1.0);
+        this.kursMataUangMap.put("USD", 0.000071);
+        this.kursMataUangMap.put("EUR", 0.000059);
         itemHolder = new ItemHolder();
         customerHolder = new CustomerHolder();
         transactionHolder = new TransactionHolder();
@@ -45,28 +102,6 @@ public class DataStore {
 
     public void setTransactionHolder(TransactionHolder transactionHolder) {
         this.transactionHolder = transactionHolder;
-    }
-
-    public static List<Double> getKursMataUang() {
-        return kursMataUang;
-    }
-
-    public static void setKursMataUang(List<Double> kursMataUang) {
-        DataStore.kursMataUang = kursMataUang;
-    }
-
-    public static  void addKursMataUang(Double kurs){
-        kursMataUang.add(kurs);
-    }
-
-    public static void removeKursMataUang(int index){
-        kursMataUang.remove(index);
-    }
-
-    public static void printKursMataUang(){
-        for (int i = 0; i < kursMataUang.size(); i++) {
-            System.out.println(kursMataUang.get(i));
-        }
     }
 
     public void setDataAdapter(DataAdapter dataAdapter){

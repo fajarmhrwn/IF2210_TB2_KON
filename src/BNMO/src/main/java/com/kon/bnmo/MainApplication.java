@@ -25,6 +25,8 @@ public class MainApplication extends Application {
 
     private SettingsDB settingsDB;
 
+    private SettingsPlug settingsPlug;
+
     public void addTab(Tab tab){
         this.tabPane.getTabs().add(tab);
     }
@@ -72,13 +74,6 @@ public class MainApplication extends Application {
             tabPane.getTabs().add(tab);
             tabPane.getSelectionModel().select(tab);
         });
-        MenuItem submenuItem9 = new MenuItem("Menu Fixed Bill");
-        menuItem2.getItems().add(submenuItem9);
-        submenuItem9.setOnAction(event -> {
-            Tab tab = new Tab("Fixed Bill");
-            loader a = new loader(tab, dataStore);
-            tabPane.getTabs().add(tab);
-        });
         submenuItem4.setOnAction(event -> {
             NewCustomer cashier = new NewCustomer(
                     this.dataStore.getCustomerHolder(),
@@ -102,9 +97,10 @@ public class MainApplication extends Application {
         });
 
         submenuItem7.setOnAction(event -> {
-            SettingsPlug tab = new SettingsPlug();
-            tabPane.getTabs().add(tab);
-            tabPane.getSelectionModel().select(tab);
+            this.settingsPlug = new SettingsPlug(tabPane,dataStore);
+            tabPane.getTabs().add(settingsPlug);
+            tabPane.getSelectionModel().select(settingsPlug);
+
         });
 
         menuItem4.setOnAction(event-> {
